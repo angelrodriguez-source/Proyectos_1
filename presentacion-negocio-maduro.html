@@ -1,0 +1,2558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia de Clientes — Negocio Maduro FY27 · Nfq</title>
+<style>
+
+/* ============================================================
+   FUENTES
+   ============================================================ */
+@font-face { font-family: 'Sora'; font-weight: 100; src: url('Branding_NFQ/3. Fonts/1. Sora/static/Sora-Thin.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 300; src: url('Branding_NFQ/3. Fonts/1. Sora/static/Sora-Light.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 400; src: url('Branding_NFQ/3. Fonts/1. Sora/static/Sora-Regular.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 500; src: url('Branding_NFQ/3. Fonts/1. Sora/static/Sora-Medium.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 600; src: url('Branding_NFQ/3. Fonts/1. Sora/static/Sora-SemiBold.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 700; src: url('Branding_NFQ/3. Fonts/1. Sora/static/Sora-Bold.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 800; src: url('Branding_NFQ/3. Fonts/1. Sora/static/Sora-ExtraBold.ttf'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 400; src: url('Branding_NFQ/3. Fonts/2. Instrument_Sans/static/InstrumentSans-Regular.ttf'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 500; src: url('Branding_NFQ/3. Fonts/2. Instrument_Sans/static/InstrumentSans-Medium.ttf'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 600; src: url('Branding_NFQ/3. Fonts/2. Instrument_Sans/static/InstrumentSans-SemiBold.ttf'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 700; src: url('Branding_NFQ/3. Fonts/2. Instrument_Sans/static/InstrumentSans-Bold.ttf'); }
+
+/* ============================================================
+   TOKENS DE COLOR NFQ
+   ============================================================ */
+:root {
+  --orange:      #EC683E;
+  --raspberry:   #D13B5F;
+  --blue:        #217BEE;
+  --black:       #100D25;
+  --dark:        #1C1D1E;
+  --dark-mid:    #373737;
+  --grey-700:    #5D6066;
+  --grey-500:    #82858D;
+  --grey-300:    #BFBFBF;
+  --grey-200:    #E1E1E1;
+  --grey-100:    #F3F3F3;
+  --white:       #FFFFFF;
+
+  --grad-warm:   linear-gradient(135deg, #EC683E 0%, #D13B5F 100%);
+  --grad-cold:   linear-gradient(135deg, #D13B5F 0%, #217BEE 100%);
+  --grad-brand:  linear-gradient(90deg, #EC683E 0%, #D13B5F 50%, #217BEE 100%);
+  --grad-dark:   linear-gradient(135deg, #100D25 0%, #1a1730 100%);
+}
+
+/* ============================================================
+   RESET Y BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   CONTENEDOR DE PRESENTACIÓN
+   ============================================================ */
+#deck {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================================
+   SLIDES — BASE
+   ============================================================ */
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ============================================================
+   ANIMACIONES DE ENTRADA
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes expandWidth {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+.slide.active .anim-fade    { animation: fadeIn   0.7s ease both; }
+.slide.active .anim-up      { animation: fadeUp   0.7s ease both; }
+.slide.active .anim-right   { animation: slideRight 0.6s ease both; }
+.slide.active .anim-scale   { animation: scaleIn  0.6s ease both; }
+
+.delay-1 { animation-delay: 0.15s !important; }
+.delay-2 { animation-delay: 0.30s !important; }
+.delay-3 { animation-delay: 0.50s !important; }
+.delay-4 { animation-delay: 0.70s !important; }
+.delay-5 { animation-delay: 0.90s !important; }
+.delay-6 { animation-delay: 1.10s !important; }
+
+/* ============================================================
+   NAVEGACIÓN
+   ============================================================ */
+#nav {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 999;
+  opacity: 0.35;
+  transition: opacity 0.3s;
+  background: rgba(16,13,37,0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 40px;
+  padding: 6px 10px;
+}
+#nav:hover { opacity: 1; }
+
+/* Separador visual entre Home y Prev/Next */
+.nav-sep {
+  width: 1px;
+  height: 22px;
+  background: rgba(255,255,255,0.12);
+  margin: 0 4px;
+}
+
+.nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.65);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-btn:hover { color: var(--white); background: rgba(236,104,62,0.2); }
+.nav-btn svg { width: 17px; height: 17px; }
+.nav-btn-home svg { width: 16px; height: 16px; }
+
+#slide-counter {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em;
+  min-width: 48px;
+  text-align: center;
+}
+
+/* ============================================================
+   BARRA DE PROGRESO
+   ============================================================ */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--grad-brand);
+  transition: width 0.4s ease;
+  z-index: 998;
+}
+
+/* ============================================================
+   PANTALLA 01 — PORTADA
+   ============================================================ */
+.slide-cover {
+  background: var(--grad-dark);
+  overflow: hidden;
+  padding: 48px 64px;
+  justify-content: space-between;
+}
+
+/* Marca de agua: N isotipo grande en fondo */
+.cover-watermark {
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 640px;
+  height: auto;
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Patrón de puntos decorativo */
+.cover-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+
+/* Gradiente radial de color de fondo */
+.cover-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 20% 50%, rgba(236,104,62,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 50%, rgba(33,123,238,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* HEADER: logo */
+.cover-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-logo {
+  height: 36px;
+  width: auto;
+}
+
+/* CUERPO CENTRAL */
+.cover-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 32px;
+}
+
+/* Etiqueta de categoría */
+.cover-eyebrow {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cover-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+
+/* Título principal */
+.cover-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(52px, 7.5vw, 108px);
+  line-height: 0.95;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+
+.cover-title em {
+  font-style: normal;
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Línea divisoria con gradiente */
+.cover-divider {
+  width: 96px;
+  height: 3px;
+  background: var(--grad-brand);
+  border-radius: 2px;
+  margin-bottom: 28px;
+}
+
+/* Subtítulo */
+.cover-subtitle {
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: clamp(18px, 2.2vw, 28px);
+  color: rgba(255,255,255,0.65);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.cover-subtitle strong {
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+
+/* FOOTER */
+.cover-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-meta {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.04em;
+  line-height: 1.8;
+}
+
+.cover-meta span {
+  display: block;
+}
+
+.cover-meta .meta-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+  margin-bottom: 4px;
+}
+
+/* KPIs decorativos en esquina derecha */
+.cover-kpis {
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
+}
+
+.cover-kpi {
+  text-align: right;
+}
+
+.cover-kpi-value {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.cover-kpi-value .kpi-unit {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  margin-left: 2px;
+}
+
+.cover-kpi-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-top: 4px;
+}
+
+.cover-kpi-trend {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--orange);
+  margin-top: 2px;
+}
+
+/* Línea lateral decorativa */
+.cover-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--grad-brand);
+  background-size: 100% 200%;
+}
+
+
+/* ============================================================
+   FIN PANTALLA 01
+   ============================================================ */
+
+
+/* ============================================================
+   COMPONENTES REUTILIZABLES — HEADER DE SECCIÓN
+   ============================================================ */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 64px 0;
+  flex-shrink: 0;
+}
+.section-logo { height: 28px; width: auto; }
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+}
+.label-line {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--grad-brand);
+  border-radius: 1px;
+}
+
+/* ============================================================
+   PANTALLA 02 — VISIÓN GENERAL
+   ============================================================ */
+.slide-vision {
+  background: var(--white);
+  overflow: hidden;
+}
+
+.vision-bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(16,13,37,0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+/* Acento lateral */
+.slide-vision::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--grad-brand);
+}
+
+/* Zona de contenido */
+.vision-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 64px 36px;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* --- Bloque de título --- */
+.vision-title-block { flex-shrink: 0; }
+
+.vision-main-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 4.4vw, 64px);
+  line-height: 1.06;
+  color: var(--black);
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.vision-main-title em {
+  font-style: normal;
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vision-sub {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(14px, 1.3vw, 18px);
+  color: var(--grey-500);
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 580px;
+}
+
+/* Divisor */
+.vision-sep {
+  width: 56px;
+  height: 2px;
+  background: var(--grad-brand);
+  border-radius: 1px;
+  flex-shrink: 0;
+  margin-top: -4px;
+}
+
+/* --- Grid de tarjetas FY --- */
+.fy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* Columna por año: card + concentración debajo */
+.fy-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fy-card {
+  border-radius: 14px;
+  border: 1.5px solid var(--grey-200);
+  background: var(--grey-100);
+  padding: 18px 22px 16px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fy-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(16,13,37,0.08);
+}
+
+/* Barra de color superior — heredada del col */
+.fy-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.fy-25 .fy-card::before { background: var(--orange); }
+.fy-26 .fy-card::before { background: var(--raspberry); }
+.fy-27 .fy-card::before { background: var(--blue); }
+
+/* Año — grande */
+.fy-year {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.fy-25 .fy-year { color: var(--orange); }
+.fy-26 .fy-year { color: var(--raspberry); }
+.fy-27 .fy-year { color: var(--blue); }
+
+/* Revenue */
+.fy-rev {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3.2vw, 48px);
+  color: var(--black);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.fy-rev-unit {
+  font-size: 0.38em;
+  font-weight: 400;
+  color: var(--grey-500);
+  letter-spacing: 0;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+/* Ftes */
+.fy-ftes {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(13px, 1.1vw, 16px);
+  color: var(--grey-700);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+/* Concentración por FY — debajo de la tarjeta */
+.fy-conc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.fy-conc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.fy-25 .fy-conc-dot { background: var(--orange); }
+.fy-26 .fy-conc-dot { background: var(--raspberry); }
+.fy-27 .fy-conc-dot { background: var(--blue); }
+.fy-conc-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--grey-500);
+  font-weight: 700;
+}
+
+/* Badge de crecimiento */
+.fy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(9px, 0.78vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.fy-25 .fy-badge { background: rgba(236,104,62,0.10); color: var(--orange); }
+.fy-26 .fy-badge { background: rgba(209,59,95,0.10);  color: var(--raspberry); }
+.fy-27 .fy-badge { background: rgba(33,123,238,0.10); color: var(--blue); }
+
+/* --- Flip card 3D --- */
+.fy-card-flippable {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  perspective: 900px;
+  cursor: pointer;
+  overflow: visible;
+}
+/* Ocultar la barra de color del wrapper (se mueve al front face) */
+.fy-card-flippable::before { display: none !important; }
+/* Sin lift en hover del wrapper, lo gestiona el front face */
+.fy-card-flippable:hover { transform: none; box-shadow: none; }
+
+.fy-card-inner {
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 14px;
+  position: relative;
+}
+.fy-card-flippable.flipped .fy-card-inner { transform: rotateY(180deg); }
+
+.fy-card-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 14px;
+}
+.fy-card-face--front {
+  border: 1.5px solid var(--grey-200);
+  background: var(--grey-100);
+  padding: 18px 22px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.25s ease;
+}
+.fy-card-flippable:hover .fy-card-face--front {
+  box-shadow: 0 12px 32px rgba(16,13,37,0.08);
+}
+/* Barra de color en el front face */
+.fy-card-face--front::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.fy-25 .fy-card-face--front::before { background: var(--orange); }
+.fy-26 .fy-card-face--front::before { background: var(--raspberry); }
+.fy-27 .fy-card-face--front::before { background: var(--blue); }
+
+.fy-card-face--back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--white);
+}
+
+/* Mitades BBVA / Santander */
+.fy-back-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 16px 10px 12px;
+  position: relative;
+}
+/* Barra de color en la parte superior de cada mitad */
+.fy-back-half::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.fy-back-bbva { background: rgba(0,68,129,0.06); }
+.fy-back-sant { background: rgba(236,0,0,0.05); }
+.fy-back-bbva::before { background: #004481; }
+.fy-back-sant::before { background: #EC0000; }
+
+/* Divisor central */
+.fy-back-div { background: var(--grey-200); }
+
+/* Nombre del cliente — arriba, grande, en color de marca */
+.fy-back-name {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(9px, 0.85vw, 13px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.fy-back-bbva .fy-back-name { color: #004481; }
+.fy-back-sant .fy-back-name { color: #EC0000; }
+
+/* Revenue — número grande */
+.fy-back-rev {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, 2.4vw, 34px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-top: 6px;
+}
+.fy-back-bbva .fy-back-rev { color: #004481; }
+.fy-back-sant .fy-back-rev { color: #EC0000; }
+
+.fy-back-rev small {
+  font-size: 0.38em;
+  font-weight: 400;
+  color: var(--grey-300);
+  margin-left: 2px;
+  letter-spacing: 0;
+}
+.fy-back-ftes {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(13px, 1.15vw, 17px);
+  color: var(--grey-500);
+  font-weight: 600;
+}
+
+/* Etiqueta FY en esquina superior derecha del reverso */
+.fy-back-year {
+  position: absolute;
+  top: 9px;
+  right: 11px;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(8px, 0.7vw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+.fy-25 .fy-back-year { color: var(--orange); }
+.fy-26 .fy-back-year { color: var(--raspberry); }
+.fy-27 .fy-back-year { color: var(--blue); }
+
+/* Icono "girar" — aparece en hover */
+.flip-hint {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.22;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.fy-card-flippable:hover .flip-hint { opacity: 0.55; }
+
+/* --- Fila de stats resumen --- */
+.summary-row {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.summary-stat {
+  background: var(--grey-100);
+  border: 1.5px solid var(--grey-200);
+  border-radius: 12px;
+  padding: 11px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.summary-stat-val {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(16px, 1.6vw, 24px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.summary-stat-conc  .summary-stat-val { color: var(--raspberry); }
+.summary-stat-growth .summary-stat-val { color: var(--blue); }
+
+.summary-stat-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.9vw, 14px);
+  color: var(--grey-500);
+  font-weight: 400;
+  line-height: 1.45;
+}
+
+/* --- Cajas de navegación BBVA / Santander — pegadas al fondo --- */
+.client-nav {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  margin-bottom: 48px;
+}
+.client-nav-row {
+  display: flex;
+  gap: 12px;
+}
+.client-nav-row .client-btn { flex: 1; }
+.client-nav-soon {
+  display: flex;
+  justify-content: center;
+}
+.client-btn-conclusiones {
+  background: var(--orange);
+  border: none;
+  cursor: not-allowed;
+  opacity: 0.65;
+  padding: 12px 24px;
+  min-width: 220px;
+}
+.client-btn-conclusiones:hover { transform: none; filter: none; }
+.client-btn-conclusiones .client-btn-name { color: var(--white); }
+
+.client-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transition: filter 0.2s ease, transform 0.2s ease;
+  text-align: left;
+}
+.client-btn:hover { transform: translateY(-2px); filter: brightness(1.12); }
+.client-btn-bbva { background: #004481; }
+.client-btn-sant { background: #EC0000; }
+
+.client-btn-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(15px, 1.4vw, 20px);
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+.client-btn-arrow {
+  font-size: 22px;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+.client-btn:hover .client-btn-arrow {
+  color: var(--white);
+  transform: translateX(5px);
+}
+
+/* ============================================================
+   PANEL — VISIÓN GLOBAL CLIENTE (desliza desde el fondo)
+   ============================================================ */
+
+/* Scrim oscuro detrás del panel */
+.client-panel-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(16,13,37,0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9;
+  cursor: pointer;
+}
+.client-panel-scrim.visible { opacity: 1; pointer-events: all; }
+
+/* Panel principal */
+.client-panel {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 74%;
+  background: var(--white);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -16px 64px rgba(16,13,37,0.18);
+  transform: translateY(102%);
+  transition: transform 0.55s cubic-bezier(0.32, 0.72, 0, 1);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.client-panel.open { transform: translateY(0); }
+
+/* Cabecera de color del cliente */
+.panel-header {
+  flex-shrink: 0;
+  padding: 22px 36px 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.panel-header-bbva { background: #004481; }
+.panel-header-sant { background: #EC0000; }
+
+.panel-client-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 3.2vw, 46px);
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.panel-tagline {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.9vw, 14px);
+  color: rgba(255,255,255,0.5);
+  margin-top: 7px;
+  font-weight: 400;
+}
+.panel-close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  width: 34px; height: 34px;
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+.panel-close:hover { background: rgba(255,255,255,0.28); }
+
+/* Fila de evolución FY */
+.panel-evolution {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--grey-200);
+}
+.panel-fy {
+  padding: 14px 24px;
+  border-right: 1px solid var(--grey-200);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.panel-fy:last-child { border-right: none; }
+.panel-fy-year {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(9px, 0.75vw, 11px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+}
+.panel-fy-rev {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, 2.5vw, 36px);
+  color: var(--black);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+.panel-fy-ftes {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 1vw, 15px);
+  color: var(--grey-500);
+  font-weight: 500;
+}
+.panel-fy-growth {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(10px, 0.85vw, 13px);
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* Mensajes estratégicos */
+.panel-messages {
+  flex: 1;
+  padding: 18px 36px 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  overflow-y: auto;
+  align-content: start;
+}
+.panel-msg {
+  background: var(--grey-100);
+  border: 1.5px solid var(--grey-200);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.panel-msg-title {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(13px, 1.1vw, 17px);
+  font-weight: 800;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+/* Color del título según cliente */
+.panel-messages-bbva .panel-msg-title { color: #004481; }
+.panel-messages-sant .panel-msg-title { color: #EC0000; }
+
+.panel-msg-body {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 0.98vw, 15px);
+  color: var(--grey-700);
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   FIN PANTALLA 02
+   ============================================================ */
+
+/* ============================================================
+   PANEL — SECCIONES / COMPOSICIÓN DEL CLIENTE
+   ============================================================ */
+.panel-sections {
+  flex-shrink: 0;
+  padding: 18px 36px 22px;
+  border-top: 1.5px solid var(--grey-200);
+  background: var(--grey-100);
+}
+.panel-sections-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--grey-400);
+  margin-bottom: 12px;
+  text-align: center;
+}
+.panel-sections-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.panel-section-card {
+  border: none;
+  border-radius: 14px;
+  padding: 16px 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  transition: filter 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.panel-section-card:not(:disabled):hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.panel-section-card:disabled {
+  background: var(--grey-200) !important;
+  color: var(--grey-400) !important;
+  cursor: default;
+}
+.panel-section-card-name {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(15px, 1.4vw, 20px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.panel-section-card:not(:disabled) .panel-section-card-name { color: var(--white); }
+.panel-section-card:disabled .panel-section-card-name { color: var(--grey-500); }
+.panel-section-card-arrow {
+  font-size: 20px;
+  color: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+  transition: color 0.2s, transform 0.2s;
+}
+.panel-section-card:not(:disabled):hover .panel-section-card-arrow {
+  color: var(--white);
+  transform: translateX(4px);
+}
+
+/* ============================================================
+   PANTALLA 05 — BBVA · CIB  (4 pestañas)
+   ============================================================ */
+.slide-bbva-cib {
+  background: var(--white);
+  overflow: hidden;
+}
+.slide-bbva-cib::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #004481;
+}
+
+.cib-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 64px 28px;
+  gap: 18px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* — Botón nav de vuelta — */
+.cib-nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 10px;
+  padding: 3px 10px 3px 7px;
+  border: 1.5px solid rgba(0,68,129,0.25);
+  border-radius: 20px;
+  background: transparent;
+  color: rgba(0,68,129,0.6);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  vertical-align: middle;
+}
+.cib-nav-back:hover {
+  background: rgba(0,68,129,0.07);
+  border-color: rgba(0,68,129,0.45);
+  color: #004481;
+}
+
+/* — Título de página centrado — */
+.cib-page-title {
+  text-align: center;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(32px, 3.5vw, 52px);
+  color: #004481;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.cib-page-title span {
+  color: var(--grey-300);
+  font-weight: 400;
+}
+
+/* — Heading de pestaña — */
+.cib-heading {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(24px, 3vw, 42px);
+  color: var(--black);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 6px;
+}
+.cib-sep {
+  width: 48px;
+  height: 2px;
+  background: #004481;
+  border-radius: 1px;
+  flex-shrink: 0;
+  margin-bottom: 14px;
+}
+
+/* — Strip de Contexto (banda superior 1/6 de pantalla) — */
+.cib-ctx-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: calc(100vh / 6);
+  flex-shrink: 0;
+  border: 1.5px solid rgba(0,68,129,0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,68,129,0.04);
+}
+.cib-ctx-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 24px;
+  gap: 5px;
+  border-right: 1.5px solid rgba(0,68,129,0.12);
+  position: relative;
+}
+.cib-ctx-col:last-child { border-right: none; }
+.cib-ctx-eyebrow {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #004481;
+  margin-bottom: 4px;
+}
+/* Objetivo */
+.cib-ctx-rev {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(26px, 3vw, 44px);
+  color: #004481;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+.cib-ctx-unit { font-size: 0.32em; font-weight: 400; color: var(--grey-400); }
+.cib-ctx-ftes {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(13px, 1.25vw, 18px);
+  color: var(--black);
+  letter-spacing: -0.02em;
+}
+.cib-ctx-growth {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 20px;
+  background: rgba(0,68,129,0.1);
+  color: #004481;
+  font-family: 'Sora', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  width: fit-content;
+}
+.cib-ctx-desglose {
+  display: flex;
+  gap: 6px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.85vw, 13px);
+  color: var(--grey-400);
+  font-weight: 500;
+}
+/* Posición — lista */
+.cib-ctx-pos-list { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }
+.cib-ctx-pos-item { display: flex; align-items: center; gap: 11px; }
+.cib-ctx-pos-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cib-ctx-pos-dot-top { background: #004481; }
+.cib-ctx-pos-dot-mid { background: rgba(0,68,129,0.3); }
+.cib-ctx-pos-rank {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(14px, 1.35vw, 20px);
+  color: #004481;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.cib-ctx-pos-area {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.9vw, 13px);
+  color: var(--grey-500);
+  font-weight: 500;
+}
+/* Valor */
+.cib-ctx-valor {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(13px, 1.3vw, 18px);
+  color: var(--black);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+/* — Grid 3 columnas (Contexto) — */
+.cib-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  flex: 1;
+}
+.cib-card {
+  border-radius: 14px;
+  border: 1.5px solid var(--grey-200);
+  background: var(--grey-100);
+  padding: 18px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.cib-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: #004481;
+}
+.cib-card-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #004481;
+  margin-bottom: 14px;
+}
+.cib-obj-rev {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(38px, 4.8vw, 70px);
+  color: #004481;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+.cib-obj-unit { font-size: 0.3em; font-weight: 400; color: var(--grey-500); margin-left: 3px; }
+.cib-obj-ftes {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 1.5vw, 22px);
+  color: var(--black);
+  letter-spacing: -0.02em;
+  margin-top: 6px;
+}
+.cib-obj-growth {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(0,68,129,0.1);
+  color: #004481;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 7px;
+  width: fit-content;
+}
+.cib-obj-div { width: 100%; height: 1px; background: var(--grey-200); margin: 12px 0 8px; }
+.cib-obj-desglose { display: flex; flex-direction: column; gap: 8px; }
+.cib-obj-row { display: flex; align-items: baseline; gap: 8px; }
+.cib-obj-row-ftes {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.5vw, 22px);
+  color: var(--black);
+  letter-spacing: -0.02em;
+}
+.cib-obj-row-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 0.9vw, 14px);
+  color: var(--grey-500);
+  font-weight: 500;
+}
+.cib-pos-badges { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; flex: 1; }
+.cib-badge {
+  padding: 14px 16px;
+  border-radius: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+}
+.cib-badge-top { background: #004481; }
+.cib-badge-mid { background: rgba(0,68,129,0.08); border: 1.5px solid rgba(0,68,129,0.18); }
+.cib-badge-label {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(18px, 1.9vw, 26px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.cib-badge-top .cib-badge-label { color: var(--white); }
+.cib-badge-mid .cib-badge-label { color: #004481; }
+.cib-badge-area { font-family: 'Instrument Sans', sans-serif; font-size: clamp(11px, 0.85vw, 13px); font-weight: 500; }
+.cib-badge-top .cib-badge-area { color: rgba(255,255,255,0.55); }
+.cib-badge-mid .cib-badge-area { color: var(--grey-500); }
+.cib-valor-quote {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 800;
+  color: rgba(0,68,129,0.1);
+  line-height: 0.75;
+  display: block;
+  letter-spacing: -0.02em;
+}
+.cib-valor-text {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(14px, 1.5vw, 21px);
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+/* — Layout 2 columnas (Punto de Partida / Retos / Acciones) — */
+.cib-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  flex: 1;
+}
+.cib-three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  flex: 1;
+}
+.cib-col {
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid var(--grey-200);
+}
+.cib-col-header {
+  padding: 12px 20px;
+  background: #004481;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.cib-col-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(13px, 1.2vw, 17px);
+  color: var(--white);
+}
+.cib-col-ftes {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(11px, 0.9vw, 14px);
+  color: rgba(255,255,255,0.55);
+}
+.cib-col-body {
+  flex: 1;
+  padding: 14px 18px;
+  background: var(--grey-100);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+/* Filas Punto de Partida */
+.cib-row { display: flex; flex-direction: column; gap: 2px; }
+.cib-row-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #004481;
+}
+.cib-row-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 0.95vw, 14px);
+  color: var(--grey-700);
+  font-weight: 400;
+  line-height: 1.5;
+}
+/* Items Retos */
+.cib-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 0.95vw, 14px);
+  color: var(--grey-700);
+  font-weight: 400;
+  line-height: 1.5;
+}
+.cib-list-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #004481;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+/* Items Acciones */
+.cib-action-item { display: flex; flex-direction: column; gap: 1px; }
+.cib-action-label {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(12px, 0.95vw, 14px);
+  font-weight: 700;
+  color: #004481;
+}
+.cib-action-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.85vw, 13px);
+  color: var(--grey-500);
+  line-height: 1.45;
+}
+
+/* ── Sección Negocio / Tecnología ────────────────────────── */
+.nt-section {
+  flex: 1;
+  display: flex;
+  gap: 14px;
+  min-height: 0;
+}
+.nt-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+.nt-col-header {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.nt-col-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #004481;
+}
+.nt-accion-tag {
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 0.68em;
+  font-weight: 600;
+  color: rgba(0,68,129,0.5);
+}
+.nt-col:has(.nt-half.flipped) .nt-accion-tag {
+  opacity: 1;
+  transform: translateX(0);
+}
+.nt-ftes-badge {
+  margin-left: auto;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(0,68,129,0.55);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(0,68,129,0.06);
+  border: 1px solid rgba(0,68,129,0.14);
+  padding: 2px 9px;
+  border-radius: 10px;
+}
+/* Flip */
+.nt-half {
+  flex: 1;
+  perspective: 1000px;
+  cursor: pointer;
+  min-height: 0;
+  position: relative;
+}
+.nt-flip-inner {
+  width: 100%; height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nt-half.flipped .nt-flip-inner { transform: rotateY(180deg); }
+.nt-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nt-back { transform: rotateY(180deg); }
+/* Sub-cards frente */
+.nt-sub-card {
+  flex: 1;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+}
+.nt-sit {
+  background: rgba(0,68,129,0.04);
+  border: 1.5px solid rgba(0,68,129,0.14);
+  border-left: 3px solid rgba(0,68,129,0.55);
+}
+.nt-ret {
+  background: rgba(196,146,13,0.05);
+  border: 1.5px solid rgba(196,146,13,0.18);
+  border-left: 3px solid #C4920D;
+}
+.nt-sc-eyebrow {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(10px, 0.95vw, 13px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  flex-shrink: 0;
+}
+.nt-sit .nt-sc-eyebrow { color: #004481; }
+.nt-ret .nt-sc-eyebrow { color: #C4920D; }
+.nt-sc-divider {
+  height: 1px;
+  flex-shrink: 0;
+}
+.nt-sit .nt-sc-divider { background: rgba(0,68,129,0.12); }
+.nt-ret .nt-sc-divider { background: rgba(196,146,13,0.2); }
+.nt-sc-items { display: flex; flex-direction: column; justify-content: space-evenly; flex: 1; gap: 0; }
+.nt-sc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(13px, 1.1vw, 15px);
+  color: var(--grey-700);
+  line-height: 1.4;
+  font-weight: 700;
+}
+.nt-sc-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.nt-sit .nt-sc-dot { background: rgba(0,68,129,0.45); }
+.nt-ret .nt-sc-dot { background: #C4920D; }
+/* Flip hint */
+.nt-flip-hint {
+  position: absolute;
+  bottom: 10px; right: 12px;
+  width: 13px; height: 13px;
+  color: var(--grey-300);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.nt-half:hover .nt-flip-hint { opacity: 1; }
+/* Back */
+.nt-back-inner {
+  flex: 1;
+  border-radius: 10px;
+  background: #004481;
+  border: 1.5px solid #003366;
+  border-left: 3px solid rgba(255,255,255,0.28);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+.nt-back-heading {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.38);
+  flex-shrink: 0;
+}
+.nt-back-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.nt-action-list { display: flex; flex-direction: column; gap: 10px; flex: 1; overflow: hidden; }
+.nt-action-row { display: flex; flex-direction: column; gap: 2px; }
+.nt-action-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(9px, 0.75vw, 11px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: rgba(255,255,255,0.38);
+}
+.nt-action-text {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(13px, 1.15vw, 17px);
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* ── Sección Geografías ───────────────────────────────────── */
+.geo-section {
+  height: calc(100vh / 6);
+  flex-shrink: 0;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.geo-section-header {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.geo-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #004481;
+}
+.geo-hint {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--grey-400);
+  letter-spacing: 0.04em;
+}
+/* ── Grupo flip (las 2 cards voltean juntas) ── */
+.geo-flip-group {
+  flex: 1;
+  perspective: 1100px;
+  cursor: pointer;
+  min-height: 0;
+}
+.geo-flip-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.52s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.geo-flip-group.flipped .geo-flip-inner { transform: rotateY(180deg); }
+.geo-flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.geo-flip-back { transform: rotateY(180deg); }
+/* Cards internas */
+.geo-pair-card {
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+}
+.geo-flip-face.geo-flip-front .geo-pair-card {
+  background: rgba(0,68,129,0.04);
+  border: 1.5px solid rgba(0,68,129,0.15);
+}
+.geo-flip-face.geo-flip-back .geo-pair-card {
+  background: #004481;
+  border: 1.5px solid #003870;
+}
+.geo-pair-header {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(10px, 0.95vw, 13px);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #004481;
+  flex-shrink: 0;
+}
+.geo-flip-back .geo-pair-header { color: rgba(255,255,255,0.5); }
+.geo-pair-divider {
+  height: 1.5px;
+  background: rgba(0,68,129,0.12);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+.geo-flip-back .geo-pair-divider { background: rgba(255,255,255,0.15); }
+.geo-pair-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+.geo-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(13px, 1.2vw, 17px);
+  font-weight: 700;
+  color: var(--grey-700);
+  line-height: 1.4;
+}
+.geo-bullet-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: rgba(0,68,129,0.5);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+.geo-flip-back .geo-bullet       { color: rgba(255,255,255,0.88); }
+.geo-flip-back .geo-bullet-dot   { background: rgba(255,255,255,0.35); }
+/* Tarjeta de acción — frase impactante en reverso */
+.geo-action-card {
+  border-radius: 12px;
+  padding: 16px 20px;
+  background: #004481;
+  border: 1.5px solid #003870;
+  border-left: 3px solid rgba(255,255,255,0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  overflow: hidden;
+}
+.geo-action-num {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.45);
+  flex-shrink: 0;
+}
+.geo-action-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+.geo-action-text {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(13px, 1.25vw, 18px);
+  color: rgba(255,255,255,0.95);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+}
+/* Hint de flip en la esquina */
+.geo-flip-hint-icon {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  opacity: 0.2;
+  transition: opacity 0.2s;
+  width: 14px; height: 14px;
+  color: #004481;
+}
+.geo-flip-group:hover .geo-flip-hint-icon { opacity: 0.5; }
+.geo-flip-back .geo-flip-hint-icon { color: rgba(255,255,255,0.5); }
+/* Etiqueta "· Acciones" — aparece al voltear */
+.geo-eyebrow-action {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  color: rgba(0,68,129,0.5);
+  font-weight: 600;
+}
+.geo-section:has(.geo-flip-group.flipped) .geo-eyebrow-action {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* ============================================================
+   FIN PANTALLA 05-06
+   ============================================================ */
+
+</style>
+<script src="content.js"></script>
+</head>
+<body>
+
+<div id="progress-bar" style="width: 7%"></div>
+
+<div id="deck">
+
+  <!-- ============================================================
+       PANTALLA 01 — PORTADA
+       ============================================================ -->
+  <div class="slide slide-cover active" id="slide-1">
+
+    <!-- Decoración de fondo -->
+    <div class="cover-dots"></div>
+    <div class="cover-glow"></div>
+    <div class="cover-line"></div>
+
+    <!-- Marca de agua N -->
+    <img class="cover-watermark" src="Branding_NFQ/2. Logos/0. N/White/Isotipo - White.svg" alt="" aria-hidden="true">
+
+    <!-- HEADER -->
+    <header class="cover-header">
+      <img class="cover-logo anim-fade" src="NFQ_Assets/Logos/Nfq/Nfq - White - Claim.svg" alt="Nfq — Beyond Consulting">
+      <span id="cover-confidential" class="anim-fade delay-1" style="
+        font-family: 'Instrument Sans', sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.2);
+      ">Confidencial · Uso interno</span>
+    </header>
+
+    <!-- CUERPO -->
+    <main class="cover-body">
+
+      <div id="cover-eyebrow" class="cover-eyebrow anim-right delay-1">
+        Revisión FY26 · Planificación FY27
+      </div>
+
+      <h1 class="cover-title">
+        <span id="cover-title-1" class="anim-up delay-2">Plan Estratégico</span><br>
+        <em id="cover-title-2" class="anim-up delay-3">Neg Maduro FY27</em>
+      </h1>
+
+      <div class="cover-divider anim-fade delay-4"></div>
+
+      <p id="cover-subtitle" class="cover-subtitle anim-up delay-4">
+        <strong>Negocio Maduro</strong> · BBVA &amp; Santander
+      </p>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="cover-footer">
+
+      <div class="cover-meta anim-fade delay-5">
+        <span class="meta-label">Fecha</span>
+        <span id="cover-date">[Fecha de la reunión]</span>
+        <span style="margin-top:8px; display:block; color:rgba(255,255,255,0.2); font-size:11px; letter-spacing:0.08em;">Nfq · Beyond Consulting</span>
+      </div>
+
+      <div id="cover-kpis" class="cover-kpis anim-fade delay-6">
+        <!-- Renderizado por content.js → DECK.cover.kpis -->
+      </div>
+
+    </footer>
+
+  </div>
+  <!-- FIN PANTALLA 01 -->
+
+
+  <!-- ============================================================
+       PANTALLA 02 — VISIÓN GENERAL
+       ============================================================ -->
+  <div class="slide slide-vision" id="slide-2">
+
+    <div class="vision-bg-dots"></div>
+
+    <!-- Header de sección -->
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="section-label">
+        <span class="label-line"></span>
+        <span id="vision-label">Visión General</span>
+      </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="vision-content">
+
+      <!-- Título y mensaje -->
+      <div class="vision-title-block anim-up delay-1">
+        <h2 class="vision-main-title">
+          <span id="vision-h1">Motor de la compañía.</span><br>
+          <em id="vision-h2">Con menos concentración.</em>
+        </h2>
+        <p id="vision-subtitle" class="vision-sub">
+          Apuesta por seguir creciendo y ser motor de la compañía,
+          pero reduciendo la concentración respecto al resto de Nfq.
+        </p>
+      </div>
+
+      <!-- Divisor -->
+      <div class="vision-sep anim-fade delay-2"></div>
+
+      <!-- Grid de tarjetas FY — renderizado por content.js → DECK.vision.fy -->
+      <div id="fy-grid" class="fy-grid"></div>
+
+      <!-- Stats resumen — renderizado por content.js → DECK.vision.stats -->
+      <div id="summary-row" class="summary-row anim-fade delay-5"></div>
+
+      <!-- Navegación clientes — renderizado por content.js → DECK.vision.clients -->
+      <div id="client-nav" class="client-nav anim-up delay-6"></div>
+
+    </div><!-- /.vision-content -->
+
+  </div>
+  <!-- FIN PANTALLA 02 -->
+
+
+  <!-- ============================================================
+       PANTALLA 03 — VISIÓN GLOBAL BBVA
+       (mismo layout que pantalla 02, panel BBVA auto-desplegado)
+       ============================================================ -->
+  <div class="slide slide-vision" id="slide-3" data-auto-panel="bbva">
+    <div class="vision-bg-dots"></div>
+  </div>
+  <!-- FIN PANTALLA 03 -->
+
+
+  <!-- ============================================================
+       PANTALLA 04 — VISIÓN GLOBAL SANTANDER
+       (mismo layout que pantalla 02, panel SAN auto-desplegado)
+       ============================================================ -->
+  <div class="slide slide-vision" id="slide-4" data-auto-panel="sant">
+    <div class="vision-bg-dots"></div>
+  </div>
+  <!-- FIN PANTALLA 04 -->
+
+
+  <!-- ============================================================
+       PANTALLA 05 — BBVA · CIB · CONTEXTO DEL PLAN
+       ============================================================ -->
+  <div class="slide slide-bbva-cib" id="slide-5">
+
+    <div class="vision-bg-dots"></div>
+
+    <!-- Header de sección -->
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div id="cib-page-title-slot" class="cib-page-title"></div>
+      <div class="section-label" style="color:#004481">
+        <span class="label-line" style="background:#004481"></span>
+        <span id="cib-bbva-label">BBVA · CIB</span>
+        <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          BBVA Global
+        </button>
+      </div>
+    </div>
+
+    <!-- Contenido — rellenado por hydrate() -->
+    <div class="cib-content" id="cib-bbva-content"></div>
+
+  </div>
+  <!-- FIN PANTALLA 05 -->
+
+
+  <!-- ============================================================
+       PANTALLA 06 — BBVA · CIB · ACCIONES
+       (mismo layout que pantalla 05, cards de acción ya visibles)
+       ============================================================ -->
+  <div class="slide slide-bbva-cib slide-cib-acciones" id="slide-6">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div id="cib-page-title-slot-6" class="cib-page-title"></div>
+      <div class="section-label" style="color:#004481">
+        <span class="label-line" style="background:#004481"></span>
+        <span>BBVA · CIB</span>
+        <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          BBVA Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-content" id="cib-bbva-content-6"></div>
+  </div>
+  <!-- FIN PANTALLA 06 -->
+
+
+  <!-- Panel global de cliente — compartido entre todas las pantallas -->
+  <div class="client-panel-scrim" id="client-scrim" onclick="closeClientPanel()"></div>
+  <div class="client-panel" id="client-panel"></div>
+
+</div><!-- /#deck -->
+
+<!-- NAVEGACIÓN -->
+<nav id="nav">
+  <button class="nav-btn nav-btn-home" onclick="goTo(0)" title="Inicio">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+      <polyline points="9 21 9 12 15 12 15 21"/>
+    </svg>
+  </button>
+  <div class="nav-sep"></div>
+  <button class="nav-btn" id="btn-prev" onclick="prevSlide()" title="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+  <span id="slide-counter">1 / 1</span>
+  <button class="nav-btn" id="btn-next" onclick="nextSlide()" title="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </button>
+</nav>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const counter = document.getElementById('slide-counter');
+const progressBar = document.getElementById('progress-bar');
+let current = 0;
+
+function goTo(n) {
+  closeClientPanel();
+  slides[current].classList.remove('active');
+  current = Math.max(0, Math.min(n, slides.length - 1));
+  slides[current].classList.add('active');
+  counter.textContent = `${current + 1} / ${slides.length}`;
+  const pct = ((current + 1) / slides.length) * 100;
+  progressBar.style.width = pct + '%';
+  // Auto-abrir panel si el slide lo declara
+  const autoPanel = slides[current].dataset.autoPanel;
+  if (autoPanel) setTimeout(() => openClientPanel(autoPanel), 350);
+}
+
+/* --- Panel de visión global cliente --- */
+function renderClientPanel(data) {
+  const headerCls = data.color === '#004481' ? 'panel-header-bbva' : 'panel-header-sant';
+  const evoHTML = data.evolution.map(e => `
+    <div class="panel-fy">
+      <div class="panel-fy-year">${e.fy}${e.obj ? '<span style="opacity:0.5;font-weight:400"> obj.</span>' : ''}</div>
+      <div class="panel-fy-rev">${e.rev}<span style="font-size:0.38em;font-weight:400;color:var(--grey-300);margin-left:3px">€MM</span></div>
+      <div class="panel-fy-ftes">${e.ftes} Ftes</div>
+      ${e.growth ? `<div class="panel-fy-growth" style="color:${data.color}">${e.growth}</div>` : ''}
+    </div>`).join('');
+  const msgsHTML = data.messages.map(m => `
+    <div class="panel-msg">
+      <div class="panel-msg-title">${m.title}</div>
+      <div class="panel-msg-body">${m.body}</div>
+    </div>`).join('');
+  const clientKey = headerCls === 'panel-header-bbva' ? 'bbva' : 'sant';
+  const footerHTML = (data.sections && data.sections.length) ? `
+    <div class="panel-sections">
+      <div class="panel-sections-label">Áreas</div>
+      <div class="panel-sections-grid">
+        ${data.sections.map(s => s.slide !== null
+          ? `<button class="panel-section-card" style="background:${data.color}" onclick="goTo(${s.slide})">
+               <span class="panel-section-card-name">${s.label}</span>
+               <span class="panel-section-card-arrow">→</span>
+             </button>`
+          : `<button class="panel-section-card" disabled>
+               <span class="panel-section-card-name">${s.label}</span>
+             </button>`
+        ).join('')}
+      </div>
+    </div>` : '';
+
+  return `
+    <div class="panel-header ${headerCls}">
+      <div>
+        <div class="panel-client-name">${data.name}</div>
+        <div class="panel-tagline">${data.tagline}</div>
+      </div>
+      <button class="panel-close" onclick="closeClientPanel()">✕</button>
+    </div>
+    <div class="panel-evolution" style="border-top:3px solid ${data.color}">${evoHTML}</div>
+    <div class="panel-messages panel-messages-${clientKey}">${msgsHTML}</div>
+    ${footerHTML}`;
+}
+
+function openClientPanel(key) {
+  const panel = document.getElementById('client-panel');
+  const scrim = document.getElementById('client-scrim');
+  if (!DECK[key + 'Panel']) return;
+  panel.innerHTML = renderClientPanel(DECK[key + 'Panel']);
+  panel.classList.add('open');
+  scrim.classList.add('visible');
+}
+
+function closeClientPanel() {
+  const panel = document.getElementById('client-panel');
+  const scrim = document.getElementById('client-scrim');
+  if (panel) panel.classList.remove('open');
+  if (scrim) scrim.classList.remove('visible');
+}
+
+function nextSlide() { goTo(current + 1); }
+function prevSlide() { goTo(current - 1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    { e.preventDefault(); prevSlide(); }
+});
+
+// Touch / swipe
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 50) { dx < 0 ? nextSlide() : prevSlide(); }
+});
+
+/* ============================================================
+   HYDRATE — rellena el HTML con el contenido de content.js
+   ============================================================ */
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el && val !== undefined) el.textContent = val;
+}
+
+function hydrate() {
+  if (typeof DECK === 'undefined') return; // content.js no cargado
+
+  // --- PORTADA ---
+  setText('cover-confidential', DECK.cover.confidential);
+  setText('cover-eyebrow',      DECK.cover.eyebrow);
+  setText('cover-title-1',      DECK.cover.title.line1);
+  setText('cover-title-2',      DECK.cover.title.line2);
+  setText('cover-date',         DECK.cover.date);
+
+  const sub = document.getElementById('cover-subtitle');
+  if (sub) {
+    const strong = document.createElement('strong');
+    strong.textContent = DECK.cover.subtitle.bold;
+    sub.innerHTML = '';
+    sub.appendChild(strong);
+    sub.append(DECK.cover.subtitle.rest);
+  }
+
+  const kpis = document.getElementById('cover-kpis');
+  if (kpis) kpis.innerHTML = DECK.cover.kpis.map(k => `
+    <div class="cover-kpi">
+      <div class="cover-kpi-value">${k.value}<span class="kpi-unit">${k.unit}</span></div>
+      <div class="cover-kpi-label">${k.label}</div>
+      <div class="cover-kpi-trend">${k.trend}</div>
+    </div>`).join('');
+
+  // --- VISIÓN GENERAL ---
+  setText('vision-label',    DECK.vision.label);
+  setText('vision-h1',       DECK.vision.heading.line1);
+  setText('vision-h2',       DECK.vision.heading.line2);
+  setText('vision-subtitle', DECK.vision.subtitle);
+
+  const grid = document.getElementById('fy-grid');
+  if (grid) grid.innerHTML = DECK.vision.fy.map((fy, i) => {
+    const frontInner = `
+      <div class="fy-year">${fy.year}${fy.obj ? ' <span style="font-weight:400;opacity:0.45;font-size:0.75em">obj.</span>' : ''}</div>
+      <div class="fy-rev">${fy.rev} <span class="fy-rev-unit">€MM</span></div>
+      <div class="fy-ftes">${fy.ftes} Ftes</div>
+      <span class="fy-badge">${fy.badge}</span>`;
+    const backFace = fy.back ? (() => {
+      const b = fy.back;
+      return `
+        <div class="fy-back-half fy-back-bbva">
+          <span class="fy-back-name">BBVA</span>
+          <span class="fy-back-rev">${b.bbva.rev}<small> €MM</small></span>
+          <span class="fy-back-ftes">${b.bbva.ftes} Ftes</span>
+        </div>
+        <div class="fy-back-div"></div>
+        <div class="fy-back-half fy-back-sant">
+          <span class="fy-back-name">SAN</span>
+          <span class="fy-back-rev">${b.sant.rev}<small> €MM</small></span>
+          <span class="fy-back-ftes">${b.sant.ftes} Ftes</span>
+        </div>
+        <span class="fy-back-year">${fy.year}</span>`;
+    })() : null;
+    const cardHTML = backFace ? `
+      <div class="fy-card fy-card-flippable" onclick="this.classList.toggle('flipped')" title="Haz clic para ver más">
+        <div class="fy-card-inner">
+          <div class="fy-card-face fy-card-face--front">
+            ${frontInner}
+            <svg class="flip-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 4v6h6"/><path d="M23 20v-6h-6"/>
+              <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+            </svg>
+          </div>
+          <div class="fy-card-face fy-card-face--back">${backFace}</div>
+        </div>
+      </div>` : `
+      <div class="fy-card">${frontInner}</div>`;
+    return `
+    <div class="fy-col ${fy.cls} anim-up delay-${i + 2}">
+      ${cardHTML}
+      <div class="fy-conc">
+        <span class="fy-conc-dot"></span>
+        <span class="fy-conc-text">${fy.conc}</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  const stats = document.getElementById('summary-row');
+  if (stats) stats.innerHTML = DECK.vision.stats.map(s => `
+    <div class="summary-stat summary-stat-${s.type}">
+      <div class="summary-stat-val">${s.val}</div>
+      <div class="summary-stat-label">${s.label.replace(/\n/g, '<br>')}</div>
+    </div>`).join('');
+
+  const nav = document.getElementById('client-nav');
+  if (nav) {
+    const active = DECK.vision.clients.filter(c => !c.disabled);
+    const soon   = DECK.vision.clients.filter(c =>  c.disabled);
+    const mkBtn = c => {
+      const action = c.panelKey
+        ? `openClientPanel('${c.panelKey}')`
+        : c.slide === null ? 'nextSlide()' : `goTo(${c.slide})`;
+      return `<button class="client-btn ${c.cls}" onclick="${action}">
+        <span class="client-btn-name">${c.name}</span>
+        <span class="client-btn-arrow">→</span>
+      </button>`;
+    };
+    const soonHtml = soon.map(c => `
+      <button class="client-btn client-btn-conclusiones" disabled>
+        <span class="client-btn-name">${c.name}</span>
+        <span class="client-btn-arrow">→</span>
+      </button>`).join('');
+    nav.innerHTML =
+      `<div class="client-nav-row">${active.map(mkBtn).join('')}</div>` +
+      (soonHtml ? `<div class="client-nav-soon">${soonHtml}</div>` : '');
+  }
+
+  // --- BBVA CIB ---
+  if (DECK.bbvaCIB) {
+    const d = DECK.bbvaCIB;
+    setText('cib-bbva-label', d.label);
+    const content = document.getElementById('cib-bbva-content');
+    if (!content) return;
+
+    const ctx = d.contexto;
+
+    // ── STRIP CONTEXTO (banda superior 1/6 pantalla, todo el ancho) ──
+    const ctxStrip = `
+      <div class="cib-ctx-strip anim-up delay-1">
+
+        <!-- Objetivo FY27 -->
+        <div class="cib-ctx-col">
+          <div class="cib-ctx-eyebrow">Objetivo FY27</div>
+          <div class="cib-ctx-rev">${ctx.objetivo.rev}<span class="cib-ctx-unit"> €MM</span></div>
+          <div class="cib-ctx-ftes">${ctx.objetivo.ftes} Ftes</div>
+          <div class="cib-ctx-growth">↑ ${ctx.objetivo.growth}</div>
+          <div class="cib-ctx-desglose">
+            ${ctx.objetivo.desglose.map((r, i) =>
+              `${i > 0 ? '<span>·</span>' : ''}<span>${r.ftes} ${r.label}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <!-- Posición Actual -->
+        <div class="cib-ctx-col">
+          <div class="cib-ctx-eyebrow">Posición Actual</div>
+          <div class="cib-ctx-pos-list">
+            ${ctx.posicion.map(p => `
+            <div class="cib-ctx-pos-item">
+              <span class="cib-ctx-pos-dot cib-ctx-pos-dot-${p.tier}"></span>
+              <span class="cib-ctx-pos-rank">${p.badge}</span>
+              <span class="cib-ctx-pos-area">${p.area}</span>
+            </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- Valor Añadido -->
+        <div class="cib-ctx-col">
+          <div class="cib-ctx-eyebrow">Valor Añadido</div>
+          <p class="cib-ctx-valor">"${ctx.valor}"</p>
+        </div>
+
+      </div>`;
+
+    const titleSlot = document.getElementById('cib-page-title-slot');
+    if (titleSlot) titleSlot.innerHTML = `BBVA <span>·</span> CIB`;
+
+    // ── SECCIÓN GEOGRAFÍAS (banda inferior 1/6 pantalla, grupo flip 2 cards) ──
+    const geo = d.geografias;
+    const makeBullets = items => items.map(t =>
+      `<div class="geo-bullet"><span class="geo-bullet-dot"></span><span>${t}</span></div>`
+    ).join('');
+    const makePairCard = (header, items) => `
+      <div class="geo-pair-card">
+        <div class="geo-pair-header">${header}</div>
+        <div class="geo-pair-divider"></div>
+        <div class="geo-pair-bullets">${makeBullets(items)}</div>
+      </div>`;
+    const makeActionCard = ({ label, text }) => `
+      <div class="geo-action-card">
+        <div class="geo-action-num">${label}</div>
+        <div class="geo-action-divider"></div>
+        <div class="geo-action-text">${text}</div>
+      </div>`;
+    const geoSection = `
+      <div class="geo-section anim-up delay-2">
+        <div class="geo-section-header">
+          <div class="geo-eyebrow">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            ${geo.heading}
+            <span class="geo-eyebrow-action">${geo.accionesTag}</span>
+          </div>
+          <span class="nt-ftes-badge">${geo.ftes} Ftes</span>
+          <div class="geo-hint">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            ${geo.hint}
+          </div>
+        </div>
+        <div class="geo-flip-group" onclick="this.classList.toggle('flipped')">
+          <div class="geo-flip-inner">
+            <!-- Frente: Situación Actual + Retos -->
+            <div class="geo-flip-face geo-flip-front">
+              ${makePairCard(geo.situacionLabel, geo.situacion)}
+              ${makePairCard(geo.retosLabel, geo.retos)}
+              <svg class="geo-flip-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </div>
+            <!-- Reverso: 2 cards de Acciones -->
+            <div class="geo-flip-face geo-flip-back">
+              ${geo.acciones.map(a => makeActionCard(a)).join('')}
+              <svg class="geo-flip-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+    // ── SECCIÓN NEGOCIO / TECNOLOGÍA (mitad central, flip independiente) ──
+    const nt = d.negocioTech;
+    const mkBullet = t =>
+      `<div class="nt-sc-item"><span class="nt-sc-dot"></span><span>${t}</span></div>`;
+    const mkSubCard = (cls, label, items) => `
+      <div class="nt-sub-card ${cls}">
+        <div class="nt-sc-eyebrow">${label}</div>
+        <div class="nt-sc-divider"></div>
+        <div class="nt-sc-items">${items.map(mkBullet).join('')}</div>
+      </div>`;
+    const mkNtCol = (data, iconSvg) => `
+      <div class="nt-col">
+        <div class="nt-col-header">
+          <div class="nt-col-eyebrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${iconSvg}</svg>
+            ${data.heading}
+            <span class="nt-accion-tag">${data.accionesTag}</span>
+          </div>
+          <span class="nt-ftes-badge">${data.ftes} Ftes</span>
+        </div>
+        <div class="nt-half" onclick="this.classList.toggle('flipped')">
+          <div class="nt-flip-inner">
+            <div class="nt-face nt-front">
+              ${mkSubCard('nt-sit', data.situacionLabel, data.situacion)}
+              ${mkSubCard('nt-ret', data.retosLabel, data.retos)}
+              <svg class="nt-flip-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </div>
+            <div class="nt-face nt-back">
+              <div class="nt-back-inner">
+                <div class="nt-back-heading">${data.accionesHeading}</div>
+                <div class="nt-back-divider"></div>
+                <div class="nt-action-list">
+                  ${data.acciones.map(a => `
+                  <div class="nt-action-row">
+                    <div class="nt-action-label">${a.label}</div>
+                    <div class="nt-action-text">${a.text}</div>
+                  </div>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+    const iconNeg  = `<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>`;
+    const iconTech = `<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>`;
+
+    const ntSection = `
+      <div class="nt-section anim-up delay-1">
+        ${mkNtCol(nt.negocio,    iconNeg)}
+        ${mkNtCol(nt.tecnologia, iconTech)}
+      </div>`;
+
+    content.innerHTML = ctxStrip + ntSection + geoSection;
+  }
+}
+
+hydrate();
+
+// Clonar contenido CIB (slide-5) en slide-6 con acciones ya desplegadas e interactivas
+(function cloneCIB() {
+  const src  = document.getElementById('cib-bbva-content');
+  const src6 = document.getElementById('cib-bbva-content-6');
+  if (src && src6) {
+    src6.innerHTML = src.innerHTML;
+    // Marcar todas las cards como flipped → interactivas (se pueden volver a girar)
+    src6.querySelectorAll('.nt-half, .geo-flip-group').forEach(el => el.classList.add('flipped'));
+  }
+  const title6 = document.getElementById('cib-page-title-slot-6');
+  if (title6) title6.innerHTML = 'BBVA <span>·</span> CIB';
+})();
+
+// Clonar contenido de slide-2 en slides 3 y 4
+// (ambos muestran el mismo layout de Visión General; el panel se abre automáticamente)
+(function cloneVision() {
+  const src = document.getElementById('slide-2');
+  if (!src) return;
+  ['slide-3', 'slide-4'].forEach(id => {
+    const target = document.getElementById(id);
+    if (!target) return;
+    Array.from(src.children).forEach(child => {
+      // Omitir el fondo de puntos (ya está en el slide destino)
+      if (child.classList.contains('vision-bg-dots')) return;
+      // Omitir scrim y panel (ahora viven a nivel #deck)
+      if (child.classList.contains('client-panel-scrim')) return;
+      if (child.classList.contains('client-panel')) return;
+      const clone = child.cloneNode(true);
+      // Quitar IDs del clon para evitar duplicados
+      clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+      if (clone.hasAttribute('id')) clone.removeAttribute('id');
+      target.appendChild(clone);
+    });
+  });
+})();
+
+goTo(0);
+</script>
+</body>
+</html>

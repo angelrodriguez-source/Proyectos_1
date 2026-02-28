@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estrategia de Clientes — BBVA &amp; Santander FY27</title>
+<style>
+/* ============================================================
+   FUENTES
+   ============================================================ */
+@font-face { font-family: 'Sora'; font-weight: 400; src: url('NFQ_Assets/Fonts/Sora/Sora-Regular.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 500; src: url('NFQ_Assets/Fonts/Sora/Sora-Medium.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 600; src: url('NFQ_Assets/Fonts/Sora/Sora-SemiBold.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 700; src: url('NFQ_Assets/Fonts/Sora/Sora-Bold.ttf'); }
+@font-face { font-family: 'Sora'; font-weight: 800; src: url('NFQ_Assets/Fonts/Sora/Sora-ExtraBold.ttf'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 400; src: url('NFQ_Assets/Fonts/Instrument_Sans/InstrumentSans-Regular.ttf'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 500; src: url('NFQ_Assets/Fonts/Instrument_Sans/InstrumentSans-Medium.ttf'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 600; src: url('NFQ_Assets/Fonts/Instrument_Sans/InstrumentSans-SemiBold.ttf'); }
+@font-face { font-family: 'Instrument Sans'; font-weight: 700; src: url('NFQ_Assets/Fonts/Instrument_Sans/InstrumentSans-Bold.ttf'); }
+
+/* ============================================================
+   VARIABLES CSS
+   ============================================================ */
+:root {
+  --orange:    #EC683E;
+  --raspberry: #D13B5F;
+  --blue:      #217BEE;
+  --black:     #100D25;
+  --dark:      #1C1D1E;
+  --dark-mid:  #373737;
+  --grey-700:  #5D6066;
+  --grey-300:  #BFBFBF;
+  --grey-100:  #F3F3F3;
+  --white:     #FFFFFF;
+  --indigo:    #6366F1;
+  --violet:    #7C3AED;
+}
+
+/* ============================================================
+   RESET Y BASE
+   ============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: #000; font-family: 'Instrument Sans', sans-serif; }
+#presentation { width: 100vw; height: 100vh; position: relative; }
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  flex-direction: column;
+  padding: 44px 52px 44px 52px;
+  overflow: hidden;
+}
+.slide.active { display: flex; }
+
+h1, h2, h3, h4 { font-family: 'Sora', sans-serif; }
+p, span, li, td, th, label { font-family: 'Instrument Sans', sans-serif; }
+
+/* ============================================================
+   NAVEGACION UI
+   ============================================================ */
+#nav-prev, #nav-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background: rgba(255,255,255,0.12);
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s;
+  border-radius: 4px;
+}
+#nav-prev { left: 8px; }
+#nav-next { right: 8px; }
+#presentation:hover #nav-prev,
+#presentation:hover #nav-next { opacity: 1; }
+#nav-prev:hover, #nav-next:hover { background: rgba(255,255,255,0.28); }
+#nav-prev svg, #nav-next svg { fill: white; width: 20px; height: 20px; }
+
+#slide-counter {
+  position: fixed;
+  bottom: 14px;
+  left: 52px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 12px;
+  color: var(--grey-700);
+  z-index: 100;
+  letter-spacing: 0.5px;
+}
+
+#progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--orange);
+  z-index: 101;
+  transition: width 0.3s ease;
+}
+
+/* Logo base */
+.slide-logo {
+  position: absolute;
+  bottom: 18px;
+  right: 52px;
+  height: 36px;
+  z-index: 10;
+}
+.slide-logo-lg {
+  position: absolute;
+  bottom: 18px;
+  right: 52px;
+  height: 40px;
+  z-index: 10;
+}
+
+/* ============================================================
+   COMPONENTES REUTILIZABLES
+   ============================================================ */
+.label-tag {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.slide-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(20px, 2.2vw, 26px);
+  color: var(--black);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.top-accent-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+}
+.block-box {
+  border-radius: 6px;
+  padding: 16px 18px;
+  flex: 1;
+}
+.block-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.block-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--dark);
+}
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 7px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--dark);
+}
+.bullet-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dark);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+.q-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'Instrument Sans', sans-serif;
+  color: white;
+  margin-right: 6px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.quadrant {
+  border-radius: 6px;
+  padding: 14px 16px;
+  overflow: hidden;
+}
+.quadrant-title {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.quadrant-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--dark);
+}
+
+/* ============================================================
+   SLIDE 01 — PORTADA
+   ============================================================ */
+.slide-01 {
+  background: var(--black);
+  background-image: linear-gradient(135deg, #100D25 60%, #1a1535 100%);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.slide-01 .mosaic {
+  position: absolute;
+  top: 0; right: 0;
+  width: 38%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.slide-01 .mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  width: 100%;
+  height: 100%;
+  gap: 3px;
+}
+.slide-01 .mosaic-cell {
+  background: var(--blue);
+}
+.slide-01 .cover-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.slide-01 .cover-eyebrow {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--blue);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.slide-01 .cover-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(38px, 4.5vw, 56px);
+  color: white;
+  line-height: 1.1;
+}
+.slide-01 .cover-subtitle {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(22px, 2.8vw, 32px);
+  color: var(--orange);
+  margin-top: 8px;
+}
+.slide-01 .cover-divider {
+  width: 80px;
+  height: 2px;
+  background: var(--orange);
+  margin: 24px auto;
+}
+.slide-01 .cover-tagline {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #82858D;
+}
+.slide-01 .cover-date {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--grey-700);
+  margin-top: 40px;
+}
+
+/* ============================================================
+   SLIDE 02 — AGENDA
+   ============================================================ */
+.slide-02 {
+  background: white;
+  flex-direction: row;
+  padding: 0;
+}
+.slide-02 .agenda-left {
+  width: 60%;
+  padding: 52px 40px 52px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.slide-02 .agenda-right {
+  width: 40%;
+  background: var(--grey-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.slide-02 .agenda-n-deco {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(180px, 22vw, 280px);
+  color: #100D25;
+  opacity: 0.04;
+  user-select: none;
+  line-height: 1;
+}
+.slide-02 .agenda-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.slide-02 .agenda-num {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(28px, 3.2vw, 36px);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 46px;
+}
+.slide-02 .agenda-block-content {}
+.slide-02 .agenda-block-name {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--black);
+  margin-bottom: 4px;
+}
+.slide-02 .agenda-sub {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13px;
+  color: var(--grey-700);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   SLIDE 03, 12 — SEPARADORES
+   ============================================================ */
+.slide-divider {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.slide-divider .divider-deco-num {
+  position: absolute;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(120px, 14vw, 160px);
+  color: rgba(255,255,255,0.07);
+  right: 8%;
+  top: 50%;
+  transform: translateY(-50%);
+  user-select: none;
+  line-height: 1;
+  z-index: 0;
+}
+.slide-divider .divider-deco-rects {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 35%;
+  overflow: hidden;
+}
+.slide-divider .divider-deco-rects::before,
+.slide-divider .divider-deco-rects::after {
+  content: '';
+  position: absolute;
+  background: rgba(255,255,255,0.05);
+  border-radius: 2px;
+}
+.slide-divider .divider-deco-rects::before {
+  width: 120px; height: 200px;
+  right: 40px; top: 60px;
+  transform: rotate(15deg);
+}
+.slide-divider .divider-deco-rects::after {
+  width: 80px; height: 140px;
+  right: 10px; bottom: 80px;
+  transform: rotate(-8deg);
+}
+.slide-divider .divider-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.slide-divider .divider-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.slide-divider .divider-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 7vw, 72px);
+  color: white;
+  line-height: 1;
+}
+.slide-divider .divider-subtitle {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 14px;
+}
+.slide-divider .divider-line {
+  width: 60px;
+  height: 3px;
+  background: rgba(255,255,255,0.3);
+  margin: 18px auto 0;
+}
+
+.slide-03 { background: linear-gradient(135deg, #004481 0%, #002a54 100%); }
+.slide-12 { background: linear-gradient(135deg, #EC0000 0%, #a80000 100%); }
+
+/* ============================================================
+   SLIDES CONTENIDO — BASE
+   ============================================================ */
+.slide-content {
+  background: white;
+  flex-direction: column;
+}
+
+/* ============================================================
+   SLIDE 04 — BBVA CIB NEGOCIO — OBJETIVO + SITUACION
+   ============================================================ */
+.slide-04 .content-body {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+}
+.slide-04 .obj-block {
+  flex: 1;
+  background: #EFF6FF;
+  border-left: 4px solid var(--blue);
+  border-radius: 6px;
+  padding: 18px;
+  position: relative;
+}
+.slide-04 .sit-block {
+  flex: 1;
+  background: var(--grey-100);
+  border-left: 4px solid var(--grey-300);
+  border-radius: 6px;
+  padding: 18px;
+  position: relative;
+}
+.slide-04 .kpi-badge {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  text-align: center;
+}
+.slide-04 .kpi-num {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 1;
+}
+.slide-04 .kpi-label {
+  font-size: 11px;
+  color: var(--grey-700);
+  max-width: 80px;
+  line-height: 1.3;
+}
+
+/* ============================================================
+   SLIDE 05 — RETOS + ACCIONES (base)
+   ============================================================ */
+.retos-acciones-layout {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+}
+.retos-col {
+  flex: 1;
+  border-radius: 6px;
+  padding: 16px 18px;
+}
+.retos-col-header {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================================
+   SLIDE 08 / 09 — 4 CUADRANTES
+   ============================================================ */
+.quads-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   SLIDE 10 — GEOGRAFIAS
+   ============================================================ */
+.geo-layout {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  margin-top: 4px;
+}
+.geo-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.geo-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+.geo-card {
+  border-radius: 6px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.geo-flag { font-size: 22px; flex-shrink: 0; }
+.geo-card-info { flex: 1; }
+.geo-card-name {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--black);
+}
+.geo-card-desc {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 12px;
+  color: var(--grey-700);
+  margin-top: 1px;
+}
+.geo-badge {
+  font-size: 10px;
+  font-weight: 600;
+  font-family: 'Instrument Sans', sans-serif;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   SLIDE 20 — RESUMEN EJECUTIVO
+   ============================================================ */
+.slide-20 {
+  background: var(--black);
+  color: white;
+}
+.slide-20 .label-tag { color: var(--orange); }
+.slide-20 .slide-title { color: white; }
+.exec-table {
+  flex: 1;
+  margin-top: 8px;
+  border-collapse: collapse;
+  width: 100%;
+}
+.exec-table thead tr th {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--grey-700);
+  text-align: left;
+  padding: 8px 14px;
+  border-bottom: 1px solid #2a2a3a;
+}
+.exec-table tbody tr td {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 13.5px;
+  color: #d0d0d8;
+  padding: 10px 14px;
+  border-bottom: 1px solid #1e1e30;
+  vertical-align: middle;
+}
+.exec-table tbody tr.row-bbva td:first-child {
+  border-left: 4px solid var(--blue);
+}
+.exec-table tbody tr.row-santander td:first-child {
+  border-left: 4px solid var(--raspberry);
+}
+.exec-table tbody tr.row-bbva { background: rgba(33,123,238,0.05); }
+.exec-table tbody tr.row-santander { background: rgba(209,59,95,0.05); }
+.semaforo {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+}
+.semaforo-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.priority-badge {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Instrument Sans', sans-serif;
+  padding: 3px 10px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   SLIDE 21 — PROXIMOS PASOS
+   ============================================================ */
+.slide-21 { background: white; }
+.nextsteps-cols {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  margin-top: 8px;
+}
+.nextsteps-col { flex: 1; display: flex; flex-direction: column; }
+.nextsteps-col-header {
+  padding: 10px 16px;
+  border-radius: 6px 6px 0 0;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+}
+.nextsteps-col-body {
+  flex: 1;
+  border: 1px solid var(--grey-100);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 16px;
+  background: #fafafa;
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.check-box {
+  width: 16px; height: 16px;
+  border-radius: 3px;
+  border: 2px solid var(--grey-300);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.check-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--dark);
+  flex: 1;
+}
+.check-responsible {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  color: var(--grey-300);
+  background: var(--grey-100);
+  padding: 1px 7px;
+  border-radius: 8px;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+.nextsteps-footer {
+  text-align: center;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 12px;
+  color: var(--grey-700);
+  margin-top: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   SLIDE 22 — CIERRE
+   ============================================================ */
+.slide-22 {
+  background: var(--black);
+  background-image: linear-gradient(135deg, #100D25 60%, #1a1535 100%);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.slide-22 .closing-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 6.5vw, 72px);
+  color: white;
+  line-height: 1;
+}
+.slide-22 .closing-sub {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--grey-700);
+  margin-top: 16px;
+}
+.slide-22 .closing-logo {
+  margin-top: 48px;
+  width: 180px;
+}
+
+/* ============================================================
+   TIMELINE Q1→Q2→Q3
+   ============================================================ */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 8px;
+}
+.tl-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+.tl-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tl-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  margin-top: 4px;
+  text-align: center;
+}
+.tl-desc {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  color: var(--grey-700);
+  margin-top: 3px;
+  text-align: center;
+  max-width: 100px;
+  line-height: 1.3;
+}
+.tl-connector {
+  flex: 1;
+  height: 2px;
+  margin-bottom: 22px;
+}
+
+/* Semicirculo de progreso */
+.progress-ring-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.progress-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.progress-ring-inner {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.progress-ring-pct {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+</style>
+</head>
+<body>
+<div id="presentation">
+
+<!-- ============================================================
+     SLIDE 01 — PORTADA
+     ============================================================ -->
+<section class="slide slide-01 active">
+  <div class="mosaic" aria-hidden="true">
+    <div class="mosaic-grid" id="mosaicGrid"></div>
+  </div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">Revisión de Cuenta</div>
+    <div class="cover-title">Estrategia de Clientes</div>
+    <div class="cover-subtitle">BBVA &amp; Santander</div>
+    <div class="cover-divider"></div>
+    <div class="cover-tagline">FY26 Review &middot; FY27 Planning</div>
+    <div class="cover-date">Febrero 2026 &middot; Equipo de Cuentas Estratégicas</div>
+  </div>
+  <img class="slide-logo-lg" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - White.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 02 — AGENDA
+     ============================================================ -->
+<section class="slide slide-02">
+  <div class="agenda-left">
+    <div class="label-tag" style="color:var(--blue);margin-bottom:6px;">Agenda</div>
+    <h2 class="slide-title" style="font-size:clamp(22px,2.6vw,28px);margin-bottom:24px;">Contenido de la sesión</h2>
+
+    <div class="agenda-block">
+      <div class="agenda-num" style="color:var(--blue);">01</div>
+      <div class="agenda-block-content">
+        <div class="agenda-block-name">BBVA — Visión global de cuenta</div>
+        <div class="agenda-sub">· CIB<br>· Corporate Functions &amp; Banking<br>· Geografías</div>
+      </div>
+    </div>
+
+    <div class="agenda-block">
+      <div class="agenda-num" style="color:var(--raspberry);">02</div>
+      <div class="agenda-block-content">
+        <div class="agenda-block-name">SANTANDER — Visión global de cuenta</div>
+        <div class="agenda-sub">· CIB<br>· Corporate Functions &amp; Banking<br>· Geografías</div>
+      </div>
+    </div>
+
+    <div class="agenda-block">
+      <div class="agenda-num" style="color:var(--orange);">03</div>
+      <div class="agenda-block-content">
+        <div class="agenda-block-name">Resumen ejecutivo y próximos pasos</div>
+      </div>
+    </div>
+  </div>
+  <div class="agenda-right">
+    <div class="agenda-n-deco" aria-hidden="true">N</div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 03 — SEPARADOR BBVA
+     ============================================================ -->
+<section class="slide slide-03 slide-divider">
+  <div class="divider-deco-num" aria-hidden="true">01</div>
+  <div class="divider-deco-rects" aria-hidden="true"></div>
+  <div class="divider-content">
+    <div class="divider-label">Cliente</div>
+    <div class="divider-title">BBVA</div>
+    <div class="divider-line"></div>
+    <div class="divider-subtitle">Revisión FY26 &middot; Objetivos FY27</div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - White.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 04 — BBVA · CIB · NEGOCIO — OBJETIVO + SITUACION
+     ============================================================ -->
+<section class="slide slide-04 slide-content">
+  <div class="top-accent-bar" style="background:var(--blue);"></div>
+  <div class="label-tag" style="color:var(--blue);">BBVA &middot; CIB &middot; Negocio</div>
+  <h2 class="slide-title">Situación Actual y Objetivo FY27</h2>
+  <div class="content-body">
+    <div class="obj-block">
+      <div class="block-title" style="color:var(--blue);">Objetivo FY27</div>
+      <p class="block-text">Consolidar la posición como partner estratégico en proyectos de transformación de mercados de capitales. Crecimiento de revenue del <strong>+25%</strong> respecto a FY26. Apertura de al menos <strong>2 nuevas líneas de servicio</strong>.</p>
+    </div>
+    <div class="sit-block">
+      <div class="block-title" style="color:var(--grey-700);">Situación FY26</div>
+      <div class="bullet-item"><div class="bullet-dot"></div><span>Presencia activa en 3 iniciativas de alto impacto: Plataforma de Derivados, Reporting Regulatorio EMIR/MiFID II y rediseño del modelo de onboarding institucional.</span></div>
+      <div class="bullet-item"><div class="bullet-dot"></div><span>Relación estable con el sponsor principal.</span></div>
+      <div class="bullet-item">
+        <div style="margin-top:3px;flex-shrink:0;">⚠️</div>
+        <span style="color:var(--orange);">Riesgo de competencia de Big4 en el pipeline de nuevos proyectos.</span>
+      </div>
+      <div class="kpi-badge">
+        <div class="kpi-num" style="color:var(--blue);">3</div>
+        <div class="kpi-label" style="color:var(--grey-700);">iniciativas activas</div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 05 — BBVA · CIB · NEGOCIO — RETOS + ACCIONES
+     ============================================================ -->
+<section class="slide slide-05 slide-content">
+  <div class="top-accent-bar" style="background:var(--blue);"></div>
+  <div class="label-tag" style="color:var(--blue);">BBVA &middot; CIB &middot; Negocio</div>
+  <h2 class="slide-title">Retos y Acciones FY27</h2>
+  <div class="retos-acciones-layout">
+    <div class="retos-col" style="background:#FFF8F0;">
+      <div class="retos-col-header" style="color:var(--orange);">
+        <span>⚠️</span> Retos
+      </div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Falta de visibilidad en el comité de dirección de CIB más allá del sponsor actual.</span></div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Presión de precio en renovaciones de contratos.</span></div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Ciclos de decisión largos en proyectos &gt;500K€.</span></div>
+    </div>
+    <div class="retos-col" style="background:#F0F9FF;">
+      <div class="retos-col-header" style="color:var(--blue);">
+        <span>→</span> Acciones FY27
+      </div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--blue);">Q1</span><span>Organizar executive briefing con CDO y COO de CIB.</span></div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--blue);">Q2</span><span>Presentar propuesta de valor diferencial frente a consultoras generalistas.</span></div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--blue);">Q3</span><span>Activar modelo de éxito compartido en la próxima renovación para reducir fricción de precio.</span></div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 06 — BBVA · CIB · TECNOLOGIA — OBJETIVO + SITUACION
+     ============================================================ -->
+<section class="slide slide-06 slide-content">
+  <div class="top-accent-bar" style="background:var(--indigo);"></div>
+  <div class="label-tag" style="color:var(--indigo);">BBVA &middot; CIB &middot; Tecnología</div>
+  <h2 class="slide-title">Situación Actual y Objetivo FY27</h2>
+  <div class="content-body" style="display:flex;gap:16px;flex:1;margin-top:4px;">
+    <div style="flex:1;background:#F0F1FF;border-left:4px solid var(--indigo);border-radius:6px;padding:18px;">
+      <div class="block-title" style="color:var(--indigo);">Objetivo FY27</div>
+      <p class="block-text">Ser el proveedor de referencia en arquitectura de datos y plataformas cloud para CIB. Al menos <strong>un proyecto de modernización de core</strong> en ejecución. Capacidades de IA embebidas en las soluciones entregadas.</p>
+    </div>
+    <div style="flex:1;background:var(--grey-100);border-left:4px solid var(--grey-300);border-radius:6px;padding:18px;position:relative;">
+      <div class="block-title" style="color:var(--grey-700);">Situación FY26</div>
+      <div class="bullet-item"><div class="bullet-dot"></div><span>Solución de data lakehouse desplegada para risk analytics con adopción del 60%.</span></div>
+      <div class="bullet-item"><div class="bullet-dot"></div><span>Stack tecnológico heterogéneo: Azure como cloud principal + legacy on-premise significativo.</span></div>
+      <div class="bullet-item"><div class="bullet-dot"></div><span>Pendiente de escalado a otras áreas.</span></div>
+      <div style="position:absolute;bottom:16px;right:16px;text-align:center;">
+        <div class="progress-ring-wrap">
+          <div class="progress-ring" style="background:conic-gradient(var(--indigo) 0% 60%, #E1E1E1 60% 100%);">
+            <div class="progress-ring-inner">
+              <span class="progress-ring-pct" style="color:var(--indigo);">60%</span>
+            </div>
+          </div>
+          <div style="font-size:10px;color:var(--grey-700);max-width:80px;text-align:center;line-height:1.3;">adopción data lakehouse</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 07 — BBVA · CIB · TECNOLOGIA — RETOS + ACCIONES
+     ============================================================ -->
+<section class="slide slide-07 slide-content">
+  <div class="top-accent-bar" style="background:var(--indigo);"></div>
+  <div class="label-tag" style="color:var(--indigo);">BBVA &middot; CIB &middot; Tecnología</div>
+  <h2 class="slide-title">Retos y Acciones FY27</h2>
+  <div class="retos-acciones-layout">
+    <div class="retos-col" style="background:#FFF8F0;">
+      <div class="retos-col-header" style="color:var(--orange);">⚠️ Retos</div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Deuda técnica elevada en sistemas de liquidación que bloquea la modernización.</span></div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Equipos internos del banco con roadmap propio que compite con nuestras propuestas.</span></div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Governance de datos aún inmadura en la división.</span></div>
+    </div>
+    <div class="retos-col" style="background:#F0F1FF;">
+      <div class="retos-col-header" style="color:var(--indigo);">→ Acciones FY27</div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--indigo);">Q1</span><span>Proponer un Assessment de Arquitectura para mapear quick wins vs. proyectos de largo plazo.</span></div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--indigo);">Q2</span><span>Presentar caso de uso de IA generativa en compliance y monitorización de mercados.</span></div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--indigo);">Q3</span><span>Establecer comunidad de práctica compartida con el equipo de arquitectura interno.</span></div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 08 — BBVA · CORP. FUNCTIONS & BANKING · NEGOCIO
+     ============================================================ -->
+<section class="slide slide-08 slide-content">
+  <div class="top-accent-bar" style="background:var(--blue);"></div>
+  <div class="label-tag" style="color:var(--blue);">BBVA &middot; Corporate Functions &amp; Banking &middot; Negocio</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="quads-grid">
+    <div class="quadrant" style="background:#EFF6FF;border-top:3px solid var(--blue);">
+      <div class="quadrant-title" style="color:var(--blue);">Objetivo FY27</div>
+      <div class="quadrant-text">Ampliar cobertura en Risk, Finance y Compliance. Consolidar al menos <strong>2 contratos marco</strong> que garanticen continuidad y previsibilidad de ingresos.</div>
+    </div>
+    <div class="quadrant" style="background:var(--grey-100);border-top:3px solid var(--grey-300);position:relative;">
+      <div class="quadrant-title" style="color:var(--grey-700);">Situación FY26</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot" style="margin-top:4px;"></div><span>Participación en transformación de Finance: automatización del cierre contable.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot" style="margin-top:4px;"></div><span>Piloto activo en Cumplimiento Normativo.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;">
+          <span style="display:inline-flex;align-items:center;gap:6px;background:#FEE2E2;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:600;color:#DC2626;flex-shrink:0;">⚠ Fragilidad</span>
+          <span style="font-size:12px;">Revenue concentrado en un único centro de coste.</span>
+        </div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#FFF8F0;border-top:3px solid var(--orange);">
+      <div class="quadrant-title" style="color:var(--orange);">Retos</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Dependencia de un solo interlocutor en Finance.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Dificultad para conectar entregables con KPIs del negocio bancario.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Presupuestos de áreas de soporte más limitados y con mayor escrutinio.</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#F0F9FF;border-top:3px solid var(--blue);">
+      <div class="quadrant-title" style="color:var(--blue);">Acciones FY27</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--blue);font-size:9px;">Q2</span><span>Mapear stakeholders en Risk y Compliance e iniciar relaciones.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--blue);font-size:9px;">Q2</span><span>Construir caso de negocio ligado a métricas de eficiencia operativa.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--blue);font-size:9px;">Q3</span><span>Explorar modelo de Managed Services para reducir variabilidad presupuestaria.</span></div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 09 — BBVA · CORP. FUNCTIONS & BANKING · TECNOLOGIA
+     ============================================================ -->
+<section class="slide slide-09 slide-content">
+  <div class="top-accent-bar" style="background:var(--indigo);"></div>
+  <div class="label-tag" style="color:var(--indigo);">BBVA &middot; Corporate Functions &amp; Banking &middot; Tecnología</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="quads-grid">
+    <div class="quadrant" style="background:#F0F1FF;border-top:3px solid var(--indigo);">
+      <div class="quadrant-title" style="color:var(--indigo);">Objetivo FY27</div>
+      <div class="quadrant-text">Referente en automatización e integración de procesos financieros y regulatorios. Soluciones con IA que <strong>reduzcan el tiempo de ciclo</strong> de los procesos críticos.</div>
+    </div>
+    <div class="quadrant" style="background:var(--grey-100);border-top:3px solid var(--grey-300);">
+      <div class="quadrant-title" style="color:var(--grey-700);">Situación FY26</div>
+      <div class="quadrant-text">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+          <div style="text-align:center;">
+            <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:32px;color:var(--indigo);line-height:1;">−30%</div>
+            <div style="font-size:10px;color:var(--grey-700);line-height:1.3;">tiempo de ciclo</div>
+          </div>
+          <div style="font-size:12.5px;color:var(--dark);">RPA implementado en cierre contable. Pendiente de escalado a otras geografías y áreas.</div>
+        </div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#FFF8F0;border-top:3px solid var(--orange);">
+      <div class="quadrant-title" style="color:var(--orange);">Retos</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Fragmentación tecnológica entre unidades.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Acceso limitado a entornos de desarrollo y datos de prueba.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Cambio frecuente de prioridades tecnológicas internas.</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#F0F1FF;border-top:3px solid var(--indigo);">
+      <div class="quadrant-title" style="color:var(--indigo);">Acciones FY27</div>
+      <div class="timeline" style="flex-direction:column;align-items:flex-start;gap:6px;margin-top:4px;">
+        <div style="display:flex;align-items:flex-start;gap:6px;font-size:12px;"><span class="q-badge" style="background:var(--indigo);font-size:9px;">Q1</span><span>Proponer capa de integración común basada en APIs.</span></div>
+        <div style="display:flex;align-items:flex-start;gap:6px;font-size:12px;"><span class="q-badge" style="background:var(--indigo);font-size:9px;">Q2</span><span>Acuerdo de acceso a sandbox de datos.</span></div>
+        <div style="display:flex;align-items:flex-start;gap:6px;font-size:12px;"><span class="q-badge" style="background:var(--indigo);font-size:9px;">Q3</span><span>Presentar roadmap de IA aplicada a regulación (DORA, Basel IV).</span></div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 10 — BBVA · GEOGRAFIAS · NEGOCIO
+     ============================================================ -->
+<section class="slide slide-10 slide-content">
+  <div class="top-accent-bar" style="background:var(--blue);"></div>
+  <div class="label-tag" style="color:var(--blue);">BBVA &middot; Geografías &middot; Negocio</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="geo-layout">
+    <div class="geo-left">
+      <div style="background:#EFF6FF;border-left:3px solid var(--blue);border-radius:6px;padding:12px 14px;">
+        <div class="block-title" style="color:var(--blue);font-size:10px;">Objetivo FY27</div>
+        <div class="block-text" style="font-size:12.5px;">Replicar modelo de éxito de España en México y Turquía. Pipeline internacional objetivo: <strong>€2M</strong>.</div>
+      </div>
+      <div style="background:var(--grey-100);border-left:3px solid var(--grey-300);border-radius:6px;padding:12px 14px;">
+        <div class="block-title" style="color:var(--grey-700);font-size:10px;">Situación FY26</div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>+90% del revenue concentrado en España.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>Contactos iniciales establecidos con BBVA México.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>Sin presencia activa fuera de España.</span></div>
+      </div>
+      <div style="background:#FFF8F0;border-left:3px solid var(--orange);border-radius:6px;padding:12px 14px;">
+        <div class="block-title" style="color:var(--orange);font-size:10px;">Retos</div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Sin estructura local en mercados objetivo.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Diferencias regulatorias y culturales.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Competencia de proveedores locales.</span></div>
+      </div>
+      <div style="background:#F0F9FF;border-left:3px solid var(--blue);border-radius:6px;padding:12px 14px;">
+        <div class="block-title" style="color:var(--blue);font-size:10px;">Acciones FY27</div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--blue);font-size:9px;">H1</span><span>Definir modelo de entrada en México.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--blue);font-size:9px;">H2</span><span>Preparar propuesta de valor localizada para mercados emergentes.</span></div>
+      </div>
+    </div>
+    <div class="geo-right">
+      <div class="geo-card" style="background:#EFF6FF;">
+        <div class="geo-flag">🇪🇸</div>
+        <div class="geo-card-info">
+          <div class="geo-card-name">España</div>
+          <div class="geo-card-desc">Activo — &gt;90% del revenue</div>
+        </div>
+        <div class="geo-badge" style="background:#DCFCE7;color:#166534;">Activo</div>
+      </div>
+      <div class="geo-card" style="background:#F8FAFF;">
+        <div class="geo-flag">🇲🇽</div>
+        <div class="geo-card-info">
+          <div class="geo-card-name">México</div>
+          <div class="geo-card-desc">Target FY27 — Contactos iniciales</div>
+        </div>
+        <div class="geo-badge" style="border:1.5px solid var(--blue);color:var(--blue);">Target FY27</div>
+      </div>
+      <div class="geo-card" style="background:#F8FAFF;">
+        <div class="geo-flag">🇹🇷</div>
+        <div class="geo-card-info">
+          <div class="geo-card-name">Turquía</div>
+          <div class="geo-card-desc">Target FY27 — Por activar</div>
+        </div>
+        <div class="geo-badge" style="border:1.5px solid var(--blue);color:var(--blue);">Target FY27</div>
+      </div>
+      <div class="geo-card" style="background:var(--grey-100);">
+        <div class="geo-flag">🌍</div>
+        <div class="geo-card-info">
+          <div class="geo-card-name">Colombia · Perú · Argentina</div>
+          <div class="geo-card-desc">Resto de geografías BBVA</div>
+        </div>
+        <div class="geo-badge" style="background:var(--grey-100);color:var(--grey-700);border:1px solid var(--grey-300);">En análisis</div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 11 — BBVA · GEOGRAFIAS · TECNOLOGIA
+     ============================================================ -->
+<section class="slide slide-11 slide-content">
+  <div class="top-accent-bar" style="background:var(--indigo);"></div>
+  <div class="label-tag" style="color:var(--indigo);">BBVA &middot; Geografías &middot; Tecnología</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="quads-grid">
+    <div class="quadrant" style="background:#F0F1FF;border-top:3px solid var(--indigo);">
+      <div class="quadrant-title" style="color:var(--indigo);">Objetivo FY27</div>
+      <div class="quadrant-text">Soluciones reutilizables y exportables. Activos tecnológicos modulares que <strong>reduzcan el coste de entrada</strong> en nuevas geografías.</div>
+    </div>
+    <div class="quadrant" style="background:var(--grey-100);border-top:3px solid var(--grey-300);">
+      <div class="quadrant-title" style="color:var(--grey-700);">Situación FY26</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>Las soluciones actuales tienen dependencias de infraestructura local española.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>No existe repositorio común de activos reutilizables.</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#FFF8F0;border-top:3px solid var(--orange);">
+      <div class="quadrant-title" style="color:var(--orange);">Retos</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Arquitecturas no cloud-agnostic ni multi-tenant.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Falta de documentación técnica estandarizada.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Distintos proveedores cloud por geografía (Azure ES / AWS MX).</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#F0F1FF;border-top:3px solid var(--indigo);">
+      <div class="quadrant-title" style="color:var(--indigo);">Acciones — Roadmap</div>
+      <div style="margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:0;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--indigo);flex-shrink:0;"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--indigo);margin-top:3px;">Q1</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">Programa Productización</div>
+          </div>
+          <div style="flex:1;height:2px;background:var(--indigo);opacity:0.3;margin-bottom:32px;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--indigo);opacity:0.65;flex-shrink:0;"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--indigo);margin-top:3px;">Q2</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">Repositorio activos documentados</div>
+          </div>
+          <div style="flex:1;height:2px;background:var(--indigo);opacity:0.3;margin-bottom:32px;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;border:2px solid var(--indigo);flex-shrink:0;background:white;"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--indigo);margin-top:3px;">Q3</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">Piloto BBVA México analytics</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 12 — SEPARADOR SANTANDER
+     ============================================================ -->
+<section class="slide slide-12 slide-divider">
+  <div class="divider-deco-num" aria-hidden="true">02</div>
+  <div class="divider-deco-rects" aria-hidden="true"></div>
+  <div class="divider-content">
+    <div class="divider-label">Cliente</div>
+    <div class="divider-title">SANTANDER</div>
+    <div class="divider-line"></div>
+    <div class="divider-subtitle">Revisión FY26 &middot; Objetivos FY27</div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - White.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 13 — SANTANDER · CIB · NEGOCIO — OBJETIVO + SITUACION
+     ============================================================ -->
+<section class="slide slide-13 slide-content">
+  <div class="top-accent-bar" style="background:var(--raspberry);"></div>
+  <div class="label-tag" style="color:var(--raspberry);">Santander &middot; CIB &middot; Negocio</div>
+  <h2 class="slide-title">Situación Actual y Objetivo FY27</h2>
+  <div style="flex:1;display:flex;gap:16px;margin-top:4px;">
+    <div style="flex:1;background:#FFF0F4;border-left:4px solid var(--raspberry);border-radius:6px;padding:18px;">
+      <div class="block-title" style="color:var(--raspberry);">Objetivo FY27</div>
+      <p class="block-text">Convertirnos en el socio estratégico preferente para la transformación del modelo operativo de CIB Santander. Foco en eficiencia, digitalización del front office y cumplimiento regulatorio avanzado. Objetivo de crecimiento: <strong>+30% revenue vs. FY26</strong>.</p>
+    </div>
+    <div style="flex:1;background:var(--grey-100);border-left:4px solid var(--grey-300);border-radius:6px;padding:18px;position:relative;">
+      <div class="block-title" style="color:var(--grey-700);">Situación FY26</div>
+      <div class="bullet-item"><div class="bullet-dot"></div><span>Equipo estable de 8 personas en el programa de transformación de Operations.</span></div>
+      <div class="bullet-item"><div class="bullet-dot"></div><span>Relación sólida con el COO de CIB.</span></div>
+      <div class="bullet-item">
+        <span style="display:inline-flex;align-items:center;gap:5px;background:#DCFCE7;border-radius:4px;padding:2px 7px;font-size:10px;font-weight:700;color:#166534;flex-shrink:0;margin-top:2px;">OPORTUNIDAD</span>
+        <span style="font-size:13px;">Sin penetración en Global Markets.</span>
+      </div>
+      <div class="bullet-item"><div class="bullet-dot"></div><span>Pipeline activo pero concentrado en un solo workstream.</span></div>
+      <div style="position:absolute;bottom:16px;right:16px;text-align:center;">
+        <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:48px;color:var(--raspberry);line-height:1;">8</div>
+        <div style="font-size:11px;color:var(--grey-700);max-width:80px;line-height:1.3;">personas en el equipo</div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 14 — SANTANDER · CIB · NEGOCIO — RETOS + ACCIONES
+     ============================================================ -->
+<section class="slide slide-14 slide-content">
+  <div class="top-accent-bar" style="background:var(--raspberry);"></div>
+  <div class="label-tag" style="color:var(--raspberry);">Santander &middot; CIB &middot; Negocio</div>
+  <h2 class="slide-title">Retos y Acciones FY27</h2>
+  <div class="retos-acciones-layout">
+    <div class="retos-col" style="background:#FFF8F0;">
+      <div class="retos-col-header" style="color:var(--orange);">⚠️ Retos</div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>CIB Santander opera con alta autonomía respecto al grupo → entrada compleja desde relaciones corporativas.</span></div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Ciclo presupuestario anual con poca visibilidad anticipada.</span></div>
+      <div class="bullet-item"><span style="flex-shrink:0;margin-top:1px;">⚠️</span><span>Competencia directa de un incumbent con contrato renovado recientemente.</span></div>
+    </div>
+    <div class="retos-col" style="background:#FFF0F4;">
+      <div class="retos-col-header" style="color:var(--raspberry);">→ Acciones FY27</div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--raspberry);">Q1</span><span>Identificar oportunidad en Global Markets a través de contactos de la práctica de Capital Markets.</span></div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--raspberry);">Q1</span><span>Solicitar revisión estratégica anual con el COO para anclar nuestra posición.</span></div>
+      <div class="bullet-item"><span class="q-badge" style="background:var(--raspberry);">Q2</span><span>Preparar propuesta de transformación del modelo operativo end-to-end como visión de largo plazo.</span></div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 15 — SANTANDER · CIB · TECNOLOGIA
+     ============================================================ -->
+<section class="slide slide-15 slide-content">
+  <div class="top-accent-bar" style="background:var(--violet);"></div>
+  <div class="label-tag" style="color:var(--violet);">Santander &middot; CIB &middot; Tecnología</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="quads-grid">
+    <div class="quadrant" style="background:#F5F0FF;border-top:3px solid var(--violet);">
+      <div class="quadrant-title" style="color:var(--violet);">Objetivo FY27</div>
+      <div class="quadrant-text">Liderar la modernización de al menos un sistema crítico de CIB (Order Management System o Plataforma de Collateral). Posicionar capacidades <strong>cloud-native e IA</strong> como diferencial.</div>
+    </div>
+    <div class="quadrant" style="background:var(--grey-100);border-top:3px solid var(--grey-300);">
+      <div class="quadrant-title" style="color:var(--grey-700);">Situación FY26 — Stack Tecnológico</div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+        <div style="background:white;border:1.5px solid var(--violet);border-radius:6px;padding:6px 10px;text-align:center;font-size:11px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--violet);flex-shrink:0;">GCP</div>
+        <div style="display:flex;align-items:center;gap:2px;color:var(--grey-300);">
+          <div style="width:8px;height:2px;background:var(--grey-300);"></div>
+          <div style="width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid var(--grey-300);"></div>
+        </div>
+        <div style="background:white;border:1.5px solid var(--grey-300);border-radius:6px;padding:6px 10px;text-align:center;font-size:11px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--grey-700);flex-shrink:0;">Reporting</div>
+      </div>
+      <div class="bullet-item" style="font-size:12px;margin-top:8px;"><div class="bullet-dot"></div><span>Migración de infraestructura de reporting a GCP.</span></div>
+      <div class="bullet-item" style="font-size:12px;"><div class="bullet-dot"></div><span>Conocimiento del stack actual, sin rol de arquitecto principal.</span></div>
+    </div>
+    <div class="quadrant" style="background:#FFF8F0;border-top:3px solid var(--orange);">
+      <div class="quadrant-title" style="color:var(--orange);">Retos</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Santander Digital tiende a internalizar desarrollos.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Proceso de homologación de proveedores largo y exigente.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Múltiples proveedores tecnológicos en el mismo espacio.</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#F5F0FF;border-top:3px solid var(--violet);">
+      <div class="quadrant-title" style="color:var(--violet);">Acciones — Roadmap</div>
+      <div style="margin-top:8px;">
+        <div style="display:flex;align-items:center;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--violet);"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--violet);margin-top:3px;">Q1</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">Homologación cloud</div>
+          </div>
+          <div style="flex:1;height:2px;background:var(--violet);opacity:0.3;margin-bottom:32px;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--violet);opacity:0.65;"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--violet);margin-top:3px;">Q2</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">PoC IA gestión riesgos</div>
+          </div>
+          <div style="flex:1;height:2px;background:var(--violet);opacity:0.3;margin-bottom:32px;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;border:2px solid var(--violet);background:white;"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--violet);margin-top:3px;">Q3</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">Alianza Santander Digital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 16 — SANTANDER · CORP. FUNCTIONS & BANKING · NEGOCIO
+     ============================================================ -->
+<section class="slide slide-16 slide-content">
+  <div class="top-accent-bar" style="background:var(--raspberry);"></div>
+  <div class="label-tag" style="color:var(--raspberry);">Santander &middot; Corporate Functions &amp; Banking &middot; Negocio</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="quads-grid">
+    <div class="quadrant" style="background:#FFF0F4;border-top:3px solid var(--raspberry);">
+      <div class="quadrant-title" style="color:var(--raspberry);">Objetivo FY27</div>
+      <div class="quadrant-text">Ganar presencia en HR, Operaciones Corporativas y Sostenibilidad. Conectar la propuesta con la agenda <strong>ESG y de transformación cultural</strong> del grupo.</div>
+    </div>
+    <div class="quadrant" style="background:var(--grey-100);border-top:3px solid var(--grey-300);">
+      <div class="quadrant-title" style="color:var(--grey-700);">Situación FY26 — Semáforo de actividad</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px;">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:#EF4444;flex-shrink:0;box-shadow:0 0 6px rgba(239,68,68,0.4);"></div>
+          <div style="font-size:12.5px;color:var(--dark);">Finance / Riesgos Corporativos — Sin presencia</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:#F59E0B;flex-shrink:0;box-shadow:0 0 6px rgba(245,158,11,0.4);"></div>
+          <div style="font-size:12.5px;color:var(--dark);">HR — Proyecto puntual (H1 FY26), sin continuidad</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:14px;height:14px;border-radius:50%;background:#22C55E;flex-shrink:0;box-shadow:0 0 6px rgba(34,197,94,0.3);"></div>
+          <div style="font-size:12.5px;color:var(--dark);">Sostenibilidad — Pendiente de confirmar</div>
+        </div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#FFF8F0;border-top:3px solid var(--orange);">
+      <div class="quadrant-title" style="color:var(--orange);">Retos</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Nula visibilidad en comités de decisión de áreas objetivo.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Percepción de que somos proveedor tecnológico, no socio de transformación.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Competencia de firmas de consultoría estratégica con relaciones históricas.</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#FFF0F4;border-top:3px solid var(--raspberry);">
+      <div class="quadrant-title" style="color:var(--raspberry);">Acciones FY27</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--raspberry);font-size:9px;">Q1</span><span>Reactivar relación con responsable de HR Transformation.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--raspberry);font-size:9px;">Q2</span><span>Preparar punto de vista sobre ESG &amp; Digital Transformation en banca.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--raspberry);font-size:9px;">Q3</span><span>Proponer solución de medición de huella digital como entrada en la agenda ESG.</span></div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 17 — SANTANDER · CORP. FUNCTIONS & BANKING · TECNOLOGIA
+     ============================================================ -->
+<section class="slide slide-17 slide-content">
+  <div class="top-accent-bar" style="background:var(--violet);"></div>
+  <div class="label-tag" style="color:var(--violet);">Santander &middot; Corporate Functions &amp; Banking &middot; Tecnología</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="quads-grid">
+    <div class="quadrant" style="background:#F5F0FF;border-top:3px solid var(--violet);">
+      <div class="quadrant-title" style="color:var(--violet);">Objetivo FY27</div>
+      <div class="quadrant-text">Implementar al menos una solución de <strong>automatización inteligente</strong> en un proceso corporativo crítico. Abrir la puerta a un contrato de servicios continuado.</div>
+    </div>
+    <div class="quadrant" style="background:var(--grey-100);border-top:3px solid var(--grey-300);">
+      <div class="quadrant-title" style="color:var(--grey-700);">Situación FY26 — Punto de partida</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="width:36px;height:36px;border-radius:50%;border:2.5px dashed var(--grey-300);background:white;display:flex;align-items:center;justify-content:center;">
+            <div style="font-size:14px;">○</div>
+          </div>
+          <div style="font-size:10px;color:var(--grey-700);text-align:center;line-height:1.3;">Hoy<br>(sin proyectos)</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;">
+          <div style="height:2px;border:none;border-top:2px dashed var(--grey-300);width:100%;"></div>
+          <div style="font-size:9px;color:var(--grey-300);">Oportunidad</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;">
+            <div style="font-size:16px;color:white;">⬆</div>
+          </div>
+          <div style="font-size:10px;color:var(--violet);text-align:center;line-height:1.3;font-weight:600;">FY27<br>(objetivo)</div>
+        </div>
+      </div>
+      <div class="bullet-item" style="font-size:12px;margin-top:8px;"><div class="bullet-dot"></div><span>Conocimiento del entorno tecnológico corporativo limitado.</span></div>
+    </div>
+    <div class="quadrant" style="background:#FFF8F0;border-top:3px solid var(--orange);">
+      <div class="quadrant-title" style="color:var(--orange);">Retos</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Proyectos gestionados desde Santander Digital, no desde las unidades.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Presupuesto de innovación en funciones corporativas históricamente bajo.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Desconocimiento del ecosistema tecnológico interno.</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#F5F0FF;border-top:3px solid var(--violet);">
+      <div class="quadrant-title" style="color:var(--violet);">Acciones FY27</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--violet);font-size:9px;">Q1</span><span>Workshop de descubrimiento de oportunidades con Operaciones Corporativas.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--violet);font-size:9px;">Q2</span><span>Conectar con Santander Digital para identificar proyectos corporativos en su roadmap.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--violet);font-size:9px;">Q2</span><span>Proponer "Innovation Sprint" de bajo coste y alto impacto visible.</span></div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 18 — SANTANDER · GEOGRAFIAS · NEGOCIO
+     ============================================================ -->
+<section class="slide slide-18 slide-content">
+  <div class="top-accent-bar" style="background:var(--raspberry);"></div>
+  <div class="label-tag" style="color:var(--raspberry);">Santander &middot; Geografías &middot; Negocio</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="geo-layout">
+    <div class="geo-left">
+      <div style="background:#FFF0F4;border-left:3px solid var(--raspberry);border-radius:6px;padding:12px 14px;">
+        <div class="block-title" style="color:var(--raspberry);font-size:10px;">Objetivo FY27</div>
+        <div class="block-text" style="font-size:12.5px;">Establecer presencia activa en Santander UK y Santander Brasil. Pipeline combinado objetivo: <strong>€3M</strong>.</div>
+      </div>
+      <div style="background:var(--grey-100);border-left:3px solid var(--grey-300);border-radius:6px;padding:12px 14px;">
+        <div class="block-title" style="color:var(--grey-700);font-size:10px;">Situación FY26</div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>Operación 100% centrada en España.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>Relaciones en fase inicial con equipo de International Transformation.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>Sin contratos ni proyectos fuera de España.</span></div>
+      </div>
+      <div style="background:#FFF8F0;border-left:3px solid var(--orange);border-radius:6px;padding:12px 14px;">
+        <div class="block-title" style="color:var(--orange);font-size:10px;">Retos</div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Alta independencia de cada geografía.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>UK y Brasil tienen proveedores locales consolidados.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Restricciones regulatorias locales (especialmente Brasil).</span></div>
+      </div>
+      <div style="background:#FFF0F4;border-left:3px solid var(--raspberry);border-radius:6px;padding:12px 14px;">
+        <div class="block-title" style="color:var(--raspberry);font-size:10px;">Acciones FY27</div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--raspberry);font-size:9px;">H1</span><span>Activar referencia interna para presentar a CIOs de UK y Brasil.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span class="q-badge" style="background:var(--raspberry);font-size:9px;">H2</span><span>Identificar proyecto "puerta de entrada" en Santander UK.</span></div>
+      </div>
+    </div>
+    <div class="geo-right">
+      <div class="geo-card" style="background:#FFF0F4;">
+        <div class="geo-flag">🇪🇸</div>
+        <div class="geo-card-info">
+          <div class="geo-card-name">España</div>
+          <div class="geo-card-desc">Activo — 100% del revenue</div>
+        </div>
+        <div class="geo-badge" style="background:#DCFCE7;color:#166534;">Activo</div>
+      </div>
+      <div class="geo-card" style="background:#FFF8FA;">
+        <div class="geo-flag">🇬🇧</div>
+        <div class="geo-card-info">
+          <div class="geo-card-name">United Kingdom</div>
+          <div class="geo-card-desc">Target FY27 — Pipeline €Xm</div>
+        </div>
+        <div class="geo-badge" style="border:1.5px solid var(--raspberry);color:var(--raspberry);">Target FY27</div>
+      </div>
+      <div class="geo-card" style="background:#FFF8FA;">
+        <div class="geo-flag">🇧🇷</div>
+        <div class="geo-card-info">
+          <div class="geo-card-name">Brasil</div>
+          <div class="geo-card-desc">Target FY27 — Pipeline €Xm</div>
+        </div>
+        <div class="geo-badge" style="border:1.5px solid var(--raspberry);color:var(--raspberry);">Target FY27</div>
+      </div>
+      <div class="geo-card" style="background:var(--grey-100);">
+        <div class="geo-flag">🌍</div>
+        <div class="geo-card-info">
+          <div class="geo-card-name">Alemania · México · Chile · EEUU · Polonia</div>
+          <div class="geo-card-desc">Mercados Santander Group</div>
+        </div>
+        <div class="geo-badge" style="background:var(--grey-100);color:var(--grey-700);border:1px solid var(--grey-300);">En análisis</div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 19 — SANTANDER · GEOGRAFIAS · TECNOLOGIA
+     ============================================================ -->
+<section class="slide slide-19 slide-content">
+  <div class="top-accent-bar" style="background:var(--violet);"></div>
+  <div class="label-tag" style="color:var(--violet);">Santander &middot; Geografías &middot; Tecnología</div>
+  <h2 class="slide-title">Situación, Objetivo, Retos y Acciones</h2>
+  <div class="quads-grid">
+    <div class="quadrant" style="background:#F5F0FF;border-top:3px solid var(--violet);">
+      <div class="quadrant-title" style="color:var(--violet);">Objetivo FY27</div>
+      <div class="quadrant-text">Modelo de entrega global estandarizado para operar en múltiples geografías con <strong>calidad homogénea y coste eficiente</strong>.</div>
+    </div>
+    <div class="quadrant" style="background:var(--grey-100);border-top:3px solid var(--grey-300);">
+      <div class="quadrant-title" style="color:var(--grey-700);">Situación FY26</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>Soluciones diseñadas para España sin capacidades multi-geografía.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><div class="bullet-dot"></div><span>Sin práctica de delivery internacional formalizada.</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#FFF8F0;border-top:3px solid var(--orange);">
+      <div class="quadrant-title" style="color:var(--orange);">Retos</div>
+      <div class="quadrant-text">
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Diferencias de infraestructura cloud entre geografías <span style="font-size:11px;color:var(--grey-700);">(Azure UK / múltiple Brasil)</span>.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Requisitos de soberanía de datos que limitan infraestructura centralizada.</span></div>
+        <div class="bullet-item" style="font-size:12.5px;"><span style="flex-shrink:0;">⚠️</span><span>Necesidad de capacidades locales de delivery no disponibles.</span></div>
+      </div>
+    </div>
+    <div class="quadrant" style="background:#F5F0FF;border-top:3px solid var(--violet);">
+      <div class="quadrant-title" style="color:var(--violet);">Acciones — Roadmap</div>
+      <div style="margin-top:8px;">
+        <div style="display:flex;align-items:center;">
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--violet);"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--violet);margin-top:3px;">Q1</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">Blueprint arquitectura multi-geo</div>
+          </div>
+          <div style="flex:1;height:2px;background:var(--violet);opacity:0.3;margin-bottom:32px;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;background:var(--violet);opacity:0.65;"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--violet);margin-top:3px;">Q2</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">Partnership local en Brasil</div>
+          </div>
+          <div style="flex:1;height:2px;background:var(--violet);opacity:0.3;margin-bottom:32px;"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;flex:1;">
+            <div style="width:12px;height:12px;border-radius:50%;border:2px solid var(--violet);background:white;"></div>
+            <div style="font-size:10px;font-weight:600;font-family:'Instrument Sans',sans-serif;color:var(--violet);margin-top:3px;">Q3</div>
+            <div style="font-size:10px;color:var(--grey-700);text-align:center;max-width:80px;margin-top:2px;line-height:1.3;">Modelo global a Santander Digital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 20 — RESUMEN EJECUTIVO
+     ============================================================ -->
+<section class="slide slide-20">
+  <div class="label-tag" style="color:var(--orange);margin-bottom:4px;">Resumen Ejecutivo</div>
+  <h2 class="slide-title" style="color:white;font-size:clamp(20px,2.2vw,26px);margin-bottom:12px;">Estado de Cuenta y Prioridad FY27</h2>
+  <table class="exec-table">
+    <thead>
+      <tr>
+        <th style="width:110px;">Cliente</th>
+        <th>División</th>
+        <th>Situación FY26</th>
+        <th>Prioridad FY27</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-bbva">
+        <td><strong style="color:var(--blue);">BBVA</strong></td>
+        <td>CIB</td>
+        <td><span class="semaforo"><span class="semaforo-dot" style="background:#22C55E;box-shadow:0 0 5px rgba(34,197,94,0.5);"></span> Activo</span></td>
+        <td><span class="priority-badge" style="background:#EF4444;color:white;">Alta</span></td>
+      </tr>
+      <tr class="row-bbva">
+        <td><strong style="color:var(--blue);">BBVA</strong></td>
+        <td>Corp. Functions &amp; Banking</td>
+        <td><span class="semaforo"><span class="semaforo-dot" style="background:#F59E0B;box-shadow:0 0 5px rgba(245,158,11,0.5);"></span> Frágil</span></td>
+        <td><span class="priority-badge" style="background:var(--orange);color:white;">Media-Alta</span></td>
+      </tr>
+      <tr class="row-bbva">
+        <td><strong style="color:var(--blue);">BBVA</strong></td>
+        <td>Geografías</td>
+        <td><span class="semaforo"><span class="semaforo-dot" style="background:#EF4444;box-shadow:0 0 5px rgba(239,68,68,0.5);"></span> Incipiente</span></td>
+        <td><span class="priority-badge" style="background:var(--grey-700);color:white;">Media</span></td>
+      </tr>
+      <tr class="row-santander">
+        <td><strong style="color:var(--raspberry);">SANTANDER</strong></td>
+        <td>CIB</td>
+        <td><span class="semaforo"><span class="semaforo-dot" style="background:#22C55E;box-shadow:0 0 5px rgba(34,197,94,0.5);"></span> Activo</span></td>
+        <td><span class="priority-badge" style="background:#EF4444;color:white;">Alta</span></td>
+      </tr>
+      <tr class="row-santander">
+        <td><strong style="color:var(--raspberry);">SANTANDER</strong></td>
+        <td>Corp. Functions &amp; Banking</td>
+        <td><span class="semaforo"><span class="semaforo-dot" style="background:#EF4444;box-shadow:0 0 5px rgba(239,68,68,0.5);"></span> Marginal</span></td>
+        <td><span class="priority-badge" style="background:var(--grey-700);color:white;">Media</span></td>
+      </tr>
+      <tr class="row-santander">
+        <td><strong style="color:var(--raspberry);">SANTANDER</strong></td>
+        <td>Geografías</td>
+        <td><span class="semaforo"><span class="semaforo-dot" style="background:#EF4444;box-shadow:0 0 5px rgba(239,68,68,0.5);"></span> Incipiente</span></td>
+        <td><span class="priority-badge" style="background:var(--orange);color:white;">Media-Alta</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - White.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 21 — PROXIMOS PASOS
+     ============================================================ -->
+<section class="slide slide-21">
+  <div class="label-tag" style="color:var(--blue);margin-bottom:4px;">Q1 FY27</div>
+  <h2 class="slide-title" style="font-size:clamp(20px,2.4vw,28px);">Próximos Pasos</h2>
+  <p style="font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:15px;color:var(--grey-700);margin-bottom:16px;">Acciones inmediatas Q1 FY27</p>
+  <div class="nextsteps-cols">
+    <div class="nextsteps-col">
+      <div class="nextsteps-col-header" style="background:var(--blue);">BBVA</div>
+      <div class="nextsteps-col-body">
+        <div class="check-item">
+          <div class="check-box" style="border-color:var(--blue);"></div>
+          <div class="check-text">Executive briefing con CDO y COO de CIB <span class="check-responsible">[Responsable]</span></div>
+        </div>
+        <div class="check-item">
+          <div class="check-box" style="border-color:var(--blue);"></div>
+          <div class="check-text">Assessment de Arquitectura CIB Tecnología <span class="check-responsible">[Responsable]</span></div>
+        </div>
+        <div class="check-item">
+          <div class="check-box" style="border-color:var(--blue);"></div>
+          <div class="check-text">Mapeo de stakeholders en Risk y Compliance <span class="check-responsible">[Responsable]</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="nextsteps-col">
+      <div class="nextsteps-col-header" style="background:var(--raspberry);">SANTANDER</div>
+      <div class="nextsteps-col-body">
+        <div class="check-item">
+          <div class="check-box" style="border-color:var(--raspberry);"></div>
+          <div class="check-text">Revisión estratégica anual con COO de CIB <span class="check-responsible">[Responsable]</span></div>
+        </div>
+        <div class="check-item">
+          <div class="check-box" style="border-color:var(--raspberry);"></div>
+          <div class="check-text">Homologación avanzada servicios cloud <span class="check-responsible">[Responsable]</span></div>
+        </div>
+        <div class="check-item">
+          <div class="check-box" style="border-color:var(--raspberry);"></div>
+          <div class="check-text">Workshop descubrimiento Operaciones Corporativas <span class="check-responsible">[Responsable]</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nextsteps-footer">Q1 FY27 &mdash; Enero a Marzo 2027</div>
+  <img class="slide-logo" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - Color.svg" alt="NFQ">
+</section>
+
+<!-- ============================================================
+     SLIDE 22 — CIERRE
+     ============================================================ -->
+<section class="slide slide-22">
+  <div class="mosaic" aria-hidden="true" style="opacity:0.7;">
+    <div class="mosaic-grid" id="mosaicGrid2"></div>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;">
+    <div class="closing-title">Gracias</div>
+    <div class="closing-sub">Equipo de Cuentas Estratégicas</div>
+    <img class="closing-logo" src="NFQ_Assets/Logos/Nfq/Nfq - White - Claim.svg" alt="NFQ — Beyond Consulting">
+  </div>
+  <img class="slide-logo-lg" src="NFQ_Assets/Logos/N_Isotipo/Isotipo - White.svg" alt="NFQ">
+</section>
+
+</div><!-- /#presentation -->
+
+<!-- ============================================================
+     NAVEGACIÓN
+     ============================================================ -->
+<button id="nav-prev" aria-label="Slide anterior">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+</button>
+<button id="nav-next" aria-label="Slide siguiente">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+</button>
+<div id="slide-counter">1 / 22</div>
+<div id="progress-bar" style="width:4.55%;"></div>
+
+<script>
+/* ============================================================
+   MOSAICO DECORATIVO
+   ============================================================ */
+function buildMosaic(gridEl) {
+  if (!gridEl) return;
+  const count = 6 * 10;
+  for (let i = 0; i < count; i++) {
+    const cell = document.createElement('div');
+    const rand = Math.random();
+    if (rand < 0.3) {
+      cell.style.opacity = '0.28';
+    } else if (rand < 0.55) {
+      cell.style.opacity = '0.14';
+    } else if (rand < 0.72) {
+      cell.style.opacity = '0.07';
+    } else {
+      cell.style.opacity = '0.02';
+    }
+    cell.style.background = 'var(--blue)';
+    gridEl.appendChild(cell);
+  }
+}
+buildMosaic(document.getElementById('mosaicGrid'));
+buildMosaic(document.getElementById('mosaicGrid2'));
+
+/* ============================================================
+   NAVEGACION
+   ============================================================ */
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const counter = document.getElementById('slide-counter');
+const progressBar = document.getElementById('progress-bar');
+
+function updateCounter() {
+  counter.textContent = (current + 1) + ' / ' + total;
+  const pct = ((current + 1) / total * 100).toFixed(2);
+  progressBar.style.width = pct + '%';
+}
+
+function goTo(n) {
+  if (n < 0 || n >= total) return;
+  slides[current].classList.remove('active');
+  slides[current].style.display = 'none';
+  current = n;
+  slides[current].style.display = 'flex';
+  slides[current].classList.add('active');
+  updateCounter();
+}
+
+// init
+slides.forEach((s, i) => {
+  if (i !== 0) { s.style.display = 'none'; s.classList.remove('active'); }
+});
+slides[0].style.display = 'flex';
+slides[0].classList.add('active');
+updateCounter();
+
+document.getElementById('nav-prev').addEventListener('click', () => goTo(current - 1));
+document.getElementById('nav-next').addEventListener('click', () => goTo(current + 1));
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1);
+  if (e.key === 'f' || e.key === 'F') {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen && document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen && document.exitFullscreen();
+    }
+  }
+  if (e.key === 'Home') goTo(0);
+  if (e.key === 'End')  goTo(total - 1);
+});
+
+// Touch / swipe support
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) > 50) { dx < 0 ? goTo(current + 1) : goTo(current - 1); }
+}, { passive: true });
+</script>
+</body>
+</html>
