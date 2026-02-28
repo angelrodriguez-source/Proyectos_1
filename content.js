@@ -24,7 +24,7 @@ const DECK = {
       bold: "Negocio Maduro",
       rest: " · BBVA & Santander"
     },
-    date: "[Fecha de la reunión]",
+    date: "[05/03/2026]",
     kpis: [
       { value: "€97",   unit: "MM", label: "Objetivo FY27",  trend: "↑ +45% desde FY25" },
       { value: "1.438", unit: "",   label: "Ftes objetivo",   trend: "↑ +57% desde FY25" }
@@ -101,7 +101,7 @@ const DECK = {
     clients: [
       { name: "BBVA",         cls: "client-btn-bbva",          panelKey: "bbva" },
       { name: "Santander",    cls: "client-btn-sant",           panelKey: "sant" },
-      { name: "Conclusiones", cls: "client-btn-conclusiones",   disabled: true   }
+      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 10  }
     ]
   },
 
@@ -127,7 +127,7 @@ const DECK = {
     // Índice de secciones — slide: índice 0-based del destino (null = próximamente)
     sections: [
       { label: "CIB",          slide: 4 },    // → slide-5
-      { label: "CF & Banking", slide: null }  // próximamente
+      { label: "CF & Banking", slide: 8 }    // → slide-9
     ]
   },
 
@@ -151,8 +151,8 @@ const DECK = {
       { title: "Foco en IA",              body: "IA como premisa de partida en todos los proyectos." }
     ],
     sections: [
-      { label: "CIB",          slide: null },  // próximamente
-      { label: "CF & Banking", slide: null }   // próximamente
+      { label: "CIB",          slide: 6 },     // → slide-7 (SAN CIB)
+      { label: "CF & Banking", slide: 9 }    // → slide-10
     ]
   },
 
@@ -256,6 +256,140 @@ const DECK = {
         {
           label: "Brasil · Estructura de Referencia CIB",
           text: "Apuesta ejecutiva plena: dedicación del ED a Brasil y movilización de talento CIB senior clave para construir el equipo núcleo de la cuenta."
+        }
+      ]
+    }
+  },
+
+  /* ========================================================
+     PANTALLA 09 — BBVA · CF & BANKING  (pendiente)
+  ======================================================== */
+  bbvaCFB: {
+    label: "BBVA · CF & Banking",
+    color: "#004481",
+    pending: true
+  },
+
+  /* ========================================================
+     PANTALLA 10 — SANTANDER · CF & BANKING  (pendiente)
+  ======================================================== */
+  santCFB: {
+    label: "Santander · CF & Banking",
+    color: "#EC0000",
+    pending: true
+  },
+
+  /* ========================================================
+     PANTALLA 07 — SANTANDER · CIB
+     Editar en: DECK.santCIB
+  ======================================================== */
+  /* ========================================================
+     PANTALLA 11 — CONCLUSIONES
+     Editar en: DECK.conclusiones
+  ======================================================== */
+  conclusiones: {
+    label: "Conclusiones",
+    messages: [
+      { num: "Mensaje 1", body: "Pendiente de completar." },
+      { num: "Mensaje 2", body: "Pendiente de completar." },
+      { num: "Mensaje 3", body: "Pendiente de completar." },
+      { num: "Mensaje 4", body: "Pendiente de completar." },
+      { num: "Mensaje 5", body: "Pendiente de completar." }
+    ]
+  },
+
+  santCIB: {
+    label: "Santander · CIB",
+    color: "#EC0000",
+
+    // ── Contexto ───────────────────────────────────────────
+    contexto: {
+      heading: "Contexto del Plan",
+      objetivo: {
+        rev:    "26",
+        ftes:   "350",
+        growth: "×2 desde FY25",
+        desglose: [
+          { ftes: "250", label: "España" },
+          { ftes: "100", label: "Geografías" }
+        ]
+      },
+      posicion: [
+        { badge: "1er proveedor en Negocio", area: "",            tier: "top" },
+        { badge: "2º en Tecnología & Ops",   area: "→ obj. E2E", tier: "mid" }
+      ],
+      valor: "Generador de talento para la apertura de nuevos clientes de Nfq."
+    },
+
+    // ── Negocio / Tecnología — flip independiente por columna ────
+    negocioTech: {
+      negocio: {
+        heading: "Negocio",
+        ftes: "150",
+        situacionLabel: "Situación Actual",
+        retosLabel: "Retos",
+        accionesTag: "· Acciones",
+        accionesHeading: "ACCIONES FY26-FY27",
+        situacion: [
+          "Concentración en ámbitos de negocio maduros: Riesgos, US y GTB.",
+          "Estancamiento en ámbitos sin presencia relevante: FinCrime y Finance.",
+          "Buen avance de los HUBs en Europa: Málaga y Polonia."
+        ],
+        retos: [
+          "Contexto de reducción de costes del 25-30%.",
+          "Plan de adopción de IA y búsqueda de eficiencia.",
+          "Conseguir ser el primer proveedor en todos los dominios vs concentración global."
+        ],
+        acciones: [
+          { label: "FinCrime · GDF · Finance · Accounting", text: "Plan de impulso en FinCrime, GDF, Finance y Accounting." },
+          { label: "Branches",                              text: "Planes para retomar senda alcista en Branches." }
+        ]
+      },
+      tecnologia: {
+        heading: "Tecnología & Ops",
+        ftes: "100",
+        situacionLabel: "Situación Actual",
+        retosLabel: "Retos",
+        accionesTag: "· Acciones",
+        accionesHeading: "ACCIONES FY26-FY27",
+        situacion: [
+          "Avance en tecnología en algunos ámbitos maduros: Risk y GTB.",
+          "Primeros pasos en ámbitos como Markets y GDF.",
+          "Entrada en ámbito de CDAIO en roles de BP y ejecución."
+        ],
+        retos: [
+          "Contexto de reducción de costes del 25-30%.",
+          "IA: se exige contabilizar la eficiencia en los desarrollos.",
+          "Convertirnos en proveedor de referencia en el área de tecnología.",
+          "Conjugar la aplicación de IA con la externalización de servicios de Operaciones."
+        ],
+        acciones: [
+          { label: "Ingeniería CIB", text: "Traer la experiencia de BBVA CIB Eng al cliente, con apoyo de Antonio y liderazgo de la nueva etapa de Daniel L." },
+          { label: "CDAIO",         text: "Plan CDAIO: conseguir ser agente de cambio en el plan de adopción de IA, en conjunción con Negocio." },
+          { label: "DataLakes",     text: "Planes de Data para los DataLakes (CoE BigData + BDH)." },
+          { label: "SDS",           text: "Plan de posicionamiento en la primera línea de SDS." }
+        ]
+      }
+    },
+
+    // ── Geografías — pendiente de datos ──
+    geografias: {
+      heading: "Geografías",
+      ftes: "—",
+      situacionLabel: "Situación Actual",
+      retosLabel: "Retos",
+      accionesTag: "",
+      hint: "",
+      situacion: [
+        "Datos pendientes de completar."
+      ],
+      retos: [
+        "Datos pendientes de completar."
+      ],
+      acciones: [
+        {
+          label: "Pendiente",
+          text: "Datos de Geografías Santander CIB pendientes de completar."
         }
       ]
     }

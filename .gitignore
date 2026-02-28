@@ -1,0 +1,12 @@
+# Sistema
+.DS_Store
+**/.DS_Store
+
+# Archivos fuente internos (no necesarios para la web)
+*.xlsx
+*.pdf
+estrategia-clientes.md
+NFQ_Style_Guide.md
+
+# Claude local
+.claude/

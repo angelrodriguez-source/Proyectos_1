@@ -327,6 +327,31 @@ html, body {
   color: rgba(255,255,255,0.9);
 }
 
+/* Botón ¡Empezamos! */
+.cover-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 36px;
+  padding: 13px 28px;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 50px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.9);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(14px, 1.2vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  backdrop-filter: blur(4px);
+}
+.cover-start-btn:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.6);
+  transform: translateX(3px);
+}
+
 /* FOOTER */
 .cover-footer {
   display: flex;
@@ -866,12 +891,9 @@ html, body {
 .client-btn-conclusiones {
   background: var(--orange);
   border: none;
-  cursor: not-allowed;
-  opacity: 0.65;
   padding: 12px 24px;
   min-width: 220px;
 }
-.client-btn-conclusiones:hover { transform: none; filter: none; }
 .client-btn-conclusiones .client-btn-name { color: var(--white); }
 
 .client-btn {
@@ -1148,6 +1170,201 @@ html, body {
   left: 0; top: 0; bottom: 0;
   width: 3px;
   background: #004481;
+}
+
+/* ── Santander CIB — color overrides ── */
+.slide-sant-cib {
+  background: var(--white);
+  overflow: hidden;
+}
+.slide-sant-cib::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: #EC0000;
+}
+/* Título grande de página */
+.slide-sant-cib .cib-page-title { color: #EC0000; }
+/* Separador de heading */
+.slide-sant-cib .cib-sep { background: #EC0000; }
+/* Dots de posición en contexto */
+.slide-sant-cib .cib-ctx-pos-dot-top { background: #EC0000; }
+.slide-sant-cib .cib-ctx-pos-dot-mid { background: rgba(236,0,0,0.3); }
+/* Título de columna NT (Negocio / Tecnología & Ops) */
+.slide-sant-cib .nt-col-eyebrow { color: #EC0000; }
+/* Tag "· Acciones" junto al título */
+.slide-sant-cib .nt-accion-tag { color: rgba(236,0,0,0.5); }
+/* Badge de Ftes */
+.slide-sant-cib .nt-ftes-badge {
+  color: rgba(236,0,0,0.55);
+  background: rgba(236,0,0,0.06);
+  border-color: rgba(236,0,0,0.14);
+}
+/* Situación card tint */
+.slide-sant-cib .nt-sit {
+  background: rgba(236,0,0,0.04);
+  border: 1.5px solid rgba(236,0,0,0.14);
+  border-left: 3px solid rgba(236,0,0,0.55);
+}
+.slide-sant-cib .nt-sit .nt-sc-eyebrow { color: #C40000; }
+.slide-sant-cib .nt-sit .nt-sc-divider { background: rgba(236,0,0,0.12); }
+.slide-sant-cib .nt-sit .nt-sc-dot     { background: rgba(236,0,0,0.45); }
+/* Acciones flip back — dark red */
+.slide-sant-cib .nt-back-inner {
+  background: #9B0000;
+  border: 1.5px solid #7A0000;
+  border-left: 3px solid rgba(255,255,255,0.28);
+}
+/* Geografías colors */
+.slide-sant-cib .geo-eyebrow { color: #EC0000; }
+.slide-sant-cib .geo-pair-header { color: #C40000; }
+.slide-sant-cib .geo-pair-divider { background: rgba(236,0,0,0.12); }
+.slide-sant-cib .geo-action-card {
+  background: #9B0000;
+  border: 1.5px solid #7A0000;
+}
+/* Nav back button */
+.slide-sant-cib .cib-nav-back {
+  border-color: rgba(236,0,0,0.25);
+  color: rgba(180,0,0,0.65);
+}
+.slide-sant-cib .cib-nav-back:hover {
+  background: rgba(236,0,0,0.06);
+}
+/* Strip de Contexto — tinte granate claro, texto oscuro */
+.slide-sant-cib .cib-ctx-strip {
+  background: rgba(156,0,0,0.05);
+  border-color: rgba(156,0,0,0.14);
+}
+.slide-sant-cib .cib-ctx-col {
+  border-right-color: rgba(156,0,0,0.10);
+}
+.slide-sant-cib .cib-ctx-eyebrow {
+  color: #8B0000;
+}
+.slide-sant-cib .cib-ctx-rev {
+  color: #8B0000;
+}
+.slide-sant-cib .cib-ctx-growth {
+  background: rgba(156,0,0,0.10);
+  color: #8B0000;
+}
+.slide-sant-cib .cib-ctx-pos-dot-top { background: #8B0000; }
+.slide-sant-cib .cib-ctx-pos-dot-mid { background: rgba(156,0,0,0.28); }
+.slide-sant-cib .cib-ctx-pos-rank {
+  color: #8B0000;
+}
+.slide-sant-cib .cib-ctx-valor {
+  color: var(--black);
+}
+
+/* ── Pending slides — placeholder content ── */
+.cib-pending-wrap {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+  padding: 20px 64px 28px;
+}
+.cib-pending-card {
+  border-radius: 14px;
+  border: 1.5px dashed var(--grey-200);
+  background: var(--grey-50, #FAFAFA);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+}
+.cib-pending-card-wide {
+  grid-column: 1 / -1;
+}
+.cib-pending-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--grey-300);
+}
+.cib-pending-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: var(--grey-100, #F4F4F4);
+  border: 1px solid var(--grey-200);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--grey-400);
+  letter-spacing: 0.08em;
+}
+/* Conclusiones slide */
+.slide-conclusiones {
+  background: var(--white);
+  overflow: hidden;
+}
+.slide-conclusiones::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--orange);
+}
+
+/* ── Conclusiones — message cards ── */
+.conc-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 12px 64px 28px;
+  align-content: start;
+}
+.conc-card {
+  background: var(--white);
+  border: 1.5px solid var(--grey-100, #F0F0F0);
+  border-left: 3.5px solid var(--orange);
+  border-radius: 14px;
+  padding: 22px 24px 22px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+.conc-card:hover {
+  box-shadow: 0 4px 18px rgba(236,104,62,0.10);
+}
+.conc-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: calc(50% - 8px);
+}
+.conc-num {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--orange);
+}
+.conc-divider {
+  height: 1px;
+  background: var(--grey-100, #F0F0F0);
+  border: none;
+  margin: 0;
+}
+.conc-body {
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.45;
 }
 
 .cib-content {
@@ -1920,6 +2137,97 @@ html, body {
    FIN PANTALLA 05-06
    ============================================================ */
 
+
+/* ============================================================
+   RESPONSIVE — PORTÁTIL (≤ 860 px de alto)
+   Reduce paddings y gaps verticales para que todo quepa
+   en pantallas de 768-900 px (MacBook, Windows laptop).
+   ============================================================ */
+@media (max-height: 860px) {
+
+  /* — Portada — */
+  .slide-cover            { padding: 30px 64px; }
+  .cover-eyebrow          { margin-bottom: 14px; }
+  .cover-title            { font-size: clamp(42px, 6.5vw, 84px); margin-bottom: 18px; }
+  .cover-divider          { margin-bottom: 16px; }
+  .cover-start-btn        { margin-top: 20px; }
+  .cover-main-area        { padding-bottom: 18px; }
+
+  /* — Header de sección (todas las slides excepto portada) — */
+  .section-header         { padding-top: 18px; }
+  .section-logo           { height: 22px; }
+
+  /* — Visión General — */
+  .vision-content         { padding-top: 12px; padding-bottom: 18px; gap: 10px; }
+  .vision-main-title      { font-size: clamp(26px, 3.6vw, 52px); margin-bottom: 6px; }
+  .vision-sub             { font-size: clamp(12px, 1.1vw, 15px); }
+  .vision-sep             { margin-top: -2px; }
+  .fy-grid                { gap: 10px; }
+  .fy-col                 { gap: 6px; }
+  .fy-card                { padding: 12px 18px 10px; }
+  .fy-card-face--front    { padding: 12px 18px 10px; }
+  .fy-year                { font-size: clamp(20px, 2.4vw, 36px); margin-bottom: 3px; }
+  .fy-rev                 { font-size: clamp(20px, 2.6vw, 38px); }
+  .fy-ftes                { margin-bottom: 4px; }
+  .summary-row            { gap: 8px; }
+  .client-nav             { margin-bottom: 24px; gap: 8px; }
+  .client-nav-row         { gap: 10px; }
+  .client-btn             { padding: 12px 20px; }
+
+  /* — Slides CIB (BBVA y Santander) — */
+  .cib-content            { padding-top: 12px; padding-bottom: 14px; gap: 10px; }
+  .cib-page-title         { font-size: clamp(24px, 2.8vw, 40px); }
+  .cib-sep                { margin-bottom: 8px; }
+  .cib-ctx-strip          { height: calc(100vh / 7.5); }
+  .cib-ctx-col            { padding: 0 18px; gap: 3px; }
+  .nt-section             { gap: 10px; }
+  .nt-col                 { gap: 6px; }
+  .nt-col-eyebrow         { font-size: clamp(13px, 1.3vw, 18px); }
+  .nt-half                { gap: 8px; }
+  .nt-sit                 { padding: 10px 12px; gap: 6px; }
+  .nt-sc-list             { gap: 5px; }
+  .nt-back-inner          { padding: 12px 14px; gap: 8px; }
+  .geo-section            { height: calc(100vh / 7.5); gap: 6px; }
+  .geo-row                { gap: 10px; }
+
+  /* — Pending & Conclusiones — */
+  .cib-pending-wrap       { padding-top: 12px; padding-bottom: 14px; gap: 12px; }
+  .conc-grid              { padding-top: 8px; padding-bottom: 14px; gap: 12px; }
+  .conc-card              { padding: 16px 20px 16px 20px; gap: 8px; }
+}
+
+/* ============================================================
+   RESPONSIVE — PANTALLAS MUY PEQUEÑAS (≤ 750 px de alto)
+   Para ventanas de navegador reducidas o resoluciones 768 px.
+   ============================================================ */
+@media (max-height: 750px) {
+
+  .slide-cover            { padding: 22px 64px; }
+  .cover-title            { font-size: clamp(36px, 5.5vw, 70px); margin-bottom: 12px; }
+  .cover-divider          { margin-bottom: 10px; }
+  .cover-start-btn        { margin-top: 14px; padding: 10px 22px; }
+
+  .section-header         { padding-top: 12px; }
+  .section-logo           { height: 19px; }
+
+  .vision-content         { padding-top: 8px; padding-bottom: 12px; gap: 7px; }
+  .vision-main-title      { font-size: clamp(22px, 3vw, 44px); margin-bottom: 4px; }
+  .fy-card                { padding: 9px 14px 8px; }
+  .fy-card-face--front    { padding: 9px 14px 8px; }
+  .fy-year                { font-size: clamp(18px, 2vw, 30px); }
+  .fy-rev                 { font-size: clamp(18px, 2.2vw, 32px); }
+  .client-nav             { margin-bottom: 16px; }
+
+  .cib-content            { padding-top: 8px; padding-bottom: 10px; gap: 7px; }
+  .cib-page-title         { font-size: clamp(20px, 2.4vw, 34px); }
+  .cib-ctx-strip          { height: calc(100vh / 8.5); }
+  .geo-section            { height: calc(100vh / 8.5); }
+  .nt-sit                 { padding: 7px 10px; gap: 4px; }
+  .nt-back-inner          { padding: 9px 12px; gap: 6px; }
+
+  .conc-card              { padding: 12px 16px 12px 16px; gap: 6px; }
+}
+
 </style>
 <script src="content.js"></script>
 </head>
@@ -1972,6 +2280,11 @@ html, body {
       <p id="cover-subtitle" class="cover-subtitle anim-up delay-4">
         <strong>Negocio Maduro</strong> · BBVA &amp; Santander
       </p>
+
+      <button class="cover-start-btn anim-up delay-5" onclick="nextSlide()">
+        ¡Empezamos!
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
 
     </main>
 
@@ -2112,6 +2425,153 @@ html, body {
     <div class="cib-content" id="cib-bbva-content-6"></div>
   </div>
   <!-- FIN PANTALLA 06 -->
+
+
+  <!-- ============================================================
+       PANTALLA 07 — SANTANDER · CIB · CONTEXTO DEL PLAN
+       ============================================================ -->
+  <div class="slide slide-sant-cib" id="slide-7">
+
+    <div class="vision-bg-dots"></div>
+
+    <!-- Header de sección -->
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div id="cib-sant-page-title-slot" class="cib-page-title"></div>
+      <div class="section-label" style="color:#EC0000">
+        <span class="label-line" style="background:#EC0000"></span>
+        <span id="cib-sant-label">Santander · CIB</span>
+        <button class="cib-nav-back" onclick="goTo(3)" title="Ver Santander Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Santander Global
+        </button>
+      </div>
+    </div>
+
+    <!-- Contenido — rellenado por hydrate() -->
+    <div class="cib-content" id="cib-sant-content"></div>
+
+  </div>
+  <!-- FIN PANTALLA 07 -->
+
+
+  <!-- ============================================================
+       PANTALLA 08 — SANTANDER · CIB · ACCIONES
+       (mismo layout que pantalla 07, cards de acción ya visibles)
+       ============================================================ -->
+  <div class="slide slide-sant-cib slide-cib-acciones" id="slide-8">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div id="cib-sant-page-title-slot-8" class="cib-page-title"></div>
+      <div class="section-label" style="color:#EC0000">
+        <span class="label-line" style="background:#EC0000"></span>
+        <span>Santander · CIB</span>
+        <button class="cib-nav-back" onclick="goTo(3)" title="Ver Santander Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Santander Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-content" id="cib-sant-content-8"></div>
+  </div>
+  <!-- FIN PANTALLA 08 -->
+
+
+  <!-- ============================================================
+       PANTALLA 09 — BBVA · CF & BANKING  (pendiente)
+       ============================================================ -->
+  <div class="slide slide-bbva-cib" id="slide-9">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title">BBVA <span>·</span> CF &amp; Banking</div>
+      <div class="section-label" style="color:#004481">
+        <span class="label-line" style="background:#004481"></span>
+        <span>BBVA · CF &amp; Banking</span>
+        <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          BBVA Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-pending-wrap">
+      <div class="cib-pending-card cib-pending-card-wide">
+        <div class="cib-pending-label">Contexto del Plan</div>
+        <div class="cib-pending-badge">⏳ Pendiente</div>
+      </div>
+      <div class="cib-pending-card">
+        <div class="cib-pending-label">Negocio</div>
+        <div class="cib-pending-badge">⏳ Pendiente</div>
+      </div>
+      <div class="cib-pending-card">
+        <div class="cib-pending-label">Tecnología &amp; Ops</div>
+        <div class="cib-pending-badge">⏳ Pendiente</div>
+      </div>
+      <div class="cib-pending-card">
+        <div class="cib-pending-label">Geografías</div>
+        <div class="cib-pending-badge">⏳ Pendiente</div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN PANTALLA 09 -->
+
+
+  <!-- ============================================================
+       PANTALLA 10 — SANTANDER · CF & BANKING  (pendiente)
+       ============================================================ -->
+  <div class="slide slide-sant-cib" id="slide-10">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CF &amp; Banking</div>
+      <div class="section-label" style="color:#EC0000">
+        <span class="label-line" style="background:#EC0000"></span>
+        <span>Santander · CF &amp; Banking</span>
+        <button class="cib-nav-back" onclick="goTo(3)" title="Ver Santander Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Santander Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-pending-wrap">
+      <div class="cib-pending-card cib-pending-card-wide">
+        <div class="cib-pending-label">Contexto del Plan</div>
+        <div class="cib-pending-badge">⏳ Pendiente</div>
+      </div>
+      <div class="cib-pending-card">
+        <div class="cib-pending-label">Negocio</div>
+        <div class="cib-pending-badge">⏳ Pendiente</div>
+      </div>
+      <div class="cib-pending-card">
+        <div class="cib-pending-label">Tecnología &amp; Ops</div>
+        <div class="cib-pending-badge">⏳ Pendiente</div>
+      </div>
+      <div class="cib-pending-card">
+        <div class="cib-pending-label">Geografías</div>
+        <div class="cib-pending-badge">⏳ Pendiente</div>
+      </div>
+    </div>
+  </div>
+  <!-- FIN PANTALLA 10 -->
+
+
+  <!-- ============================================================
+       PANTALLA 11 — CONCLUSIONES
+       ============================================================ -->
+  <div class="slide slide-conclusiones" id="slide-11">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title" style="color:var(--orange)">Conclusiones</div>
+      <div class="section-label" style="color:var(--orange)">
+        <span class="label-line" style="background:var(--orange)"></span>
+        <span>Resumen Ejecutivo</span>
+      </div>
+    </div>
+    <div class="conc-grid" id="conc-content"></div>
+  </div>
+  <!-- FIN PANTALLA 11 -->
 
 
   <!-- Panel global de cliente — compartido entre todas las pantallas -->
@@ -2335,25 +2795,21 @@ function hydrate() {
 
   const nav = document.getElementById('client-nav');
   if (nav) {
-    const active = DECK.vision.clients.filter(c => !c.disabled);
-    const soon   = DECK.vision.clients.filter(c =>  c.disabled);
     const mkBtn = c => {
-      const action = c.panelKey
-        ? `openClientPanel('${c.panelKey}')`
-        : c.slide === null ? 'nextSlide()' : `goTo(${c.slide})`;
-      return `<button class="client-btn ${c.cls}" onclick="${action}">
+      const action = c.disabled ? ''
+        : c.panelKey ? `onclick="openClientPanel('${c.panelKey}')"`
+        : c.slide === null ? `onclick="nextSlide()"` : `onclick="goTo(${c.slide})"`;
+      return `<button class="client-btn ${c.cls}" ${c.disabled ? 'disabled' : action}>
         <span class="client-btn-name">${c.name}</span>
         <span class="client-btn-arrow">→</span>
       </button>`;
     };
-    const soonHtml = soon.map(c => `
-      <button class="client-btn client-btn-conclusiones" disabled>
-        <span class="client-btn-name">${c.name}</span>
-        <span class="client-btn-arrow">→</span>
-      </button>`).join('');
+    // Últimos clientes: BBVA y Santander en fila superior, Conclusiones centrada abajo
+    const mainClients = DECK.vision.clients.filter(c => c.cls !== 'client-btn-conclusiones');
+    const concClient  = DECK.vision.clients.find(c  => c.cls === 'client-btn-conclusiones');
     nav.innerHTML =
-      `<div class="client-nav-row">${active.map(mkBtn).join('')}</div>` +
-      (soonHtml ? `<div class="client-nav-soon">${soonHtml}</div>` : '');
+      `<div class="client-nav-row">${mainClients.map(mkBtn).join('')}</div>` +
+      (concClient ? `<div class="client-nav-soon">${mkBtn(concClient)}</div>` : '');
   }
 
   // --- BBVA CIB ---
@@ -2512,6 +2968,158 @@ function hydrate() {
 
     content.innerHTML = ctxStrip + ntSection + geoSection;
   }
+
+  // --- SANTANDER CIB ---
+  if (DECK.santCIB) {
+    const d = DECK.santCIB;
+    setText('cib-sant-label', d.label);
+    const content = document.getElementById('cib-sant-content');
+    if (!content) return;
+
+    const ctx = d.contexto;
+
+    // ── STRIP CONTEXTO ──
+    const ctxStrip = `
+      <div class="cib-ctx-strip anim-up delay-1">
+
+        <div class="cib-ctx-col">
+          <div class="cib-ctx-eyebrow">Objetivo FY27</div>
+          <div class="cib-ctx-rev">${ctx.objetivo.rev}<span class="cib-ctx-unit"> €MM</span></div>
+          <div class="cib-ctx-ftes">${ctx.objetivo.ftes} Ftes</div>
+          <div class="cib-ctx-growth">↑ ${ctx.objetivo.growth}</div>
+          <div class="cib-ctx-desglose">
+            ${ctx.objetivo.desglose.map((r, i) =>
+              `${i > 0 ? '<span>·</span>' : ''}<span>${r.ftes} ${r.label}</span>`
+            ).join('')}
+          </div>
+        </div>
+
+        <div class="cib-ctx-col">
+          <div class="cib-ctx-eyebrow">Posición Actual</div>
+          <div class="cib-ctx-pos-list">
+            ${ctx.posicion.map(p => `
+            <div class="cib-ctx-pos-item">
+              <span class="cib-ctx-pos-dot cib-ctx-pos-dot-${p.tier}"></span>
+              <span class="cib-ctx-pos-rank">${p.badge}</span>
+              <span class="cib-ctx-pos-area">${p.area}</span>
+            </div>`).join('')}
+          </div>
+        </div>
+
+        <div class="cib-ctx-col">
+          <div class="cib-ctx-eyebrow">Valor Añadido</div>
+          <p class="cib-ctx-valor">"${ctx.valor}"</p>
+        </div>
+
+      </div>`;
+
+    const titleSlot = document.getElementById('cib-sant-page-title-slot');
+    if (titleSlot) titleSlot.innerHTML = `Santander <span>·</span> CIB`;
+
+    // ── SECCIÓN GEOGRAFÍAS ──
+    const geo = d.geografias;
+    const makeBulletsSant = items => items.map(t =>
+      `<div class="geo-bullet"><span class="geo-bullet-dot"></span><span>${t}</span></div>`
+    ).join('');
+    const makePairCardSant = (header, items) => `
+      <div class="geo-pair-card">
+        <div class="geo-pair-header">${header}</div>
+        <div class="geo-pair-divider"></div>
+        <div class="geo-pair-bullets">${makeBulletsSant(items)}</div>
+      </div>`;
+    const makeActionCardSant = ({ label, text }) => `
+      <div class="geo-action-card">
+        <div class="geo-action-num">${label}</div>
+        <div class="geo-action-divider"></div>
+        <div class="geo-action-text">${text}</div>
+      </div>`;
+    const geoSection = `
+      <div class="geo-section anim-up delay-2">
+        <div class="geo-section-header">
+          <div class="geo-eyebrow">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            ${geo.heading}
+            <span class="geo-eyebrow-action">${geo.accionesTag}</span>
+          </div>
+          <span class="nt-ftes-badge">${geo.ftes} Ftes</span>
+          <div class="geo-hint">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            ${geo.hint}
+          </div>
+        </div>
+        <div class="geo-flip-group" onclick="this.classList.toggle('flipped')">
+          <div class="geo-flip-inner">
+            <div class="geo-flip-face geo-flip-front">
+              ${makePairCardSant(geo.situacionLabel, geo.situacion)}
+              ${makePairCardSant(geo.retosLabel, geo.retos)}
+              <svg class="geo-flip-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </div>
+            <div class="geo-flip-face geo-flip-back">
+              ${geo.acciones.map(a => makeActionCardSant(a)).join('')}
+              <svg class="geo-flip-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+    // ── SECCIÓN NEGOCIO / TECNOLOGÍA ──
+    const nt = d.negocioTech;
+    const mkBulletSant = t =>
+      `<div class="nt-sc-item"><span class="nt-sc-dot"></span><span>${t}</span></div>`;
+    const mkSubCardSant = (cls, label, items) => `
+      <div class="nt-sub-card ${cls}">
+        <div class="nt-sc-eyebrow">${label}</div>
+        <div class="nt-sc-divider"></div>
+        <div class="nt-sc-items">${items.map(mkBulletSant).join('')}</div>
+      </div>`;
+    const mkNtColSant = (data, iconSvg) => `
+      <div class="nt-col">
+        <div class="nt-col-header">
+          <div class="nt-col-eyebrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${iconSvg}</svg>
+            ${data.heading}
+            <span class="nt-accion-tag">${data.accionesTag}</span>
+          </div>
+          <span class="nt-ftes-badge">${data.ftes} Ftes</span>
+        </div>
+        <div class="nt-half" onclick="this.classList.toggle('flipped')">
+          <div class="nt-flip-inner">
+            <div class="nt-face nt-front">
+              ${mkSubCardSant('nt-sit', data.situacionLabel, data.situacion)}
+              ${mkSubCardSant('nt-ret', data.retosLabel, data.retos)}
+              <svg class="nt-flip-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            </div>
+            <div class="nt-face nt-back">
+              <div class="nt-back-inner">
+                <div class="nt-back-heading">${data.accionesHeading}</div>
+                <div class="nt-back-divider"></div>
+                <div class="nt-action-list">
+                  ${data.acciones.map(a => `
+                  <div class="nt-action-row">
+                    <div class="nt-action-label">${a.label}</div>
+                    <div class="nt-action-text">${a.text}</div>
+                  </div>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+
+    const iconNegSant  = `<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>`;
+    const iconTechSant = `<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>`;
+
+    const ntSection = `
+      <div class="nt-section anim-up delay-1">
+        ${mkNtColSant(nt.negocio,    iconNegSant)}
+        ${mkNtColSant(nt.tecnologia, iconTechSant)}
+      </div>`;
+
+    content.innerHTML = ctxStrip + ntSection + geoSection;
+  }
 }
 
 hydrate();
@@ -2527,6 +3135,18 @@ hydrate();
   }
   const title6 = document.getElementById('cib-page-title-slot-6');
   if (title6) title6.innerHTML = 'BBVA <span>·</span> CIB';
+})();
+
+// Clonar contenido SAN CIB (slide-7) en slide-8 con acciones ya desplegadas e interactivas
+(function cloneSantCIB() {
+  const src  = document.getElementById('cib-sant-content');
+  const src8 = document.getElementById('cib-sant-content-8');
+  if (src && src8) {
+    src8.innerHTML = src.innerHTML;
+    src8.querySelectorAll('.nt-half, .geo-flip-group').forEach(el => el.classList.add('flipped'));
+  }
+  const title8 = document.getElementById('cib-sant-page-title-slot-8');
+  if (title8) title8.innerHTML = 'Santander <span>·</span> CIB';
 })();
 
 // Clonar contenido de slide-2 en slides 3 y 4
@@ -2551,6 +3171,23 @@ hydrate();
     });
   });
 })();
+
+// ── Hydrate Conclusiones ──────────────────────────────────────
+if (DECK.conclusiones) {
+  const grid = document.getElementById('conc-content');
+  if (grid) {
+    DECK.conclusiones.messages.forEach(msg => {
+      const card = document.createElement('div');
+      card.className = 'conc-card anim-fade';
+      card.innerHTML = `
+        <div class="conc-num">${msg.num}</div>
+        <hr class="conc-divider">
+        <div class="conc-body">${msg.body}</div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+}
 
 goTo(0);
 </script>
