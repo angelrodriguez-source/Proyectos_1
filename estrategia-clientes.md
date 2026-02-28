@@ -1,4 +1,4 @@
-# ESTRATEGIA DE CLIENTES — NEGOCIO MADURO FY27
+nfq# ESTRATEGIA DE CLIENTES — NEGOCIO MADURO FY27
 ## Nfq · Revisión FY26 → Planificación FY27
 
 > **Documento de trabajo — referencia editorial sincronizada con `content.js`**
@@ -243,26 +243,28 @@
 <!-- Editar en: content.js → DECK.santCIB (pendiente de crear)   -->
 <!-- ============================================================ -->
 
-# Santander · CIB ⚠️ Pantalla pendiente de desarrollo
+# Pantalla 07 — Santander · CIB
 
-> Misma estructura que BBVA CIB: Contexto (tira superior) · Negocio / Tecnología & Ops (flip independiente) · Geografías (flip grupo).
-> Datos extraídos del Excel "Negocio Maduro FY27.xlsx" · pestaña SAN CIB.
+> Pantalla ✅ construida. Misma estructura que BBVA CIB: Contexto (tira superior) · Negocio / Tecnología & Ops (flip independiente) · Geografías (flip grupo).
+> Pantalla 08 = clon con acciones pre-giradas (interactivo).
+> Botón "← Santander Global" navega a pantalla 04 (`goTo(3)`). Clave: `DECK.santCIB`.
 
 ---
 
-### Contexto del Plan
+### Sección 1 — Contexto (`santCIB.contexto`)
 
-**Objetivo FY27:** 26 €MM y +350 Ftes — supone ×2 desde FY25 (CIB + Geografías)
+**Objetivo FY27:** 26 €MM · 350 Ftes · ×2 desde FY25
+- Desglose: 250 Ftes España · ~100 Ftes Geografías
 
 **Posición Actual:**
-- Primer proveedor de Negocio en CIB
-- 2º proveedor en Tecnología & Operaciones → objetivo: convertirnos en primer proveedor E2E
+- 1er proveedor en Negocio
+- 2º en Tecnología & Ops → objetivo: primer proveedor E2E
 
 **Valor Añadido:** Generador de talento para la apertura de nuevos clientes de Nfq.
 
 ---
 
-### Negocio · 150 Ftes
+### Sección 2 — Negocio (`santCIB.negocioTech.negocio`) · 150 Ftes
 
 **Situación Actual:**
 - Concentración en ámbitos de negocio maduros: Riesgos, US y GTB.
@@ -270,42 +272,40 @@
 - Buen avance de los HUBs en Europa: Málaga y Polonia.
 
 **Retos:**
-- Contexto de reducción de costes del cliente del 25-30%.
-- Plan de adopción de IA y búsqueda de eficiencia en todos los ámbitos.
-- Conseguir ser el primer proveedor en todos los dominios frente a la concentración actual.
+- Contexto de reducción de costes del 25-30%.
+- Plan de adopción de IA y búsqueda de eficiencia.
+- Conseguir ser el primer proveedor en todos los dominios vs concentración global.
 
 **Acciones FY26-FY27:**
-- **FinCrime** — Plan de impulso específico para ganar presencia relevante.
-- **GDF / BDH** — Plan de impulso en GDF y su derivada en Base de Datos Histórica.
-- **Finance** — Plan de impulso para entrar en el ámbito de Finanzas.
-- **Accounting** — Plan de impulso en Accounting.
-- **Branches** — Planes para retomar la senda alcista tras el estancamiento.
+- **FinCrime · GDF · Finance · Accounting** — Plan de impulso en FinCrime, GDF, Finance y Accounting.
+- **Branches** — Planes para retomar senda alcista en Branches.
 
 ---
 
-### Tecnología & Operaciones · 100 Ftes
+### Sección 3 — Tecnología & Ops (`santCIB.negocioTech.tecnologia`) · 100 Ftes
 
 **Situación Actual:**
-- Avance en tecnología en ámbitos maduros: Risk y GTB.
-- Primeros pasos en Markets y GDF.
-- Entrada en CDAIO en roles de Business Partner y ejecución.
+- Avance en tecnología en algunos ámbitos maduros: Risk y GTB.
+- Primeros pasos en ámbitos como Markets y GDF.
+- Entrada en ámbito de CDAIO en roles de BP y ejecución.
 
 **Retos:**
-- Reducción de costes aplica también a T&O; ya se exige contabilizar la eficiencia generada por IA.
-- Convertirnos en proveedor de referencia en el área de Tecnología.
+- Contexto de reducción de costes del 25-30%.
+- IA: se exige contabilizar la eficiencia en los desarrollos.
+- Convertirnos en proveedor de referencia en el área de tecnología.
 - Conjugar la aplicación de IA con la externalización de servicios de Operaciones.
 
 **Acciones FY26-FY27:**
-- **CDAIO** — Ser agente de cambio en el plan de adopción de IA, en conjunción con Negocio.
-- **Data / DataLakes** — Planes de Data para los DataLakes (CoE BigData + BDH).
+- **Ingeniería CIB** — Traer la experiencia de BBVA CIB Eng al cliente, con apoyo de Antonio y liderazgo de la nueva etapa de Daniel L.
+- **CDAIO** — Plan CDAIO: conseguir ser agente de cambio en el plan de adopción de IA, en conjunción con Negocio.
+- **DataLakes** — Planes de Data para los DataLakes (CoE BigData + BDH).
 - **SDS** — Plan de posicionamiento en la primera línea de SDS.
-- **Crecimiento** — Priorización de ámbitos de crecimiento y establecimiento de aceleradores de capacidad.
 
 ---
 
-### Geografías
+### Sección 4 — Geografías (`santCIB.geografias`) ⚠️ Pendiente
 
-> ⚠️ Datos pendientes de completar. Objetivo implícito: la diferencia entre 350 Ftes totales y los 250 actuales (Negocio + T&O).
+> Datos de Geografías Santander CIB pendientes de completar. No incluir en la presentación hasta disponer de la información.
 
 ---
 
@@ -316,5 +316,4 @@
 > ⚠️ **PENDIENTE de desarrollo:**
 > - BBVA · CF & Banking
 > - Santander · CF & Banking
-> - Santander · Geografías (datos)
 > - Conclusiones / Resumen Ejecutivo
