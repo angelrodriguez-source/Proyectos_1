@@ -1325,6 +1325,7 @@ html, body {
   gap: 16px;
   padding: 12px 64px 28px;
   align-content: start;
+  overflow-y: auto;
 }
 .conc-card {
   background: var(--white);
@@ -1375,8 +1376,14 @@ html, body {
   gap: 18px;
   position: relative;
   z-index: 1;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+/* Scrollbar sutil para contenido CIB */
+.cib-content::-webkit-scrollbar { width: 4px; }
+.cib-content::-webkit-scrollbar-track { background: transparent; }
+.cib-content::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 4px; }
+.cib-content:hover::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); }
 
 /* — Botón nav de vuelta — */
 .cib-nav-back {
@@ -1443,8 +1450,8 @@ html, body {
 .cib-ctx-strip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  height: calc(100vh / 6);
-  flex-shrink: 0;
+  flex: 0 1 18vh;
+  min-height: 80px;
   border: 1.5px solid rgba(0,68,129,0.15);
   border-radius: 14px;
   overflow: hidden;
@@ -1764,7 +1771,7 @@ html, body {
 
 /* ── Sección Negocio / Tecnología ────────────────────────── */
 .nt-section {
-  flex: 1;
+  flex: 2 1 auto;
   display: flex;
   gap: 14px;
   min-height: 0;
@@ -1954,8 +1961,8 @@ html, body {
 
 /* ── Sección Geografías ───────────────────────────────────── */
 .geo-section {
-  height: calc(100vh / 6);
-  flex-shrink: 0;
+  flex: 0 1 18vh;
+  min-height: 80px;
   margin-top: auto;
   display: flex;
   flex-direction: column;
@@ -2139,35 +2146,23 @@ html, body {
 
 
 /* ============================================================
-   RESPONSIVE — PORTÁTIL (≤ 860 px de alto)
-   Reduce paddings y gaps verticales para que todo quepa
-   en pantallas de 768-900 px (MacBook, Windows laptop).
+   RESPONSIVE — PORTÁTIL (por altura de viewport)
    ============================================================ */
-/* ============================================================
-   TIER 1 — PORTÁTIL GRANDE (≤ 960 px de alto)
-   MacBook Pro 14", pantallas 1080p con barra de tareas grande.
-   ============================================================ */
-@media (max-height: 960px) {
 
-  /* — Portada — */
+/* TIER 1 — Portátil grande (≤ 960px alto) — MacBook Pro 14", 1080p */
+@media (max-height: 960px) {
   .slide-cover            { padding: 36px 64px; }
   .cover-eyebrow          { margin-bottom: 16px; }
   .cover-title            { font-size: clamp(44px, 6.8vw, 90px); margin-bottom: 22px; }
   .cover-divider          { margin-bottom: 20px; }
   .cover-start-btn        { margin-top: 24px; }
-
-  /* — Header de sección — */
-  .section-header         { padding-top: 24px; }
-
-  /* — Visión General — */
+  .section-header         { padding-top: 20px; }
   .vision-content         { padding-top: 14px; padding-bottom: 24px; gap: 12px; }
   .vision-main-title      { font-size: clamp(28px, 3.8vw, 56px); margin-bottom: 8px; }
   .fy-card                { padding: 14px 20px 12px; }
   .fy-card-face--front    { padding: 14px 20px 12px; }
   .client-nav             { margin-bottom: 32px; gap: 8px; }
   .client-btn             { padding: 13px 22px; }
-
-  /* — Panel de cliente — */
   .client-panel           { height: 70%; }
   .panel-header           { padding: 18px 32px 14px; }
   .panel-client-name      { font-size: clamp(24px, 2.8vw, 40px); }
@@ -2176,41 +2171,40 @@ html, body {
   .panel-msg              { padding: 14px 16px; }
   .panel-sections         { padding: 14px 32px 18px; }
   .panel-section-card     { padding: 14px 20px; }
-
-  /* — Slides CIB — */
-  .cib-content            { padding-top: 14px; padding-bottom: 18px; gap: 12px; }
-  .cib-page-title         { font-size: clamp(26px, 3vw, 44px); }
-  .cib-sep                { margin-bottom: 10px; }
-  .cib-ctx-strip          { height: calc(100vh / 7); }
-  .cib-ctx-col            { padding: 0 20px; gap: 4px; }
-  .geo-section            { height: calc(100vh / 7); gap: 8px; }
-
-  /* — Pending & Conclusiones — */
+  .cib-content            { padding: 10px 64px 14px; gap: 10px; }
+  .cib-page-title         { font-size: clamp(24px, 2.8vw, 40px); }
+  .cib-ctx-strip          { flex-basis: 15vh; }
+  .cib-ctx-col            { padding: 0 18px; gap: 3px; }
+  .cib-ctx-eyebrow        { font-size: 9px; margin-bottom: 2px; }
+  .cib-ctx-rev            { font-size: clamp(22px, 2.6vw, 38px); }
+  .cib-ctx-ftes           { font-size: clamp(12px, 1.1vw, 16px); }
+  .cib-ctx-growth         { font-size: 9px; padding: 1px 8px; }
+  .nt-section             { gap: 10px; }
+  .nt-col                 { gap: 5px; }
+  .nt-sub-card            { padding: 10px 14px; gap: 5px; }
+  .nt-sc-item             { font-size: clamp(11px, 0.95vw, 13px); }
+  .nt-back-inner          { padding: 10px 14px; gap: 7px; }
+  .nt-action-text         { font-size: clamp(12px, 1vw, 15px); }
+  .geo-section            { flex-basis: 15vh; gap: 6px; }
+  .geo-pair-card          { padding: 10px 14px; gap: 5px; }
+  .geo-bullet             { font-size: clamp(11px, 1vw, 14px); }
+  .geo-action-card        { padding: 10px 14px; gap: 6px; }
+  .geo-action-text        { font-size: clamp(11px, 1vw, 15px); }
   .cib-pending-wrap       { padding-top: 14px; padding-bottom: 18px; gap: 14px; }
   .conc-grid              { padding-top: 10px; padding-bottom: 18px; gap: 14px; }
-  .conc-card              { padding: 18px 22px 18px 22px; gap: 9px; }
+  .conc-card              { padding: 18px 22px; gap: 9px; }
   .conc-body              { font-size: 14px; }
 }
 
-/* ============================================================
-   TIER 2 — PORTÁTIL ESTÁNDAR (≤ 860 px de alto)
-   MacBook Air, Windows 1366×768, pantallas ≤ 900px.
-   ============================================================ */
+/* TIER 2 — Portátil estándar (≤ 860px alto) — MacBook Air, 1366×768 */
 @media (max-height: 860px) {
-
-  /* — Portada — */
   .slide-cover            { padding: 26px 48px; }
   .cover-eyebrow          { margin-bottom: 10px; }
   .cover-title            { font-size: clamp(36px, 5.8vw, 76px); margin-bottom: 14px; }
   .cover-divider          { margin-bottom: 12px; }
   .cover-start-btn        { margin-top: 16px; padding: 11px 24px; }
-  .cover-main-area        { padding-bottom: 14px; }
-
-  /* — Header de sección — */
-  .section-header         { padding: 14px 48px 0; }
+  .section-header         { padding: 12px 48px 0; }
   .section-logo           { height: 22px; }
-
-  /* — Visión General — */
   .vision-content         { padding: 10px 48px 14px; gap: 8px; }
   .vision-main-title      { font-size: clamp(24px, 3.4vw, 48px); margin-bottom: 4px; }
   .vision-sub             { font-size: clamp(11px, 1vw, 14px); }
@@ -2228,13 +2222,10 @@ html, body {
   .summary-stat           { padding: 8px 14px; }
   .summary-stat-label     { font-size: clamp(8px, 0.7vw, 10px); }
   .summary-stat-val       { font-size: clamp(14px, 1.4vw, 20px); }
-  .summary-stat-sub       { font-size: clamp(10px, 0.8vw, 12px); }
   .client-nav             { margin-bottom: 18px; gap: 6px; }
   .client-nav-row         { gap: 8px; }
   .client-btn             { padding: 10px 18px; border-radius: 10px; }
   .client-btn-name        { font-size: clamp(13px, 1.2vw, 17px); }
-
-  /* — Panel de cliente — */
   .client-panel           { height: 68%; border-radius: 16px 16px 0 0; }
   .panel-header           { padding: 14px 28px 10px; }
   .panel-client-name      { font-size: clamp(20px, 2.4vw, 34px); }
@@ -2250,76 +2241,63 @@ html, body {
   .panel-msg-title        { font-size: clamp(11px, 0.95vw, 15px); margin-bottom: 3px; }
   .panel-msg-body         { font-size: clamp(10px, 0.85vw, 13px); line-height: 1.45; }
   .panel-sections         { padding: 12px 28px 14px; }
-  .panel-sections-label   { font-size: 9px; margin-bottom: 8px; }
-  .panel-sections-grid    { gap: 8px; }
   .panel-section-card     { padding: 12px 18px; border-radius: 10px; }
   .panel-section-card-name { font-size: clamp(12px, 1.1vw, 16px); }
-
-  /* — Slides CIB — */
-  .cib-content            { padding: 8px 48px 12px; gap: 8px; overflow-y: auto; }
-  .cib-page-title         { font-size: clamp(22px, 2.6vw, 38px); }
-  .cib-sep                { margin-bottom: 6px; }
-  .cib-ctx-strip          { height: calc(100vh / 8); }
-  .cib-ctx-col            { padding: 0 16px; gap: 2px; }
-  .cib-ctx-eyebrow        { font-size: 9px; margin-bottom: 2px; }
-  .cib-ctx-rev            { font-size: clamp(20px, 2.4vw, 36px); }
-  .cib-ctx-ftes           { font-size: clamp(11px, 1vw, 15px); }
-  .cib-ctx-growth         { font-size: 9px; padding: 1px 7px; }
-  .cib-ctx-desglose       { font-size: clamp(10px, 0.75vw, 12px); }
-  .cib-ctx-pos-list       { gap: 6px; margin-top: 2px; }
-  .cib-ctx-pos-dot        { width: 7px; height: 7px; }
-  .cib-ctx-pos-rank       { font-size: clamp(11px, 1vw, 15px); }
-  .cib-ctx-pos-area       { font-size: clamp(9px, 0.75vw, 11px); }
-  .nt-section             { gap: 8px; }
-  .nt-col                 { gap: 4px; }
-  .nt-col-eyebrow         { font-size: clamp(12px, 1.2vw, 16px); }
-  .nt-ftes-badge          { font-size: clamp(9px, 0.75vw, 11px); padding: 1px 7px; }
-  .nt-half                { gap: 6px; }
-  .nt-sit                 { padding: 8px 10px; gap: 4px; border-radius: 10px; }
-  .nt-sc-eyebrow          { font-size: clamp(8px, 0.65vw, 9px); }
-  .nt-sc-list             { gap: 4px; }
-  .nt-sc-item             { font-size: clamp(10px, 0.85vw, 12px); }
+  .cib-content            { padding: 6px 48px 8px; gap: 5px; }
+  .cib-page-title         { font-size: clamp(20px, 2.4vw, 34px); }
+  .cib-ctx-strip          { flex-basis: 13vh; min-height: 70px; }
+  .cib-ctx-col            { padding: 0 14px; gap: 2px; }
+  .cib-ctx-eyebrow        { font-size: 8px; margin-bottom: 1px; }
+  .cib-ctx-rev            { font-size: clamp(18px, 2.2vw, 32px); }
+  .cib-ctx-ftes           { font-size: clamp(10px, 0.9vw, 14px); }
+  .cib-ctx-growth         { font-size: 8px; padding: 1px 6px; }
+  .cib-ctx-desglose       { font-size: clamp(9px, 0.7vw, 11px); }
+  .cib-ctx-pos-list       { gap: 4px; margin-top: 1px; }
+  .cib-ctx-pos-rank       { font-size: clamp(10px, 0.9vw, 14px); }
+  .cib-ctx-pos-area       { font-size: clamp(9px, 0.7vw, 10px); }
+  .cib-ctx-valor          { font-size: clamp(11px, 1vw, 15px); }
+  .nt-section             { gap: 6px; }
+  .nt-col                 { gap: 3px; }
+  .nt-col-eyebrow         { font-size: clamp(11px, 1.1vw, 15px); }
+  .nt-ftes-badge          { font-size: 8px; padding: 1px 6px; }
+  .nt-sub-card            { padding: 6px 10px; gap: 3px; border-radius: 8px; }
+  .nt-sit                 { padding: 6px 10px; gap: 3px; border-radius: 8px; }
+  .nt-ret                 { padding: 6px 10px; gap: 3px; border-radius: 8px; }
+  .nt-sc-eyebrow          { font-size: 8px; }
+  .nt-sc-items            { gap: 0; }
+  .nt-sc-item             { font-size: clamp(10px, 0.85vw, 12px); line-height: 1.3; }
   .nt-sc-dot              { width: 4px; height: 4px; margin-top: 5px; }
-  .nt-back-inner          { padding: 10px 12px; gap: 6px; border-radius: 10px; }
-  .nt-accion-item         { gap: 1px; }
-  .nt-accion-label        { font-size: clamp(10px, 0.85vw, 12px); }
-  .nt-accion-text         { font-size: clamp(9px, 0.75vw, 11px); }
-  .geo-section            { height: calc(100vh / 8); gap: 4px; }
-  .geo-eyebrow            { font-size: clamp(12px, 1.2vw, 16px); }
-  .geo-row                { gap: 8px; }
-  .geo-flip-front         { padding: 10px 12px; gap: 5px; }
-  .geo-pair-header        { font-size: clamp(12px, 1.1vw, 16px); }
-  .geo-pair-item           { font-size: clamp(10px, 0.85vw, 12px); }
-  .geo-action-card        { padding: 10px 12px; gap: 5px; }
-
-  /* — Pending & Conclusiones — */
-  .cib-pending-wrap       { padding: 10px 48px 14px; gap: 10px; }
-  .conc-grid              { padding: 6px 48px 14px; gap: 10px; }
-  .conc-card              { padding: 14px 18px 14px 18px; gap: 7px; border-radius: 10px; }
-  .conc-body              { font-size: 13px; }
+  .nt-back-inner          { padding: 7px 10px; gap: 5px; border-radius: 8px; }
+  .nt-back-heading        { font-size: 8px; }
+  .nt-action-label        { font-size: 8px; }
+  .nt-action-text         { font-size: clamp(10px, 0.9vw, 13px); line-height: 1.3; }
+  .geo-section            { flex-basis: 13vh; min-height: 70px; gap: 3px; }
+  .geo-eyebrow            { font-size: clamp(11px, 1.1vw, 15px); }
+  .geo-pair-card          { padding: 7px 10px; gap: 3px; }
+  .geo-pair-header        { font-size: clamp(9px, 0.8vw, 11px); }
+  .geo-bullet             { font-size: clamp(10px, 0.85vw, 12px); line-height: 1.3; }
+  .geo-bullet-dot         { width: 5px; height: 5px; margin-top: 4px; }
+  .geo-action-card        { padding: 7px 10px; gap: 3px; }
+  .geo-action-text        { font-size: clamp(10px, 0.9vw, 13px); line-height: 1.3; }
+  .geo-hint               { font-size: 9px; }
+  .cib-pending-wrap       { padding: 8px 48px 12px; gap: 8px; }
+  .cib-pending-card       { padding: 16px; gap: 8px; border-radius: 10px; }
+  .conc-grid              { padding: 6px 48px 12px; gap: 8px; }
+  .conc-card              { padding: 12px 16px; gap: 6px; border-radius: 10px; }
+  .conc-body              { font-size: 12px; line-height: 1.4; }
 }
 
-/* ============================================================
-   TIER 3 — PANTALLAS PEQUEÑAS (≤ 750 px de alto)
-   Ventanas reducidas, resoluciones 768×1024, tablets landscape.
-   ============================================================ */
+/* TIER 3 — Pantallas pequeñas (≤ 750px alto) — Tablets, ventanas reducidas */
 @media (max-height: 750px) {
-
-  /* — Portada — */
   .slide-cover            { padding: 18px 40px; }
   .cover-eyebrow          { margin-bottom: 8px; font-size: 10px; }
   .cover-title            { font-size: clamp(30px, 5vw, 64px); margin-bottom: 10px; }
   .cover-divider          { margin-bottom: 8px; height: 2px; width: 64px; }
   .cover-subtitle         { font-size: clamp(14px, 1.8vw, 22px); }
   .cover-start-btn        { margin-top: 12px; padding: 9px 20px; font-size: clamp(12px, 1vw, 14px); }
-  .cover-main-area        { padding-bottom: 10px; }
-
-  /* — Header de sección — */
-  .section-header         { padding: 10px 40px 0; }
+  .section-header         { padding: 8px 40px 0; }
   .section-logo           { height: 18px; }
   .section-label          { font-size: 10px; }
-
-  /* — Visión General — */
   .vision-content         { padding: 6px 40px 10px; gap: 5px; }
   .vision-main-title      { font-size: clamp(20px, 2.8vw, 40px); margin-bottom: 2px; }
   .vision-sub             { font-size: clamp(10px, 0.9vw, 13px); line-height: 1.4; }
@@ -2337,8 +2315,6 @@ html, body {
   .client-nav             { margin-bottom: 12px; gap: 5px; }
   .client-btn             { padding: 8px 16px; border-radius: 8px; }
   .client-btn-name        { font-size: clamp(11px, 1vw, 14px); }
-
-  /* — Panel de cliente — */
   .client-panel           { height: 72%; border-radius: 14px 14px 0 0; }
   .panel-header           { padding: 10px 24px 8px; }
   .panel-client-name      { font-size: clamp(16px, 2vw, 28px); }
@@ -2350,43 +2326,55 @@ html, body {
   .panel-msg-title        { font-size: clamp(10px, 0.85vw, 13px); margin-bottom: 2px; }
   .panel-msg-body         { font-size: clamp(9px, 0.78vw, 12px); line-height: 1.4; }
   .panel-sections         { padding: 8px 24px 10px; }
-  .panel-sections-label   { font-size: 8px; margin-bottom: 6px; }
   .panel-section-card     { padding: 10px 14px; border-radius: 8px; }
   .panel-section-card-name { font-size: clamp(11px, 1vw, 14px); }
-
-  /* — Slides CIB — */
-  .cib-content            { padding: 5px 40px 8px; gap: 5px; }
-  .cib-page-title         { font-size: clamp(18px, 2.2vw, 30px); }
-  .cib-sep                { margin-bottom: 4px; }
-  .cib-ctx-strip          { height: calc(100vh / 9.5); }
-  .cib-ctx-col            { padding: 0 12px; gap: 1px; }
-  .cib-ctx-eyebrow        { font-size: 8px; margin-bottom: 1px; }
-  .cib-ctx-rev            { font-size: clamp(16px, 2vw, 28px); }
-  .cib-ctx-ftes           { font-size: clamp(10px, 0.9vw, 13px); }
-  .nt-section             { gap: 6px; }
-  .nt-col                 { gap: 3px; }
-  .nt-col-eyebrow         { font-size: clamp(10px, 1vw, 14px); }
-  .nt-sit                 { padding: 6px 8px; gap: 3px; border-radius: 8px; }
-  .nt-sc-list             { gap: 3px; }
-  .nt-sc-item             { font-size: clamp(9px, 0.78vw, 11px); line-height: 1.35; }
-  .nt-back-inner          { padding: 7px 10px; gap: 4px; border-radius: 8px; }
-  .nt-accion-label        { font-size: clamp(9px, 0.78vw, 11px); }
-  .nt-accion-text         { font-size: clamp(8px, 0.7vw, 10px); }
-  .geo-section            { height: calc(100vh / 9.5); gap: 3px; }
-  .geo-row                { gap: 6px; }
-  .geo-flip-front         { padding: 7px 10px; gap: 4px; }
-  .geo-action-card        { padding: 7px 10px; gap: 4px; }
-
-  /* — Pending & Conclusiones — */
-  .cib-pending-wrap       { padding: 6px 40px 10px; gap: 8px; }
-  .conc-grid              { padding: 4px 40px 10px; gap: 8px; }
-  .conc-card              { padding: 10px 14px 10px 14px; gap: 5px; border-radius: 8px; }
-  .conc-body              { font-size: 12px; }
+  .cib-content            { padding: 4px 40px 5px; gap: 4px; }
+  .cib-page-title         { font-size: clamp(16px, 2vw, 26px); }
+  .cib-ctx-strip          { flex-basis: 11vh; min-height: 60px; }
+  .cib-ctx-col            { padding: 0 10px; gap: 1px; }
+  .cib-ctx-eyebrow        { font-size: 7px; margin-bottom: 0; }
+  .cib-ctx-rev            { font-size: clamp(14px, 1.8vw, 24px); }
+  .cib-ctx-ftes           { font-size: clamp(9px, 0.8vw, 12px); }
+  .cib-ctx-growth         { font-size: 7px; padding: 1px 5px; }
+  .cib-ctx-desglose       { font-size: clamp(8px, 0.65vw, 10px); }
+  .cib-ctx-pos-list       { gap: 3px; margin-top: 0; }
+  .cib-ctx-pos-rank       { font-size: clamp(9px, 0.8vw, 12px); }
+  .cib-ctx-pos-area       { font-size: clamp(8px, 0.65vw, 9px); }
+  .cib-ctx-valor          { font-size: clamp(10px, 0.85vw, 13px); line-height: 1.35; }
+  .nt-section             { gap: 5px; }
+  .nt-col                 { gap: 2px; }
+  .nt-col-eyebrow         { font-size: clamp(9px, 0.9vw, 12px); }
+  .nt-ftes-badge          { font-size: 7px; padding: 1px 5px; }
+  .nt-sub-card            { padding: 4px 7px; gap: 2px; border-radius: 6px; }
+  .nt-sit                 { padding: 4px 7px; gap: 2px; border-radius: 6px; }
+  .nt-ret                 { padding: 4px 7px; gap: 2px; border-radius: 6px; }
+  .nt-sc-eyebrow          { font-size: 7px; }
+  .nt-sc-items            { gap: 0; }
+  .nt-sc-item             { font-size: clamp(9px, 0.75vw, 11px); line-height: 1.25; }
+  .nt-sc-dot              { width: 3px; height: 3px; margin-top: 4px; }
+  .nt-back-inner          { padding: 5px 8px; gap: 3px; border-radius: 6px; }
+  .nt-back-heading        { font-size: 7px; }
+  .nt-action-label        { font-size: 7px; }
+  .nt-action-text         { font-size: clamp(9px, 0.8vw, 11px); line-height: 1.25; }
+  .nt-action-list         { gap: 5px; }
+  .geo-section            { flex-basis: 11vh; min-height: 60px; gap: 2px; }
+  .geo-eyebrow            { font-size: clamp(9px, 0.9vw, 12px); }
+  .geo-pair-card          { padding: 5px 8px; gap: 2px; border-radius: 8px; }
+  .geo-pair-header        { font-size: clamp(8px, 0.7vw, 10px); }
+  .geo-bullet             { font-size: clamp(9px, 0.75vw, 11px); line-height: 1.25; }
+  .geo-bullet-dot         { width: 4px; height: 4px; margin-top: 4px; }
+  .geo-action-card        { padding: 5px 8px; gap: 2px; }
+  .geo-action-text        { font-size: clamp(9px, 0.8vw, 11px); line-height: 1.25; }
+  .geo-hint               { font-size: 8px; }
+  .cib-pending-wrap       { padding: 4px 40px 8px; gap: 6px; }
+  .cib-pending-card       { padding: 12px; gap: 6px; border-radius: 8px; }
+  .conc-grid              { padding: 4px 40px 8px; gap: 6px; }
+  .conc-card              { padding: 8px 12px; gap: 4px; border-radius: 8px; }
+  .conc-body              { font-size: 11px; line-height: 1.35; }
 }
 
 /* ============================================================
-   HORIZONTAL — PANTALLAS ESTRECHAS (≤ 1400 px de ancho)
-   Reduce padding lateral de 64px a 40px.
+   RESPONSIVE — ANCHO (pantallas estrechas)
    ============================================================ */
 @media (max-width: 1400px) {
   .slide-cover            { padding-left: 48px; padding-right: 48px; }
@@ -2403,6 +2391,166 @@ html, body {
   .cib-content            { padding-left: 36px; padding-right: 36px; }
   .cib-pending-wrap       { padding-left: 36px; padding-right: 36px; }
   .conc-grid              { padding-left: 36px; padding-right: 36px; }
+}
+
+/* ============================================================
+   RESPONSIVE — MÓVIL (≤ 768px de ancho)
+   Layout vertical, scroll, todo apilado.
+   ============================================================ */
+@media (max-width: 768px) {
+  html, body              { overflow: auto; }
+
+  /* — Navegación — */
+  #nav                    { bottom: 12px; padding: 4px 8px; }
+  .nav-btn                { width: 32px; height: 32px; }
+  #slide-counter          { font-size: 11px; min-width: 40px; }
+
+  /* — Slides base — */
+  .slide                  { overflow-y: auto; }
+
+  /* — Portada — */
+  .slide-cover            { padding: 24px 20px; }
+  .cover-logo             { height: 26px; }
+  .cover-watermark        { width: 300px; right: -60px; }
+  .cover-eyebrow          { font-size: 9px; margin-bottom: 12px; letter-spacing: 0.15em; }
+  .cover-eyebrow::before  { width: 20px; }
+  .cover-title            { font-size: clamp(28px, 8vw, 48px); margin-bottom: 16px; }
+  .cover-divider          { width: 48px; margin-bottom: 12px; }
+  .cover-subtitle         { font-size: 14px; }
+  .cover-kpis             { flex-direction: column; gap: 12px; }
+  .cover-kpi              { flex-direction: row; gap: 12px; align-items: center; }
+  .cover-start-btn        { margin-top: 16px; font-size: 13px; padding: 10px 20px; }
+
+  /* — Header de sección — */
+  .section-header         { padding: 12px 20px 0; flex-wrap: wrap; gap: 6px; }
+  .section-logo           { height: 20px; }
+  .section-label          { font-size: 9px; }
+  .cib-page-title         { font-size: 18px !important; order: 3; width: 100%; text-align: left; }
+  .cib-nav-back           { font-size: 9px; padding: 2px 8px 2px 5px; }
+
+  /* — Visión General — */
+  .vision-content         { padding: 10px 20px 60px; gap: 10px; overflow-y: auto; }
+  .vision-main-title      { font-size: clamp(22px, 6vw, 34px); }
+  .vision-sub             { font-size: 12px; }
+  .fy-grid                { grid-template-columns: 1fr !important; gap: 8px; }
+  .fy-card                { padding: 12px 16px 10px; }
+  .fy-card-face--front    { padding: 12px 16px 10px; }
+  .fy-year                { font-size: 20px; }
+  .fy-rev                 { font-size: 24px; }
+  .fy-ftes                { font-size: 13px; }
+  .summary-row            { flex-direction: column; gap: 6px; }
+  .summary-stat           { padding: 10px 16px; }
+  .client-nav             { margin-bottom: 14px; gap: 8px; }
+  .client-nav-row         { flex-direction: column; gap: 6px; }
+  .client-btn             { padding: 12px 18px; width: 100%; }
+  .client-nav-soon        { width: 100%; }
+  .client-nav-soon .client-btn { width: 100%; }
+
+  /* — Panel de cliente — */
+  .client-panel           { width: 100% !important; height: 85% !important; border-radius: 16px 16px 0 0; }
+  .panel-header           { padding: 14px 20px 10px; }
+  .panel-client-name      { font-size: 22px; }
+  .panel-tagline          { font-size: 11px; }
+  .panel-evolution        { flex-direction: column; }
+  .panel-fy               { padding: 10px 20px; }
+  .panel-fy-rev           { font-size: 22px; }
+  .panel-messages         { padding: 10px 20px 14px; }
+  .panel-msg              { padding: 10px 14px; }
+  .panel-msg-title        { font-size: 13px; }
+  .panel-msg-body         { font-size: 12px; }
+  .panel-sections         { padding: 10px 20px 14px; }
+  .panel-section-card     { padding: 12px 16px; }
+
+  /* — Slides CIB (5-8) — */
+  .cib-content            { padding: 8px 20px 60px; gap: 12px; overflow-y: auto; }
+  .cib-ctx-strip          { grid-template-columns: 1fr !important; flex-basis: auto; min-height: auto; border-radius: 10px; }
+  .cib-ctx-col            { padding: 12px 16px; gap: 4px; border-right: none !important; border-bottom: 1.5px solid rgba(0,68,129,0.12); }
+  .cib-ctx-col:last-child { border-bottom: none; }
+  .cib-ctx-eyebrow        { font-size: 9px; margin-bottom: 2px; }
+  .cib-ctx-rev            { font-size: 24px; }
+  .cib-ctx-ftes           { font-size: 14px; }
+  .cib-ctx-growth         { font-size: 9px; }
+  .cib-ctx-pos-list       { gap: 6px; }
+  .cib-ctx-pos-rank       { font-size: 14px; }
+  .cib-ctx-valor          { font-size: 13px; line-height: 1.5; }
+
+  /* — NT section — apilar columnas verticalmente */
+  .nt-section             { flex-direction: column; gap: 12px; }
+  .nt-col                 { gap: 6px; }
+  .nt-col-eyebrow         { font-size: 14px; }
+  .nt-half                { min-height: 180px; }
+  .nt-sub-card            { padding: 10px 14px; gap: 6px; border-radius: 10px; }
+  .nt-sc-eyebrow          { font-size: 10px; }
+  .nt-sc-item             { font-size: 13px; line-height: 1.4; }
+  .nt-sc-dot              { width: 5px; height: 5px; margin-top: 6px; }
+  .nt-back-inner          { padding: 12px 14px; gap: 8px; border-radius: 10px; }
+  .nt-back-heading        { font-size: 9px; }
+  .nt-action-label        { font-size: 9px; }
+  .nt-action-text         { font-size: 13px; line-height: 1.4; }
+  .nt-action-list         { gap: 8px; }
+
+  /* — Geografías — apilar cards verticalmente */
+  .geo-section            { flex-basis: auto; min-height: auto; gap: 8px; margin-top: 0; }
+  .geo-eyebrow            { font-size: 14px; }
+  .geo-flip-face          { grid-template-columns: 1fr !important; gap: 8px; }
+  .geo-pair-card          { padding: 12px 16px; gap: 6px; }
+  .geo-pair-header        { font-size: 11px; }
+  .geo-bullet             { font-size: 13px; line-height: 1.4; }
+  .geo-action-card        { padding: 12px 16px; gap: 8px; }
+  .geo-action-num         { font-size: 10px; }
+  .geo-action-text        { font-size: 13px; line-height: 1.4; }
+  .geo-hint               { font-size: 9px; }
+
+  /* — Flip cards en móvil: min-height para que se vea el contenido — */
+  .geo-flip-group         { min-height: 280px; }
+  .geo-flip-inner         { min-height: 280px; }
+  .geo-flip-face          { position: relative !important; }
+  .geo-flip-back          { position: absolute !important; inset: 0; }
+
+  /* — Pending slides — */
+  .cib-pending-wrap       { grid-template-columns: 1fr !important; grid-template-rows: auto !important; padding: 12px 20px 60px; gap: 10px; }
+  .cib-pending-card       { padding: 20px; }
+  .cib-pending-card-wide  { grid-column: auto !important; }
+
+  /* — Conclusiones — */
+  .conc-grid              { grid-template-columns: 1fr !important; padding: 10px 20px 60px; gap: 10px; }
+  .conc-card              { padding: 16px 18px; gap: 8px; }
+  .conc-card:last-child:nth-child(odd) { max-width: none; grid-column: auto; }
+  .conc-body              { font-size: 14px; }
+  .conc-num               { font-size: 10px; }
+}
+
+/* ============================================================
+   RESPONSIVE — MÓVIL PEQUEÑO (≤ 480px de ancho)
+   ============================================================ */
+@media (max-width: 480px) {
+  .slide-cover            { padding: 16px 16px; }
+  .cover-title            { font-size: clamp(24px, 7vw, 36px); }
+  .section-header         { padding: 10px 16px 0; }
+  .cib-content            { padding: 6px 16px 60px; gap: 10px; }
+  .cib-ctx-col            { padding: 10px 12px; }
+  .cib-ctx-rev            { font-size: 20px; }
+  .nt-half                { min-height: 160px; }
+  .nt-sub-card            { padding: 8px 12px; gap: 4px; }
+  .nt-sc-item             { font-size: 12px; }
+  .nt-back-inner          { padding: 10px 12px; gap: 6px; }
+  .nt-action-text         { font-size: 12px; }
+  .geo-pair-card          { padding: 10px 12px; }
+  .geo-bullet             { font-size: 12px; }
+  .geo-action-card        { padding: 10px 12px; }
+  .geo-action-text        { font-size: 12px; }
+  .geo-flip-group         { min-height: 250px; }
+  .geo-flip-inner         { min-height: 250px; }
+  .cib-pending-wrap       { padding: 10px 16px 60px; }
+  .conc-grid              { padding: 8px 16px 60px; }
+  .conc-card              { padding: 12px 14px; }
+  .conc-body              { font-size: 13px; }
+  .vision-content         { padding: 8px 16px 60px; }
+  .vision-main-title      { font-size: clamp(20px, 5.5vw, 30px); }
+  .client-btn             { padding: 10px 14px; }
+  .panel-header           { padding: 12px 16px 8px; }
+  .panel-messages         { padding: 8px 16px 12px; }
+  .panel-sections         { padding: 8px 16px 12px; }
 }
 
 </style>
