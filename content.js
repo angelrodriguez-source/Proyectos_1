@@ -124,6 +124,46 @@ const DECK = {
       { title: "Geografías como palanca", body: "25% del Revenue en FY27. México como foco principal." },
       { title: "IA for All",              body: "Acompañar en los proyectos de IA y ser partner para la adopcion de IA en Proyeccto" }
     ],
+    estadoActual: [
+      {
+        badge: "Especialista",
+        title: "PERCIBIDOS COMO ESPECIALISTA",
+        body: "Aunque concentrada la expertise entre Ingeniería CIB, Riesgos Global y Finanzas.",
+        impact: "high"
+      },
+      {
+        badge: "Posicionamiento",
+        title: "BUEN POSICIONAMIENTO PARA ESCALAR",
+        body: "Firmado contrato POST 2.0 para la práctica en Ingeniería Global, FARO para Riesgos y abiertos todos los necesarios para Geografías.",
+        impact: "high"
+      },
+      {
+        badge: "Personas",
+        title: "BUENA ESTRUCTURA INICIAL DE PERSONAS",
+        body: "Con Conocimiento y Expertise para ir asumiendo nuevas responsabilidades en el crecimiento y nueva posición a coger.",
+        impact: "medium"
+      }
+    ],
+    retos: [
+      {
+        badge: "Ingeniería Global",
+        title: "LIDERAR INGENIERÍA DE MANERA GLOBAL",
+        body: "Llegar a ser proveedor en Ingeniería con relevancia de manera Global, sin perder la Esencia de Especialistas en CIB y manteniendo su liderazgo.",
+        impact: "high"
+      },
+      {
+        badge: "Geografías",
+        title: "SER RELEVANTES EN LAS GEOGRAFÍAS",
+        body: "Desde el Escalado en México a estar en Perú y Colombia, acompañando la apertura de Brasil.",
+        impact: "high"
+      },
+      {
+        badge: "Diversificación",
+        title: "DIVERSIFICAR RESPECTO DE CIB",
+        body: "Pasar del 80% a 60% sin dejar de crecer en CIB.",
+        impact: "medium"
+      }
+    ],
     // Índice de secciones — slide: índice 0-based del destino (null = próximamente)
     sections: [
       { label: "CIB",          slide: 4 },    // → slide-5
@@ -258,6 +298,51 @@ const DECK = {
           text: "Apuesta ejecutiva plena: dedicación del ED a Brasil y movilización de talento CIB senior clave para construir el equipo núcleo de la cuenta."
         }
       ]
+    },
+
+    // ── Situación Actual (pestaña 1 — datos nuevos) ───────────
+    situacionActual: {
+      fteDistribution: {
+        tec: 260,
+        neg: 40,
+        geo: { total: 60, detail: "Mex, Brl" }
+      },
+      keyPoints: [
+        { icon: "engineering", text: "CONSIDERADO PROVEEDOR DE PREFERENCIA EN INGENIERÍA", body: "Actualmente más de 300 FTEs ejecutando y #1 sobre resto Tier 1 en las encuestas." },
+        { icon: "business",    text: "LLEGADA AL NEGOCIO CON POSIBILIDAD DE ESCALADO",     body: "Posición en GM y Riesgos, contactos y posibilidades en GTB, IBF, Finance y Compliance." },
+        { icon: "geo",         text: "BASE SÓLIDA EN MÉXICO PARA ESCALAR Y EMPEZANDO A CREAR LA ESTRUCTURA EN BRASIL", body: "Uno de los proveedores principales en Mex CIB e inicio de Brasil con buena llegada." }
+      ]
+    },
+
+    // ── Retos (pestaña 2) ─────────────────────────────────────
+    retosCIB: [
+      { num: "01", title: "SER PERCIBIDOS COMO PROVEEDOR GLOBAL",           body: "Liderar las iniciativas por ámbito de Expertise, sin gestión diferenciada por Geografía." },
+      { num: "02", title: "ESCALAR EN NEGOCIO",                              body: "Nuevos ámbitos aparte de Global Markets y Riesgos, como GTB/IBF o Finanzas." },
+      { num: "03", title: "MANTENER LA ESPECIALIZACIÓN EN INGENIERÍA CIB",  body: "Asegurando el foco y entrando en ámbitos como Data Engineering." }
+    ],
+
+    // ── Equipo (pestaña 3 — organigrama) ──────────────────────
+    equipo: {
+      partner: {
+        name: "ÁNGEL RODRÍGUEZ",
+        initials: "AR",
+        role: "Partner",
+        before: "Liderar CIB España.",
+        after: "Asegurar que seguimos siendo percibidos especialistas CIB y foco en todas las geografías CIB."
+      },
+      directivos: [
+        { name: "José Magarzo",   initials: "JM", role: "SrMgr", before: "Área BO en SW Delivery España.",                              after: "Foco en BackOffice (y Calypso) de manera global asumiendo la vertical de México." },
+        { name: "Manuel Mendoza", initials: "MM", role: "SrMgr", before: "Liderar la parte de Negocio Global Markets en España.",        after: "Incorporar el control centralizado (México y España) de Front Office + Murex." },
+        { name: "Manuel Ranea*",  initials: "MR", role: "Dir",   before: "Visión Tecnología global de BBVA.",                           after: "Centrar la asignación de CIB en liderar la práctica de CTO (Arquitectura), escalando nuestra posición." },
+        { name: "Andrés Perozo",  initials: "AP", role: "SrMgr", before: "Líder Integraciones en SW Delivery.",                         after: "Incorporar la gestión de equipos de Integraciones Tec. en CTO y escalado." },
+        { name: "David Fuente*",  initials: "DF", role: "Dir",   before: "Líder práctica Data.",                                        after: "Continuar Liderazgo de la práctica de Data asumiendo el reto de entrada y escalado en Data Eng. + Liderar Adopción de IA en los equipos." },
+        { name: "Carlos Soto*",   initials: "CS", role: "SrMgr", before: "Liderar Riesgos y Regulatorio en CIB Engineering.",           after: "Liderar la creación de Equipo en Brasil + Liderar llegada y escalado en Ingeniería fuera de CIB." }
+      ],
+      apoyos: [
+        { name: "Antonio Díaz",       initials: "AD", mission: "Capacidades GTB/IBF para escalado en Negocio." },
+        { name: "José Manuel Bruzos", initials: "JB", mission: "Tecnología Global y Posicionamiento IA." }
+      ],
+      nota: "*Capacidad compartida CIB/CF&B"
     }
   },
 
@@ -267,7 +352,58 @@ const DECK = {
   bbvaCFB: {
     label: "BBVA · CF & Banking",
     color: "#004481",
-    pending: true
+
+    contexto: {
+      objetivo: {
+        rev:    "13",
+        ftes:   "186",
+        growth: "+96% desde FY25",
+        desglose: [
+          { ftes: "160", label: "España" },
+          { ftes: "26",  label: "Geografías" }
+        ]
+      }
+    },
+
+    situacionActual: {
+      fteDistribution: {
+        tec: 9,
+        neg: 88,
+        geo: { total: 10, detail: "Mex" }
+      },
+      keyPoints: [
+        { icon: "engineering", text: "CONCENTRADOS Y CON POSICIÓN CONSOLIDADA EN F&R", body: "Considerados expertos en F&R, ha sido el motor de llegada a otras áreas." },
+        { icon: "business",    text: "POSICIÓN MUY INICIAL EN BANKING", body: "Llegada inicial en ESG, Data y Consumer pero con todo por explorar y escalar." },
+        { icon: "geo",         text: "PREPARADOS PARA ESCALAR CON LAS PALANCAS PRINCIPALES INGENIERÍA Y GEOGRAFÍAS", body: "Abiertos todos los marcos tarifarios." }
+      ]
+    },
+
+    retosCFB: [
+      { num: "01", title: "ESTABLECERSE COMO PROVEEDOR IMPORTANTE EN INGENIERÍA",  body: "Apoyándose en las capacidades de Ingeniería CIB, asegurando que se aprovecha el contrato de POST." },
+      { num: "02", title: "ESCALAR EN GEOGRAFÍAS",                                  body: "Escalar en México con las posiciones iniciales y pensar la estrategia de Perú y Colombia." },
+      { num: "03", title: "EMPEZAR A SER RELEVANTES EN BANKING",                    body: "Estudiar ámbitos y posibilidades para derivar la posición de Data o Consumer al resto de áreas." }
+    ],
+
+    equipo: {
+      partner: {
+        name: "DIEGO DÍAZ",
+        initials: "DD",
+        role: "Partner",
+        after: "Asegurar la entrada de nuevas áreas y escalado de Ingeniería, manteniendo la visión global con geografías."
+      },
+      directivos: [
+        { name: "Beatriz Delgado", initials: "BD", role: "SrMgr", before: "Ejecución proyectos F&R.",                          after: "Liderar práctica F&R en BBVA y apoyo a entrada Finance CIB." },
+        { name: "Borja Alfaro",    initials: "BA", role: "SrMgr", before: "Proyectos GRM Enterprise.",                          after: "Asumir escalado en CS Enterprise de manera global." },
+        { name: "Manuel Ranea*",   initials: "MR", role: "SrMgr", before: "Apoyo Data y Tec en CFE.",                           after: "Responsable global Tecnología para asegurar capacidad (ftes Nter y Formacion)." },
+        { name: "David Fuente*",   initials: "DF", role: "Dir",   before: "Liderar inicio Data.",                               after: "Escalado CoEs, Data global y Data Eng Holding." },
+        { name: "Carlos Soto*",    initials: "CS", role: "SrMgr", before: "Liderar Riesgos y Regulatorio en CIB Engineering.",  after: "Liderar llegada y escalado en Ingeniería fuera de CIB." }
+      ],
+      apoyos: [
+        { name: "Antonio Díaz", initials: "AD", mission: "Apoyo entrada CS Enterprise." },
+        { name: "Martín Sanz",  initials: "MS", mission: "Posición y Escalado en CS Retail." }
+      ],
+      nota: "*Capacidad compartida CIB/CF&B"
+    }
   },
 
   /* ========================================================

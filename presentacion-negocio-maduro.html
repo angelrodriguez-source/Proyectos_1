@@ -952,7 +952,7 @@ html, body {
 .client-panel {
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 74%;
+  height: 96%;
   background: var(--white);
   border-radius: 20px 20px 0 0;
   box-shadow: 0 -16px 64px rgba(16,13,37,0.18);
@@ -1085,6 +1085,122 @@ html, body {
   color: var(--grey-700);
   font-weight: 500;
   line-height: 1.55;
+}
+
+/* ── Panel — layout Estado Actual / Retos (2 columnas) ──── */
+.panel-columns {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  overflow-y: auto;
+  min-height: 0;
+}
+.panel-col {
+  padding: 22px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.panel-col:first-child {
+  border-right: 1.5px solid var(--grey-100);
+}
+.panel-col-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.panel-col-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.panel-col-icon svg { width: 18px; height: 18px; }
+.panel-col-icon--estado { background: rgba(0,68,129,0.1); color: #004481; }
+.panel-col-icon--retos  { background: rgba(236,104,62,0.1); color: var(--orange); }
+.panel-col-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(13px, 1.1vw, 17px);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.panel-col-title--estado { color: #004481; }
+.panel-col-title--retos  { color: var(--orange); }
+
+/* Cards con barra de importancia */
+.panel-impact-card {
+  border-radius: 12px;
+  border: 1.5px solid var(--grey-100);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.panel-impact-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.panel-impact-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3.5px;
+  border-radius: 2px 0 0 2px;
+}
+.panel-impact-card--high::before   { background: #004481; }
+.panel-impact-card--medium::before { background: rgba(0,68,129,0.45); }
+.panel-impact-card--low::before    { background: rgba(0,68,129,0.2); }
+/* Variante naranja para retos */
+.panel-col--retos .panel-impact-card--high::before   { background: var(--orange); }
+.panel-col--retos .panel-impact-card--medium::before { background: rgba(236,104,62,0.5); }
+.panel-col--retos .panel-impact-card--low::before    { background: rgba(236,104,62,0.2); }
+
+.panel-impact-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  width: fit-content;
+}
+.panel-impact-badge--high {
+  background: rgba(0,68,129,0.08);
+  color: #004481;
+}
+.panel-impact-badge--medium {
+  background: rgba(0,68,129,0.05);
+  color: rgba(0,68,129,0.65);
+}
+.panel-col--retos .panel-impact-badge--high {
+  background: rgba(236,104,62,0.08);
+  color: var(--orange);
+}
+.panel-impact-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(12px, 1vw, 15px);
+  color: var(--black);
+  line-height: 1.25;
+}
+.panel-impact-body {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.9vw, 14px);
+  color: var(--grey-700);
+  font-weight: 500;
+  line-height: 1.5;
 }
 
 /* ============================================================
@@ -2140,6 +2256,458 @@ html, body {
 }
 
 
+/* ── Pestañas CIB (Contexto / Equipo Directivo) ─────────── */
+.cib-tabs {
+  display: flex;
+  gap: 0;
+  flex-shrink: 0;
+  border-bottom: 2px solid var(--grey-100);
+  margin-bottom: 2px;
+}
+.cib-tab {
+  padding: 8px 20px;
+  border: none;
+  background: transparent;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+.cib-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.25s;
+}
+.cib-tab:hover { color: var(--black); }
+.cib-tab.cib-tab--active {
+  color: #004481;
+  font-weight: 700;
+}
+.cib-tab.cib-tab--active::after {
+  background: #004481;
+}
+
+/* Panel de contenido de pestaña */
+.cib-tab-panel { display: none; flex-direction: column; flex: 1; gap: 24px; min-height: 0; }
+.cib-tab-panel.cib-tab-panel--active { display: flex; }
+
+/* ── Equipo Directivo — grid de personas ────────────────── */
+.ed-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  min-height: 0;
+}
+.ed-card {
+  border-radius: 14px;
+  border: 1.5px solid var(--grey-100);
+  background: var(--white);
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+.ed-card:hover {
+  border-color: rgba(0,68,129,0.25);
+  box-shadow: 0 4px 18px rgba(0,68,129,0.08);
+}
+.ed-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ed-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #004481;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.ed-avatar span {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+.ed-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: var(--black);
+  line-height: 1.2;
+}
+.ed-divider {
+  height: 1px;
+  background: var(--grey-100);
+  border: none;
+  margin: 0;
+}
+.ed-mission {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 1vw, 15px);
+  font-weight: 500;
+  color: var(--grey-700);
+  line-height: 1.45;
+}
+.ed-mission strong {
+  color: #004481;
+  font-weight: 700;
+}
+
+/* ── Nuevos Apoyos — fila inferior ───────────────────────── */
+.ed-apoyos {
+  flex-shrink: 0;
+}
+.ed-apoyos-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--grey-500);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ed-apoyos-label::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--grey-300);
+  border-radius: 1px;
+}
+.ed-apoyos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.ed-apoyos-grid .ed-card {
+  border-style: dashed;
+  background: var(--grey-50, #FAFAFA);
+}
+.ed-apoyos-grid .ed-avatar {
+  background: var(--grey-500);
+}
+
+/* ── Cards Objetivo FY27 ──────────────────────────────────── */
+.obj-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  flex-shrink: 0; width: 100%;
+}
+.obj-card {
+  border-radius: 14px; padding: 20px 22px;
+  display: flex; flex-direction: row; align-items: center; gap: 18px;
+  border: 1.5px solid rgba(0,68,129,0.15);
+  background: rgba(0,68,129,0.04);
+  transition: box-shadow 0.25s;
+}
+.obj-card-icon { flex-shrink: 0; }
+.obj-card-content { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.obj-card:hover {
+  box-shadow: 0 4px 18px rgba(0,68,129,0.08);
+}
+.obj-card-eyebrow {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.18em; color: #004481;
+}
+.obj-card-icon {
+  width: 36px; height: 36px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(0,68,129,0.08); color: #004481;
+}
+.obj-card-icon--ftes  { background: rgba(236,104,62,0.1); color: var(--orange); }
+.obj-card-icon--growth { background: rgba(45,156,219,0.1); color: #2D9CDB; }
+.obj-card-big {
+  font-family: 'Sora', sans-serif; font-weight: 800;
+  font-size: clamp(28px, 3vw, 44px); color: #004481;
+  letter-spacing: -0.04em; line-height: 1;
+}
+.obj-card-big--ftes   { color: var(--orange); }
+.obj-card-big--growth { color: #2D9CDB; }
+.obj-card-unit {
+  font-size: 0.35em; font-weight: 400; color: var(--grey-400);
+}
+.obj-card-sub {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.9vw, 14px); font-weight: 500;
+  color: var(--grey-500); line-height: 1.4;
+}
+
+/* ── Distribución FTEs (3 barras separadas) ───────────────── */
+.fte-bar-wrap {
+  display: flex; flex-direction: column; gap: 10px; flex-shrink: 0;
+}
+.fte-bar-label {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(13px, 1.2vw, 17px); font-weight: 800;
+  letter-spacing: -0.02em; color: #004481;
+}
+.fte-bar-label span {
+  font-weight: 400; font-size: 0.75em; color: var(--grey-400);
+}
+.fte-bars {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.fte-row {
+  display: flex; align-items: center; gap: 12px;
+}
+.fte-row-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--grey-500);
+  width: 90px; text-align: right; flex-shrink: 0;
+}
+.fte-row-bar {
+  height: 28px; border-radius: 6px;
+  display: flex; align-items: center; justify-content: flex-end;
+  padding: 0 12px; min-width: 48px;
+  transition: width 0.5s ease;
+}
+.fte-row-bar--tec { background: #004481; }
+.fte-row-bar--neg { background: var(--orange); }
+.fte-row-bar--geo { background: #2D9CDB; }
+.fte-row-num {
+  font-family: 'Sora', sans-serif; font-weight: 800;
+  font-size: 14px; color: var(--white);
+}
+
+/* ── Puntos clave situación actual ────────────────────────── */
+.sit-points {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  flex-shrink: 0; width: 100%;
+}
+.sit-point-card {
+  border-radius: 14px; padding: 24px 22px;
+  display: flex; flex-direction: column; gap: 14px;
+  border: 1.5px solid rgba(0,68,129,0.12);
+  border-left: 4px solid #004481;
+  background: var(--white);
+  transition: box-shadow 0.25s, border-color 0.25s;
+  overflow: hidden;
+}
+.sit-point-card:nth-child(2) { border-left-color: var(--orange); }
+.sit-point-card:nth-child(3) { border-left-color: #2D9CDB; }
+.sit-point-card:hover {
+  box-shadow: 0 6px 24px rgba(0,68,129,0.1);
+  border-color: rgba(0,68,129,0.25);
+}
+.sit-point-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.sit-point-card:nth-child(1) .sit-point-icon { background: rgba(0,68,129,0.08); color: #004481; }
+.sit-point-card:nth-child(2) .sit-point-icon { background: rgba(236,104,62,0.1); color: var(--orange); }
+.sit-point-card:nth-child(3) .sit-point-icon { background: rgba(45,156,219,0.1); color: #2D9CDB; }
+.sit-point-num {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.2em; color: var(--grey-400);
+}
+.sit-point-text {
+  font-family: 'Sora', sans-serif; font-weight: 800;
+  font-size: clamp(14px, 1.4vw, 20px); color: var(--black);
+  letter-spacing: -0.02em; line-height: 1.35; text-transform: uppercase;
+}
+.sit-point-body {
+  font-family: 'Instrument Sans', sans-serif; font-weight: 500;
+  font-size: clamp(12px, 1vw, 15px); color: var(--grey-700);
+  line-height: 1.5;
+}
+
+/* ── Pestaña Retos ────────────────────────────────────────── */
+.retos-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  flex-shrink: 0; align-items: stretch;
+}
+.reto-card {
+  border-radius: 16px; padding: 28px 24px;
+  display: flex; flex-direction: column; gap: 16px;
+  background: #004481; color: var(--white); position: relative; overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.reto-body {
+  margin-top: auto;
+}
+.reto-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,68,129,0.25);
+}
+.reto-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: rgba(255,255,255,0.2);
+}
+.reto-num {
+  font-family: 'Sora', sans-serif; font-weight: 800;
+  font-size: clamp(32px, 3.5vw, 52px);
+  color: rgba(255,255,255,0.12); letter-spacing: -0.04em; line-height: 0.9;
+}
+.reto-title {
+  font-family: 'Sora', sans-serif; font-weight: 800;
+  font-size: clamp(16px, 1.6vw, 22px); color: var(--white);
+  letter-spacing: -0.02em; line-height: 1.2; text-transform: uppercase;
+}
+.reto-divider { width: 40px; height: 2px; background: rgba(255,255,255,0.25); border-radius: 1px; }
+.reto-body {
+  font-family: 'Instrument Sans', sans-serif; font-weight: 500;
+  font-size: clamp(13px, 1.2vw, 17px); color: rgba(255,255,255,0.78); line-height: 1.55;
+}
+
+/* ── Organigrama (pestaña Equipo) ─────────────────────────── */
+.org-chart {
+  display: flex; flex-direction: column; flex: 1; gap: 0;
+  min-height: 0; align-items: center;
+}
+.org-partner {
+  width: min(720px, 85%); border-radius: 16px; padding: 20px 28px;
+  background: #004481; color: var(--white);
+  display: flex; align-items: center; gap: 18px;
+  flex-shrink: 0; position: relative; z-index: 2;
+}
+.org-partner .ed-avatar {
+  width: 48px; height: 48px;
+  background: rgba(255,255,255,0.18); border: 2px solid rgba(255,255,255,0.35);
+}
+.org-partner .ed-avatar span { font-size: 16px; color: var(--white); }
+.org-partner-info { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.org-partner-name {
+  font-family: 'Sora', sans-serif; font-weight: 800;
+  font-size: clamp(16px, 1.5vw, 22px); color: var(--white); letter-spacing: -0.02em;
+}
+.org-partner-role {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.18em; color: rgba(255,255,255,0.5);
+}
+.org-partner-mission {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 1vw, 15px); font-weight: 500;
+  color: rgba(255,255,255,0.78); line-height: 1.45;
+}
+/* Antes / Ahora — Partner */
+.org-partner-ba {
+  display: flex; gap: 14px; margin-top: 4px; align-items: stretch;
+}
+.org-partner-ba-col { flex: 1; }
+.org-partner-ba-sep {
+  width: 1px; background: rgba(255,255,255,0.18); flex-shrink: 0;
+}
+.org-partner-ba-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 8px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.15em; color: rgba(255,255,255,0.4); margin-bottom: 3px;
+}
+.org-partner-ba-label--after { color: rgba(255,255,255,0.7); }
+
+/* Antes / Ahora — Directivos */
+.ed-ba-row {
+  display: flex; gap: 10px; align-items: stretch;
+}
+.ed-ba-col { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.ed-ba-sep {
+  width: 1px; background: var(--grey-100); flex-shrink: 0;
+}
+.ed-ba-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 8px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--grey-400);
+}
+.ed-ba-col--after .ed-ba-label { color: #004481; }
+.ed-ba-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.9vw, 14px); font-weight: 500;
+  color: var(--grey-700); line-height: 1.4;
+}
+.ed-ba-col--before .ed-ba-text { color: var(--grey-400); }
+.ed-ba-col--after .ed-ba-text  { color: var(--black); font-weight: 600; }
+
+/* Conectores del árbol */
+.org-connector {
+  display: flex; flex-direction: column; align-items: center;
+  flex-shrink: 0; width: 100%; height: 24px; position: relative;
+}
+.org-connector::before {
+  content: ''; position: absolute; top: 0; left: 50%;
+  width: 2px; height: 12px; background: rgba(0,68,129,0.2);
+}
+.org-connector::after {
+  content: ''; position: absolute; top: 12px;
+  left: calc(100% / 6); right: calc(100% / 6);
+  height: 2px; background: rgba(0,68,129,0.2);
+}
+.org-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr; gap: 10px;
+  flex: 1; min-height: 0; width: 100%;
+}
+.org-grid .ed-card { position: relative; }
+.org-grid .ed-card::before {
+  content: ''; position: absolute; top: -10px; left: 50%;
+  width: 2px; height: 10px; background: rgba(0,68,129,0.15);
+}
+.ed-role-badge {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 9px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: rgba(0,68,129,0.55);
+  background: rgba(0,68,129,0.06); border: 1px solid rgba(0,68,129,0.14);
+  padding: 1px 7px; border-radius: 8px; margin-left: auto;
+}
+/* Apoyos con 2 columnas centradas */
+.org-apoyos-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 10px; max-width: min(680px, 66%); margin: 0 auto;
+}
+.org-apoyos-grid .ed-card { border-style: dashed; background: var(--grey-50, #FAFAFA); }
+.org-apoyos-grid .ed-avatar { background: var(--grey-500); }
+
+/* Variantes para CF&Banking (4 retos, 5 directivos) */
+.retos-grid--4 { grid-template-columns: repeat(4, 1fr); }
+.org-grid--5 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+}
+.org-nota {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px; font-weight: 600;
+  color: var(--orange); text-align: center; margin-top: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.org-nota::before, .org-nota::after {
+  content: ''; width: 32px; height: 2px; background: var(--orange); opacity: 0.4; border-radius: 1px;
+}
+/* Card compartida (con asterisco) */
+.ed-card--shared {
+  background: rgba(236,104,62,0.05);
+  border-color: rgba(236,104,62,0.2);
+}
+.ed-card--shared:hover {
+  border-color: rgba(236,104,62,0.35);
+  box-shadow: 0 4px 18px rgba(236,104,62,0.08);
+}
+.ed-card--shared .ed-avatar {
+  background: var(--orange);
+}
+
 /* ============================================================
    FIN PANTALLA 05-06
    ============================================================ */
@@ -2163,7 +2731,7 @@ html, body {
   .fy-card-face--front    { padding: 14px 20px 12px; }
   .client-nav             { margin-bottom: 32px; gap: 8px; }
   .client-btn             { padding: 13px 22px; }
-  .client-panel           { height: 70%; }
+  .client-panel           { height: 94%; }
   .panel-header           { padding: 18px 32px 14px; }
   .panel-client-name      { font-size: clamp(24px, 2.8vw, 40px); }
   .panel-fy               { padding: 12px 20px; }
@@ -2194,6 +2762,22 @@ html, body {
   .conc-grid              { padding-top: 10px; padding-bottom: 18px; gap: 14px; }
   .conc-card              { padding: 18px 22px; gap: 9px; }
   .conc-body              { font-size: 14px; }
+  /* — Nuevas pestañas CIB — */
+  .obj-card               { padding: 16px 18px; gap: 6px; }
+  .obj-card-big           { font-size: clamp(24px, 2.6vw, 36px); }
+  .obj-card-icon          { width: 30px; height: 30px; border-radius: 7px; }
+  .fte-row-bar            { height: 24px; }
+  .fte-row-num            { font-size: 12px; }
+  .fte-bar-label          { font-size: clamp(11px, 1vw, 14px); }
+  .sit-points             { gap: 10px; }
+  .sit-point-card         { padding: 18px 18px; gap: 10px; }
+  .sit-point-text         { font-size: clamp(12px, 1.2vw, 17px); }
+  .retos-grid             { gap: 12px; }
+  .reto-card              { padding: 22px 20px; gap: 12px; }
+  .reto-title             { font-size: clamp(14px, 1.4vw, 19px); }
+  .org-partner            { padding: 16px 22px; }
+  .org-grid               { gap: 8px; }
+  .org-connector          { height: 18px; }
 }
 
 /* TIER 2 — Portátil estándar (≤ 860px alto) — MacBook Air, 1366×768 */
@@ -2226,7 +2810,7 @@ html, body {
   .client-nav-row         { gap: 8px; }
   .client-btn             { padding: 10px 18px; border-radius: 10px; }
   .client-btn-name        { font-size: clamp(13px, 1.2vw, 17px); }
-  .client-panel           { height: 68%; border-radius: 16px 16px 0 0; }
+  .client-panel           { height: 94%; border-radius: 16px 16px 0 0; }
   .panel-header           { padding: 14px 28px 10px; }
   .panel-client-name      { font-size: clamp(20px, 2.4vw, 34px); }
   .panel-tagline          { font-size: clamp(10px, 0.8vw, 12px); margin-top: 4px; }
@@ -2285,6 +2869,33 @@ html, body {
   .conc-grid              { padding: 6px 48px 12px; gap: 8px; }
   .conc-card              { padding: 12px 16px; gap: 6px; border-radius: 10px; }
   .conc-body              { font-size: 12px; line-height: 1.4; }
+  /* — Nuevas pestañas CIB — */
+  .obj-card               { padding: 12px 14px; gap: 5px; border-radius: 10px; }
+  .obj-card-big           { font-size: clamp(20px, 2.2vw, 30px); }
+  .obj-card-icon          { width: 26px; height: 26px; border-radius: 6px; }
+  .obj-card-icon svg      { width: 16px; height: 16px; }
+  .obj-card-eyebrow       { font-size: 8px; }
+  .obj-card-sub           { font-size: clamp(9px, 0.8vw, 11px); }
+  .fte-row-bar            { height: 20px; }
+  .fte-row-num            { font-size: 11px; }
+  .fte-row-label          { font-size: 9px; width: 70px; }
+  .fte-bar-label          { font-size: clamp(10px, 0.9vw, 13px); }
+  .sit-points             { gap: 6px; }
+  .sit-point-card         { padding: 12px 14px; gap: 6px; border-radius: 10px; }
+  .sit-point-icon         { width: 30px; height: 30px; border-radius: 7px; }
+  .sit-point-text         { font-size: clamp(10px, 1vw, 14px); }
+  .retos-grid             { gap: 8px; }
+  .retos-grid--4          { grid-template-columns: repeat(2, 1fr); }
+  .reto-card              { padding: 16px; gap: 8px; border-radius: 12px; }
+  .reto-num               { font-size: clamp(24px, 2.5vw, 38px); }
+  .reto-title             { font-size: clamp(12px, 1.2vw, 16px); }
+  .reto-body              { font-size: clamp(10px, 0.9vw, 14px); }
+  .org-partner            { padding: 12px 18px; gap: 12px; width: min(460px, 70%); }
+  .org-partner-name       { font-size: clamp(14px, 1.3vw, 18px); }
+  .org-grid               { gap: 6px; }
+  .org-grid .ed-card      { padding: 12px 14px; gap: 6px; }
+  .org-connector          { height: 14px; }
+  .org-apoyos-grid        { gap: 6px; }
 }
 
 /* TIER 3 — Pantallas pequeñas (≤ 750px alto) — Tablets, ventanas reducidas */
@@ -2315,7 +2926,7 @@ html, body {
   .client-nav             { margin-bottom: 12px; gap: 5px; }
   .client-btn             { padding: 8px 16px; border-radius: 8px; }
   .client-btn-name        { font-size: clamp(11px, 1vw, 14px); }
-  .client-panel           { height: 72%; border-radius: 14px 14px 0 0; }
+  .client-panel           { height: 94%; border-radius: 14px 14px 0 0; }
   .panel-header           { padding: 10px 24px 8px; }
   .panel-client-name      { font-size: clamp(16px, 2vw, 28px); }
   .panel-close            { width: 26px; height: 26px; font-size: 12px; }
@@ -2371,6 +2982,36 @@ html, body {
   .conc-grid              { padding: 4px 40px 8px; gap: 6px; }
   .conc-card              { padding: 8px 12px; gap: 4px; border-radius: 8px; }
   .conc-body              { font-size: 11px; line-height: 1.35; }
+  /* — Nuevas pestañas CIB — */
+  .obj-card               { padding: 8px 10px; gap: 4px; border-radius: 8px; }
+  .obj-card-big           { font-size: clamp(16px, 1.8vw, 24px); }
+  .obj-card-icon          { width: 22px; height: 22px; border-radius: 5px; }
+  .obj-card-icon svg      { width: 14px; height: 14px; }
+  .obj-card-eyebrow       { font-size: 7px; }
+  .obj-card-sub           { font-size: clamp(8px, 0.7vw, 10px); }
+  .fte-row-bar            { height: 18px; }
+  .fte-row-num            { font-size: 10px; }
+  .fte-row-label          { font-size: 8px; width: 60px; }
+  .fte-bar-label          { font-size: clamp(9px, 0.8vw, 11px); }
+  .fte-bars               { gap: 4px; }
+  .sit-points             { gap: 5px; }
+  .sit-point-card         { padding: 8px 10px; gap: 4px; border-radius: 8px; }
+  .sit-point-icon         { width: 24px; height: 24px; border-radius: 6px; }
+  .sit-point-text         { font-size: clamp(9px, 0.85vw, 12px); }
+  .retos-grid             { gap: 5px; }
+  .reto-card              { padding: 10px 12px; gap: 5px; border-radius: 10px; }
+  .reto-num               { font-size: clamp(18px, 2vw, 28px); }
+  .reto-title             { font-size: clamp(10px, 1vw, 14px); }
+  .reto-body              { font-size: clamp(9px, 0.8vw, 12px); }
+  .org-partner            { padding: 10px 14px; gap: 8px; width: min(400px, 70%); }
+  .org-partner-name       { font-size: clamp(12px, 1.1vw, 16px); }
+  .org-partner-mission    { font-size: clamp(9px, 0.8vw, 12px); }
+  .org-grid               { gap: 4px; }
+  .org-grid .ed-card      { padding: 8px 10px; gap: 4px; }
+  .org-grid .ed-name      { font-size: clamp(10px, 0.9vw, 13px); }
+  .org-grid .ed-mission   { font-size: clamp(9px, 0.8vw, 11px); }
+  .org-connector          { height: 10px; }
+  .org-apoyos-grid        { gap: 4px; }
 }
 
 /* ============================================================
@@ -2447,7 +3088,7 @@ html, body {
   .client-nav-soon .client-btn { width: 100%; }
 
   /* — Panel de cliente — */
-  .client-panel           { width: 100% !important; height: 85% !important; border-radius: 16px 16px 0 0; }
+  .client-panel           { width: 100% !important; height: 94% !important; border-radius: 16px 16px 0 0; }
   .panel-header           { padding: 14px 20px 10px; }
   .panel-client-name      { font-size: 22px; }
   .panel-tagline          { font-size: 11px; }
@@ -2473,6 +3114,29 @@ html, body {
   .cib-ctx-pos-list       { gap: 6px; }
   .cib-ctx-pos-rank       { font-size: 14px; }
   .cib-ctx-valor          { font-size: 13px; line-height: 1.5; }
+
+  /* — Pestañas y Equipo Directivo — */
+  .cib-tabs               { gap: 0; flex-wrap: wrap; }
+  .cib-tab                { padding: 6px 14px; font-size: 10px; }
+  .ed-grid                { grid-template-columns: 1fr; grid-template-rows: auto; gap: 8px; }
+  .ed-apoyos-grid         { grid-template-columns: 1fr; gap: 8px; }
+  .ed-card                { padding: 14px 16px; gap: 8px; border-radius: 10px; }
+  .ed-avatar              { width: 30px; height: 30px; }
+  .ed-avatar span         { font-size: 11px; }
+  .ed-name                { font-size: 14px; }
+  .ed-mission             { font-size: 13px; }
+  /* — Nuevas pestañas CIB móvil — */
+  .obj-cards              { grid-template-columns: 1fr; gap: 8px; }
+  .obj-card-big           { font-size: 28px; }
+  .sit-points             { grid-template-columns: 1fr; gap: 8px; }
+  .sit-point-card         { padding: 16px; }
+  .retos-grid             { grid-template-columns: 1fr; gap: 8px; }
+  .reto-card              { padding: 18px; }
+  .org-partner            { width: 100%; }
+  .org-grid               { grid-template-columns: 1fr; grid-template-rows: auto; gap: 8px; }
+  .org-grid .ed-card::before { display: none; }
+  .org-connector::after   { display: none; }
+  .org-apoyos-grid        { grid-template-columns: 1fr; max-width: 100%; }
 
   /* — NT section — apilar columnas verticalmente */
   .nt-section             { flex-direction: column; gap: 12px; }
@@ -2820,24 +3484,7 @@ html, body {
         </button>
       </div>
     </div>
-    <div class="cib-pending-wrap">
-      <div class="cib-pending-card cib-pending-card-wide">
-        <div class="cib-pending-label">Contexto del Plan</div>
-        <div class="cib-pending-badge">⏳ Pendiente</div>
-      </div>
-      <div class="cib-pending-card">
-        <div class="cib-pending-label">Negocio</div>
-        <div class="cib-pending-badge">⏳ Pendiente</div>
-      </div>
-      <div class="cib-pending-card">
-        <div class="cib-pending-label">Tecnología &amp; Ops</div>
-        <div class="cib-pending-badge">⏳ Pendiente</div>
-      </div>
-      <div class="cib-pending-card">
-        <div class="cib-pending-label">Geografías</div>
-        <div class="cib-pending-badge">⏳ Pendiente</div>
-      </div>
-    </div>
+    <div class="cib-content" id="cfb-bbva-content"></div>
   </div>
   <!-- FIN PANTALLA 09 -->
 
@@ -2953,6 +3600,7 @@ function goTo(n) {
 /* --- Panel de visión global cliente --- */
 function renderClientPanel(data) {
   const headerCls = data.color === '#004481' ? 'panel-header-bbva' : 'panel-header-sant';
+  const clientKey = headerCls === 'panel-header-bbva' ? 'bbva' : 'sant';
   const evoHTML = data.evolution.map(e => `
     <div class="panel-fy">
       <div class="panel-fy-year">${e.fy}${e.obj ? '<span style="opacity:0.5;font-weight:400"> obj.</span>' : ''}</div>
@@ -2960,12 +3608,7 @@ function renderClientPanel(data) {
       <div class="panel-fy-ftes">${e.ftes} Ftes</div>
       ${e.growth ? `<div class="panel-fy-growth" style="color:${data.color}">${e.growth}</div>` : ''}
     </div>`).join('');
-  const msgsHTML = data.messages.map(m => `
-    <div class="panel-msg">
-      <div class="panel-msg-title">${m.title}</div>
-      <div class="panel-msg-body">${m.body}</div>
-    </div>`).join('');
-  const clientKey = headerCls === 'panel-header-bbva' ? 'bbva' : 'sant';
+
   const footerHTML = (data.sections && data.sections.length) ? `
     <div class="panel-sections">
       <div class="panel-sections-label">Áreas</div>
@@ -2982,6 +3625,45 @@ function renderClientPanel(data) {
       </div>
     </div>` : '';
 
+  // Layout con Estado Actual / Retos (si el panel tiene datos de columnas)
+  let bodyHTML;
+  if (data.estadoActual && data.retos) {
+    const mkCard = (item, variant) => `
+      <div class="panel-impact-card panel-impact-card--${item.impact || 'high'}">
+        <div class="panel-impact-badge panel-impact-badge--${item.impact || 'high'}">${item.badge || ''}</div>
+        <div class="panel-impact-title">${item.title}</div>
+        <div class="panel-impact-body">${item.body}</div>
+      </div>`;
+    bodyHTML = `
+    <div class="panel-columns">
+      <div class="panel-col panel-col--estado">
+        <div class="panel-col-header">
+          <div class="panel-col-icon panel-col-icon--estado">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="panel-col-title panel-col-title--estado">Estado Actual</div>
+        </div>
+        ${data.estadoActual.map(i => mkCard(i, 'estado')).join('')}
+      </div>
+      <div class="panel-col panel-col--retos">
+        <div class="panel-col-header">
+          <div class="panel-col-icon panel-col-icon--retos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="panel-col-title panel-col-title--retos">Retos</div>
+        </div>
+        ${data.retos.map(i => mkCard(i, 'retos')).join('')}
+      </div>
+    </div>`;
+  } else {
+    const msgsHTML = data.messages.map(m => `
+      <div class="panel-msg">
+        <div class="panel-msg-title">${m.title}</div>
+        <div class="panel-msg-body">${m.body}</div>
+      </div>`).join('');
+    bodyHTML = `<div class="panel-messages panel-messages-${clientKey}">${msgsHTML}</div>`;
+  }
+
   return `
     <div class="panel-header ${headerCls}">
       <div>
@@ -2991,7 +3673,7 @@ function renderClientPanel(data) {
       <button class="panel-close" onclick="closeClientPanel()">✕</button>
     </div>
     <div class="panel-evolution" style="border-top:3px solid ${data.color}">${evoHTML}</div>
-    <div class="panel-messages panel-messages-${clientKey}">${msgsHTML}</div>
+    ${bodyHTML}
     ${footerHTML}`;
 }
 
@@ -3009,6 +3691,18 @@ function closeClientPanel() {
   const scrim = document.getElementById('client-scrim');
   if (panel) panel.classList.remove('open');
   if (scrim) scrim.classList.remove('visible');
+}
+
+/* --- Pestañas CIB (Contexto / Equipo Directivo) --- */
+function switchCibTab(btn) {
+  const container = btn.closest('.cib-content');
+  if (!container) return;
+  const key = btn.dataset.tab;
+  container.querySelectorAll('.cib-tab').forEach(t => t.classList.remove('cib-tab--active'));
+  btn.classList.add('cib-tab--active');
+  container.querySelectorAll('.cib-tab-panel').forEach(p => p.classList.remove('cib-tab-panel--active'));
+  const target = container.querySelector(`[data-panel="${key}"]`);
+  if (target) target.classList.add('cib-tab-panel--active');
 }
 
 function nextSlide() { goTo(current + 1); }
@@ -3152,40 +3846,37 @@ function hydrate() {
 
     // ── STRIP CONTEXTO (banda superior 1/6 pantalla, todo el ancho) ──
     const ctxStrip = `
-      <div class="cib-ctx-strip anim-up delay-1">
-
-        <!-- Objetivo FY27 -->
-        <div class="cib-ctx-col">
-          <div class="cib-ctx-eyebrow">Objetivo FY27</div>
-          <div class="cib-ctx-rev">${ctx.objetivo.rev}<span class="cib-ctx-unit"> €MM</span></div>
-          <div class="cib-ctx-ftes">${ctx.objetivo.ftes} Ftes</div>
-          <div class="cib-ctx-growth">↑ ${ctx.objetivo.growth}</div>
-          <div class="cib-ctx-desglose">
-            ${ctx.objetivo.desglose.map((r, i) =>
-              `${i > 0 ? '<span>·</span>' : ''}<span>${r.ftes} ${r.label}</span>`
-            ).join('')}
+      <div class="obj-cards anim-up delay-1">
+        <div class="obj-card">
+          <div class="obj-card-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="obj-card-content">
+            <div class="obj-card-eyebrow">Objetivo FY27</div>
+            <div class="obj-card-big">${ctx.objetivo.rev}<span class="obj-card-unit"> €MM</span></div>
+            <div class="obj-card-sub">Revenue objetivo</div>
           </div>
         </div>
-
-        <!-- Posición Actual -->
-        <div class="cib-ctx-col">
-          <div class="cib-ctx-eyebrow">Posición Actual</div>
-          <div class="cib-ctx-pos-list">
-            ${ctx.posicion.map(p => `
-            <div class="cib-ctx-pos-item">
-              <span class="cib-ctx-pos-dot cib-ctx-pos-dot-${p.tier}"></span>
-              <span class="cib-ctx-pos-rank">${p.badge}</span>
-              <span class="cib-ctx-pos-area">${p.area}</span>
-            </div>`).join('')}
+        <div class="obj-card">
+          <div class="obj-card-icon obj-card-icon--ftes">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="obj-card-content">
+            <div class="obj-card-eyebrow">Equipo FY27</div>
+            <div class="obj-card-big obj-card-big--ftes">${ctx.objetivo.ftes}<span class="obj-card-unit"> Ftes</span></div>
+            <div class="obj-card-sub">${ctx.objetivo.desglose.map(r => r.ftes + ' ' + r.label).join(' · ')}</div>
           </div>
         </div>
-
-        <!-- Valor Añadido -->
-        <div class="cib-ctx-col">
-          <div class="cib-ctx-eyebrow">Valor Añadido</div>
-          <p class="cib-ctx-valor">"${ctx.valor}"</p>
+        <div class="obj-card">
+          <div class="obj-card-icon obj-card-icon--growth">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="obj-card-content">
+            <div class="obj-card-eyebrow">Crecimiento</div>
+            <div class="obj-card-big obj-card-big--growth">+40%</div>
+            <div class="obj-card-sub">Aumento FY25 – FY27</div>
+          </div>
         </div>
-
       </div>`;
 
     const titleSlot = document.getElementById('cib-page-title-slot');
@@ -3295,7 +3986,138 @@ function hydrate() {
         ${mkNtCol(nt.tecnologia, iconTech)}
       </div>`;
 
-    content.innerHTML = ctxStrip + ntSection + geoSection;
+    // ── PESTAÑA 1: CONTEXTO Y SITUACIÓN ACTUAL ──
+    const sa = d.situacionActual;
+    const fteTotal = sa.fteDistribution.tec + sa.fteDistribution.neg + sa.fteDistribution.geo.total;
+    const maxFte = Math.max(sa.fteDistribution.tec, sa.fteDistribution.neg, sa.fteDistribution.geo.total);
+    const pct = v => Math.round((v / maxFte) * 100);
+    const fteBar = `
+      <div class="fte-bar-wrap anim-up delay-1">
+        <div class="fte-bar-label">Distribución FTEs <span>(${fteTotal} totales)</span></div>
+        <div class="fte-bars">
+          <div class="fte-row">
+            <div class="fte-row-label">Tecnología</div>
+            <div class="fte-row-bar fte-row-bar--tec" style="width:${pct(sa.fteDistribution.tec)}%"><span class="fte-row-num">${sa.fteDistribution.tec}</span></div>
+          </div>
+          <div class="fte-row">
+            <div class="fte-row-label">Negocio</div>
+            <div class="fte-row-bar fte-row-bar--neg" style="width:${pct(sa.fteDistribution.neg)}%"><span class="fte-row-num">${sa.fteDistribution.neg}</span></div>
+          </div>
+          <div class="fte-row">
+            <div class="fte-row-label">Geo (${sa.fteDistribution.geo.detail})</div>
+            <div class="fte-row-bar fte-row-bar--geo" style="width:${pct(sa.fteDistribution.geo.total)}%"><span class="fte-row-num">${sa.fteDistribution.geo.total}</span></div>
+          </div>
+        </div>
+      </div>`;
+    const sitIcons = [
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+    ];
+    const sitPoints = `
+      <div class="sit-points anim-up delay-2">
+        ${sa.keyPoints.map((p, i) => `
+          <div class="sit-point-card">
+            <div class="sit-point-icon">${sitIcons[i]}</div>
+            <div class="sit-point-text">${p.text}</div>
+            ${p.body ? '<div class="sit-point-body">' + p.body + '</div>' : ''}
+          </div>`).join('')}
+      </div>`;
+
+    // ── PESTAÑA 2: RETOS ──
+    const retosData = d.retosCIB;
+    const retosSection = `
+      <div class="retos-grid anim-up delay-1">
+        ${retosData.map(r => `
+          <div class="reto-card">
+            <div class="reto-num">${r.num}</div>
+            <div class="reto-title">${r.title}</div>
+            <div class="reto-divider"></div>
+            <div class="reto-body">${r.body}</div>
+          </div>`).join('')}
+      </div>`;
+
+    // ── PESTAÑA 3: EQUIPO (organigrama) ──
+    const eq = d.equipo;
+    const mkOrgCard = (p, showRole) => {
+      const shared = p.name.includes('*') ? ' ed-card--shared' : '';
+      if (p.before && p.after) {
+        return `
+        <div class="ed-card${shared}">
+          <div class="ed-card-header">
+            <div class="ed-avatar"><span>${p.initials}</span></div>
+            <div class="ed-name">${p.name}</div>
+            ${showRole && p.role ? '<span class="ed-role-badge">' + p.role + '</span>' : ''}
+          </div>
+          <hr class="ed-divider">
+          <div class="ed-ba-row">
+            <div class="ed-ba-col ed-ba-col--before">
+              <div class="ed-ba-label">Antes</div>
+              <div class="ed-ba-text">${p.before}</div>
+            </div>
+            <div class="ed-ba-sep"></div>
+            <div class="ed-ba-col ed-ba-col--after">
+              <div class="ed-ba-label">Ahora</div>
+              <div class="ed-ba-text">${p.after}</div>
+            </div>
+          </div>
+        </div>`;
+      }
+      return `
+      <div class="ed-card${shared}">
+        <div class="ed-card-header">
+          <div class="ed-avatar"><span>${p.initials}</span></div>
+          <div class="ed-name">${p.name}</div>
+        </div>
+        <hr class="ed-divider">
+        <div class="ed-mission">${p.mission}</div>
+      </div>`;
+    };
+    const orgChart = `
+      <div class="org-chart anim-up delay-1">
+        <div class="org-partner">
+          <div class="ed-avatar"><span>${eq.partner.initials}</span></div>
+          <div class="org-partner-info">
+            <div class="org-partner-role">${eq.partner.role}</div>
+            <div class="org-partner-name">${eq.partner.name}</div>
+            <div class="org-partner-ba">
+              <div class="org-partner-ba-col">
+                <div class="org-partner-ba-label">Antes</div>
+                <div class="org-partner-mission">${eq.partner.before}</div>
+              </div>
+              <div class="org-partner-ba-sep"></div>
+              <div class="org-partner-ba-col">
+                <div class="org-partner-ba-label org-partner-ba-label--after">Ahora</div>
+                <div class="org-partner-mission">${eq.partner.after}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-grid">
+          ${eq.directivos.map(p => mkOrgCard(p, true)).join('')}
+        </div>
+      </div>
+      <div class="ed-apoyos anim-up delay-2">
+        <div class="ed-apoyos-label">Apoyos Adicionales</div>
+        <div class="org-apoyos-grid">
+          ${eq.apoyos.map(p => mkOrgCard(p, false)).join('')}
+        </div>
+      </div>
+      ${eq.nota ? '<div class="org-nota">' + eq.nota + '</div>' : ''}`;
+
+    // ── 3 PESTAÑAS ──
+    const tabsHTML = `
+      <div class="cib-tabs">
+        <button class="cib-tab cib-tab--active" data-tab="contexto" onclick="switchCibTab(this)">Contexto y Situación Actual</button>
+        <button class="cib-tab" data-tab="retos" onclick="switchCibTab(this)">Retos</button>
+        <button class="cib-tab" data-tab="equipo" onclick="switchCibTab(this)">Equipo</button>
+      </div>`;
+    const panelContexto = `<div class="cib-tab-panel cib-tab-panel--active" data-panel="contexto">${ctxStrip + fteBar + sitPoints}</div>`;
+    const panelRetos    = `<div class="cib-tab-panel" data-panel="retos">${ctxStrip + retosSection}</div>`;
+    const panelEquipo   = `<div class="cib-tab-panel" data-panel="equipo">${orgChart}</div>`;
+
+    content.innerHTML = tabsHTML + panelContexto + panelRetos + panelEquipo;
   }
 
   // --- SANTANDER CIB ---
@@ -3448,6 +4270,179 @@ function hydrate() {
       </div>`;
 
     content.innerHTML = ctxStrip + ntSection + geoSection;
+  }
+
+  // --- BBVA CF&BANKING ---
+  if (DECK.bbvaCFB && !DECK.bbvaCFB.pending) {
+    const d = DECK.bbvaCFB;
+    const content = document.getElementById('cfb-bbva-content');
+    if (content) {
+      const ctx = d.contexto;
+      const sa  = d.situacionActual;
+      const cfbColor = '#004481';
+
+      // ── CARDS OBJETIVO ──
+      const objCards = `
+        <div class="obj-cards anim-up delay-1">
+          <div class="obj-card">
+            <div class="obj-card-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="obj-card-content">
+              <div class="obj-card-eyebrow">Objetivo FY27</div>
+              <div class="obj-card-big">${ctx.objetivo.rev}<span class="obj-card-unit"> €MM</span></div>
+              <div class="obj-card-sub">Revenue objetivo</div>
+            </div>
+          </div>
+          <div class="obj-card">
+            <div class="obj-card-icon obj-card-icon--ftes">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="obj-card-content">
+              <div class="obj-card-eyebrow">Equipo FY27</div>
+              <div class="obj-card-big obj-card-big--ftes">${ctx.objetivo.ftes}<span class="obj-card-unit"> Ftes</span></div>
+              <div class="obj-card-sub">${ctx.objetivo.desglose.map(r => r.ftes + ' ' + r.label).join(' · ')}</div>
+            </div>
+          </div>
+          <div class="obj-card">
+            <div class="obj-card-icon obj-card-icon--growth">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div class="obj-card-content">
+              <div class="obj-card-eyebrow">Crecimiento</div>
+              <div class="obj-card-big obj-card-big--growth">+96%</div>
+              <div class="obj-card-sub">Aumento FY25 – FY27</div>
+            </div>
+          </div>
+        </div>`;
+
+      // ── BARRA FTEs ──
+      const fteTotal = sa.fteDistribution.tec + sa.fteDistribution.neg + sa.fteDistribution.geo.total;
+      const maxFte = Math.max(sa.fteDistribution.tec, sa.fteDistribution.neg, sa.fteDistribution.geo.total);
+      const pctCfb = v => Math.round((v / maxFte) * 100);
+      const fteBar = `
+        <div class="fte-bar-wrap anim-up delay-1">
+          <div class="fte-bar-label">Distribución FTEs <span>(${fteTotal} totales)</span></div>
+          <div class="fte-bars">
+            <div class="fte-row">
+              <div class="fte-row-label">Tecnología</div>
+              <div class="fte-row-bar fte-row-bar--tec" style="width:${pctCfb(sa.fteDistribution.tec)}%"><span class="fte-row-num">${sa.fteDistribution.tec}</span></div>
+            </div>
+            <div class="fte-row">
+              <div class="fte-row-label">Negocio</div>
+              <div class="fte-row-bar fte-row-bar--neg" style="width:${pctCfb(sa.fteDistribution.neg)}%"><span class="fte-row-num">${sa.fteDistribution.neg}</span></div>
+            </div>
+            <div class="fte-row">
+              <div class="fte-row-label">Geo (${sa.fteDistribution.geo.detail})</div>
+              <div class="fte-row-bar fte-row-bar--geo" style="width:${pctCfb(sa.fteDistribution.geo.total)}%"><span class="fte-row-num">${sa.fteDistribution.geo.total}</span></div>
+            </div>
+          </div>
+        </div>`;
+
+      // ── PUNTOS CLAVE SITUACIÓN ──
+      const sitIconsCfb = [
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+      ];
+      const sitPoints = `
+        <div class="sit-points anim-up delay-2">
+          ${sa.keyPoints.map((p, i) => `
+            <div class="sit-point-card">
+              <div class="sit-point-icon">${sitIconsCfb[i]}</div>
+              <div class="sit-point-text">${p.text}</div>
+              ${p.body ? '<div class="sit-point-body">' + p.body + '</div>' : ''}
+            </div>`).join('')}
+        </div>`;
+
+      // ── RETOS ──
+      const retosData = d.retosCFB;
+      const retosSection = `
+        <div class="retos-grid anim-up delay-1">
+          ${retosData.map(r => `
+            <div class="reto-card">
+              <div class="reto-num">${r.num}</div>
+              <div class="reto-title">${r.title}</div>
+              <div class="reto-divider"></div>
+              <div class="reto-body">${r.body}</div>
+            </div>`).join('')}
+        </div>`;
+
+      // ── EQUIPO (organigrama) ──
+      const eq = d.equipo;
+      const mkCfbCard = (p, showRole) => {
+        const shared = p.name.includes('*') ? ' ed-card--shared' : '';
+        if (p.before && p.after) {
+          return `
+          <div class="ed-card${shared}">
+            <div class="ed-card-header">
+              <div class="ed-avatar"><span>${p.initials}</span></div>
+              <div class="ed-name">${p.name}</div>
+              ${showRole && p.role ? '<span class="ed-role-badge">' + p.role + '</span>' : ''}
+            </div>
+            <hr class="ed-divider">
+            <div class="ed-ba-row">
+              <div class="ed-ba-col ed-ba-col--before">
+                <div class="ed-ba-label">Antes</div>
+                <div class="ed-ba-text">${p.before}</div>
+              </div>
+              <div class="ed-ba-sep"></div>
+              <div class="ed-ba-col ed-ba-col--after">
+                <div class="ed-ba-label">Ahora</div>
+                <div class="ed-ba-text">${p.after}</div>
+              </div>
+            </div>
+          </div>`;
+        }
+        return `
+        <div class="ed-card${shared}">
+          <div class="ed-card-header">
+            <div class="ed-avatar"><span>${p.initials}</span></div>
+            <div class="ed-name">${p.name}</div>
+          </div>
+          <hr class="ed-divider">
+          <div class="ed-mission">${p.mission}</div>
+        </div>`;
+      };
+
+      // Partner solo tiene "after" (no before)
+      const partnerMission = eq.partner.after;
+      const orgChart = `
+        <div class="org-chart anim-up delay-1">
+          <div class="org-partner">
+            <div class="ed-avatar"><span>${eq.partner.initials}</span></div>
+            <div class="org-partner-info">
+              <div class="org-partner-role">${eq.partner.role}</div>
+              <div class="org-partner-name">${eq.partner.name}</div>
+              <div class="org-partner-mission">${partnerMission}</div>
+            </div>
+          </div>
+          <div class="org-connector"></div>
+          <div class="org-grid org-grid--5">
+            ${eq.directivos.map(p => mkCfbCard(p, true)).join('')}
+          </div>
+        </div>
+        <div class="ed-apoyos anim-up delay-2">
+          <div class="ed-apoyos-label">Apoyos Adicionales</div>
+          <div class="org-apoyos-grid">
+            ${eq.apoyos.map(p => mkCfbCard(p, false)).join('')}
+          </div>
+        </div>
+        ${eq.nota ? '<div class="org-nota">' + eq.nota + '</div>' : ''}`;
+
+      // ── PESTAÑAS ──
+      const tabsHTML = `
+        <div class="cib-tabs">
+          <button class="cib-tab cib-tab--active" data-tab="contexto" onclick="switchCibTab(this)">Contexto y Situación Actual</button>
+          <button class="cib-tab" data-tab="retos" onclick="switchCibTab(this)">Retos</button>
+          <button class="cib-tab" data-tab="equipo" onclick="switchCibTab(this)">Equipo</button>
+        </div>`;
+      const panelContexto = `<div class="cib-tab-panel cib-tab-panel--active" data-panel="contexto">${objCards + fteBar + sitPoints}</div>`;
+      const panelRetos    = `<div class="cib-tab-panel" data-panel="retos">${objCards + retosSection}</div>`;
+      const panelEquipo   = `<div class="cib-tab-panel" data-panel="equipo">${orgChart}</div>`;
+
+      content.innerHTML = tabsHTML + panelContexto + panelRetos + panelEquipo;
+    }
   }
 }
 
