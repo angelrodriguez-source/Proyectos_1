@@ -202,6 +202,33 @@ html, body {
   justify-content: space-between;
 }
 
+/* Card impactante esquina superior derecha */
+.cover-highlight-card {
+  position: absolute;
+  top: 48px;
+  right: 64px;
+  z-index: 10;
+  background: var(--grad-warm);
+  border-radius: 16px;
+  padding: 20px 32px;
+  box-shadow:
+    0 8px 32px rgba(236,104,62,0.35),
+    0 0 0 1px rgba(255,255,255,0.08) inset;
+  animation: cardPulse 2.5s ease-in-out infinite alternate;
+}
+.cover-highlight-card span {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(22px, 2.5vw, 36px);
+  color: var(--white);
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+@keyframes cardPulse {
+  0%   { transform: scale(1); box-shadow: 0 8px 32px rgba(236,104,62,0.35), 0 0 0 1px rgba(255,255,255,0.08) inset; }
+  100% { transform: scale(1.03); box-shadow: 0 12px 44px rgba(209,59,95,0.45), 0 0 0 1px rgba(255,255,255,0.12) inset; }
+}
+
 /* Marca de agua: N isotipo grande en fondo */
 .cover-watermark {
   position: absolute;
@@ -2420,6 +2447,8 @@ html, body {
   .cover-kpis             { flex-direction: column; gap: 12px; }
   .cover-kpi              { flex-direction: row; gap: 12px; align-items: center; }
   .cover-start-btn        { margin-top: 16px; font-size: 13px; padding: 10px 20px; }
+  .cover-highlight-card   { top: 12px; right: 20px; padding: 12px 20px; border-radius: 12px; }
+  .cover-highlight-card span { font-size: 18px; }
 
   /* — Header de sección — */
   .section-header         { padding: 12px 20px 0; flex-wrap: wrap; gap: 6px; }
@@ -2587,6 +2616,11 @@ html, body {
         color: rgba(255,255,255,0.2);
       ">Confidencial · Uso interno</span>
     </header>
+
+    <!-- Card impactante -->
+    <div class="cover-highlight-card anim-scale delay-2">
+      <span>HOLA PACO</span>
+    </div>
 
     <!-- CUERPO -->
     <main class="cover-body">
