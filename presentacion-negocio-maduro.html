@@ -1436,51 +1436,60 @@ html, body {
 /* ── Conclusiones — message cards ── */
 .conc-grid {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
   padding: 12px 64px 28px;
-  align-content: start;
   overflow-y: auto;
 }
 .conc-card {
   background: var(--white);
   border: 1.5px solid var(--grey-100, #F0F0F0);
-  border-left: 3.5px solid var(--orange);
+  border-left: 5px solid var(--orange);
   border-radius: 14px;
-  padding: 22px 24px 22px 26px;
+  padding: 24px 32px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-  transition: box-shadow 0.2s;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  transition: box-shadow 0.25s, transform 0.25s;
 }
 .conc-card:hover {
-  box-shadow: 0 4px 18px rgba(236,104,62,0.10);
-}
-.conc-card:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-  max-width: calc(50% - 8px);
+  box-shadow: 0 6px 24px rgba(236,104,62,0.12);
+  transform: translateX(4px);
 }
 .conc-num {
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
+  font-family: 'Sora', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
   color: var(--orange);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 48px;
+  text-align: center;
 }
-.conc-divider {
-  height: 1px;
-  background: var(--grey-100, #F0F0F0);
-  border: none;
-  margin: 0;
+.conc-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+.conc-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
 }
 .conc-body {
-  font-family: 'Sora', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--black);
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--grey-600, #555);
   line-height: 1.45;
 }
 
@@ -2760,8 +2769,10 @@ html, body {
   .geo-action-text        { font-size: clamp(11px, 1vw, 15px); }
   .cib-pending-wrap       { padding-top: 14px; padding-bottom: 18px; gap: 14px; }
   .conc-grid              { padding-top: 10px; padding-bottom: 18px; gap: 14px; }
-  .conc-card              { padding: 18px 22px; gap: 9px; }
-  .conc-body              { font-size: 14px; }
+  .conc-card              { padding: 18px 24px; gap: 18px; }
+  .conc-num               { font-size: 30px; min-width: 40px; }
+  .conc-title             { font-size: 14px; }
+  .conc-body              { font-size: 13px; }
   /* — Nuevas pestañas CIB — */
   .obj-card               { padding: 16px 18px; gap: 6px; }
   .obj-card-big           { font-size: clamp(24px, 2.6vw, 36px); }
@@ -2866,8 +2877,10 @@ html, body {
   .geo-hint               { font-size: 9px; }
   .cib-pending-wrap       { padding: 8px 48px 12px; gap: 8px; }
   .cib-pending-card       { padding: 16px; gap: 8px; border-radius: 10px; }
-  .conc-grid              { padding: 6px 48px 12px; gap: 8px; }
-  .conc-card              { padding: 12px 16px; gap: 6px; border-radius: 10px; }
+  .conc-grid              { padding: 6px 48px 12px; gap: 10px; }
+  .conc-card              { padding: 14px 20px; gap: 16px; border-radius: 10px; }
+  .conc-num               { font-size: 26px; min-width: 36px; }
+  .conc-title             { font-size: 13px; }
   .conc-body              { font-size: 12px; line-height: 1.4; }
   /* — Nuevas pestañas CIB — */
   .obj-card               { padding: 12px 14px; gap: 5px; border-radius: 10px; }
@@ -2979,8 +2992,10 @@ html, body {
   .geo-hint               { font-size: 8px; }
   .cib-pending-wrap       { padding: 4px 40px 8px; gap: 6px; }
   .cib-pending-card       { padding: 12px; gap: 6px; border-radius: 8px; }
-  .conc-grid              { padding: 4px 40px 8px; gap: 6px; }
-  .conc-card              { padding: 8px 12px; gap: 4px; border-radius: 8px; }
+  .conc-grid              { padding: 4px 40px 8px; gap: 8px; }
+  .conc-card              { padding: 10px 16px; gap: 12px; border-radius: 8px; border-left-width: 4px; }
+  .conc-num               { font-size: 22px; min-width: 30px; }
+  .conc-title             { font-size: 12px; }
   .conc-body              { font-size: 11px; line-height: 1.35; }
   /* — Nuevas pestañas CIB — */
   .obj-card               { padding: 8px 10px; gap: 4px; border-radius: 8px; }
@@ -3177,11 +3192,11 @@ html, body {
   .cib-pending-card-wide  { grid-column: auto !important; }
 
   /* — Conclusiones — */
-  .conc-grid              { grid-template-columns: 1fr !important; padding: 10px 20px 60px; gap: 10px; }
-  .conc-card              { padding: 16px 18px; gap: 8px; }
-  .conc-card:last-child:nth-child(odd) { max-width: none; grid-column: auto; }
-  .conc-body              { font-size: 14px; }
-  .conc-num               { font-size: 10px; }
+  .conc-grid              { padding: 10px 20px 60px; gap: 12px; }
+  .conc-card              { padding: 16px 18px; gap: 14px; flex-direction: row; }
+  .conc-num               { font-size: 24px; min-width: 32px; }
+  .conc-title             { font-size: 13px; }
+  .conc-body              { font-size: 13px; }
 }
 
 /* ============================================================
@@ -3206,9 +3221,11 @@ html, body {
   .geo-flip-group         { min-height: 250px; }
   .geo-flip-inner         { min-height: 250px; }
   .cib-pending-wrap       { padding: 10px 16px 60px; }
-  .conc-grid              { padding: 8px 16px 60px; }
-  .conc-card              { padding: 12px 14px; }
-  .conc-body              { font-size: 13px; }
+  .conc-grid              { padding: 8px 16px 60px; gap: 10px; }
+  .conc-card              { padding: 12px 14px; gap: 12px; }
+  .conc-num               { font-size: 20px; min-width: 28px; }
+  .conc-title             { font-size: 12px; }
+  .conc-body              { font-size: 12px; }
   .vision-content         { padding: 8px 16px 60px; }
   .vision-main-title      { font-size: clamp(20px, 5.5vw, 30px); }
   .client-btn             { padding: 10px 14px; }
@@ -3356,119 +3373,117 @@ html, body {
 
 
   <!-- ============================================================
-       PANTALLA 04 — VISIÓN GLOBAL SANTANDER
-       (mismo layout que pantalla 02, panel SAN auto-desplegado)
+       PANTALLA 04 — BBVA · CIB · Contexto y Situación Actual
        ============================================================ -->
-  <div class="slide slide-vision" id="slide-4" data-auto-panel="sant">
+  <div class="slide slide-bbva-cib" id="slide-4">
     <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title">BBVA <span>·</span> CIB</div>
+      <div class="section-label" style="color:#004481">
+        <span class="label-line" style="background:#004481"></span>
+        <span>Contexto y Situación Actual</span>
+        <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          BBVA Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-content" id="cib-bbva-ctx"></div>
   </div>
   <!-- FIN PANTALLA 04 -->
 
 
   <!-- ============================================================
-       PANTALLA 05 — BBVA · CIB · CONTEXTO DEL PLAN
+       PANTALLA 05 — BBVA · CIB · Retos
        ============================================================ -->
   <div class="slide slide-bbva-cib" id="slide-5">
-
     <div class="vision-bg-dots"></div>
-
-    <!-- Header de sección -->
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div id="cib-page-title-slot" class="cib-page-title"></div>
+      <div class="cib-page-title">BBVA <span>·</span> CIB</div>
       <div class="section-label" style="color:#004481">
         <span class="label-line" style="background:#004481"></span>
-        <span id="cib-bbva-label">BBVA · CIB</span>
+        <span>Retos</span>
         <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           BBVA Global
         </button>
       </div>
     </div>
-
-    <!-- Contenido — rellenado por hydrate() -->
-    <div class="cib-content" id="cib-bbva-content"></div>
-
+    <div class="cib-content" id="cib-bbva-retos"></div>
   </div>
   <!-- FIN PANTALLA 05 -->
 
 
   <!-- ============================================================
-       PANTALLA 06 — BBVA · CIB · ACCIONES
-       (mismo layout que pantalla 05, cards de acción ya visibles)
+       PANTALLA 06 — BBVA · CIB · Equipo
        ============================================================ -->
-  <div class="slide slide-bbva-cib slide-cib-acciones" id="slide-6">
+  <div class="slide slide-bbva-cib" id="slide-6">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div id="cib-page-title-slot-6" class="cib-page-title"></div>
+      <div class="cib-page-title">BBVA <span>·</span> CIB</div>
       <div class="section-label" style="color:#004481">
         <span class="label-line" style="background:#004481"></span>
-        <span>BBVA · CIB</span>
+        <span>Equipo</span>
         <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           BBVA Global
         </button>
       </div>
     </div>
-    <div class="cib-content" id="cib-bbva-content-6"></div>
+    <div class="cib-content" id="cib-bbva-equipo"></div>
   </div>
   <!-- FIN PANTALLA 06 -->
 
 
   <!-- ============================================================
-       PANTALLA 07 — SANTANDER · CIB · CONTEXTO DEL PLAN
+       PANTALLA 07 — BBVA · CF & Banking · Contexto y Situación Actual
        ============================================================ -->
-  <div class="slide slide-sant-cib" id="slide-7">
-
+  <div class="slide slide-bbva-cib" id="slide-7">
     <div class="vision-bg-dots"></div>
-
-    <!-- Header de sección -->
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div id="cib-sant-page-title-slot" class="cib-page-title"></div>
-      <div class="section-label" style="color:#EC0000">
-        <span class="label-line" style="background:#EC0000"></span>
-        <span id="cib-sant-label">Santander · CIB</span>
-        <button class="cib-nav-back" onclick="goTo(3)" title="Ver Santander Global">
+      <div class="cib-page-title">BBVA <span>·</span> CF &amp; Banking</div>
+      <div class="section-label" style="color:#004481">
+        <span class="label-line" style="background:#004481"></span>
+        <span>Contexto y Situación Actual</span>
+        <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          Santander Global
+          BBVA Global
         </button>
       </div>
     </div>
-
-    <!-- Contenido — rellenado por hydrate() -->
-    <div class="cib-content" id="cib-sant-content"></div>
-
+    <div class="cib-content" id="cfb-bbva-ctx"></div>
   </div>
   <!-- FIN PANTALLA 07 -->
 
 
   <!-- ============================================================
-       PANTALLA 08 — SANTANDER · CIB · ACCIONES
-       (mismo layout que pantalla 07, cards de acción ya visibles)
+       PANTALLA 08 — BBVA · CF & Banking · Retos
        ============================================================ -->
-  <div class="slide slide-sant-cib slide-cib-acciones" id="slide-8">
+  <div class="slide slide-bbva-cib" id="slide-8">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div id="cib-sant-page-title-slot-8" class="cib-page-title"></div>
-      <div class="section-label" style="color:#EC0000">
-        <span class="label-line" style="background:#EC0000"></span>
-        <span>Santander · CIB</span>
-        <button class="cib-nav-back" onclick="goTo(3)" title="Ver Santander Global">
+      <div class="cib-page-title">BBVA <span>·</span> CF &amp; Banking</div>
+      <div class="section-label" style="color:#004481">
+        <span class="label-line" style="background:#004481"></span>
+        <span>Retos</span>
+        <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          Santander Global
+          BBVA Global
         </button>
       </div>
     </div>
-    <div class="cib-content" id="cib-sant-content-8"></div>
+    <div class="cib-content" id="cfb-bbva-retos"></div>
   </div>
   <!-- FIN PANTALLA 08 -->
 
 
   <!-- ============================================================
-       PANTALLA 09 — BBVA · CF & BANKING  (pendiente)
+       PANTALLA 09 — BBVA · CF & Banking · Equipo
        ============================================================ -->
   <div class="slide slide-bbva-cib" id="slide-9">
     <div class="vision-bg-dots"></div>
@@ -3477,22 +3492,54 @@ html, body {
       <div class="cib-page-title">BBVA <span>·</span> CF &amp; Banking</div>
       <div class="section-label" style="color:#004481">
         <span class="label-line" style="background:#004481"></span>
-        <span>BBVA · CF &amp; Banking</span>
+        <span>Equipo</span>
         <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           BBVA Global
         </button>
       </div>
     </div>
-    <div class="cib-content" id="cfb-bbva-content"></div>
+    <div class="cib-content" id="cfb-bbva-equipo"></div>
   </div>
   <!-- FIN PANTALLA 09 -->
 
 
   <!-- ============================================================
-       PANTALLA 10 — SANTANDER · CF & BANKING  (pendiente)
+       PANTALLA 10 — VISIÓN GLOBAL SANTANDER
+       (mismo layout que pantalla 02, panel SAN auto-desplegado)
        ============================================================ -->
-  <div class="slide slide-sant-cib" id="slide-10">
+  <div class="slide slide-vision" id="slide-10" data-auto-panel="sant">
+    <div class="vision-bg-dots"></div>
+  </div>
+  <!-- FIN PANTALLA 10 -->
+
+
+  <!-- ============================================================
+       PANTALLA 11 — SANTANDER · CIB
+       ============================================================ -->
+  <div class="slide slide-sant-cib" id="slide-11">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div id="cib-sant-page-title-slot" class="cib-page-title"></div>
+      <div class="section-label" style="color:#EC0000">
+        <span class="label-line" style="background:#EC0000"></span>
+        <span id="cib-sant-label">Santander · CIB</span>
+        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Santander Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-content" id="cib-sant-content"></div>
+  </div>
+  <!-- FIN PANTALLA 11 -->
+
+
+  <!-- ============================================================
+       PANTALLA 12 — SANTANDER · CF & BANKING  (pendiente)
+       ============================================================ -->
+  <div class="slide slide-sant-cib" id="slide-12">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -3500,7 +3547,7 @@ html, body {
       <div class="section-label" style="color:#EC0000">
         <span class="label-line" style="background:#EC0000"></span>
         <span>Santander · CF &amp; Banking</span>
-        <button class="cib-nav-back" onclick="goTo(3)" title="Ver Santander Global">
+        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Santander Global
         </button>
@@ -3525,13 +3572,13 @@ html, body {
       </div>
     </div>
   </div>
-  <!-- FIN PANTALLA 10 -->
+  <!-- FIN PANTALLA 12 -->
 
 
   <!-- ============================================================
-       PANTALLA 11 — CONCLUSIONES
+       PANTALLA 13 — CONCLUSIONES
        ============================================================ -->
-  <div class="slide slide-conclusiones" id="slide-11">
+  <div class="slide slide-conclusiones" id="slide-13">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -3547,7 +3594,7 @@ html, body {
     </div>
     <div class="conc-grid" id="conc-content"></div>
   </div>
-  <!-- FIN PANTALLA 11 -->
+  <!-- FIN PANTALLA 13 -->
 
 
   <!-- Panel global de cliente — compartido entre todas las pantallas -->
@@ -3838,9 +3885,10 @@ function hydrate() {
   // --- BBVA CIB ---
   if (DECK.bbvaCIB) {
     const d = DECK.bbvaCIB;
-    setText('cib-bbva-label', d.label);
-    const content = document.getElementById('cib-bbva-content');
-    if (!content) return;
+    const elCtx    = document.getElementById('cib-bbva-ctx');
+    const elRetos  = document.getElementById('cib-bbva-retos');
+    const elEquipo = document.getElementById('cib-bbva-equipo');
+    if (!elCtx) return;
 
     const ctx = d.contexto;
 
@@ -3879,8 +3927,7 @@ function hydrate() {
         </div>
       </div>`;
 
-    const titleSlot = document.getElementById('cib-page-title-slot');
-    if (titleSlot) titleSlot.innerHTML = `BBVA <span>·</span> CIB`;
+    // (título estático en HTML)
 
     // ── SECCIÓN GEOGRAFÍAS (banda inferior 1/6 pantalla, grupo flip 2 cards) ──
     const geo = d.geografias;
@@ -4106,18 +4153,18 @@ function hydrate() {
       </div>
       ${eq.nota ? '<div class="org-nota">' + eq.nota + '</div>' : ''}`;
 
-    // ── 3 PESTAÑAS ──
-    const tabsHTML = `
+    // ── Pestañas de navegación entre slides ──
+    const cibTab = (active) => `
       <div class="cib-tabs">
-        <button class="cib-tab cib-tab--active" data-tab="contexto" onclick="switchCibTab(this)">Contexto y Situación Actual</button>
-        <button class="cib-tab" data-tab="retos" onclick="switchCibTab(this)">Retos</button>
-        <button class="cib-tab" data-tab="equipo" onclick="switchCibTab(this)">Equipo</button>
+        <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(3)">Contexto y Situación Actual</button>
+        <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(4)">Retos</button>
+        <button class="cib-tab ${active==='equipo'?'cib-tab--active':''}" onclick="goTo(5)">Equipo</button>
       </div>`;
-    const panelContexto = `<div class="cib-tab-panel cib-tab-panel--active" data-panel="contexto">${ctxStrip + fteBar + sitPoints}</div>`;
-    const panelRetos    = `<div class="cib-tab-panel" data-panel="retos">${ctxStrip + retosSection}</div>`;
-    const panelEquipo   = `<div class="cib-tab-panel" data-panel="equipo">${orgChart}</div>`;
 
-    content.innerHTML = tabsHTML + panelContexto + panelRetos + panelEquipo;
+    // ── Inyectar en 3 slides separadas ──
+    elCtx.innerHTML    = cibTab('ctx')    + ctxStrip + fteBar + sitPoints;
+    if (elRetos)  elRetos.innerHTML  = cibTab('retos')  + ctxStrip + retosSection;
+    if (elEquipo) elEquipo.innerHTML = cibTab('equipo') + orgChart;
   }
 
   // --- SANTANDER CIB ---
@@ -4275,8 +4322,10 @@ function hydrate() {
   // --- BBVA CF&BANKING ---
   if (DECK.bbvaCFB && !DECK.bbvaCFB.pending) {
     const d = DECK.bbvaCFB;
-    const content = document.getElementById('cfb-bbva-content');
-    if (content) {
+    const cfbCtx    = document.getElementById('cfb-bbva-ctx');
+    const cfbRetos  = document.getElementById('cfb-bbva-retos');
+    const cfbEquipo = document.getElementById('cfb-bbva-equipo');
+    if (cfbCtx) {
       const ctx = d.contexto;
       const sa  = d.situacionActual;
       const cfbColor = '#004481';
@@ -4430,18 +4479,18 @@ function hydrate() {
         </div>
         ${eq.nota ? '<div class="org-nota">' + eq.nota + '</div>' : ''}`;
 
-      // ── PESTAÑAS ──
-      const tabsHTML = `
+      // ── Pestañas de navegación entre slides ──
+      const cfbTab = (active) => `
         <div class="cib-tabs">
-          <button class="cib-tab cib-tab--active" data-tab="contexto" onclick="switchCibTab(this)">Contexto y Situación Actual</button>
-          <button class="cib-tab" data-tab="retos" onclick="switchCibTab(this)">Retos</button>
-          <button class="cib-tab" data-tab="equipo" onclick="switchCibTab(this)">Equipo</button>
+          <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(6)">Contexto y Situación Actual</button>
+          <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(7)">Retos</button>
+          <button class="cib-tab ${active==='equipo'?'cib-tab--active':''}" onclick="goTo(8)">Equipo</button>
         </div>`;
-      const panelContexto = `<div class="cib-tab-panel cib-tab-panel--active" data-panel="contexto">${objCards + fteBar + sitPoints}</div>`;
-      const panelRetos    = `<div class="cib-tab-panel" data-panel="retos">${objCards + retosSection}</div>`;
-      const panelEquipo   = `<div class="cib-tab-panel" data-panel="equipo">${orgChart}</div>`;
 
-      content.innerHTML = tabsHTML + panelContexto + panelRetos + panelEquipo;
+      // ── Inyectar en 3 slides separadas ──
+      cfbCtx.innerHTML    = cfbTab('ctx')    + objCards + fteBar + sitPoints;
+      if (cfbRetos)  cfbRetos.innerHTML  = cfbTab('retos')  + objCards + retosSection;
+      if (cfbEquipo) cfbEquipo.innerHTML = cfbTab('equipo') + orgChart;
     }
   }
 }
@@ -4449,36 +4498,12 @@ function hydrate() {
 hydrate();
 
 // Clonar contenido CIB (slide-5) en slide-6 con acciones ya desplegadas e interactivas
-(function cloneCIB() {
-  const src  = document.getElementById('cib-bbva-content');
-  const src6 = document.getElementById('cib-bbva-content-6');
-  if (src && src6) {
-    src6.innerHTML = src.innerHTML;
-    // Marcar todas las cards como flipped → interactivas (se pueden volver a girar)
-    src6.querySelectorAll('.nt-half, .geo-flip-group').forEach(el => el.classList.add('flipped'));
-  }
-  const title6 = document.getElementById('cib-page-title-slot-6');
-  if (title6) title6.innerHTML = 'BBVA <span>·</span> CIB';
-})();
-
-// Clonar contenido SAN CIB (slide-7) en slide-8 con acciones ya desplegadas e interactivas
-(function cloneSantCIB() {
-  const src  = document.getElementById('cib-sant-content');
-  const src8 = document.getElementById('cib-sant-content-8');
-  if (src && src8) {
-    src8.innerHTML = src.innerHTML;
-    src8.querySelectorAll('.nt-half, .geo-flip-group').forEach(el => el.classList.add('flipped'));
-  }
-  const title8 = document.getElementById('cib-sant-page-title-slot-8');
-  if (title8) title8.innerHTML = 'Santander <span>·</span> CIB';
-})();
-
-// Clonar contenido de slide-2 en slides 3 y 4
+// Clonar contenido de slide-2 en slides con auto-panel
 // (ambos muestran el mismo layout de Visión General; el panel se abre automáticamente)
 (function cloneVision() {
   const src = document.getElementById('slide-2');
   if (!src) return;
-  ['slide-3', 'slide-4'].forEach(id => {
+  ['slide-3', 'slide-10'].forEach(id => {
     const target = document.getElementById(id);
     if (!target) return;
     Array.from(src.children).forEach(child => {
@@ -4505,8 +4530,10 @@ if (DECK.conclusiones) {
       card.className = 'conc-card anim-fade';
       card.innerHTML = `
         <div class="conc-num">${msg.num}</div>
-        <hr class="conc-divider">
-        <div class="conc-body">${msg.body}</div>
+        <div class="conc-text">
+          <div class="conc-title">${msg.title}</div>
+          <div class="conc-body">${msg.body}</div>
+        </div>
       `;
       grid.appendChild(card);
     });

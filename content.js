@@ -101,7 +101,7 @@ const DECK = {
     clients: [
       { name: "BBVA",         cls: "client-btn-bbva",          panelKey: "bbva" },
       { name: "Santander",    cls: "client-btn-sant",           panelKey: "sant" },
-      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 10  }
+      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 12  }
     ]
   },
 
@@ -166,8 +166,8 @@ const DECK = {
     ],
     // Índice de secciones — slide: índice 0-based del destino (null = próximamente)
     sections: [
-      { label: "CIB",          slide: 4 },    // → slide-5
-      { label: "CF & Banking", slide: 8 }    // → slide-9
+      { label: "CIB",          slide: 3 },    // → slide-4 (BBVA CIB Contexto)
+      { label: "CF & Banking", slide: 6 }    // → slide-7 (BBVA CF&B Contexto)
     ]
   },
 
@@ -191,8 +191,8 @@ const DECK = {
       { title: "Foco en IA",              body: "IA como premisa de partida en todos los proyectos." }
     ],
     sections: [
-      { label: "CIB",          slide: 6 },     // → slide-7 (SAN CIB)
-      { label: "CF & Banking", slide: 9 }    // → slide-10
+      { label: "CIB",          slide: 10 },    // → slide-11 (SAN CIB)
+      { label: "CF & Banking", slide: 11 }   // → slide-12 (SAN CF&B)
     ]
   },
 
@@ -426,11 +426,10 @@ const DECK = {
   conclusiones: {
     label: "Conclusiones",
     messages: [
-      { num: "Mensaje 1", body: "Pendiente de completar." },
-      { num: "Mensaje 2", body: "Pendiente de completar." },
-      { num: "Mensaje 3", body: "Pendiente de completar." },
-      { num: "Mensaje 4", body: "Pendiente de completar." },
-      { num: "Mensaje 5", body: "Pendiente de completar." }
+      { num: "01", title: "BBVA Y SANTANDER SIGUEN SIENDO MOTOR DE CRECIMIENTO", body: "Hay mucho por explorar." },
+      { num: "02", title: "NUEVOS ROLES PARA NUESTRA GENTE", body: "Provocar la transición de capacidades entre áreas llevando experiencia y lecciones aprendidas." },
+      { num: "03", title: "GEOGRAFÍAS TIENE QUE SER UN FOCO DE VERDAD", body: "México como unidad principal sin perder foco en el resto." },
+      { num: "04", title: "LA IA COMO GENERADOR DE OPORTUNIDADES", body: "Nuestra Esencia, el perfil Mixto, es clave en este momento." }
     ]
   },
 

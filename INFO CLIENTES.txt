@@ -105,8 +105,28 @@ APOYOS ADICIONALES
 ANTONIO DIAZ: Apoyo entrada CS Enterprise. 
 MARTIN SANZ : Posicion y Escalado en CS Retail.
 
+###############################################################################################################################################################
+SAN: 
 
-SAN CIB 
+ESTADO ACTUAL:
+
+AMPLIO RECORRIDO EN TECNOLOGIA y DATA: Mas posicion en Banking, mas recorrido en CIB y foco en CDAIO. 
+
+
+
+
+PERCIBIDOS COMO ESPECIALISTA: Aunque concentrada la expertise entre INGENIERIA CIB, RIESGOS GLOBAL Y FINANZAS.
+BUEN POSICIONAMIENTO PARA ESCALAR: Firmado contrato POST 2.0 para la practica en Ingeneria Global, FARO para Riesgos y abiertos todos los necesarios para Geografias. 
+BUENA ESTRUCTURA INICIAL DE PERSONAS:  Con Conocimiento y Expertise para ir asumiendo nuevas responsabilidades en el crecimiento y nueva posición a coger. 
+
+RETOS:
+
+CRECER en TEC / CDAIO
+LLEGADA y FOCO EN LOS RETAIL LOCALES  (Brasil, US, Mexico y Geografias COSUMER)
+POSICINAMIENTO LINEAS DE NEGOCIO POR ABRIR (Retai & Commmercial + Weatlh)
+
+
+SAN CIB (PDTE INFO)
 
 CARD INICIAL
 
@@ -150,3 +170,62 @@ APOYOS ADICIONALES
 
 ANTONIO DIAZ: Capacidades GTB/IBF para escalado en Negocio. 
 JOSE MANUEL BRUZOS: Tecnologia Global y Posicionamiento IA. 
+
+
+
+SAN CF&BANKING (PDTE INFO)
+
+CARD INICIAL
+
+Objetivo FY27: 
+
+€: 31.5 MM
+Ftes: 440 Ftes (340 Esp, 100 Geografias), 
+Aumento 40% Fy25-Fy27. 
+
+1. SITUACION ACTUAL: 
+
+FTES TEC: 260
+FTES NEG: 40
+FTES GEO (Mex, Brl): 60
+
+CONSIDERADO PROVEEDOR DE PREFERENCIA EN INGENIERA: Actualmente mas de 300 ftes ejecutando y #1 sobre resto Tier 1 en las encuestas. 
+LLEGADA AL NEGOCIO CON POSIBILIDAD DE ESCALADO: Poscion en GM y Riesgos, contactos y posibilidades en GTB, IBF, Finance y Compliance. 
+BASE SOLIDA EN MEXICO PARA ESCALAR Y EMPEZANDO A CREAR LA ESTRUCTURA EN BRASIL: Uno de los proveedores principales en Mex CIB e inicio de Brasil con buena llegada. 
+
+2. RETOS: 
+
+SER PERCIBIDOS COMO PROVEEDOR GLOBAL: Liderar las iniciativas por ámbito de Expertie, sin gestión diferenciada por Geografía. 
+ESCALAR EN NEGOCIO: Nuevos ámbitos aparte de Global Markets y Riesgos, como GTB/IBF o Finanzas. 
+MANTENER LA ESPECIALIZCION EN INGENIERIA CIB: Asegurando el foco y entrando en ámbitos como Data Engeneering. 
+
+3. EQUIPO
+
+ORGANIGRAMA PRINIPAL 
+
+LORENZO (Partner): (Antes) Liderar CIB España. (Ahora) Asegurar que seguimos siendo percibidos especialistas CIB y foco en todas las geografias CIB. 
+- JOSE MAGARZO (SrMgr): (Antes) Area BO en SW Delivery Espapaña. (Ahora) Foco en BackOffice (y Calypso) de manera global asumiendo la vertical de Mexico.
+- MANUEL MENDOZA (SrMgr): (Antes) Liderar la parte de Neogocio Global Markets en España. (Ahora): Incorporar el control centralizado (Mexico y España) de Front Office + Murex. 
+- MANUEL RANEA* (Dir): (Antes) Vision Tecnología global de BBVA. (Ahora): Centrar la asignacion de CIB en liderar la practica de CTO (Arquitectura), escalando nuestra posicion. 
+- ANDRES PEROZO (SrMgr): (Antes) Lider Integraciones en SW Delivery, (Ahora): Incoporara la gestion de equipos de Integraciones Tec. en CTO y escalado.
+- DAVID FUENTE* (Dir): (Antes): Lider practica Data (Ahora) Continuar Liderazgo de la practica de Data asumiendo el reto de entrada y escalado en Data Eng. + Liderar Adopcion de IA en los equipos.
+- CARLOS SOTO* (SrMgr): (Antes): Liderar Riesgos y Regultaorion en CIB Engeneering (Ahora) Liderar la creacion de Equipo en Brasil + Liderar llegada y escalado en Ingeneria fuera de CIB. 
+
+*Capacidad compartida CIB/CF&B
+
+APOYOS ADICIONALES
+
+ANTONIO DIAZ: Capacidades GTB/IBF para escalado en Negocio. 
+JOSE MANUEL BRUZOS: Tecnologia Global y Posicionamiento IA. 
+
+###############################################################################################################################################################################
+
+CONCLUSIONES: 
+
+BBVA Y SANTANDER SIGUEN SIENDO MOTOR DE CRECIMIENTO: Hay mucho por explorar. 
+
+NUEVOS ROLES PARA NUESTRA GENTE: Provocar la transicion de capacidades entre áreas llevando experiencia y lecciones aprendidas. 
+
+GEOGRAFIAS TIENE QUE SER UN FOCO DE VERDAD: Mexico como unidad principal sin perder foco en el resto. 
+
+LA IA COMO GENERADOR DE OPORTUNIDADES: Nuestra Esencia, el perfil Mixto, es clave en este momento.
