@@ -214,12 +214,12 @@ const DECK = {
       {
         badge: "Tecnología / CDAIO",
         title: "ASEGURAR CRECIMIENTO EN TECNOLOGÍA / CDAIO",
-        body: "Apostando por el conocimiento de la arquitectura y priorizando la ejecución de proyectos E2E.",
+        body: "Apostando por el conocimiento de la arquitectura y priorizando la ejecución de proyectos E2E, sabiendo de nuestras Expertise en Ingeniería CIB en otros clientes.",
         impact: "high"
       },
       {
         badge: "Retail Locales",
-        title: "LLEGADA Y FOCO EN LOS RETAIL LOCALES",
+        title: "LLEGADA Y FOCO EN LOS RETAIL LOCALES Y UNIDADES CIB",
         body: "Brasil, US, México y Geografías Consumer. Asegurando que conocemos las particularidades locales.",
         impact: "high"
       },
