@@ -102,7 +102,7 @@ const DECK = {
     clients: [
       { name: "BBVA",         cls: "client-btn-bbva",          panelKey: "bbva" },
       { name: "Santander",    cls: "client-btn-sant",           panelKey: "sant" },
-      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 17  }
+      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 14  }
     ]
   },
 
@@ -168,7 +168,7 @@ const DECK = {
     // Índice de secciones — slide: índice 0-based del destino (null = próximamente)
     sections: [
       { label: "CIB",          slide: 3 },    // → slide-4 (BBVA CIB Contexto)
-      { label: "CF & Banking", slide: 6 }    // → slide-7 (BBVA CF&B Contexto)
+      { label: "CF & Banking", slide: 5 }    // → slide-6 (BBVA CF&B Contexto)
     ]
   },
 
@@ -193,21 +193,21 @@ const DECK = {
     ],
     estadoActual: [
       {
-        badge: "Reducción Costes",
-        title: "ESCENARIO GLOBAL ANUNCIADO DE REDUCCIÓN DE COSTES 25-30%",
-        body: "Priorización en la apertura y posicionamiento de nuevos ámbitos.",
+        badge: "Presupuestos",
+        title: "ESCENARIO VOLÁTIL DE PRESUPUESTOS",
+        body: "Previsión de resultados extraordinario en los próximos años, y aun con escenario reducción de costes en algunos ámbitos, aumento de la inversión alta en general. Priorización en la apertura y posicionamiento de nuevos ámbitos.",
         impact: "high"
       },
       {
         badge: "Tecnología & Data",
-        title: "AMPLIO RECORRIDO EN TECNOLOGÍA Y DATA",
-        body: "Algo de más posición en Banking, más recorrido en CIB y foco en CDAIO.",
+        title: "TODO POR HACER EN TECNOLOGÍA Y DATA",
+        body: "Contando con posiciones iniciales en Banking, pero con todo el recorrido por delante (focalizando en CIB y CDAIO).",
         impact: "high"
       },
       {
         badge: "Geografías",
         title: "POSICIÓN EN GEOGRAFÍAS APALANCADAS EN USA Y UK",
-        body: "Necesario foco en México y Brasil.",
+        body: "Amplio recorrido de crecimiento en México y Brasil.",
         impact: "medium"
       }
     ],
@@ -232,8 +232,8 @@ const DECK = {
       }
     ],
     sections: [
-      { label: "CIB",          slide: 10 },    // → slide-11 (SAN CIB)
-      { label: "CF & Banking", slide: 13 }   // → slide-14 (SAN CF&B)
+      { label: "CIB",          slide: 8 },     // → slide-9 (SAN CIB)
+      { label: "CF & Banking", slide: 10 }   // → slide-11 (SAN CF&B)
     ]
   },
 
@@ -481,9 +481,9 @@ const DECK = {
     },
 
     retosCFB: [
-      { num: "01", title: "MODELO AI FIRST",                             body: "Transformar propuesta de valor y servicios." },
-      { num: "02", title: "NECESARIO LLEGAR A NUEVAS ÁREAS",              body: "Cross (CDAIO) y Dominios de Negocio (Retail & Commercial)." },
-      { num: "03", title: "ESCALAR EL NEGOCIO EN OTRAS GEOGRAFÍAS",      body: "Desde nuestra experiencia y especialización en HQ." }
+      { num: "01", title: "TENER CLARO UNA ESTRATEGIA COMÚN Y DÓNDE PODEMOS ESTAR", body: "Conocer los ámbitos con el potencial de negocio para priorizar y reorganizarnos." },
+      { num: "02", title: "ESCALADO EN NUEVAS ÁREAS ALCANZADAS",                       body: "Apalancarse de manera cross en CDAIO y Dominios de Negocio (Retail & Commercial)." },
+      { num: "03", title: "ESCALAR EL NEGOCIO EN OTRAS GEOGRAFÍAS",                   body: "Desde nuestra experiencia y especialización en HQ." }
     ],
 
     equipo: {
@@ -608,6 +608,32 @@ const DECK = {
     ]
   },
 
+  /* ========================================================
+     PANTALLA 14 — CAMBIOS EN EQUIPO
+     Editar en: DECK.cambiosEquipo
+  ======================================================== */
+  cambiosEquipo: {
+    label: "Reorganización Equipo",
+    intro: "Activamos ya algunos cambios, para ajustarnos a la estrategia:",
+    clients: [
+      {
+        name: "BBVA", color: "#004481",
+        cambios: [
+          { motivo: "Foco en comenzar y escalar en Ingeniería fuera de CIB", persona: "Carlos Soto", descripcion: "Llevar la Expertise de Ingeniería CIB, para empezar por ámbitos donde se cruza con mundo CIB." },
+          { motivo: "Escalar en Geografías por Expertise Global", persona: "Manuel Mendoza y Jose Magarzo", descripcion: "Derivar control de los ámbitos de Front/Murex y Back/Calypso de manera global incluyendo México." }
+        ]
+      },
+      {
+        name: "Santander", color: "#EC0000",
+        cambios: [
+          { motivo: "Completar la llegada en Negocio (cubrir GAPs)", persona: "Antonio Díaz y Álvaro Dito", descripcion: "Completar visión Negocio desde el conocimiento de la práctica global de CIB y liderar iniciativas en Accounting." },
+          { motivo: "Capturar las oportunidades en Tecnología", persona: "Daniel López", descripcion: "Traer la experiencia de cómo se comenzó y escaló el área de Ingeniería CIB en BBVA hacia Santander." }
+        ]
+      }
+    ],
+    conclusion: "Son primeros pasos, que según se avance con la exploración de ámbitos y estrategia se irá ajustando la dedicación de nuestra gente."
+  },
+
   santCIB: {
     label: "Santander · CIB",
     color: "#EC0000",
@@ -621,11 +647,7 @@ const DECK = {
           { ftes: "250", label: "España" },
           { ftes: "100", label: "Geografías" }
         ]
-      },
-      extra: [
-        "Convertirnos en primer proveedor E2E (Negocio+Tech+Ops) Global donde ahora somos el 2º",
-        "Generador de talento para apertura de nuevos clientes."
-      ]
+      }
     },
 
     situacionActual: {
@@ -637,14 +659,14 @@ const DECK = {
       keyPoints: [
         { icon: "top",  text: "PRIMER PROVEEDOR DE NEGOCIO",            body: "Referente también en operaciones y avanzando en algunos ámbitos en tecnología como Risk o GTB." },
         { icon: "geo",  text: "PRIMEROS PASOS EN GEOGRAFÍAS CLAVE",     body: "Proveedor preferente US, México en negocio y Brasil dando los primeros pasos." },
-        { icon: "ia",   text: "SENTANDO LAS BASES DEL CAMBIO IA",       body: "Buena entrada en ámbitos clave de definición y ejecución." }
+        { icon: "ia",   text: "POCA PRESENCIA EN TECNOLOGÍA",             body: "Donde podemos ser diferenciales por el conocimiento en Negocio y el ADN de Nfq como perfil Mixto." }
       ]
     },
 
     retosCIB: [
-      { num: "01", title: "ESCALAR EN TECNOLOGÍA",                     body: "Extender a tecnología donde somos referentes en negocio." },
-      { num: "02", title: "PROVEEDOR PREFERENTE GLOBAL",               body: "México con foco IT y Brasil Negocio+IT." },
-      { num: "03", title: "AGENTES DEL CAMBIO EN IA ADOPTION",         body: "Anticiparnos al nuevo paradigma desde el profundo conocimiento del negocio." }
+      { num: "01", title: "COMPLETAR LLEGADA EN ÁMBITOS DE NEGOCIO",   body: "Cubrir GAPs en Ámbitos de Negocio con Recorrido donde no estamos llegando (p.ej FX Domain)." },
+      { num: "02", title: "CAPTURAR LAS OPORTUNIDADES EN TECNOLOGÍA",  body: "Extender a tecnología donde somos referentes en negocio." },
+      { num: "03", title: "PREFERENTE GLOBAL PARA ESCALAR GEOGRAFÍAS", body: "México con foco IT y Brasil Negocio+IT." }
     ],
 
     equipo: {
@@ -656,17 +678,15 @@ const DECK = {
         after: "Foco en Tecnología, IA y ámbitos de desarrollo."
       },
       directivos: [
-        { name: "Víctor Chamorro",    initials: "VC", role: "SrMgr",  before: "US CIB.",                after: "Visión Cross CIB." },
-        { name: "Juan Blanco",        initials: "JB", role: "SrMgr",  before: "US CIB.",                after: "US (Banking & BBVA) + Brasil." },
-        { name: "Josefe",             initials: "JO", role: "SrMgr",  before: "US CIB.",                after: "Líder US CIB + Global Markets." },
-        { name: "Luis Isasi",         initials: "LI", role: "SrMgr",  before: "GTB.",                   after: "GTB nuevos servicios + impulsar GTB en otros clientes." },
-        { name: "Carlos Mora",        initials: "CM", role: "SrMgr",  before: "UK Banking.",            after: "UK Banking + CIB (Santander London Branch)." },
-        { name: "Javier Gardeazábal", initials: "JG", role: "Mgr",    before: "UK SLB.",                after: "Foco en liderazgo GDF." },
-        { name: "Jaime Errandonea",   initials: "JE", role: "Mgr",    before: "Global Markets San.",    after: "Cross Global Markets San + BBVA." },
-        { name: "Jesús Ontiveros",    initials: "JO", role: "SrMgr",  before: "Global FinCrime.",       after: "Global + apoyo estrategia CIB FinCrime." },
-        { name: "Álvaro Dito",        initials: "AD", role: "SrMgr",  before: "Accounting.",            after: "Accounting + cross technology push." },
-        { name: "Miguel Ramírez",     initials: "MR", role: "SrMgr",  before: "CoE Calypso.",           after: "Global + foco Calypso." },
-        { name: "Ignacio Álvaro*",    initials: "IA", role: "Partner", before: "Apoyo Tecnología y DATA.", after: "Foco en CDAIO + DATA." }
+        { name: "Víctor Chamorro",  initials: "VC", role: "SrMgr",  before: "US CIB.",                   after: "Visión Cross CIB." },
+        { name: "Juan Blanco",      initials: "JB", role: "SrMgr",  before: "US CIB.",                   after: "US (Banking & BBVA) + Brasil." },
+        { name: "Josefe",           initials: "JO", role: "SrMgr",  before: "US CIB.",                   after: "Líder US CIB + Global Markets." },
+        { name: "Luis Isasi",       initials: "LI", role: "SrMgr",  before: "GTB.",                      after: "GTB nuevos servicios + impulsar GTB en otros clientes." },
+        { name: "Carlos Mora",      initials: "CM", role: "SrMgr",  before: "UK Banking.",               after: "UK Banking + CIB (Santander London Branch)." },
+        { name: "Jesús Ontiveros",  initials: "JO", role: "SrMgr",  before: "Global FinCrime.",          after: "Global + apoyo estrategia CIB FinCrime." },
+        { name: "Álvaro Dito",      initials: "AD", role: "SrMgr",  before: "Accounting.",               after: "Accounting + cross technology push." },
+        { name: "Miguel Ramírez",   initials: "MR", role: "SrMgr",  before: "CoE Calypso.",              after: "Global + foco Calypso." },
+        { name: "Ignacio Álvaro*",  initials: "IA", role: "Partner", before: "Apoyo Tecnología y DATA.",  after: "Foco en CDAIO + DATA." }
       ],
       apoyos: [
         { name: "Leandro Gómez",      initials: "LG", mission: "México." },

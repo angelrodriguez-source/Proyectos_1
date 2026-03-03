@@ -1011,11 +1011,12 @@ html, body {
   transform: translateX(5px);
 }
 
-/* --- Botón "Visión Global" centrado encima de clientes --- */
+/* --- Botones "Visión Global" y "Cambios en Equipo" centrados encima de clientes --- */
 .cifras-nav {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
+  gap: 14px;
 }
 .cifras-global-btn {
   background: var(--grad-brand);
@@ -1046,6 +1047,142 @@ html, body {
   stroke-linecap: round;
   stroke-linejoin: round;
   flex-shrink: 0;
+}
+
+/* --- Variante botón equipo --- */
+.cifras-equipo-btn {
+  background: var(--grad-cold) !important;
+  box-shadow: 0 4px 16px rgba(209,59,95,0.18) !important;
+}
+.cifras-equipo-btn:hover {
+  box-shadow: 0 8px 28px rgba(209,59,95,0.28) !important;
+}
+
+/* ============================================================
+   SLIDE CAMBIOS EN EQUIPO
+   ============================================================ */
+.slide-cambios-equipo { background: var(--white); }
+.cambios-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 48px 24px;
+  overflow-y: auto;
+  justify-content: center;
+  gap: 28px;
+  margin-top: -20px;
+}
+.cambios-intro {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(16px, 1.4vw, 22px);
+  color: var(--black);
+  font-weight: 700;
+  text-align: left;
+  padding: 0;
+  line-height: 1.4;
+}
+.cambios-clients {
+  display: flex;
+  gap: 28px;
+}
+.cambios-client-block {
+  flex: 1;
+  background: var(--white);
+  border-radius: 14px;
+  border: 1.5px solid var(--grey-200);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.cambios-client-header {
+  padding: 14px 24px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(15px, 1.2vw, 19px);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cambios-client-header svg {
+  width: 22px; height: 22px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.cambios-missions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 24px;
+}
+.cambios-mission-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cambios-mission-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(12px, 1vw, 15px);
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding-left: 10px;
+  border-left: 3px solid var(--orange);
+  line-height: 1.4;
+}
+.cambios-person-card {
+  background: var(--grey-100);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: box-shadow 0.2s;
+}
+.cambios-person-card:hover {
+  box-shadow: 0 3px 16px rgba(0,0,0,0.07);
+}
+.cambios-persona-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+.cambios-person-info {
+  flex: 1;
+  min-width: 0;
+}
+.cambios-persona-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(13px, 1.05vw, 16px);
+  color: var(--black);
+  line-height: 1.3;
+}
+.cambios-mandato {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(12px, 0.95vw, 15px);
+  color: var(--grey-700);
+  line-height: 1.5;
+  margin-top: 3px;
+}
+.cambios-conclusion {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(14px, 1.15vw, 18px);
+  color: var(--black);
+  text-align: left;
+  font-weight: 600;
+  padding: 16px 24px;
+  line-height: 1.55;
+  background: var(--grey-100);
+  border-radius: 12px;
+  border-left: 4px solid var(--orange);
 }
 
 /* ============================================================
@@ -3067,12 +3204,12 @@ html, body {
 }
 .org-connector::before {
   content: ''; position: absolute; top: 0; left: 50%;
-  width: 2px; height: 12px; background: rgba(0,68,129,0.2);
+  width: 2px; height: 12px; background: var(--conn-color, rgba(0,68,129,0.2));
 }
 .org-connector::after {
   content: ''; position: absolute; top: 12px;
-  left: calc(100% / 6); right: calc(100% / 6);
-  height: 2px; background: rgba(0,68,129,0.2);
+  left: calc(100% / 10); right: calc(100% / 10);
+  height: 2px; background: var(--conn-color, rgba(0,68,129,0.2));
 }
 .org-grid {
   display: grid; grid-template-columns: repeat(7, 1fr);
@@ -3082,7 +3219,7 @@ html, body {
 .org-grid .ed-card { position: relative; }
 .org-grid .ed-card::before {
   content: ''; position: absolute; top: -10px; left: 50%;
-  width: 2px; height: 10px; background: rgba(0,68,129,0.15);
+  width: 2px; height: 10px; background: var(--conn-color, rgba(0,68,129,0.15));
 }
 .ed-role-badge {
   font-family: 'Instrument Sans', sans-serif;
@@ -3107,17 +3244,17 @@ html, body {
 .org-grid--6 {
   grid-template-columns: repeat(6, 1fr);
 }
-.org-grid--auto {
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+.org-grid--9 {
+  grid-template-columns: repeat(5, 1fr);
 }
-.org-grid--auto .ed-card {
-  padding: 12px 14px;
+.org-grid--9 .ed-card {
+  padding: 14px 16px;
 }
-.org-grid--auto .ed-name {
-  font-size: clamp(11px, 0.9vw, 14px);
+.org-grid--9 .ed-name {
+  font-size: clamp(12px, 1vw, 15px);
 }
-.org-grid--auto .ed-ba-text {
-  font-size: clamp(9px, 0.65vw, 11px);
+.org-grid--9 .ed-ba-text {
+  font-size: clamp(9px, 0.7vw, 12px);
 }
 .org-nota {
   font-family: 'Instrument Sans', sans-serif;
@@ -3903,11 +4040,16 @@ html, body {
       <!-- Stats resumen — renderizado por content.js → DECK.vision.stats -->
       <div id="summary-row" class="summary-row anim-fade delay-5"></div>
 
-      <!-- Botón Visión Global — lleva al dashboard de cifras -->
+      <!-- Botones de navegación global -->
       <div class="cifras-nav anim-up delay-5">
-        <button class="cifras-global-btn" onclick="goTo(16)">
+        <button class="cifras-global-btn" onclick="goTo(12)">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
           <span>Visión Global</span>
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+        <button class="cifras-global-btn cifras-equipo-btn" onclick="goTo(13)">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Reorganización Equipo</span>
           <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
         </button>
       </div>
@@ -3975,32 +4117,11 @@ html, body {
   <!-- FIN PANTALLA 05 -->
 
 
+
   <!-- ============================================================
-       PANTALLA 06 — BBVA · CIB · Equipo
+       PANTALLA 06 — BBVA · CF & Banking · Contexto y Situación Actual
        ============================================================ -->
   <div class="slide slide-bbva-cib" id="slide-6">
-    <div class="vision-bg-dots"></div>
-    <div class="section-header anim-fade">
-      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div class="cib-page-title">BBVA <span>·</span> CIB</div>
-      <div class="section-label" style="color:#004481">
-        <span class="label-line" style="background:#004481"></span>
-        <span>Equipo</span>
-        <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          BBVA Global
-        </button>
-      </div>
-    </div>
-    <div class="cib-content" id="cib-bbva-equipo"></div>
-  </div>
-  <!-- FIN PANTALLA 06 -->
-
-
-  <!-- ============================================================
-       PANTALLA 07 — BBVA · CF & Banking · Contexto y Situación Actual
-       ============================================================ -->
-  <div class="slide slide-bbva-cib" id="slide-7">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4020,9 +4141,9 @@ html, body {
 
 
   <!-- ============================================================
-       PANTALLA 08 — BBVA · CF & Banking · Retos
+       PANTALLA 07 — BBVA · CF & Banking · Retos
        ============================================================ -->
-  <div class="slide slide-bbva-cib" id="slide-8">
+  <div class="slide slide-bbva-cib" id="slide-7">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4041,42 +4162,21 @@ html, body {
   <!-- FIN PANTALLA 08 -->
 
 
-  <!-- ============================================================
-       PANTALLA 09 — BBVA · CF & Banking · Equipo
-       ============================================================ -->
-  <div class="slide slide-bbva-cib" id="slide-9">
-    <div class="vision-bg-dots"></div>
-    <div class="section-header anim-fade">
-      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div class="cib-page-title">BBVA <span>·</span> CF &amp; Banking</div>
-      <div class="section-label" style="color:#004481">
-        <span class="label-line" style="background:#004481"></span>
-        <span>Equipo</span>
-        <button class="cib-nav-back" onclick="goTo(2)" title="Ver BBVA Global">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          BBVA Global
-        </button>
-      </div>
-    </div>
-    <div class="cib-content" id="cfb-bbva-equipo"></div>
-  </div>
-  <!-- FIN PANTALLA 09 -->
-
 
   <!-- ============================================================
-       PANTALLA 10 — VISIÓN GLOBAL SANTANDER
+       PANTALLA 08 — VISIÓN GLOBAL SANTANDER
        (mismo layout que pantalla 02, panel SAN auto-desplegado)
        ============================================================ -->
-  <div class="slide slide-vision" id="slide-10" data-auto-panel="sant">
+  <div class="slide slide-vision" id="slide-8" data-auto-panel="sant">
     <div class="vision-bg-dots"></div>
   </div>
   <!-- FIN PANTALLA 10 -->
 
 
   <!-- ============================================================
-       PANTALLA 11 — SANTANDER · CIB · Contexto y Situación Actual
+       PANTALLA 09 — SANTANDER · CIB · Contexto y Situación Actual
        ============================================================ -->
-  <div class="slide slide-sant-cib" id="slide-11">
+  <div class="slide slide-sant-cib" id="slide-9">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4084,7 +4184,7 @@ html, body {
       <div class="section-label" style="color:#EC0000">
         <span class="label-line" style="background:#EC0000"></span>
         <span>Contexto y Situación Actual</span>
-        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+        <button class="cib-nav-back" onclick="goTo(7)" title="Ver Santander Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Santander Global
         </button>
@@ -4096,9 +4196,9 @@ html, body {
 
 
   <!-- ============================================================
-       PANTALLA 12 — SANTANDER · CIB · Retos
+       PANTALLA 10 — SANTANDER · CIB · Retos
        ============================================================ -->
-  <div class="slide slide-sant-cib" id="slide-12">
+  <div class="slide slide-sant-cib" id="slide-10">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4106,7 +4206,7 @@ html, body {
       <div class="section-label" style="color:#EC0000">
         <span class="label-line" style="background:#EC0000"></span>
         <span>Retos</span>
-        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+        <button class="cib-nav-back" onclick="goTo(7)" title="Ver Santander Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Santander Global
         </button>
@@ -4117,32 +4217,11 @@ html, body {
   <!-- FIN PANTALLA 12 -->
 
 
-  <!-- ============================================================
-       PANTALLA 13 — SANTANDER · CIB · Equipo
-       ============================================================ -->
-  <div class="slide slide-sant-cib" id="slide-13">
-    <div class="vision-bg-dots"></div>
-    <div class="section-header anim-fade">
-      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CIB</div>
-      <div class="section-label" style="color:#EC0000">
-        <span class="label-line" style="background:#EC0000"></span>
-        <span>Equipo</span>
-        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          Santander Global
-        </button>
-      </div>
-    </div>
-    <div class="cib-content" id="cib-sant-equipo"></div>
-  </div>
-  <!-- FIN PANTALLA 13 -->
-
 
   <!-- ============================================================
-       PANTALLA 14 — SANTANDER · CF & BANKING · Contexto y Situación Actual
+       PANTALLA 11 — SANTANDER · CF & BANKING · Contexto y Situación Actual
        ============================================================ -->
-  <div class="slide slide-sant-cib" id="slide-14">
+  <div class="slide slide-sant-cib" id="slide-11">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4150,7 +4229,7 @@ html, body {
       <div class="section-label" style="color:#EC0000">
         <span class="label-line" style="background:#EC0000"></span>
         <span>Contexto y Situación Actual</span>
-        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+        <button class="cib-nav-back" onclick="goTo(7)" title="Ver Santander Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Santander Global
         </button>
@@ -4162,9 +4241,9 @@ html, body {
 
 
   <!-- ============================================================
-       PANTALLA 15 — SANTANDER · CF & BANKING · Retos
+       PANTALLA 12 — SANTANDER · CF & BANKING · Retos
        ============================================================ -->
-  <div class="slide slide-sant-cib" id="slide-15">
+  <div class="slide slide-sant-cib" id="slide-12">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4172,7 +4251,7 @@ html, body {
       <div class="section-label" style="color:#EC0000">
         <span class="label-line" style="background:#EC0000"></span>
         <span>Retos</span>
-        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+        <button class="cib-nav-back" onclick="goTo(7)" title="Ver Santander Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Santander Global
         </button>
@@ -4183,32 +4262,11 @@ html, body {
   <!-- FIN PANTALLA 13 -->
 
 
-  <!-- ============================================================
-       PANTALLA 16 — SANTANDER · CF & BANKING · Equipo
-       ============================================================ -->
-  <div class="slide slide-sant-cib" id="slide-16">
-    <div class="vision-bg-dots"></div>
-    <div class="section-header anim-fade">
-      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CF &amp; Banking</div>
-      <div class="section-label" style="color:#EC0000">
-        <span class="label-line" style="background:#EC0000"></span>
-        <span>Equipo</span>
-        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          Santander Global
-        </button>
-      </div>
-    </div>
-    <div class="cib-content" id="cfb-sant-equipo"></div>
-  </div>
-  <!-- FIN PANTALLA 14 -->
-
 
   <!-- ============================================================
-       PANTALLA 17 — VISIÓN GLOBAL · CIFRAS & OBJETIVOS
+       PANTALLA 13 — VISIÓN GLOBAL · CIFRAS & OBJETIVOS
        ============================================================ -->
-  <div class="slide slide-cifras" id="slide-17">
+  <div class="slide slide-cifras" id="slide-13">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4228,9 +4286,31 @@ html, body {
 
 
   <!-- ============================================================
-       PANTALLA 18 — CONCLUSIONES
+       PANTALLA 14 — CAMBIOS EN EQUIPO
        ============================================================ -->
-  <div class="slide slide-conclusiones" id="slide-18">
+  <div class="slide slide-cambios-equipo" id="slide-14">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title" style="color:var(--black)">Reorganización Equipo</div>
+      <div class="section-label">
+        <span class="label-line" style="background:var(--orange)"></span>
+        <span>Ajustes Estratégicos</span>
+        <button class="cib-nav-back" onclick="goTo(1)" title="Volver a Visión General" style="border-color:rgba(236,104,62,0.25);color:rgba(200,80,30,0.65);" onmouseover="this.style.background='rgba(236,104,62,0.07)';this.style.borderColor='rgba(236,104,62,0.5)'" onmouseout="this.style.background='';this.style.borderColor='rgba(236,104,62,0.25)'">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Visión General
+        </button>
+      </div>
+    </div>
+    <div class="cambios-content" id="cambios-content"></div>
+  </div>
+  <!-- FIN PANTALLA 14 -->
+
+
+  <!-- ============================================================
+       PANTALLA 15 — CONCLUSIONES
+       ============================================================ -->
+  <div class="slide slide-conclusiones" id="slide-15">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4613,7 +4693,6 @@ function hydrate() {
     const d = DECK.bbvaCIB;
     const elCtx    = document.getElementById('cib-bbva-ctx');
     const elRetos  = document.getElementById('cib-bbva-retos');
-    const elEquipo = document.getElementById('cib-bbva-equipo');
     if (!elCtx) return;
 
     const ctx = d.contexto;
@@ -4884,13 +4963,11 @@ function hydrate() {
       <div class="cib-tabs">
         <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(3)">Contexto y Situación Actual</button>
         <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(4)">Retos</button>
-        <button class="cib-tab ${active==='equipo'?'cib-tab--active':''}" onclick="goTo(5)">Equipo</button>
       </div>`;
 
-    // ── Inyectar en 3 slides separadas ──
+    // ── Inyectar en 2 slides separadas ──
     elCtx.innerHTML    = cibTab('ctx')    + ctxStrip + fteBar + sitPoints;
     if (elRetos)  elRetos.innerHTML  = cibTab('retos')  + ctxStrip + retosSection;
-    if (elEquipo) elEquipo.innerHTML = cibTab('equipo') + orgChart;
   }
 
   // --- SANTANDER CIB (3 pestañas) ---
@@ -4898,7 +4975,6 @@ function hydrate() {
     const d = DECK.santCIB;
     const scibCtx    = document.getElementById('cib-sant-ctx');
     const scibRetos  = document.getElementById('cib-sant-retos');
-    const scibEquipo = document.getElementById('cib-sant-equipo');
     const ctx = d.contexto;
     const sa  = d.situacionActual;
     const santColor = '#EC0000';
@@ -5054,7 +5130,7 @@ function hydrate() {
           </div>
         </div>
         <div class="org-connector" style="--conn-color:rgba(236,0,0,0.2)"></div>
-        <div class="org-grid org-grid--auto">
+        <div class="org-grid org-grid--9">
           ${eq.directivos.map(p => mkSantCibCard(p, true)).join('')}
         </div>
       </div>
@@ -5069,15 +5145,13 @@ function hydrate() {
     // ── Pestañas de navegación entre slides ──
     const scibTab = (active) => `
       <div class="cib-tabs">
-        <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(10)">Contexto y Situación Actual</button>
-        <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(11)">Retos</button>
-        <button class="cib-tab ${active==='equipo'?'cib-tab--active':''}" onclick="goTo(12)">Equipo</button>
+        <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(8)">Contexto y Situación Actual</button>
+        <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(9)">Retos</button>
       </div>`;
 
-    // ── Inyectar en 3 slides separadas ──
+    // ── Inyectar en 2 slides separadas ──
     if (scibCtx)    scibCtx.innerHTML    = scibTab('ctx')    + objCards + extraHtml + fteBar + sitPoints;
     if (scibRetos)  scibRetos.innerHTML  = scibTab('retos')  + objCards + retosSection;
-    if (scibEquipo) scibEquipo.innerHTML = scibTab('equipo') + orgChart;
   }
 
   // --- BBVA CF&BANKING ---
@@ -5085,7 +5159,6 @@ function hydrate() {
     const d = DECK.bbvaCFB;
     const cfbCtx    = document.getElementById('cfb-bbva-ctx');
     const cfbRetos  = document.getElementById('cfb-bbva-retos');
-    const cfbEquipo = document.getElementById('cfb-bbva-equipo');
     if (cfbCtx) {
       const ctx = d.contexto;
       const sa  = d.situacionActual;
@@ -5243,15 +5316,13 @@ function hydrate() {
       // ── Pestañas de navegación entre slides ──
       const cfbTab = (active) => `
         <div class="cib-tabs">
-          <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(6)">Contexto y Situación Actual</button>
-          <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(7)">Retos</button>
-          <button class="cib-tab ${active==='equipo'?'cib-tab--active':''}" onclick="goTo(8)">Equipo</button>
+          <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(5)">Contexto y Situación Actual</button>
+          <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(6)">Retos</button>
         </div>`;
 
-      // ── Inyectar en 3 slides separadas ──
+      // ── Inyectar en 2 slides separadas ──
       cfbCtx.innerHTML    = cfbTab('ctx')    + objCards + fteBar + sitPoints;
       if (cfbRetos)  cfbRetos.innerHTML  = cfbTab('retos')  + objCards + retosSection;
-      if (cfbEquipo) cfbEquipo.innerHTML = cfbTab('equipo') + orgChart;
     }
   }
 
@@ -5263,7 +5334,6 @@ function hydrate() {
     if (d && !d.pending) {
       const scfbCtx    = document.getElementById('cfb-sant-ctx');
       const scfbRetos  = document.getElementById('cfb-sant-retos');
-      const scfbEquipo = document.getElementById('cfb-sant-equipo');
       const ctx = d.contexto;
       const sa  = d.situacionActual;
       const santColor = '#EC0000';
@@ -5445,15 +5515,13 @@ function hydrate() {
       // ── Pestañas de navegación entre slides ──
       const scfbTab = (active) => `
         <div class="cib-tabs">
-          <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(13)">Contexto y Situación Actual</button>
-          <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(14)">Retos</button>
-          <button class="cib-tab ${active==='equipo'?'cib-tab--active':''}" onclick="goTo(15)">Equipo</button>
+          <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(10)">Contexto y Situación Actual</button>
+          <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(11)">Retos</button>
         </div>`;
 
-      // ── Inyectar en 3 slides separadas ──
+      // ── Inyectar en 2 slides separadas ──
       if (scfbCtx)    scfbCtx.innerHTML    = scfbTab('ctx')    + objCards + fteBar + sitPoints;
       if (scfbRetos)  scfbRetos.innerHTML  = scfbTab('retos')  + objCards + retosSection;
-      if (scfbEquipo) scfbEquipo.innerHTML = scfbTab('equipo') + orgTriptych;
     }
   }
 }
@@ -5466,7 +5534,7 @@ hydrate();
 (function cloneVision() {
   const src = document.getElementById('slide-2');
   if (!src) return;
-  ['slide-3', 'slide-10'].forEach(id => {
+  ['slide-3', 'slide-8'].forEach(id => {
     const target = document.getElementById(id);
     if (!target) return;
     Array.from(src.children).forEach(child => {
@@ -5514,6 +5582,43 @@ if (DECK.cifras) {
         hdr.classList.toggle('open');
       });
     });
+  }
+}
+
+// ── Hydrate Cambios en Equipo ─────────────────────────────────
+if (DECK.cambiosEquipo) {
+  const cambiosEl = document.getElementById('cambios-content');
+  if (cambiosEl) {
+    const ce = DECK.cambiosEquipo;
+    const getInitials = (name) => name.split(/[\s;]+/).filter(w => w.length > 1).map(w => w[0].toUpperCase()).slice(0, 2).join('');
+
+    const clientBlocks = ce.clients.map(cl => {
+      const missions = cl.cambios.map(c => `
+        <div class="cambios-mission-block">
+          <div class="cambios-mission-title">${c.motivo}</div>
+          <div class="cambios-person-card">
+            <div class="cambios-persona-avatar" style="background:${cl.color}">${getInitials(c.persona)}</div>
+            <div class="cambios-person-info">
+              <div class="cambios-persona-name">${c.persona}</div>
+              ${c.descripcion ? '<div class="cambios-mandato">' + c.descripcion + '</div>' : ''}
+            </div>
+          </div>
+        </div>`).join('');
+
+      return `
+        <div class="cambios-client-block anim-up delay-1">
+          <div class="cambios-client-header" style="background:${cl.color}">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            ${cl.name}
+          </div>
+          <div class="cambios-missions">${missions}</div>
+        </div>`;
+    }).join('');
+
+    cambiosEl.innerHTML = `
+      <div class="cambios-intro anim-fade">${ce.intro}</div>
+      <div class="cambios-clients">${clientBlocks}</div>
+      <div class="cambios-conclusion anim-fade delay-2">${ce.conclusion}</div>`;
   }
 }
 

@@ -109,10 +109,9 @@ SAN:
 
 ESTADO ACTUAL:
 
-ESCENARIO GLOGAL ANUNCIADO DE REDUCCION DE COSTES 25-30%: Priorizacion en la apertura y posicionamiento de nuevos ámbitos.  
-AMPLIO RECORRIDO EN TECNOLOGIA y DATA: Algo de más posicion en Banking, mas recorrido en CIB y foco en CDAIO. 
-POSICION EN GEOGRAFIAS APALANCADAS EN USA Y UK: Necesario Foco en Mexico y Brasil.
-
+ESCENEARIO VOLATIL DE PRESUPUESTOS: Previsión de resultados estraordinario en los proximos años, y aun con escenario reduccion de costes en algunos ámbitos, aumento de la inversion alta en general. Priorizacion en la apertura y posicionamiento de nuevos ámbitos.  
+TODO POR HACER EN TECNOLOGIA y DATA: Contando con posiciones iniciales en Banking, pero con todo el reocorrido por delante  (focalizando en CIB y CDAIO). 
+POSICION EN GEOGRAFIAS APALANCADAS EN USA Y UK: Amplio recorrido de crecimiento en México y Brasil.
 
 RETOS:
 
@@ -120,51 +119,54 @@ ASEGURAR CRECIMIENTO EN TECNOLOGIA / CDAIO: Apostando por el conocimento de la a
 LLEGADA y FOCO EN LOS RETAIL LOCALES y UNIDADES CIB (Brasil, US, Mexico y Geografias COSUMER): Asegurando que conocemos las particularidades locales. 
 POSICINAMIENTO LINEAS DE NEGOCIO POR ABRIR (Retai & Commmercial + Weatlh): Llevando al Expertise necesaria y asegurando el exito de la ejecucion. 
 
-SAN CIB (PDTE INFO)
+SAN CIB 
 
 CARD INICIAL
 
 Objetivo FY27: 
 
-€: 31.5 MM
-Ftes: 440 Ftes (340 Esp, 100 Geografias), 
-Aumento 40% Fy25-Fy27. 
+€: +25 MM
+Ftes: +350 Ftes (250 Esp, 100 Geografias), 
+Multiplicar x2 Fy25-Fy27. 
 
 1. SITUACION ACTUAL: 
 
-FTES TEC: 260
-FTES NEG: 40
-FTES GEO (Mex, Brl): 60
+FTES TEC: 155
+FTES OPER: 
+FTES NEG: 65
+FTES GEO (Mex, Brl): 35
 
-CONSIDERADO PROVEEDOR DE PREFERENCIA EN INGENIERA: Actualmente mas de 300 ftes ejecutando y #1 sobre resto Tier 1 en las encuestas. 
-LLEGADA AL NEGOCIO CON POSIBILIDAD DE ESCALADO: Poscion en GM y Riesgos, contactos y posibilidades en GTB, IBF, Finance y Compliance. 
-BASE SOLIDA EN MEXICO PARA ESCALAR Y EMPEZANDO A CREAR LA ESTRUCTURA EN BRASIL: Uno de los proveedores principales en Mex CIB e inicio de Brasil con buena llegada. 
+PRIMER PROVEEDOR DE NEGOCIO: Referente también en operaciones y avanzando en algunos ámbitos en tecnología como Risk o GTB. 
+PRIMEROS PASOS EN GEOGRAFÍAS CLAVE: Proveedor preferente US, Mexico en negocio y Brasil dando los primeros pasos. 
+POCA PRESENCIA EN TECNOLOGIA: Donde podemos ser diferenciales por el conocimento en Negocio y el ADN de Nfq como perfil Mixto. 
 
 2. RETOS: 
 
-SER PERCIBIDOS COMO PROVEEDOR GLOBAL: Liderar las iniciativas por ámbito de Expertie, sin gestión diferenciada por Geografía. 
-ESCALAR EN NEGOCIO: Nuevos ámbitos aparte de Global Markets y Riesgos, como GTB/IBF o Finanzas. 
-MANTENER LA ESPECIALIZCION EN INGENIERIA CIB: Asegurando el foco y entrando en ámbitos como Data Engeneering. 
+COMPLETAR LLEGADA EN AMBITOS DE NEGOCIO: Cubrir GAPs en Ambitos de Negocio con Recorrido donde no estamos llegando (p.ej FX Domain) 
+CAPTURAR LAS OPORTUNIDADES EN TECNOLOGÍA: Extender a tecnología donde somos referentes en negocio. 
+PREFERENTE GLOBAL PARA ESCALAR GEOGRAFIAS: Mexico con foco IT y Brasil Negocio+IT.
 
 3. EQUIPO
 
 ORGANIGRAMA PRINIPAL 
 
-ANGEL RODRIGUEZ (Partner): (Antes) Liderar CIB España. (Ahora) Asegurar que seguimos siendo percibidos especialistas CIB y foco en todas las geografias CIB. 
-- JOSE MAGARZO (SrMgr): (Antes) Area BO en SW Delivery Espapaña. (Ahora) Foco en BackOffice (y Calypso) de manera global asumiendo la vertical de Mexico.
-- MANUEL MENDOZA (SrMgr): (Antes) Liderar la parte de Neogocio Global Markets en España. (Ahora): Incorporar el control centralizado (Mexico y España) de Front Office + Murex. 
-- MANUEL RANEA* (Dir): (Antes) Vision Tecnología global de BBVA. (Ahora): Centrar la asignacion de CIB en liderar la practica de CTO (Arquitectura), escalando nuestra posicion. 
-- ANDRES PEROZO (SrMgr): (Antes) Lider Integraciones en SW Delivery, (Ahora): Incoporara la gestion de equipos de Integraciones Tec. en CTO y escalado.
-- DAVID FUENTE* (Dir): (Antes): Lider practica Data (Ahora) Continuar Liderazgo de la practica de Data asumiendo el reto de entrada y escalado en Data Eng. + Liderar Adopcion de IA en los equipos.
-- CARLOS SOTO* (SrMgr): (Antes): Liderar Riesgos y Regultaorion en CIB Engeneering (Ahora) Liderar la creacion de Equipo en Brasil + Liderar llegada y escalado en Ingeneria fuera de CIB. 
+ROBERTO GARCÍA (Partner): (Antes) Apoyo Global, impulso Brasil y Hubs. (Ahora) Foco en Tecnología, IA y ámbitos de desarrollo. 
+VICTOR CHAMORRO (SrMgr): (Antes) US CIB. (Ahora) Visión Cross CIB.
+JUAN BLANCO (SrMgr): (Antes) US CIB. (Ahora) US (Banking & BBVA) + Brasil.
+JOSEFE (SrMgr): (Antes) US CIB. (Ahora) Líder US CIB + Global Markets. 
+LUIS ISASI (SrMgr): (Antes) GTB. (Ahora): GTB nuevos servicios + impulsar GTB en otros clientes. 
+CARLOS MORA (SrMgr): (Antes) UK Banking (Ahora): UK Banking + CIB (Santander London Branch).
+JESÚS ONTIVEROS (SrMGR): (Antes) Global FinCrime (Ahora): Global + apoyo estrategia CIB FinCrime.
+ÁLVARO DITO (SrMGR): (Antes) Accounting (Ahora): Accounting + cross technology push.
+MIGUEL RAMIREZ (SrMGR): (Antes) CoE Calypso (Ahora): Global + foco Calypso .
+IGNACIO ÁLVARO (Partner)*: (Antes): Apoyo Tecnología y DATA (Ahora) Foco en CDAIO + DATA. 
 
 *Capacidad compartida CIB/CF&B
 
 APOYOS ADICIONALES
-
-ANTONIO DIAZ: Capacidades GTB/IBF para escalado en Negocio. 
-JOSE MANUEL BRUZOS: Tecnologia Global y Posicionamiento IA. 
-
+LEANDRO GÓMEZ: Mexico.
+ANTONIO DIAZ: Liderazgo GDF, PagoNxt + impulso Murex. 
+JOSE MANUEL BRUZOS: Tecnologia Global y Posicionamiento IA.
 
 SAN CF&BANKING
 
@@ -188,8 +190,8 @@ TRANSICIÓN PAULATINA A COLABORACIONES EN MODALIDAD DE SERVICIO: Como por ejepml
 
 
 2. RETOS: 
-MODELO AI FIRST - Transformar propuesta de valor y servicios
-NECESARIO LLEGAR A NUEVAS ÁREAS - Cross (CDAIO) y Dominios de Negocio (RETAIL & COMMERCIAL)
+TENER CLARO UNA ESTRATEGIA COMUN Y DONDE PODEMOS ESTAR  - Conocer los ámbitos con el potencial de negocio para priorizar y reorganizarnos. 
+ESCALADO EN NUEVAS AREAS ALCANZADA: Apalancarse en de manera cross en CDAIO y Dominios de Negocio (RETAIL & COMMERCIAL)
 ESCALAR EL NEGOCIO EN OTRAS GEOGRAFIAS - Desde nuestra experiencia y especialización en HQ
 
 3. EQUIPO
@@ -215,6 +217,47 @@ NACHO ALVARO (Partner):Foco en CDAIO
 
 ###############################################################################################################################################################################
 
+CAMBIOS EN equipos
+
+Activamos ya algunos cambios, para ajustarnos a la estrategia:
+
+BBVA: 
+
+  - FOCO EN COMENZAR Y ESPCALAR EN INGENIERIA FUERA DE CIB: 
+
+  CARLOS SOTO: Llevar la Expertise de Ingenieria CIB, para empezar por ámbitos dodne se cruza con mundo CIB. 
+  
+  - ESCALAR EN GEOGRAFIAS POR EXPERTISE GLOBAL
+  
+  MANUEL MENDOZA; J.A MAGARZO: Derivar control de los ámbitos de Front/Murex Y Back/Calypso de manera global incluyendo Mexico. 
+
+
+  SANTANDER: 
+
+  - COMPLETAR LA LLEGADA EN NEGOCIO (CUBRIR GAPs): 
+
+  ANTONIO DIAZ y ALVARO DITO: Completar vision Negocio desde el conocmiento de la practica global de CIB y lidearar iniciativas en Accounting.
+  
+  - CAPTURAR LAS OPORTUNIDADES EN TECNOLOGIA
+  
+  DANIEL LOPEZ; Traer la experiencia de como se comenzó y escaló el área de Ingenieria CIB en BBVA hacia Santander. 
+
+
+  CONCLUSION ADICIONAL: 
+
+  Son primeros pasos, que segun se avance con la exploracion de ambitos y estrategia se iran ajustando la dedicacion de nuestra gente. 
+
+
+
+
+
+
+
+
+
+
+###############################################################################################################################################################################
+
 CONCLUSIONES: 
 
 BBVA Y SANTANDER SIGUEN SIENDO MOTOR DE CRECIMIENTO: Hay mucho por explorar. 
@@ -224,3 +267,27 @@ NUEVOS ROLES PARA NUESTRA GENTE: Provocar la transicion de capacidades entre ár
 GEOGRAFIAS TIENE QUE SER UN FOCO DE VERDAD: Mexico como unidad principal sin perder foco en el resto. 
 
 LA IA COMO GENERADOR DE OPORTUNIDADES: Nuestra Esencia, el perfil Mixto, es clave en este momento.
+
+
+
+
+
+
+
+
+CIB: 
+
+
+
+
+CAmbios
+
+Reorganizacion de Equipo. 
+
+Cambios principales: 
+A. Diaz + DITO : GAPS de Negocio
+DAniel Lopez 
+
+
+
+
