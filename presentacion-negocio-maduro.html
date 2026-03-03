@@ -989,6 +989,305 @@ html, body {
   transform: translateX(5px);
 }
 
+/* --- Botón "Visión Global" centrado encima de clientes --- */
+.cifras-nav {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+.cifras-global-btn {
+  background: var(--grad-brand);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  padding: 13px 36px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(13px, 1.1vw, 16px);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 16px rgba(236,104,62,0.18);
+}
+.cifras-global-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(236,104,62,0.28);
+}
+.cifras-global-btn svg {
+  width: 18px; height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   SLIDE CIFRAS — DASHBOARD FINANCIERO JERÁRQUICO
+   ============================================================ */
+.cifras-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 8px 48px 24px;
+  overflow-y: auto;
+  gap: 14px;
+}
+
+/* --- Tabla principal --- */
+.cifras-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.85vw, 14px);
+}
+.cifras-table th,
+.cifras-table td {
+  padding: 9px 12px;
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.cifras-table th:first-child,
+.cifras-table td:first-child {
+  text-align: left;
+}
+
+/* Header */
+.cifras-thead th {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(9px, 0.7vw, 11px);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grey-500);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--grey-200);
+}
+
+/* --- Fila TOTAL — dark glass --- */
+.cifras-total-row td {
+  background: var(--black);
+  color: var(--white);
+  font-weight: 600;
+  padding: 12px 12px;
+}
+.cifras-total-row td:first-child {
+  border-radius: 10px 0 0 10px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(13px, 1vw, 16px);
+  letter-spacing: -0.01em;
+}
+.cifras-total-row td:last-child { border-radius: 0 10px 10px 0; }
+.cifras-total-row .cifras-fy27 { color: #7DB4FF; font-weight: 800; }
+.cifras-total-row .cifras-growth-badge {
+  background: rgba(255,255,255,0.15);
+  color: #7DB4FF;
+}
+
+/* Spacer row */
+.cifras-spacer td { padding: 4px 0; }
+
+/* --- Fila cliente (BBVA / SAN) --- */
+.cifras-client-row td {
+  font-weight: 700;
+  padding: 11px 12px;
+  border-top: 2px solid var(--grey-200);
+}
+.cifras-client-row td:first-child {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(12px, 0.95vw, 15px);
+  position: relative;
+  padding-left: 20px;
+}
+.cifras-client-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.cifras-client-sub td {
+  font-weight: 400;
+  color: var(--grey-600);
+  padding: 7px 12px;
+}
+
+/* --- Fila ámbito (expandible) --- */
+.cifras-ambito-row {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.cifras-ambito-row:hover td {
+  background: rgba(0,0,0,0.02);
+}
+.cifras-ambito-row td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--grey-100);
+}
+.cifras-ambito-row td:first-child {
+  font-weight: 600;
+  padding-left: 36px;
+}
+.cifras-chevron {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  vertical-align: middle;
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  color: var(--grey-400);
+}
+.cifras-ambito-row.open .cifras-chevron {
+  transform: rotate(90deg);
+  color: var(--blue);
+}
+
+/* --- Sub-ámbito (geography rows, hidden by default) --- */
+.cifras-sub-row {
+  display: none;
+}
+.cifras-sub-row.visible {
+  display: table-row;
+  animation: fadeIn 0.3s ease;
+}
+.cifras-sub-row td {
+  padding: 7px 12px;
+  color: var(--grey-500);
+  font-size: clamp(10px, 0.75vw, 12px);
+  background: var(--grey-100);
+  border-bottom: 1px solid var(--grey-200);
+}
+.cifras-sub-row td:first-child {
+  padding-left: 58px;
+  position: relative;
+}
+.cifras-sub-row td:first-child::before {
+  content: '';
+  position: absolute;
+  left: 44px;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: var(--grey-300);
+}
+.cifras-sub-row:last-of-type td:first-child::before {
+  bottom: 50%;
+}
+
+/* --- FY27 highlight column --- */
+.cifras-fy27 {
+  font-weight: 700 !important;
+  color: var(--blue) !important;
+}
+
+/* --- Growth badge --- */
+.cifras-growth-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(9px, 0.65vw, 11px);
+  padding: 3px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.cifras-growth-up {
+  background: #e3f2fd;
+  color: var(--blue);
+}
+.cifras-growth-hot {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* --- Growth mini-bar --- */
+.cifras-growth-bar {
+  display: inline-block;
+  width: 48px;
+  height: 5px;
+  background: var(--grey-200);
+  border-radius: 3px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.cifras-growth-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--blue);
+  transition: width 0.8s ease 0.3s;
+}
+.cifras-growth-hot .cifras-growth-fill {
+  background: #e65100;
+}
+
+/* --- Margen badge --- */
+.cifras-margen {
+  display: inline-block;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(9px, 0.65vw, 11px);
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.cifras-margen-low {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+/* --- Riesgo tags --- */
+.cifras-riesgos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: flex-end;
+}
+.cifras-riesgo-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(8px, 0.6vw, 10px);
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #fce4ec;
+  color: #c62828;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cifras-riesgo-tag svg {
+  width: 10px; height: 10px;
+  flex-shrink: 0;
+}
+
+/* --- Filas Ftes / €MM label --- */
+.cifras-metric-label {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(8px, 0.6vw, 10px);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--grey-400);
+  display: inline-block;
+  min-width: 32px;
+}
+.cifras-total-row .cifras-metric-label {
+  color: rgba(255,255,255,0.5);
+}
+
 /* ============================================================
    PANEL — VISIÓN GLOBAL CLIENTE (desliza desde el fondo)
    ============================================================ */
@@ -3411,6 +3710,15 @@ html, body {
       <!-- Stats resumen — renderizado por content.js → DECK.vision.stats -->
       <div id="summary-row" class="summary-row anim-fade delay-5"></div>
 
+      <!-- Botón Visión Global — lleva al dashboard de cifras -->
+      <div class="cifras-nav anim-up delay-5">
+        <button class="cifras-global-btn" onclick="goTo(12)">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+          <span>Visión Global</span>
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+      </div>
+
       <!-- Navegación clientes — renderizado por content.js → DECK.vision.clients -->
       <div id="client-nav" class="client-nav anim-up delay-6"></div>
 
@@ -3634,9 +3942,31 @@ html, body {
 
 
   <!-- ============================================================
-       PANTALLA 13 — CONCLUSIONES
+       PANTALLA 13 — VISIÓN GLOBAL · CIFRAS & OBJETIVOS
        ============================================================ -->
-  <div class="slide slide-conclusiones" id="slide-13">
+  <div class="slide slide-cifras" id="slide-13">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title" style="color:var(--black)">Visión Global</div>
+      <div class="section-label">
+        <span class="label-line" style="background:var(--orange)"></span>
+        <span>Cifras &amp; Objetivos FY27</span>
+        <button class="cib-nav-back" onclick="goTo(1)" title="Volver a Visión General" style="border-color:rgba(236,104,62,0.25);color:rgba(200,80,30,0.65);" onmouseover="this.style.background='rgba(236,104,62,0.07)';this.style.borderColor='rgba(236,104,62,0.5)'" onmouseout="this.style.background='';this.style.borderColor='rgba(236,104,62,0.25)'">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Visión General
+        </button>
+      </div>
+    </div>
+    <div class="cifras-content" id="cifras-content"></div>
+  </div>
+  <!-- FIN PANTALLA 13 -->
+
+
+  <!-- ============================================================
+       PANTALLA 14 — CONCLUSIONES
+       ============================================================ -->
+  <div class="slide slide-conclusiones" id="slide-14">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -3652,7 +3982,7 @@ html, body {
     </div>
     <div class="conc-grid" id="conc-content"></div>
   </div>
-  <!-- FIN PANTALLA 13 -->
+  <!-- FIN PANTALLA 14 -->
 
 
   <!-- Panel global de cliente — compartido entre todas las pantallas -->
@@ -4652,6 +4982,157 @@ if (DECK.conclusiones) {
       grid.appendChild(card);
     });
   }
+}
+
+// ── Hydrate Cifras — Visión Global ───────────────────────────
+if (DECK.cifras) {
+  const cifrasEl = document.getElementById('cifras-content');
+  if (cifrasEl) {
+    cifrasEl.innerHTML = renderCifrasTable(DECK.cifras);
+    // Wire up expand/collapse — both rows of each ámbito toggle together
+    cifrasEl.querySelectorAll('.cifras-ambito-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const id = row.dataset.ambitoId;
+        const isOpen = row.classList.contains('open');
+        // Toggle all rows sharing the same ámbito ID
+        cifrasEl.querySelectorAll(`.cifras-ambito-row[data-ambito-id="${id}"]`).forEach(r => {
+          r.classList.toggle('open', !isOpen);
+        });
+        cifrasEl.querySelectorAll(`.cifras-sub-row[data-parent="${id}"]`).forEach(sub => {
+          sub.classList.toggle('visible', !isOpen);
+        });
+      });
+    });
+  }
+}
+
+function renderCifrasTable(data) {
+  const cols = data.columns;
+  const growthPct = (arr) => {
+    const start = arr[0], end = arr[arr.length - 1];
+    if (start === 0) return end > 0 ? '+' + (end * 100).toFixed(0) + '%' : '—';
+    return ((end - start) / start * 100 >= 0 ? '+' : '') + ((end - start) / start * 100).toFixed(0) + '%';
+  };
+  const growthClass = (arr) => {
+    const start = arr[0], end = arr[arr.length - 1];
+    if (start === 0) return 'cifras-growth-hot';
+    const pct = (end - start) / start * 100;
+    return pct > 60 ? 'cifras-growth-hot' : 'cifras-growth-up';
+  };
+  const growthBarW = (arr) => {
+    const start = arr[0], end = arr[arr.length - 1];
+    if (start === 0) return 100;
+    const pct = Math.min(Math.abs((end - start) / start * 100), 120);
+    return Math.round(pct / 1.2);
+  };
+  const fmt = (v) => typeof v === 'number' ? v.toLocaleString('es-ES', { minimumFractionDigits: v % 1 ? 1 : 0, maximumFractionDigits: 2 }) : v;
+
+  const warnSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+
+  let html = '<table class="cifras-table">';
+
+  // THEAD
+  html += '<thead class="cifras-thead"><tr>';
+  html += '<th style="min-width:180px"></th>';
+  html += '<th style="min-width:50px"></th>'; // metric label col
+  cols.forEach((c, i) => {
+    const isLast = i === cols.length - 1;
+    html += `<th${isLast ? ' class="cifras-fy27"' : ''}>${c}</th>`;
+  });
+  html += '<th style="min-width:90px">Crec.</th>';
+  html += '<th>Margen</th>';
+  html += '<th style="min-width:140px">Riesgos FY27</th>';
+  html += '</tr></thead>';
+
+  html += '<tbody>';
+
+  // TOTAL
+  const t = data.total;
+  html += '<tr class="cifras-total-row">';
+  html += '<td rowspan="2" style="vertical-align:middle">TOTAL</td>';
+  html += '<td><span class="cifras-metric-label">Ftes</span></td>';
+  t.ftes.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
+  html += `<td><span class="cifras-growth-badge ${growthClass(t.ftes)}">${growthPct(t.ftes)}<span class="cifras-growth-bar"><span class="cifras-growth-fill" style="width:${growthBarW(t.ftes)}%"></span></span></span></td>`;
+  html += '<td></td><td></td></tr>';
+
+  html += '<tr class="cifras-total-row">';
+  html += '<td><span class="cifras-metric-label">€MM</span></td>';
+  t.rev.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
+  html += `<td><span class="cifras-growth-badge ${growthClass(t.rev)}">${growthPct(t.rev)}<span class="cifras-growth-bar"><span class="cifras-growth-fill" style="width:${growthBarW(t.rev)}%"></span></span></span></td>`;
+  html += '<td></td><td></td></tr>';
+
+  // SPACER
+  html += '<tr class="cifras-spacer"><td colspan="8"></td></tr>';
+
+  // CLIENTS
+  let ambitoIdx = 0;
+  data.clients.forEach(client => {
+    // Client header — Ftes
+    html += '<tr class="cifras-client-row">';
+    html += `<td rowspan="2" style="vertical-align:middle"><span class="cifras-client-dot" style="background:${client.color}"></span>${client.name}</td>`;
+    html += '<td><span class="cifras-metric-label">Ftes</span></td>';
+    client.ftes.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
+    html += `<td><span class="cifras-growth-badge ${growthClass(client.ftes)}">${growthPct(client.ftes)}<span class="cifras-growth-bar"><span class="cifras-growth-fill" style="width:${growthBarW(client.ftes)}%"></span></span></span></td>`;
+    html += '<td></td><td></td></tr>';
+
+    // Client header — €MM
+    html += '<tr class="cifras-client-row">';
+    html += '<td><span class="cifras-metric-label">€MM</span></td>';
+    client.rev.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
+    html += `<td><span class="cifras-growth-badge ${growthClass(client.rev)}">${growthPct(client.rev)}<span class="cifras-growth-bar"><span class="cifras-growth-fill" style="width:${growthBarW(client.rev)}%"></span></span></span></td>`;
+    html += '<td></td><td></td></tr>';
+
+    // Ámbitos
+    client.ambitos.forEach(amb => {
+      const aid = 'amb-' + ambitoIdx++;
+      const margenVal = parseInt(amb.margen);
+      const margenCls = margenVal < 18 ? ' cifras-margen-low' : '';
+
+      // Ámbito row — Ftes
+      html += `<tr class="cifras-ambito-row" data-ambito-id="${aid}">`;
+      html += `<td rowspan="2" style="vertical-align:middle">
+        <svg class="cifras-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        ${amb.name}</td>`;
+      html += '<td><span class="cifras-metric-label">Ftes</span></td>';
+      amb.ftes.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
+      html += `<td><span class="cifras-growth-badge ${growthClass(amb.ftes)}">${growthPct(amb.ftes)}</span></td>`;
+      html += `<td rowspan="2" style="vertical-align:middle"><span class="cifras-margen${margenCls}">${amb.margen}</span></td>`;
+      html += `<td rowspan="2" style="vertical-align:middle"><div class="cifras-riesgos">${amb.riesgos.map(r => `<span class="cifras-riesgo-tag">${warnSvg} ${r}</span>`).join('')}</div></td>`;
+      html += '</tr>';
+
+      // Ámbito row — €MM (second row, also triggers expand)
+      html += `<tr class="cifras-ambito-row" data-ambito-id="${aid}">`;
+      html += '<td><span class="cifras-metric-label">€MM</span></td>';
+      amb.rev.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
+      html += `<td><span class="cifras-growth-badge ${growthClass(amb.rev)}">${growthPct(amb.rev)}</span></td>`;
+      html += '</tr>';
+
+      // Sub-ámbito rows (hidden by default)
+      amb.sub.forEach(s => {
+        // Sub ftes
+        html += `<tr class="cifras-sub-row" data-parent="${aid}">`;
+        html += `<td>${s.name}</td>`;
+        html += '<td><span class="cifras-metric-label">Ftes</span></td>';
+        s.ftes.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
+        html += `<td><span class="cifras-growth-badge ${growthClass(s.ftes)}" style="font-size:9px">${growthPct(s.ftes)}</span></td>`;
+        html += '<td></td><td></td></tr>';
+
+        // Sub €MM
+        html += `<tr class="cifras-sub-row" data-parent="${aid}">`;
+        html += '<td></td>';
+        html += '<td><span class="cifras-metric-label">€MM</span></td>';
+        s.rev.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
+        html += `<td><span class="cifras-growth-badge ${growthClass(s.rev)}" style="font-size:9px">${growthPct(s.rev)}</span></td>`;
+        html += '<td></td><td></td></tr>';
+      });
+    });
+
+    // Spacer between clients
+    html += '<tr class="cifras-spacer"><td colspan="8"></td></tr>';
+  });
+
+  html += '</tbody></table>';
+  return html;
 }
 
 goTo(0);

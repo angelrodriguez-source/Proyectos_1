@@ -101,7 +101,7 @@ const DECK = {
     clients: [
       { name: "BBVA",         cls: "client-btn-bbva",          panelKey: "bbva" },
       { name: "Santander",    cls: "client-btn-sant",           panelKey: "sant" },
-      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 12  }
+      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 13  }
     ]
   },
 
@@ -472,6 +472,76 @@ const DECK = {
       { num: "02", title: "NUEVOS ROLES PARA NUESTRA GENTE", body: "Provocar la transición de capacidades entre áreas llevando experiencia y lecciones aprendidas." },
       { num: "03", title: "GEOGRAFÍAS TIENE QUE SER UN FOCO DE VERDAD", body: "México como unidad principal sin perder foco en el resto." },
       { num: "04", title: "LA IA COMO GENERADOR DE OPORTUNIDADES", body: "Nuestra Esencia, el perfil Mixto, es clave en este momento." }
+    ]
+  },
+
+  /* ========================================================
+     PANTALLA 13 — VISIÓN GLOBAL CIFRAS
+     Dashboard jerárquico con datos de CIFRAS_CLIENTES.md
+  ======================================================== */
+  cifras: {
+    columns: ["FY25", "FC26", "FY26", "FY27"],
+    total: {
+      ftes: [902, 1084, 1136, 1353],
+      rev:  [65.9, 77.9, 79.09, 93.44]
+    },
+    clients: [
+      {
+        name: "BBVA", color: "#004481",
+        ftes: [385, 504, 502, 599],
+        rev:  [28.7, 36.6, 36, 43.5],
+        ambitos: [
+          {
+            name: "CIB", margen: "20%",
+            riesgos: ["Escenarios de reducción por la IA", "Pérdida de Imagen por posicionamiento global"],
+            ftes: [300, 384, 382, 439],
+            rev:  [22, 27.6, 27, 31.5],
+            sub: [
+              { name: "España",       ftes: [247, 305, 302, 335], rev: [19.4, 23.5, 23.1, 25.4] },
+              { name: "México",       ftes: [51, 65, 66, 81],     rev: [2.3, 3.1, 3.1, 4.1] },
+              { name: "Brasil & USA", ftes: [2, 14, 14, 23],      rev: [0.3, 1, 0.8, 2] }
+            ]
+          },
+          {
+            name: "CF & Banking", margen: "20%",
+            riesgos: ["Escenarios de reducción por la IA", "Pérdida de Imagen por posicionamiento global"],
+            ftes: [85, 120, 120, 160],
+            rev:  [6.7, 9, 9, 12],
+            sub: [
+              { name: "ex México", ftes: [85, 120, 120, 160], rev: [6.7, 9, 9, 12] }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Santander", color: "#EC0000",
+        ftes: [517, 580, 634, 754],
+        rev:  [37.2, 41.3, 43.09, 49.94],
+        ambitos: [
+          {
+            name: "CIB", margen: "17%",
+            riesgos: ["Escenario reducción de Costes 20/30%", "No expansión a nuevos ámbitos que permitan distribuir volatilidad"],
+            ftes: [240, 280, 294, 371],
+            rev:  [19.5, 20.8, 21.7, 25.6],
+            sub: [
+              { name: "HQ",          ftes: [171, 186, 195, 237], rev: [14.2, 14.5, 15, 16.4] },
+              { name: "México",      ftes: [16, 24, 24, 30],     rev: [1.3, 1.4, 1.5, 2] },
+              { name: "Brasil & USA", ftes: [53, 70, 75, 104],   rev: [4, 4.9, 5.2, 7.2] }
+            ]
+          },
+          {
+            name: "CF & Banking", margen: "20%",
+            riesgos: ["Riesgo 1", "Riesgo 2"],
+            ftes: [277, 300, 340, 383],
+            rev:  [17.7, 20.5, 21.39, 24.34],
+            sub: [
+              { name: "HQ",     ftes: [228, 240, 255, 280], rev: [14, 16, 16, 18] },
+              { name: "UK",     ftes: [49, 60, 60, 65],     rev: [3.7, 4.5, 4.5, 5] },
+              { name: "México", ftes: [0, 0, 25, 38],       rev: [0, 0, 0.89, 1.34] }
+            ]
+          }
+        ]
+      }
     ]
   },
 
