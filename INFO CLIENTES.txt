@@ -2,13 +2,13 @@ BBVA:
 
 ESTADO ACTUAL:
 
-PERCIBIDOS COMO ESPECIALISTA: Aunque concentrada la expertise entre INGENIERIA CIB, RIESGOS GLOBAL Y FINANZAS.
-BUEN POSICIONAMIENTO PARA ESCALAR: Firmado contrato POST 2.0 para la practica en Ingeneria Global, FARO para Riesgos y abiertos todos los necesarios para Geografias. 
-BUENA ESTRUCTURA INICIAL DE PERSONAS:  Con Conocimiento y Expertise para ir asumiendo nuevas responsabilidades en el crecimiento y nueva posición a coger. 
+PERCIBIDOS COMO ESPECIALISTAS: Aunque concentrada la expertise entre INGENIERIA CIB, FINANZAS y RIESGOS.
+BUEN POSICIONAMIENTO PARA ESCALAR: Firmado contrato POST 2.0: Tier 1 para la practica en Ingeneria CIB Esp y Holding/España, FARO para Riesgos y abiertos todos los necesarios para Geografias. 
+BUENA ESTRUCTURA INICIAL DE PERSONAS:  Con Conocimiento y Expertise para ir asumiendo nuevas responsabilidades en el crecimiento y nueva posición a coger, buscando las sinergias de nuestras especializacion para llevarlo a otros ambitos (Ingeneria fuera de CIB, Fiananzas y Riesgos para Negocio CIB)
 
 RETOS:
 
-1. LIDERAR INGENIERIA DE MANERA GLOBAL: Llegar a ser proveedor en Ingenieria con relevancia de manera de Global, sin perder la Esencia de Especialistas en CIB y manteniendo su liderazgo.
+1. POSICIONARNOS COMO PROVEEDOR REFERENTE EN ENGINEERING GLOBAL: Llegar a ser proveedor en Ingenieria con relevancia de manera de global, sin perder la Esencia de Especialistas en CIB y manteniendo su liderazgo.
 2. SER RELEVANTES EN LAS GEOGRAFIAS: Desde el Escalado en Mexico a estar en Perú y Colombia, acompañando la apertura de Brasil. 
 3. DIVERSIFICAR RESPECTO DE CIB: Pasar del 80% a 60% sin dejar de crecer en CIB. 
 
@@ -50,15 +50,14 @@ ANGEL RODRIGUEZ (Partner): (Antes) Liderar CIB España. (Ahora) Asegurar que seg
 - ANDRES PEROZO (SrMgr): (Antes) Lider Integraciones en SW Delivery, (Ahora): Incoporara la gestion de equipos de Integraciones Tec. en CTO y escalado.
 - DAVID FUENTE* (Dir): (Antes): Lider practica Data (Ahora) Continuar Liderazgo de la practica de Data asumiendo el reto de entrada y escalado en Data Eng. + Liderar Adopcion de IA en los equipos.
 - CARLOS SOTO* (SrMgr): (Antes): Liderar Riesgos y Regultaorion en CIB Engeneering (Ahora) Liderar la creacion de Equipo en Brasil + Liderar llegada y escalado en Ingeneria fuera de CIB. 
-
+- SERGIO TREMARI (SrMgr): (Antes): Control Cuenta BBVA CIB Mex (Gestion y Ejecucion) (Ahora) Foco en el Escalado de BBVA CIB Mex & Other Latam aprovechando la verticalizacón.
 *Capacidad compartida CIB/CF&B
 
 APOYOS ADICIONALES
 
+JUAN BLANCO: Apoyo para la gestion de BBVA CIB USA.
 ANTONIO DIAZ: Capacidades GTB/IBF para escalado en Negocio. 
 JOSE MANUEL BRUZOS: Tecnologia Global y Posicionamiento IA. 
-
-
 
 BBVA CF&BANKING: 
 
@@ -83,7 +82,7 @@ PREPARADOS PARA ESCALAR CON LAS PALANCAS PRINCIPALES INGENIERIA Y GEOGRAFIAS. Ab
 
 2. RETOS: 
 
-ESTABLECERSE COMO PROVEEDOR IMPORTANTE EN INGENIERIA: Apoyandose en las capacidades de Ingenieria CIB, asegurando que se aprovecha el contrato de POST. 
+ESTABLECERSE COMO PROVEEDOR RELEVANTE EN INGENIERIA: Apoyandose en las capacidades de Ingenieria CIB, asegurando que se aprovecha el contrato de POST. 
 ESCALAR EN GEOGRAFIAS: Escalar en Mexico con las posiciones iniciales y pensar la estrategia de Peru y Colombia
 EMPEZAR A SER RELEVANTES BANKING: Estudiar ambitos y posibilidades para derivar la posicion de Data o Consumer al resto de areas
 
@@ -110,21 +109,16 @@ SAN:
 
 ESTADO ACTUAL:
 
-AMPLIO RECORRIDO EN TECNOLOGIA y DATA: Mas posicion en Banking, mas recorrido en CIB y foco en CDAIO. 
+ESCENARIO GLOGAL ANUNCIADO DE REDUCCION DE COSTES 25-30%: Priorizacion en la apertura y posicionamiento de nuevos ámbitos.  
+AMPLIO RECORRIDO EN TECNOLOGIA y DATA: Algo de más posicion en Banking, mas recorrido en CIB y foco en CDAIO. 
+POSICION EN GEOGRAFIAS APALANCADAS EN USA Y UK: Necesario Foco en Mexico y Brasil.
 
-
-
-
-PERCIBIDOS COMO ESPECIALISTA: Aunque concentrada la expertise entre INGENIERIA CIB, RIESGOS GLOBAL Y FINANZAS.
-BUEN POSICIONAMIENTO PARA ESCALAR: Firmado contrato POST 2.0 para la practica en Ingeneria Global, FARO para Riesgos y abiertos todos los necesarios para Geografias. 
-BUENA ESTRUCTURA INICIAL DE PERSONAS:  Con Conocimiento y Expertise para ir asumiendo nuevas responsabilidades en el crecimiento y nueva posición a coger. 
 
 RETOS:
 
-CRECER en TEC / CDAIO
-LLEGADA y FOCO EN LOS RETAIL LOCALES  (Brasil, US, Mexico y Geografias COSUMER)
-POSICINAMIENTO LINEAS DE NEGOCIO POR ABRIR (Retai & Commmercial + Weatlh)
-
+ASEGURAR CRECIMIENTO EN TECNOLOGIA / CDAIO: Apostando por el conocimento de la arquitectura y priorizando la ejecucion de proyectos E2E, sabiendo de nuetras Expertise en Ingeneria CIB en otros clientes. 
+LLEGADA y FOCO EN LOS RETAIL LOCALES y UNIDADES CIB (Brasil, US, Mexico y Geografias COSUMER): Asegurando que conocemos las particularidades locales. 
+POSICINAMIENTO LINEAS DE NEGOCIO POR ABRIR (Retai & Commmercial + Weatlh): Llevando al Expertise necesaria y asegurando el exito de la ejecucion. 
 
 SAN CIB (PDTE INFO)
 
@@ -172,51 +166,52 @@ ANTONIO DIAZ: Capacidades GTB/IBF para escalado en Negocio.
 JOSE MANUEL BRUZOS: Tecnologia Global y Posicionamiento IA. 
 
 
-
-SAN CF&BANKING (PDTE INFO)
+SAN CF&BANKING
 
 CARD INICIAL
 
 Objetivo FY27: 
 
-€: 31.5 MM
-Ftes: 440 Ftes (340 Esp, 100 Geografias), 
+€: 24.9 MM
+Ftes: 397 Ftes (280 Esp, 117 Geografias), 
 Aumento 40% Fy25-Fy27. 
 
 1. SITUACION ACTUAL: 
 
-FTES TEC: 260
-FTES NEG: 40
-FTES GEO (Mex, Brl): 60
+FTES TEC: 113
+FTES NEG: 110
+FTES OPS:  67
 
-CONSIDERADO PROVEEDOR DE PREFERENCIA EN INGENIERA: Actualmente mas de 300 ftes ejecutando y #1 sobre resto Tier 1 en las encuestas. 
-LLEGADA AL NEGOCIO CON POSIBILIDAD DE ESCALADO: Poscion en GM y Riesgos, contactos y posibilidades en GTB, IBF, Finance y Compliance. 
-BASE SOLIDA EN MEXICO PARA ESCALAR Y EMPEZANDO A CREAR LA ESTRUCTURA EN BRASIL: Uno de los proveedores principales en Mex CIB e inicio de Brasil con buena llegada. 
+TOP VENDOR EN HQ, DIGITAL Y UK: Alto potencial de desarrollo en el resto de geografías(Mexico, Brasil, Europa)
+CONCENTRACIÓN EN CORPORATE FUNCTIONS: Con recorrido en Riesgos, Finanzas, Capital, Fincrime, Procurement, RRHH
+TRANSICIÓN PAULATINA A COLABORACIONES EN MODALIDAD DE SERVICIO: Como por ejepmlo: RFP Data, Hub APIS, Crédito Corporación, Servicios gestionados Ops,etc
+
 
 2. RETOS: 
-
-SER PERCIBIDOS COMO PROVEEDOR GLOBAL: Liderar las iniciativas por ámbito de Expertie, sin gestión diferenciada por Geografía. 
-ESCALAR EN NEGOCIO: Nuevos ámbitos aparte de Global Markets y Riesgos, como GTB/IBF o Finanzas. 
-MANTENER LA ESPECIALIZCION EN INGENIERIA CIB: Asegurando el foco y entrando en ámbitos como Data Engeneering. 
+MODELO AI FIRST - Transformar propuesta de valor y servicios
+NECESARIO LLEGAR A NUEVAS ÁREAS - Cross (CDAIO) y Dominios de Negocio (RETAIL & COMMERCIAL)
+ESCALAR EL NEGOCIO EN OTRAS GEOGRAFIAS - Desde nuestra experiencia y especialización en HQ
 
 3. EQUIPO
 
 ORGANIGRAMA PRINIPAL 
 
-LORENZO (Partner): (Antes) Liderar CIB España. (Ahora) Asegurar que seguimos siendo percibidos especialistas CIB y foco en todas las geografias CIB. 
-- JOSE MAGARZO (SrMgr): (Antes) Area BO en SW Delivery Espapaña. (Ahora) Foco en BackOffice (y Calypso) de manera global asumiendo la vertical de Mexico.
-- MANUEL MENDOZA (SrMgr): (Antes) Liderar la parte de Neogocio Global Markets en España. (Ahora): Incorporar el control centralizado (Mexico y España) de Front Office + Murex. 
-- MANUEL RANEA* (Dir): (Antes) Vision Tecnología global de BBVA. (Ahora): Centrar la asignacion de CIB en liderar la practica de CTO (Arquitectura), escalando nuestra posicion. 
-- ANDRES PEROZO (SrMgr): (Antes) Lider Integraciones en SW Delivery, (Ahora): Incoporara la gestion de equipos de Integraciones Tec. en CTO y escalado.
-- DAVID FUENTE* (Dir): (Antes): Lider practica Data (Ahora) Continuar Liderazgo de la practica de Data asumiendo el reto de entrada y escalado en Data Eng. + Liderar Adopcion de IA en los equipos.
-- CARLOS SOTO* (SrMgr): (Antes): Liderar Riesgos y Regultaorion en CIB Engeneering (Ahora) Liderar la creacion de Equipo en Brasil + Liderar llegada y escalado en Ingeneria fuera de CIB. 
+UK: 
+CARLOS MORA (SrMgr): (Antes) Liderar Santander España. (Ahora) Liderar gestión de la cuenta y desarrollo de negocio en UK. 
+ JOSE SOUTO (Mgr): (Antes)Liderar equipos de ejecución de proyectos . (Ahora) Coordinación y gestión operativo del equipo en España para SAN UK.
 
-*Capacidad compartida CIB/CF&B
+ESP:
+ANTONIO GdC (SrMgr): (Antes) Supervisión operativa y de ejecución de la cuenta. (Ahora) Liderar visión y entrada en nuevas áreas en Santader Corporación y Digital.
+ DIEGO LABEAGA (Mgr): (Antes) Foco Riesgos Tyo Corporativo. (Ahora): Visión integral Santander Banking Corporación
+ MARTA GONZÁLEZ (Mgr): (Antes) Foco en Openbank. (Ahora): Gestión completa Openbank + Santander Consumer Finance acompañando su fusión.
+
+W&AM:
+JORGE ROMANO (Partner):
+ Juan Manuel Nievas (SRSUP):
 
 APOYOS ADICIONALES
 
-ANTONIO DIAZ: Capacidades GTB/IBF para escalado en Negocio. 
-JOSE MANUEL BRUZOS: Tecnologia Global y Posicionamiento IA. 
+NACHO ALVARO (Partner):Foco en CDAIO
 
 ###############################################################################################################################################################################
 

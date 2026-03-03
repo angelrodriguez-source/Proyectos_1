@@ -26,8 +26,8 @@ const DECK = {
     },
     date: "[05/03/2026]",
     kpis: [
-      { value: "€97",   unit: "MM", label: "Objetivo FY27",  trend: "↑ +45% desde FY25" },
-      { value: "1.438", unit: "",   label: "Ftes objetivo",   trend: "↑ +57% desde FY25" }
+      { value: "€93,4", unit: "MM", label: "Objetivo FY27",  trend: "↑ +42% desde FY25" },
+      { value: "1.353", unit: "",   label: "Ftes objetivo",   trend: "↑ +50% desde FY25" }
     ]
   },
 
@@ -47,38 +47,39 @@ const DECK = {
       {
         cls:   "fy-25",
         year:  "FY25",
-        rev:   "66",
-        ftes:  "917",
+        rev:   "65,9",
+        ftes:  "902",
         badge: "Año base",
         conc:  "~65% concentración vs Nfq",
-        back:  {                          // reverso flip — desagregado por cliente
-          bbva: { rev: "29", ftes: "400" },
-          sant: { rev: "37", ftes: "517" }
+        back:  {
+          bbva: { rev: "28,7", ftes: "385" },
+          sant: { rev: "37,2", ftes: "517" }
         }
       },
       {
         cls:   "fy-26",
         year:  "FY26",
-        rev:   "81",
-        ftes:  "1.182",
-        badge: "↑ +22% rev · +29% ftes",
+        rev:   "79",
+        ftes:  "1.136",
+        badge: "↑ +20% rev · +26% ftes",
         conc:  "~57% concentración vs Nfq",
+        fc26:  { rev: "77,9", ftes: "1.084" },   // Forecast — se compara con FY26
         back:  {
-          bbva: { rev: "38", ftes: "548" },
+          bbva: { rev: "36", ftes: "502" },
           sant: { rev: "43", ftes: "634" }
         }
       },
       {
         cls:   "fy-27",
         year:  "FY27",
-        rev:   "97",
-        ftes:  "1.438",
-        badge: "↑ +20% rev · +22% ftes",
+        rev:   "93,4",
+        ftes:  "1.353",
+        badge: "↑ +18% rev · +19% ftes",
         conc:  "~50% concentración vs Nfq",
-        obj:   true,                      // añade etiqueta "obj." junto al año
+        obj:   true,
         back:  {
-          bbva: { rev: "47", ftes: "685" },
-          sant: { rev: "50", ftes: "754" }
+          bbva: { rev: "43,5", ftes: "599" },
+          sant: { rev: "49,9", ftes: "754" }
         }
       }
     ],
@@ -92,7 +93,7 @@ const DECK = {
       },
       {
         type:  "growth",
-        val:   "+45%",
+        val:   "+42%",
         label: "crecimiento acumulado\nen revenue (FY25 → FY27)"
       }
     ],
@@ -101,7 +102,7 @@ const DECK = {
     clients: [
       { name: "BBVA",         cls: "client-btn-bbva",          panelKey: "bbva" },
       { name: "Santander",    cls: "client-btn-sant",           panelKey: "sant" },
-      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 13  }
+      { name: "Conclusiones", cls: "client-btn-conclusiones",   slide: 17  }
     ]
   },
 
@@ -114,9 +115,9 @@ const DECK = {
     color:   "#004481",
     tagline: "CIB · CF&Banking · Geografías",
     evolution: [
-      { fy: "FY25", rev: "29", ftes: "400" },
-      { fy: "FY26", rev: "38", ftes: "548" },
-      { fy: "FY27", rev: "47", ftes: "685", obj: true, growth: "↑ +60% acumulado" }
+      { fy: "FY25", rev: "28,7", ftes: "385" },
+      { fy: "FY26", rev: "36", ftes: "502", fc26: { rev: "36,6", ftes: "504" } },
+      { fy: "FY27", rev: "43,5", ftes: "599", obj: true, growth: "↑ +52% acumulado" }
     ],
     messages: [
       { title: "Desconcentrar CIB",       body: "Del 80% actual al 60%. Crecer en CF&Banking y Geografías." },
@@ -127,28 +128,28 @@ const DECK = {
     estadoActual: [
       {
         badge: "Especialista",
-        title: "PERCIBIDOS COMO ESPECIALISTA",
-        body: "Aunque concentrada la expertise entre Ingeniería CIB, Riesgos Global y Finanzas.",
+        title: "PERCIBIDOS COMO ESPECIALISTAS",
+        body: "Aunque concentrada la expertise entre Ingeniería CIB, Finanzas y Riesgos.",
         impact: "high"
       },
       {
         badge: "Posicionamiento",
         title: "BUEN POSICIONAMIENTO PARA ESCALAR",
-        body: "Firmado contrato POST 2.0 para la práctica en Ingeniería Global, FARO para Riesgos y abiertos todos los necesarios para Geografías.",
+        body: "Firmado contrato POST 2.0: Tier 1 para la práctica en Ingeniería CIB Esp y Holding/España, FARO para Riesgos y abiertos todos los necesarios para Geografías.",
         impact: "high"
       },
       {
         badge: "Personas",
         title: "BUENA ESTRUCTURA INICIAL DE PERSONAS",
-        body: "Con Conocimiento y Expertise para ir asumiendo nuevas responsabilidades en el crecimiento y nueva posición a coger.",
+        body: "Con Conocimiento y Expertise para ir asumiendo nuevas responsabilidades en el crecimiento y nueva posición a coger, buscando las sinergias de nuestra especialización para llevarlo a otros ámbitos (Ingeniería fuera de CIB, Finanzas y Riesgos para Negocio CIB).",
         impact: "medium"
       }
     ],
     retos: [
       {
-        badge: "Ingeniería Global",
-        title: "LIDERAR INGENIERÍA DE MANERA GLOBAL",
-        body: "Llegar a ser proveedor en Ingeniería con relevancia de manera Global, sin perder la Esencia de Especialistas en CIB y manteniendo su liderazgo.",
+        badge: "Engineering Global",
+        title: "POSICIONARNOS COMO PROVEEDOR REFERENTE EN ENGINEERING GLOBAL",
+        body: "Llegar a ser proveedor en Ingeniería con relevancia de manera global, sin perder la Esencia de Especialistas en CIB y manteniendo su liderazgo.",
         impact: "high"
       },
       {
@@ -180,9 +181,9 @@ const DECK = {
     color:   "#EC0000",
     tagline: "CIB · CF&Banking · Geografías",
     evolution: [
-      { fy: "FY25", rev: "37", ftes: "517" },
-      { fy: "FY26", rev: "43", ftes: "634" },
-      { fy: "FY27", rev: "50", ftes: "754", obj: true, growth: "↑ +35% acumulado" }
+      { fy: "FY25", rev: "37,2", ftes: "517" },
+      { fy: "FY26", rev: "43", ftes: "634", fc26: { rev: "41,3", ftes: "580" } },
+      { fy: "FY27", rev: "49,9", ftes: "754", obj: true, growth: "↑ +34% acumulado" }
     ],
     messages: [
       { title: "Nuevos ámbitos",          body: "Contexto reducción costes 25-30%. Priorizar llegada a nuevos ambitos." },
@@ -232,7 +233,7 @@ const DECK = {
     ],
     sections: [
       { label: "CIB",          slide: 10 },    // → slide-11 (SAN CIB)
-      { label: "CF & Banking", slide: 11 }   // → slide-12 (SAN CF&B)
+      { label: "CF & Banking", slide: 13 }   // → slide-14 (SAN CF&B)
     ]
   },
 
@@ -250,11 +251,11 @@ const DECK = {
       heading: "Contexto del Plan",
       objetivo: {
         rev:    "31,5",
-        ftes:   "440",
-        growth: "+40% desde FY25",
+        ftes:   "439",
+        growth: "+46% desde FY25",
         desglose: [
-          { ftes: "340", label: "España" },
-          { ftes: "100", label: "Geografías" }
+          { ftes: "335", label: "España" },
+          { ftes: "104", label: "Geografías" }
         ]
       },
       posicion: [
@@ -397,12 +398,11 @@ const DECK = {
 
     contexto: {
       objetivo: {
-        rev:    "13",
-        ftes:   "186",
-        growth: "+96% desde FY25",
+        rev:    "12",
+        ftes:   "160",
+        growth: "+88% desde FY25",
         desglose: [
-          { ftes: "160", label: "España" },
-          { ftes: "26",  label: "Geografías" }
+          { ftes: "160", label: "España" }
         ]
       }
     },
@@ -421,7 +421,7 @@ const DECK = {
     },
 
     retosCFB: [
-      { num: "01", title: "ESTABLECERSE COMO PROVEEDOR IMPORTANTE EN INGENIERÍA",  body: "Apoyándose en las capacidades de Ingeniería CIB, asegurando que se aprovecha el contrato de POST." },
+      { num: "01", title: "ESTABLECERSE COMO PROVEEDOR RELEVANTE EN INGENIERÍA",  body: "Apoyándose en las capacidades de Ingeniería CIB, asegurando que se aprovecha el contrato de POST." },
       { num: "02", title: "ESCALAR EN GEOGRAFÍAS",                                  body: "Escalar en México con las posiciones iniciales y pensar la estrategia de Perú y Colombia." },
       { num: "03", title: "EMPEZAR A SER RELEVANTES EN BANKING",                    body: "Estudiar ámbitos y posibilidades para derivar la posición de Data o Consumer al resto de áreas." }
     ],
@@ -454,7 +454,70 @@ const DECK = {
   santCFB: {
     label: "Santander · CF & Banking",
     color: "#EC0000",
-    pending: true
+
+    contexto: {
+      objetivo: {
+        rev:    "24,9",
+        ftes:   "397",
+        growth: "+40% desde FY25",
+        desglose: [
+          { ftes: "280", label: "España" },
+          { ftes: "117", label: "Geografías" }
+        ]
+      }
+    },
+
+    situacionActual: {
+      fteDistribution: {
+        tec: 113,
+        neg: 110,
+        ops: 67
+      },
+      keyPoints: [
+        { icon: "vendor",   text: "TOP VENDOR EN HQ, DIGITAL Y UK",                                        body: "Alto potencial de desarrollo en el resto de geografías (México, Brasil, Europa)." },
+        { icon: "focus",    text: "CONCENTRACIÓN EN CORPORATE FUNCTIONS",                                   body: "Con recorrido en Riesgos, Finanzas, Capital, Fincrime, Procurement, RRHH." },
+        { icon: "service",  text: "TRANSICIÓN PAULATINA A COLABORACIONES EN MODALIDAD DE SERVICIO",         body: "Como por ejemplo: RFP Data, Hub APIs, Crédito Corporación, Servicios gestionados Ops, etc." }
+      ]
+    },
+
+    retosCFB: [
+      { num: "01", title: "MODELO AI FIRST",                             body: "Transformar propuesta de valor y servicios." },
+      { num: "02", title: "NECESARIO LLEGAR A NUEVAS ÁREAS",              body: "Cross (CDAIO) y Dominios de Negocio (Retail & Commercial)." },
+      { num: "03", title: "ESCALAR EL NEGOCIO EN OTRAS GEOGRAFÍAS",      body: "Desde nuestra experiencia y especialización en HQ." }
+    ],
+
+    equipo: {
+      columnas: [
+        {
+          region: "UK",
+          color: "#1a237e",
+          leader: { name: "CARLOS MORA", initials: "CM", role: "SrMgr", before: "Liderar Santander España.", after: "Liderar gestión de la cuenta y desarrollo de negocio en UK." },
+          members: [
+            { name: "Jose Souto", initials: "JS", role: "Mgr", before: "Liderar equipos de ejecución de proyectos.", after: "Coordinación y gestión operativo del equipo en España para SAN UK." }
+          ]
+        },
+        {
+          region: "ESP",
+          color: "#EC0000",
+          leader: { name: "ANTONIO GdC", initials: "AG", role: "SrMgr", before: "Supervisión operativa y de ejecución de la cuenta.", after: "Liderar visión y entrada en nuevas áreas en Santander Corporación y Digital." },
+          members: [
+            { name: "Diego Labeaga", initials: "DL", role: "Mgr", before: "Foco Riesgos Tyo Corporativo.", after: "Visión integral Santander Banking Corporación." },
+            { name: "Marta González", initials: "MG", role: "Mgr", before: "Foco en Openbank.", after: "Gestión completa Openbank + Santander Consumer Finance acompañando su fusión." }
+          ]
+        },
+        {
+          region: "W&AM",
+          color: "#00695c",
+          leader: { name: "JORGE ROMANO", initials: "JR", role: "Partner", before: "", after: "" },
+          members: [
+            { name: "Juan Manuel Nievas", initials: "JN", role: "SrSup", before: "", after: "" }
+          ]
+        }
+      ],
+      apoyos: [
+        { name: "Nacho Alvaro", initials: "NA", role: "Partner", mission: "Foco en CDAIO." }
+      ]
+    }
   },
 
   /* ========================================================
@@ -504,7 +567,7 @@ const DECK = {
           },
           {
             name: "CF & Banking", margen: "20%",
-            riesgos: ["Escenarios de reducción por la IA", "Pérdida de Imagen por posicionamiento global"],
+            riesgos: ["Recorrido de Alquid en Finanzas (Posicionamiento y exito PoCs)", "No conseguir la posicion y escalado en Ingenieria. (Oportunidades y Ftes preparados)"],
             ftes: [85, 120, 120, 160],
             rev:  [6.7, 9, 9, 12],
             sub: [
@@ -531,7 +594,7 @@ const DECK = {
           },
           {
             name: "CF & Banking", margen: "20%",
-            riesgos: ["Riesgo 1", "Riesgo 2"],
+            riesgos: ["Impacto eficiencias", "Crecimiento en LATAM "],
             ftes: [277, 300, 340, 383],
             rev:  [17.7, 20.5, 21.39, 24.34],
             sub: [
@@ -549,96 +612,58 @@ const DECK = {
     label: "Santander · CIB",
     color: "#EC0000",
 
-    // ── Contexto ───────────────────────────────────────────
     contexto: {
-      heading: "Contexto del Plan",
       objetivo: {
-        rev:    "26",
-        ftes:   "350",
-        growth: "×2 desde FY25",
+        rev:    "31,5",
+        ftes:   "440",
+        growth: "+40% desde FY25",
         desglose: [
-          { ftes: "250", label: "España" },
+          { ftes: "340", label: "España" },
           { ftes: "100", label: "Geografías" }
-        ]
-      },
-      posicion: [
-        { badge: "1er proveedor en Negocio", area: "",            tier: "top" },
-        { badge: "2º en Tecnología & Ops",   area: "→ obj. E2E", tier: "mid" }
-      ],
-      valor: "Generador de talento para la apertura de nuevos clientes de Nfq."
-    },
-
-    // ── Negocio / Tecnología — flip independiente por columna ────
-    negocioTech: {
-      negocio: {
-        heading: "Negocio",
-        ftes: "150",
-        situacionLabel: "Situación Actual",
-        retosLabel: "Retos",
-        accionesTag: "· Acciones",
-        accionesHeading: "ACCIONES FY26-FY27",
-        situacion: [
-          "Concentración en ámbitos de negocio maduros: Riesgos, US y GTB.",
-          "Estancamiento en ámbitos sin presencia relevante: FinCrime y Finance.",
-          "Buen avance de los HUBs en Europa: Málaga y Polonia."
-        ],
-        retos: [
-          "Contexto de reducción de costes del 25-30%.",
-          "Plan de adopción de IA y búsqueda de eficiencia.",
-          "Conseguir ser el primer proveedor en todos los dominios vs concentración global."
-        ],
-        acciones: [
-          { label: "FinCrime · GDF · Finance · Accounting", text: "Plan de impulso en FinCrime, GDF, Finance y Accounting." },
-          { label: "Branches",                              text: "Planes para retomar senda alcista en Branches." }
-        ]
-      },
-      tecnologia: {
-        heading: "Tecnología & Ops",
-        ftes: "100",
-        situacionLabel: "Situación Actual",
-        retosLabel: "Retos",
-        accionesTag: "· Acciones",
-        accionesHeading: "ACCIONES FY26-FY27",
-        situacion: [
-          "Avance en tecnología en algunos ámbitos maduros: Risk y GTB.",
-          "Primeros pasos en ámbitos como Markets y GDF.",
-          "Entrada en ámbito de CDAIO en roles de BP y ejecución."
-        ],
-        retos: [
-          "Contexto de reducción de costes del 25-30%.",
-          "IA: se exige contabilizar la eficiencia en los desarrollos.",
-          "Convertirnos en proveedor de referencia en el área de tecnología.",
-          "Conjugar la aplicación de IA con la externalización de servicios de Operaciones."
-        ],
-        acciones: [
-          { label: "Ingeniería CIB", text: "Traer la experiencia de BBVA CIB Eng al cliente, con apoyo de Antonio y liderazgo de la nueva etapa de Daniel L." },
-          { label: "CDAIO",         text: "Plan CDAIO: conseguir ser agente de cambio en el plan de adopción de IA, en conjunción con Negocio." },
-          { label: "DataLakes",     text: "Planes de Data para los DataLakes (CoE BigData + BDH)." },
-          { label: "SDS",           text: "Plan de posicionamiento en la primera línea de SDS." }
         ]
       }
     },
 
-    // ── Geografías — pendiente de datos ──
-    geografias: {
-      heading: "Geografías",
-      ftes: "—",
-      situacionLabel: "Situación Actual",
-      retosLabel: "Retos",
-      accionesTag: "",
-      hint: "",
-      situacion: [
-        "Datos pendientes de completar."
-      ],
-      retos: [
-        "Datos pendientes de completar."
-      ],
-      acciones: [
-        {
-          label: "Pendiente",
-          text: "Datos de Geografías Santander CIB pendientes de completar."
-        }
+    situacionActual: {
+      fteDistribution: {
+        tec: 260,
+        neg: 40,
+        geo: { total: 60, detail: "Mex, Brl" }
+      },
+      keyPoints: [
+        { icon: "top",  text: "PROVEEDOR #1 EN CIB",                   body: "Actualmente más de 300 Ftes ejecutando y #1 sobre resto Tier 1 en las encuestas." },
+        { icon: "area", text: "PRESENCIA EN ÁMBITOS CLAVE",            body: "Posición en GM y Riesgos, contactos y posibilidades en GTB, IBF, Finance y Compliance." },
+        { icon: "geo",  text: "INICIO EN GEOGRAFÍAS CIB",              body: "Uno de los proveedores principales en Mex CIB e inicio de Brasil con buena llegada." }
       ]
+    },
+
+    retosCIB: [
+      { num: "01", title: "SER PERCIBIDOS COMO PROVEEDOR GLOBAL",      body: "Liderar las iniciativas por ámbito de Expertise, sin gestión diferenciada por Geografía." },
+      { num: "02", title: "ESCALAR EN NUEVOS ÁMBITOS",                 body: "Nuevos ámbitos aparte de Global Markets y Riesgos, como GTB/IBF o Finanzas." },
+      { num: "03", title: "POSICIONAMIENTO EN TECNOLOGÍA",             body: "Asegurando el foco y entrando en ámbitos como Data Engineering." }
+    ],
+
+    equipo: {
+      partner: {
+        name: "ROBERTO GARCÍA",
+        initials: "RG",
+        role: "Partner",
+        before: "Liderar CIB España.",
+        after: "Asegurar que seguimos siendo percibidos especialistas CIB y foco en todas las geografías CIB."
+      },
+      directivos: [
+        { name: "Jose Magarzo",   initials: "JM", role: "SrMgr", before: "Área BO en SW Delivery España.",                        after: "Foco en BackOffice (y Calypso) de manera global asumiendo la vertical de México." },
+        { name: "Manuel Mendoza", initials: "MM", role: "SrMgr", before: "Liderar la parte de Negocio Global Markets en España.", after: "Incorporar el control centralizado (México y España) de Front Office + Murex." },
+        { name: "Manuel Ranea*",  initials: "MR", role: "Dir",   before: "Visión Tecnología global de BBVA.",                     after: "Centrar la asignación de CIB en liderar la práctica de CTO (Arquitectura), escalando nuestra posición." },
+        { name: "Andrés Perozo",  initials: "AP", role: "SrMgr", before: "Líder Integraciones en SW Delivery.",                   after: "Incorporar la gestión de equipos de Integraciones Tec. en CTO y escalado." },
+        { name: "David Fuente*",  initials: "DF", role: "Dir",   before: "Líder práctica Data.",                                  after: "Continuar Liderazgo de la práctica de Data asumiendo el reto de entrada y escalado en Data Eng. + Liderar Adopción de IA en los equipos." },
+        { name: "Carlos Soto*",   initials: "CS", role: "SrMgr", before: "Liderar Riesgos y Regulatorio en CIB Engineering.",     after: "Liderar la creación de Equipo en Brasil + Liderar llegada y escalado en Ingeniería fuera de CIB." }
+      ],
+      apoyos: [
+        { name: "Antonio Díaz",       initials: "AD", mission: "Capacidades GTB/IBF para escalado en Negocio." },
+        { name: "Jose Manuel Bruzos", initials: "JB", mission: "Tecnología Global y Posicionamiento IA." }
+      ],
+      nota: "*Capacidad compartida CIB/CF&B"
     }
   }
 

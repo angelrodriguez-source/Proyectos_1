@@ -734,6 +734,28 @@ html, body {
 .fy-26 .fy-badge { background: rgba(209,59,95,0.10);  color: var(--raspberry); }
 .fy-27 .fy-badge { background: rgba(33,123,238,0.10); color: var(--blue); }
 
+/* --- Badge FC26 "Proyectado" --- */
+.fc26-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(8px, 0.65vw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-top: 4px;
+}
+.fc26-ok {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+.fc26-warn {
+  background: #fff3e0;
+  color: #e65100;
+}
+
 /* --- Flip card 3D --- */
 .fy-card-flippable {
   background: transparent !important;
@@ -1029,263 +1051,285 @@ html, body {
 /* ============================================================
    SLIDE CIFRAS — DASHBOARD FINANCIERO JERÁRQUICO
    ============================================================ */
+.slide-cifras {
+  background: var(--white);
+}
 .cifras-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 8px 48px 24px;
+  padding: 4px 40px 20px;
   overflow-y: auto;
-  gap: 14px;
+  gap: 0;
 }
 
-/* --- Tabla principal --- */
-.cifras-table {
+/* --- Contenedor dashboard --- */
+.cf-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-family: 'Instrument Sans', sans-serif;
-  font-size: clamp(11px, 0.85vw, 14px);
-}
-.cifras-table th,
-.cifras-table td {
-  padding: 9px 12px;
-  text-align: right;
-  white-space: nowrap;
-  vertical-align: middle;
-}
-.cifras-table th:first-child,
-.cifras-table td:first-child {
-  text-align: left;
 }
 
-/* Header */
-.cifras-thead th {
+/* --- Cabecera de columnas (siempre visible) --- */
+.cf-col-header {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr) 0.8fr 0.7fr 2.5fr;
+  gap: 0;
+  padding: 0 16px 6px;
   font-family: 'Sora', sans-serif;
   font-weight: 600;
-  font-size: clamp(9px, 0.7vw, 11px);
+  font-size: clamp(8px, 0.65vw, 10px);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--grey-500);
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--grey-200);
+  color: var(--grey-400);
+  border-bottom: 1.5px solid var(--grey-200);
+}
+.cf-col-header span { text-align: right; }
+.cf-col-header span:first-child { text-align: left; }
+
+/* --- Card base para cada sección --- */
+.cf-card {
+  background: var(--white);
+  border: 1.5px solid var(--grey-200);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-/* --- Fila TOTAL — dark glass --- */
-.cifras-total-row td {
-  background: var(--black);
-  color: var(--white);
-  font-weight: 600;
-  padding: 12px 12px;
-}
-.cifras-total-row td:first-child {
-  border-radius: 10px 0 0 10px;
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: clamp(13px, 1vw, 16px);
-  letter-spacing: -0.01em;
-}
-.cifras-total-row td:last-child { border-radius: 0 10px 10px 0; }
-.cifras-total-row .cifras-fy27 { color: #7DB4FF; font-weight: 800; }
-.cifras-total-row .cifras-growth-badge {
-  background: rgba(255,255,255,0.15);
-  color: #7DB4FF;
-}
-
-/* Spacer row */
-.cifras-spacer td { padding: 4px 0; }
-
-/* --- Fila cliente (BBVA / SAN) --- */
-.cifras-client-row td {
-  font-weight: 700;
-  padding: 11px 12px;
-  border-top: 2px solid var(--grey-200);
-}
-.cifras-client-row td:first-child {
-  font-family: 'Sora', sans-serif;
-  font-weight: 800;
-  font-size: clamp(12px, 0.95vw, 15px);
-  position: relative;
-  padding-left: 20px;
-}
-.cifras-client-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-.cifras-client-sub td {
-  font-weight: 400;
-  color: var(--grey-600);
-  padding: 7px 12px;
-}
-
-/* --- Fila ámbito (expandible) --- */
-.cifras-ambito-row {
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.cifras-ambito-row:hover td {
-  background: rgba(0,0,0,0.02);
-}
-.cifras-ambito-row td {
-  padding: 10px 12px;
+/* --- Fila de datos genérica --- */
+.cf-data-row {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr) 0.8fr 0.7fr 2.5fr;
+  gap: 0;
+  padding: 7px 16px;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(11px, 0.8vw, 13px);
+  align-items: center;
   border-bottom: 1px solid var(--grey-100);
 }
-.cifras-ambito-row td:first-child {
-  font-weight: 600;
-  padding-left: 36px;
+.cf-data-row:last-child { border-bottom: none; }
+.cf-data-row span { text-align: right; }
+.cf-data-row span:first-child { text-align: left; }
+.cf-data-row span:nth-child(n+2):nth-child(-n+5) { font-weight: 700; }
+
+/* --- TOTAL card --- */
+.cf-total {
+  background: var(--grey-100);
+  border: 1.5px solid var(--grey-200);
+  border-radius: 12px;
+  border-top: 3px solid var(--orange);
+  overflow: hidden;
 }
-.cifras-chevron {
+.cf-total .cf-data-row {
+  border-bottom: 1px solid var(--grey-200);
+}
+.cf-total .cf-data-row:last-child { border-bottom: none; }
+.cf-total-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(12px, 0.9vw, 15px);
+  color: var(--black);
+}
+
+/* --- Fila expandible (clickable header) --- */
+.cf-expandable {
+  display: grid;
+  grid-template-columns: 2fr repeat(4, 1fr) 0.8fr 0.7fr 2.5fr;
+  gap: 0;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  align-items: center;
+  user-select: none;
+}
+.cf-expandable:hover { background: var(--grey-100); }
+.cf-expandable span { text-align: right; }
+.cf-expandable span:first-child { text-align: left; }
+.cf-expandable span:nth-child(n+2):nth-child(-n+5) { font-weight: 700; }
+
+/* --- Chevron --- */
+.cf-chev {
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
+  width: 14px; height: 14px;
+  margin-right: 8px;
   vertical-align: middle;
   transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
   color: var(--grey-400);
+  flex-shrink: 0;
 }
-.cifras-ambito-row.open .cifras-chevron {
+.cf-chev svg {
+  width: 14px; height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cf-expandable.open > span:first-child .cf-chev {
   transform: rotate(90deg);
   color: var(--blue);
 }
 
-/* --- Sub-ámbito (geography rows, hidden by default) --- */
-.cifras-sub-row {
-  display: none;
+/* --- Nombres por nivel --- */
+.cf-name-l1 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(13px, 1vw, 16px);
+  display: flex;
+  align-items: center;
 }
-.cifras-sub-row.visible {
-  display: table-row;
-  animation: fadeIn 0.3s ease;
+.cf-name-l2 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: clamp(11px, 0.85vw, 14px);
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
 }
-.cifras-sub-row td {
-  padding: 7px 12px;
-  color: var(--grey-500);
+.cf-name-l3 {
+  font-family: 'Instrument Sans', sans-serif;
+  font-weight: 500;
   font-size: clamp(10px, 0.75vw, 12px);
-  background: var(--grey-100);
-  border-bottom: 1px solid var(--grey-200);
-}
-.cifras-sub-row td:first-child {
-  padding-left: 58px;
-  position: relative;
-}
-.cifras-sub-row td:first-child::before {
-  content: '';
-  position: absolute;
-  left: 44px;
-  top: 0; bottom: 0;
-  width: 2px;
-  background: var(--grey-300);
-}
-.cifras-sub-row:last-of-type td:first-child::before {
-  bottom: 50%;
+  color: var(--grey-600);
+  padding-left: 28px;
 }
 
-/* --- FY27 highlight column --- */
-.cifras-fy27 {
+/* --- Dot de color del cliente --- */
+.cf-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* --- Contenido expandible (oculto por defecto) --- */
+.cf-body {
+  display: none;
+  border-top: 1px solid var(--grey-200);
+}
+.cf-expandable.open + .cf-body {
+  display: block;
+  animation: fadeIn 0.25s ease;
+}
+
+/* Nivel 2 dentro de nivel 1 */
+.cf-body .cf-card {
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid var(--grey-200);
+}
+.cf-body .cf-card:last-child { border-bottom: none; }
+
+/* Nivel 3 (sub-ámbitos) */
+.cf-body .cf-body {
+  background: var(--grey-100);
+  border-top: 1px solid var(--grey-200);
+}
+.cf-body .cf-body .cf-data-row {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 5px 16px;
+  font-size: clamp(10px, 0.7vw, 12px);
+  color: var(--grey-600);
+}
+
+/* --- Etiqueta Ftes / €MM --- */
+.cf-metric {
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  font-size: clamp(8px, 0.55vw, 9px);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--grey-400);
+  min-width: 28px;
+  display: inline-block;
+}
+
+/* --- FY27 highlight --- */
+.cf-fy27 {
   font-weight: 700 !important;
   color: var(--blue) !important;
 }
 
+/* --- FC26 vs FY26 comparison --- */
+.cf-fc26-ok {
+  font-weight: 700 !important;
+  color: #1b5e20 !important;
+}
+.cf-fc26-warn {
+  font-weight: 700 !important;
+  color: #b71c1c !important;
+}
+
 /* --- Growth badge --- */
-.cifras-growth-badge {
+.cf-growth {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-family: 'Sora', sans-serif;
   font-weight: 700;
-  font-size: clamp(9px, 0.65vw, 11px);
-  padding: 3px 8px;
-  border-radius: 6px;
+  font-size: clamp(9px, 0.6vw, 11px);
+  padding: 2px 7px;
+  border-radius: 5px;
   white-space: nowrap;
-}
-.cifras-growth-up {
   background: #e3f2fd;
   color: var(--blue);
 }
-.cifras-growth-hot {
+.cf-growth-hot {
   background: #fff3e0;
   color: #e65100;
 }
 
-/* --- Growth mini-bar --- */
-.cifras-growth-bar {
-  display: inline-block;
-  width: 48px;
-  height: 5px;
-  background: var(--grey-200);
-  border-radius: 3px;
-  overflow: hidden;
-  vertical-align: middle;
-  margin-left: 6px;
-}
-.cifras-growth-fill {
-  height: 100%;
-  border-radius: 3px;
-  background: var(--blue);
-  transition: width 0.8s ease 0.3s;
-}
-.cifras-growth-hot .cifras-growth-fill {
-  background: #e65100;
-}
-
 /* --- Margen badge --- */
-.cifras-margen {
+.cf-margen {
   display: inline-block;
   font-family: 'Sora', sans-serif;
   font-weight: 700;
-  font-size: clamp(9px, 0.65vw, 11px);
-  padding: 3px 8px;
-  border-radius: 6px;
+  font-size: clamp(9px, 0.6vw, 11px);
+  padding: 2px 7px;
+  border-radius: 5px;
   background: #e8f5e9;
   color: #2e7d32;
 }
-.cifras-margen-low {
+.cf-margen-low {
   background: #fff3e0;
   color: #e65100;
 }
 
 /* --- Riesgo tags --- */
-.cifras-riesgos {
+.cf-riesgos {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 4px;
-  justify-content: flex-end;
+  align-items: flex-start;
 }
-.cifras-riesgo-tag {
+.cf-riesgo {
   display: inline-flex;
   align-items: center;
-  gap: 3px;
+  gap: 5px;
   font-family: 'Instrument Sans', sans-serif;
-  font-size: clamp(8px, 0.6vw, 10px);
-  font-weight: 500;
-  padding: 2px 7px;
-  border-radius: 4px;
+  font-size: clamp(10px, 0.7vw, 12px);
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
   background: #fce4ec;
   color: #c62828;
-  max-width: 180px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  white-space: normal;
+  line-height: 1.35;
 }
-.cifras-riesgo-tag svg {
-  width: 10px; height: 10px;
+.cf-riesgo svg {
+  width: 11px; height: 11px;
   flex-shrink: 0;
 }
 
-/* --- Filas Ftes / €MM label --- */
-.cifras-metric-label {
-  font-family: 'Sora', sans-serif;
-  font-weight: 600;
-  font-size: clamp(8px, 0.6vw, 10px);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--grey-400);
-  display: inline-block;
-  min-width: 32px;
-}
-.cifras-total-row .cifras-metric-label {
-  color: rgba(255,255,255,0.5);
+/* --- Resumen en fila colapsada del cliente --- */
+.cf-summary {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(10px, 0.75vw, 12px);
+  color: var(--grey-500);
+  font-weight: 400;
 }
 
 /* ============================================================
@@ -3052,6 +3096,9 @@ html, body {
 .org-grid--5 {
   grid-template-columns: repeat(5, 1fr);
 }
+.org-grid--6 {
+  grid-template-columns: repeat(6, 1fr);
+}
 .org-nota {
   font-family: 'Instrument Sans', sans-serif;
   font-size: 14px; font-weight: 600;
@@ -3072,6 +3119,132 @@ html, body {
 }
 .ed-card--shared .ed-avatar {
   background: var(--orange);
+}
+
+/* --- Layout 3 pirámides (SAN CF&B Equipo) --- */
+.org-triptych {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  align-items: start;
+}
+.org-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  min-height: 0;
+}
+.org-column-label {
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(11px, 0.8vw, 14px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--white);
+  padding: 5px 18px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.org-column-leader {
+  width: 100%;
+  border-radius: 14px;
+  padding: 14px 18px;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.org-column-leader .ed-avatar {
+  width: 40px; height: 40px;
+}
+.org-column-leader .ed-avatar span { font-size: 14px; color: var(--white); }
+.org-leader-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.org-leader-name {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(13px, 1.1vw, 18px);
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+.org-leader-role {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.5);
+}
+.org-leader-ba {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+  align-items: stretch;
+}
+.org-leader-ba-col { flex: 1; }
+.org-leader-ba-sep {
+  width: 1px;
+  background: rgba(255,255,255,0.18);
+  flex-shrink: 0;
+}
+.org-leader-ba-label {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 8px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2px;
+}
+.org-leader-ba-label--after { color: rgba(255,255,255,0.7); }
+.org-leader-ba-text {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: clamp(10px, 0.75vw, 12px);
+  font-weight: 500;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.35;
+}
+/* connector between leader and members */
+.org-col-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 16px;
+  position: relative;
+}
+.org-col-connector::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  width: 2px; height: 16px;
+  background: rgba(0,0,0,0.12);
+}
+/* member cards below leader */
+.org-col-members {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.org-col-members .ed-card {
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+.org-col-members .ed-card .ed-name {
+  font-size: clamp(12px, 1vw, 15px);
+}
+.org-col-members .ed-ba-text {
+  font-size: clamp(9px, 0.7vw, 11px);
 }
 
 /* ============================================================
@@ -3712,7 +3885,7 @@ html, body {
 
       <!-- Botón Visión Global — lleva al dashboard de cifras -->
       <div class="cifras-nav anim-up delay-5">
-        <button class="cifras-global-btn" onclick="goTo(12)">
+        <button class="cifras-global-btn" onclick="goTo(16)">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
           <span>Visión Global</span>
           <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
@@ -3881,70 +4054,141 @@ html, body {
 
 
   <!-- ============================================================
-       PANTALLA 11 — SANTANDER · CIB
+       PANTALLA 11 — SANTANDER · CIB · Contexto y Situación Actual
        ============================================================ -->
   <div class="slide slide-sant-cib" id="slide-11">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
-      <div id="cib-sant-page-title-slot" class="cib-page-title"></div>
+      <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CIB</div>
       <div class="section-label" style="color:#EC0000">
         <span class="label-line" style="background:#EC0000"></span>
-        <span id="cib-sant-label">Santander · CIB</span>
+        <span>Contexto y Situación Actual</span>
         <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Santander Global
         </button>
       </div>
     </div>
-    <div class="cib-content" id="cib-sant-content"></div>
+    <div class="cib-content" id="cib-sant-ctx"></div>
   </div>
   <!-- FIN PANTALLA 11 -->
 
 
   <!-- ============================================================
-       PANTALLA 12 — SANTANDER · CF & BANKING  (pendiente)
+       PANTALLA 12 — SANTANDER · CIB · Retos
        ============================================================ -->
   <div class="slide slide-sant-cib" id="slide-12">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CIB</div>
+      <div class="section-label" style="color:#EC0000">
+        <span class="label-line" style="background:#EC0000"></span>
+        <span>Retos</span>
+        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Santander Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-content" id="cib-sant-retos"></div>
+  </div>
+  <!-- FIN PANTALLA 12 -->
+
+
+  <!-- ============================================================
+       PANTALLA 13 — SANTANDER · CIB · Equipo
+       ============================================================ -->
+  <div class="slide slide-sant-cib" id="slide-13">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CIB</div>
+      <div class="section-label" style="color:#EC0000">
+        <span class="label-line" style="background:#EC0000"></span>
+        <span>Equipo</span>
+        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Santander Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-content" id="cib-sant-equipo"></div>
+  </div>
+  <!-- FIN PANTALLA 13 -->
+
+
+  <!-- ============================================================
+       PANTALLA 14 — SANTANDER · CF & BANKING · Contexto y Situación Actual
+       ============================================================ -->
+  <div class="slide slide-sant-cib" id="slide-14">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
       <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CF &amp; Banking</div>
       <div class="section-label" style="color:#EC0000">
         <span class="label-line" style="background:#EC0000"></span>
-        <span>Santander · CF &amp; Banking</span>
+        <span>Contexto y Situación Actual</span>
         <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           Santander Global
         </button>
       </div>
     </div>
-    <div class="cib-pending-wrap">
-      <div class="cib-pending-card cib-pending-card-wide">
-        <div class="cib-pending-label">Contexto del Plan</div>
-        <div class="cib-pending-badge">⏳ Pendiente</div>
-      </div>
-      <div class="cib-pending-card">
-        <div class="cib-pending-label">Negocio</div>
-        <div class="cib-pending-badge">⏳ Pendiente</div>
-      </div>
-      <div class="cib-pending-card">
-        <div class="cib-pending-label">Tecnología &amp; Ops</div>
-        <div class="cib-pending-badge">⏳ Pendiente</div>
-      </div>
-      <div class="cib-pending-card">
-        <div class="cib-pending-label">Geografías</div>
-        <div class="cib-pending-badge">⏳ Pendiente</div>
-      </div>
-    </div>
+    <div class="cib-content" id="cfb-sant-ctx"></div>
   </div>
   <!-- FIN PANTALLA 12 -->
 
 
   <!-- ============================================================
-       PANTALLA 13 — VISIÓN GLOBAL · CIFRAS & OBJETIVOS
+       PANTALLA 15 — SANTANDER · CF & BANKING · Retos
        ============================================================ -->
-  <div class="slide slide-cifras" id="slide-13">
+  <div class="slide slide-sant-cib" id="slide-15">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CF &amp; Banking</div>
+      <div class="section-label" style="color:#EC0000">
+        <span class="label-line" style="background:#EC0000"></span>
+        <span>Retos</span>
+        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Santander Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-content" id="cfb-sant-retos"></div>
+  </div>
+  <!-- FIN PANTALLA 13 -->
+
+
+  <!-- ============================================================
+       PANTALLA 16 — SANTANDER · CF & BANKING · Equipo
+       ============================================================ -->
+  <div class="slide slide-sant-cib" id="slide-16">
+    <div class="vision-bg-dots"></div>
+    <div class="section-header anim-fade">
+      <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
+      <div class="cib-page-title" style="color:#EC0000">Santander <span style="color:var(--grey-300);font-weight:400">·</span> CF &amp; Banking</div>
+      <div class="section-label" style="color:#EC0000">
+        <span class="label-line" style="background:#EC0000"></span>
+        <span>Equipo</span>
+        <button class="cib-nav-back" onclick="goTo(9)" title="Ver Santander Global">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          Santander Global
+        </button>
+      </div>
+    </div>
+    <div class="cib-content" id="cfb-sant-equipo"></div>
+  </div>
+  <!-- FIN PANTALLA 14 -->
+
+
+  <!-- ============================================================
+       PANTALLA 17 — VISIÓN GLOBAL · CIFRAS & OBJETIVOS
+       ============================================================ -->
+  <div class="slide slide-cifras" id="slide-17">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -3964,9 +4208,9 @@ html, body {
 
 
   <!-- ============================================================
-       PANTALLA 14 — CONCLUSIONES
+       PANTALLA 18 — CONCLUSIONES
        ============================================================ -->
-  <div class="slide slide-conclusiones" id="slide-14">
+  <div class="slide slide-conclusiones" id="slide-18">
     <div class="vision-bg-dots"></div>
     <div class="section-header anim-fade">
       <img class="section-logo" src="NFQ_Assets/Logos/Nfq/Nfq - Black.svg" alt="Nfq">
@@ -4092,13 +4336,23 @@ function closePasswordModal() {
 function renderClientPanel(data) {
   const headerCls = data.color === '#004481' ? 'panel-header-bbva' : 'panel-header-sant';
   const clientKey = headerCls === 'panel-header-bbva' ? 'bbva' : 'sant';
-  const evoHTML = data.evolution.map(e => `
+  const evoHTML = data.evolution.map(e => {
+    let fc26Html = '';
+    if (e.fc26) {
+      const fc26Rev = parseFloat(e.fc26.rev.replace(',', '.'));
+      const fy26Rev = parseFloat(e.rev.replace(',', '.'));
+      const ok = fc26Rev >= fy26Rev;
+      fc26Html = `<div class="fc26-badge ${ok ? 'fc26-ok' : 'fc26-warn'}">Proyectado: ${e.fc26.rev}</div>`;
+    }
+    return `
     <div class="panel-fy">
       <div class="panel-fy-year">${e.fy}${e.obj ? '<span style="opacity:0.5;font-weight:400"> obj.</span>' : ''}</div>
       <div class="panel-fy-rev">${e.rev}<span style="font-size:0.38em;font-weight:400;color:var(--grey-300);margin-left:3px">€MM</span></div>
       <div class="panel-fy-ftes">${e.ftes} Ftes</div>
+      ${fc26Html}
       ${e.growth ? `<div class="panel-fy-growth" style="color:${data.color}">${e.growth}</div>` : ''}
-    </div>`).join('');
+    </div>`;
+  }).join('');
 
   const footerHTML = (data.sections && data.sections.length) ? `
     <div class="panel-sections">
@@ -4255,10 +4509,18 @@ function hydrate() {
 
   const grid = document.getElementById('fy-grid');
   if (grid) grid.innerHTML = DECK.vision.fy.map((fy, i) => {
+    let fc26Badge = '';
+    if (fy.fc26) {
+      const fc26Rev = parseFloat(fy.fc26.rev.replace(',', '.'));
+      const fy26Rev = parseFloat(fy.rev.replace(',', '.'));
+      const ok = fc26Rev >= fy26Rev;
+      fc26Badge = `<div class="fc26-badge ${ok ? 'fc26-ok' : 'fc26-warn'}">Proyectado: ${fy.fc26.rev} €MM</div>`;
+    }
     const frontInner = `
       <div class="fy-year">${fy.year}${fy.obj ? ' <span style="font-weight:400;opacity:0.45;font-size:0.75em">obj.</span>' : ''}</div>
       <div class="fy-rev">${fy.rev} <span class="fy-rev-unit">€MM</span></div>
       <div class="fy-ftes">${fy.ftes} Ftes</div>
+      ${fc26Badge}
       <span class="fy-badge">${fy.badge}</span>`;
     const backFace = fy.back ? (() => {
       const b = fy.back;
@@ -4611,156 +4873,185 @@ function hydrate() {
     if (elEquipo) elEquipo.innerHTML = cibTab('equipo') + orgChart;
   }
 
-  // --- SANTANDER CIB ---
+  // --- SANTANDER CIB (3 pestañas) ---
   if (DECK.santCIB) {
     const d = DECK.santCIB;
-    setText('cib-sant-label', d.label);
-    const content = document.getElementById('cib-sant-content');
-    if (!content) return;
-
+    const scibCtx    = document.getElementById('cib-sant-ctx');
+    const scibRetos  = document.getElementById('cib-sant-retos');
+    const scibEquipo = document.getElementById('cib-sant-equipo');
     const ctx = d.contexto;
+    const sa  = d.situacionActual;
+    const santColor = '#EC0000';
 
-    // ── STRIP CONTEXTO ──
-    const ctxStrip = `
-      <div class="cib-ctx-strip anim-up delay-1">
-
-        <div class="cib-ctx-col">
-          <div class="cib-ctx-eyebrow">Objetivo FY27</div>
-          <div class="cib-ctx-rev">${ctx.objetivo.rev}<span class="cib-ctx-unit"> €MM</span></div>
-          <div class="cib-ctx-ftes">${ctx.objetivo.ftes} Ftes</div>
-          <div class="cib-ctx-growth">↑ ${ctx.objetivo.growth}</div>
-          <div class="cib-ctx-desglose">
-            ${ctx.objetivo.desglose.map((r, i) =>
-              `${i > 0 ? '<span>·</span>' : ''}<span>${r.ftes} ${r.label}</span>`
-            ).join('')}
+    // ── CARDS OBJETIVO ──
+    const objCards = `
+      <div class="obj-cards anim-up delay-1">
+        <div class="obj-card">
+          <div class="obj-card-icon" style="background:rgba(236,0,0,0.08)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${santColor}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div class="obj-card-content">
+            <div class="obj-card-eyebrow">Objetivo FY27</div>
+            <div class="obj-card-big">${ctx.objetivo.rev}<span class="obj-card-unit"> €MM</span></div>
+            <div class="obj-card-sub">Revenue objetivo</div>
           </div>
         </div>
-
-        <div class="cib-ctx-col">
-          <div class="cib-ctx-eyebrow">Posición Actual</div>
-          <div class="cib-ctx-pos-list">
-            ${ctx.posicion.map(p => `
-            <div class="cib-ctx-pos-item">
-              <span class="cib-ctx-pos-dot cib-ctx-pos-dot-${p.tier}"></span>
-              <span class="cib-ctx-pos-rank">${p.badge}</span>
-              <span class="cib-ctx-pos-area">${p.area}</span>
-            </div>`).join('')}
+        <div class="obj-card">
+          <div class="obj-card-icon obj-card-icon--ftes" style="background:rgba(236,0,0,0.08)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${santColor}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="obj-card-content">
+            <div class="obj-card-eyebrow">Equipo FY27</div>
+            <div class="obj-card-big obj-card-big--ftes">${ctx.objetivo.ftes}<span class="obj-card-unit"> Ftes</span></div>
+            <div class="obj-card-sub">${ctx.objetivo.desglose.map(r => r.ftes + ' ' + r.label).join(' · ')}</div>
           </div>
         </div>
-
-        <div class="cib-ctx-col">
-          <div class="cib-ctx-eyebrow">Valor Añadido</div>
-          <p class="cib-ctx-valor">"${ctx.valor}"</p>
+        <div class="obj-card">
+          <div class="obj-card-icon obj-card-icon--growth" style="background:rgba(236,0,0,0.08)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${santColor}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="obj-card-content">
+            <div class="obj-card-eyebrow">Crecimiento</div>
+            <div class="obj-card-big obj-card-big--growth">${ctx.objetivo.growth.split(' ')[0]}</div>
+            <div class="obj-card-sub">Aumento FY25 – FY27</div>
+          </div>
         </div>
-
       </div>`;
 
-    const titleSlot = document.getElementById('cib-sant-page-title-slot');
-    if (titleSlot) titleSlot.innerHTML = `Santander <span>·</span> CIB`;
-
-    // ── SECCIÓN GEOGRAFÍAS ──
-    const geo = d.geografias;
-    const makeBulletsSant = items => items.map(t =>
-      `<div class="geo-bullet"><span class="geo-bullet-dot"></span><span>${t}</span></div>`
-    ).join('');
-    const makePairCardSant = (header, items) => `
-      <div class="geo-pair-card">
-        <div class="geo-pair-header">${header}</div>
-        <div class="geo-pair-divider"></div>
-        <div class="geo-pair-bullets">${makeBulletsSant(items)}</div>
-      </div>`;
-    const makeActionCardSant = ({ label, text }) => `
-      <div class="geo-action-card">
-        <div class="geo-action-num">${label}</div>
-        <div class="geo-action-divider"></div>
-        <div class="geo-action-text">${text}</div>
-      </div>`;
-    const geoSection = `
-      <div class="geo-section anim-up delay-2">
-        <div class="geo-section-header">
-          <div class="geo-eyebrow">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-            ${geo.heading}
-            <span class="geo-eyebrow-action">${geo.accionesTag}</span>
+    // ── BARRA FTEs ──
+    const fteTotal = sa.fteDistribution.tec + sa.fteDistribution.neg + sa.fteDistribution.geo.total;
+    const maxFte = Math.max(sa.fteDistribution.tec, sa.fteDistribution.neg, sa.fteDistribution.geo.total);
+    const pctSC = v => Math.round((v / maxFte) * 100);
+    const fteBar = `
+      <div class="fte-bar-wrap anim-up delay-1">
+        <div class="fte-bar-label">Distribución FTEs <span>(${fteTotal} totales)</span></div>
+        <div class="fte-bars">
+          <div class="fte-row">
+            <div class="fte-row-label">Tecnología</div>
+            <div class="fte-row-bar fte-row-bar--tec" style="width:${pctSC(sa.fteDistribution.tec)}%"><span class="fte-row-num">${sa.fteDistribution.tec}</span></div>
           </div>
-          <span class="nt-ftes-badge">${geo.ftes} Ftes</span>
-          <div class="geo-hint">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-            ${geo.hint}
+          <div class="fte-row">
+            <div class="fte-row-label">Negocio</div>
+            <div class="fte-row-bar fte-row-bar--neg" style="width:${pctSC(sa.fteDistribution.neg)}%"><span class="fte-row-num">${sa.fteDistribution.neg}</span></div>
+          </div>
+          <div class="fte-row">
+            <div class="fte-row-label">Geo (${sa.fteDistribution.geo.detail})</div>
+            <div class="fte-row-bar fte-row-bar--geo" style="width:${pctSC(sa.fteDistribution.geo.total)}%"><span class="fte-row-num">${sa.fteDistribution.geo.total}</span></div>
           </div>
         </div>
-        <div class="geo-flip-group" onclick="this.classList.toggle('flipped')">
-          <div class="geo-flip-inner">
-            <div class="geo-flip-face geo-flip-front">
-              ${makePairCardSant(geo.situacionLabel, geo.situacion)}
-              ${makePairCardSant(geo.retosLabel, geo.retos)}
-              <svg class="geo-flip-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+      </div>`;
+
+    // ── PUNTOS CLAVE SITUACIÓN ──
+    const sitIcons = [
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>'
+    ];
+    const sitPoints = `
+      <div class="sit-points anim-up delay-2">
+        ${sa.keyPoints.map((p, i) => `
+          <div class="sit-point-card">
+            <div class="sit-point-icon">${sitIcons[i]}</div>
+            <div class="sit-point-text">${p.text}</div>
+            ${p.body ? '<div class="sit-point-body">' + p.body + '</div>' : ''}
+          </div>`).join('')}
+      </div>`;
+
+    // ── RETOS ──
+    const retosData = d.retosCIB;
+    const retosSection = `
+      <div class="retos-grid anim-up delay-1">
+        ${retosData.map(r => `
+          <div class="reto-card">
+            <div class="reto-num">${r.num}</div>
+            <div class="reto-title">${r.title}</div>
+            <div class="reto-divider"></div>
+            <div class="reto-body">${r.body}</div>
+          </div>`).join('')}
+      </div>`;
+
+    // ── EQUIPO (organigrama pirámide) ──
+    const eq = d.equipo;
+    const mkSantCibCard = (p, showRole) => {
+      const shared = p.name.includes('*') ? ' ed-card--shared' : '';
+      if (p.before && p.after) {
+        return `
+        <div class="ed-card${shared}">
+          <div class="ed-card-header">
+            <div class="ed-avatar" style="background:${santColor}"><span>${p.initials}</span></div>
+            <div class="ed-name">${p.name}</div>
+            ${showRole && p.role ? '<span class="ed-role-badge" style="color:rgba(236,0,0,0.55);background:rgba(236,0,0,0.06);border-color:rgba(236,0,0,0.14)">' + p.role + '</span>' : ''}
+          </div>
+          <hr class="ed-divider">
+          <div class="ed-ba-row">
+            <div class="ed-ba-col ed-ba-col--before">
+              <div class="ed-ba-label">Antes</div>
+              <div class="ed-ba-text">${p.before}</div>
             </div>
-            <div class="geo-flip-face geo-flip-back">
-              ${geo.acciones.map(a => makeActionCardSant(a)).join('')}
-              <svg class="geo-flip-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            <div class="ed-ba-sep"></div>
+            <div class="ed-ba-col ed-ba-col--after">
+              <div class="ed-ba-label" style="color:${santColor}">Ahora</div>
+              <div class="ed-ba-text">${p.after}</div>
             </div>
           </div>
+        </div>`;
+      }
+      return `
+      <div class="ed-card${shared}">
+        <div class="ed-card-header">
+          <div class="ed-avatar" style="background:var(--grey-500)"><span>${p.initials}</span></div>
+          <div class="ed-name">${p.name}</div>
         </div>
+        <hr class="ed-divider">
+        <div class="ed-mission">${p.mission}</div>
       </div>`;
+    };
 
-    // ── SECCIÓN NEGOCIO / TECNOLOGÍA ──
-    const nt = d.negocioTech;
-    const mkBulletSant = t =>
-      `<div class="nt-sc-item"><span class="nt-sc-dot"></span><span>${t}</span></div>`;
-    const mkSubCardSant = (cls, label, items) => `
-      <div class="nt-sub-card ${cls}">
-        <div class="nt-sc-eyebrow">${label}</div>
-        <div class="nt-sc-divider"></div>
-        <div class="nt-sc-items">${items.map(mkBulletSant).join('')}</div>
-      </div>`;
-    const mkNtColSant = (data, iconSvg) => `
-      <div class="nt-col">
-        <div class="nt-col-header">
-          <div class="nt-col-eyebrow">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${iconSvg}</svg>
-            ${data.heading}
-            <span class="nt-accion-tag">${data.accionesTag}</span>
-          </div>
-          <span class="nt-ftes-badge">${data.ftes} Ftes</span>
-        </div>
-        <div class="nt-half" onclick="this.classList.toggle('flipped')">
-          <div class="nt-flip-inner">
-            <div class="nt-face nt-front">
-              ${mkSubCardSant('nt-sit', data.situacionLabel, data.situacion)}
-              ${mkSubCardSant('nt-ret', data.retosLabel, data.retos)}
-              <svg class="nt-flip-hint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-            </div>
-            <div class="nt-face nt-back">
-              <div class="nt-back-inner">
-                <div class="nt-back-heading">${data.accionesHeading}</div>
-                <div class="nt-back-divider"></div>
-                <div class="nt-action-list">
-                  ${data.acciones.map(a => `
-                  <div class="nt-action-row">
-                    <div class="nt-action-label">${a.label}</div>
-                    <div class="nt-action-text">${a.text}</div>
-                  </div>`).join('')}
-                </div>
+    const orgChart = `
+      <div class="org-chart anim-up delay-1">
+        <div class="org-partner" style="background:${santColor}">
+          <div class="ed-avatar" style="background:rgba(255,255,255,0.2)"><span>${eq.partner.initials}</span></div>
+          <div class="org-partner-info">
+            <div class="org-partner-role">${eq.partner.role}</div>
+            <div class="org-partner-name">${eq.partner.name}</div>
+            <div class="org-partner-ba">
+              <div class="org-partner-ba-col">
+                <div class="org-partner-ba-label">Antes</div>
+                <div class="org-partner-mission">${eq.partner.before}</div>
+              </div>
+              <div class="org-partner-ba-sep"></div>
+              <div class="org-partner-ba-col">
+                <div class="org-partner-ba-label org-partner-ba-label--after">Ahora</div>
+                <div class="org-partner-mission">${eq.partner.after}</div>
               </div>
             </div>
           </div>
         </div>
+        <div class="org-connector" style="--conn-color:rgba(236,0,0,0.2)"></div>
+        <div class="org-grid org-grid--6">
+          ${eq.directivos.map(p => mkSantCibCard(p, true)).join('')}
+        </div>
+      </div>
+      <div class="ed-apoyos anim-up delay-2">
+        <div class="ed-apoyos-label">Apoyos Adicionales</div>
+        <div class="org-apoyos-grid">
+          ${eq.apoyos.map(p => mkSantCibCard(p, false)).join('')}
+        </div>
+      </div>
+      ${eq.nota ? '<div class="org-nota">' + eq.nota + '</div>' : ''}`;
+
+    // ── Pestañas de navegación entre slides ──
+    const scibTab = (active) => `
+      <div class="cib-tabs">
+        <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(10)">Contexto y Situación Actual</button>
+        <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(11)">Retos</button>
+        <button class="cib-tab ${active==='equipo'?'cib-tab--active':''}" onclick="goTo(12)">Equipo</button>
       </div>`;
 
-    const iconNegSant  = `<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>`;
-    const iconTechSant = `<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>`;
-
-    const ntSection = `
-      <div class="nt-section anim-up delay-1">
-        ${mkNtColSant(nt.negocio,    iconNegSant)}
-        ${mkNtColSant(nt.tecnologia, iconTechSant)}
-      </div>`;
-
-    content.innerHTML = ctxStrip + ntSection + geoSection;
+    // ── Inyectar en 3 slides separadas ──
+    if (scibCtx)    scibCtx.innerHTML    = scibTab('ctx')    + objCards + fteBar + sitPoints;
+    if (scibRetos)  scibRetos.innerHTML  = scibTab('retos')  + objCards + retosSection;
+    if (scibEquipo) scibEquipo.innerHTML = scibTab('equipo') + orgChart;
   }
 
   // --- BBVA CF&BANKING ---
@@ -4937,6 +5228,208 @@ function hydrate() {
       if (cfbEquipo) cfbEquipo.innerHTML = cfbTab('equipo') + orgChart;
     }
   }
+
+  // ═══════════════════════════════════════════════════════════════
+  // SANTANDER · CF & BANKING  (3 pestañas)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    const d = DECK.santCFB;
+    if (d && !d.pending) {
+      const scfbCtx    = document.getElementById('cfb-sant-ctx');
+      const scfbRetos  = document.getElementById('cfb-sant-retos');
+      const scfbEquipo = document.getElementById('cfb-sant-equipo');
+      const ctx = d.contexto;
+      const sa  = d.situacionActual;
+      const santColor = '#EC0000';
+
+      // ── CARDS OBJETIVO ──
+      const objCards = `
+        <div class="obj-cards anim-up delay-1">
+          <div class="obj-card">
+            <div class="obj-card-icon" style="background:rgba(236,0,0,0.08)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${santColor}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <div class="obj-card-content">
+              <div class="obj-card-eyebrow">Objetivo FY27</div>
+              <div class="obj-card-big">${ctx.objetivo.rev}<span class="obj-card-unit"> €MM</span></div>
+              <div class="obj-card-sub">Revenue objetivo</div>
+            </div>
+          </div>
+          <div class="obj-card">
+            <div class="obj-card-icon obj-card-icon--ftes" style="background:rgba(236,0,0,0.08)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${santColor}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="obj-card-content">
+              <div class="obj-card-eyebrow">Equipo FY27</div>
+              <div class="obj-card-big obj-card-big--ftes">${ctx.objetivo.ftes}<span class="obj-card-unit"> Ftes</span></div>
+              <div class="obj-card-sub">${ctx.objetivo.desglose.map(r => r.ftes + ' ' + r.label).join(' · ')}</div>
+            </div>
+          </div>
+          <div class="obj-card">
+            <div class="obj-card-icon obj-card-icon--growth" style="background:rgba(236,0,0,0.08)">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${santColor}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <div class="obj-card-content">
+              <div class="obj-card-eyebrow">Crecimiento</div>
+              <div class="obj-card-big obj-card-big--growth">${ctx.objetivo.growth.split(' ')[0]}</div>
+              <div class="obj-card-sub">Aumento FY25 – FY27</div>
+            </div>
+          </div>
+        </div>`;
+
+      // ── BARRA FTEs (Tec / Neg / Ops) ──
+      const maxFte = Math.max(sa.fteDistribution.tec, sa.fteDistribution.neg, sa.fteDistribution.ops);
+      const fteTotal = sa.fteDistribution.tec + sa.fteDistribution.neg + sa.fteDistribution.ops;
+      const pctS = v => Math.round((v / maxFte) * 100);
+      const fteBar = `
+        <div class="fte-bar-wrap anim-up delay-1">
+          <div class="fte-bar-label">Distribución FTEs <span>(${fteTotal} totales)</span></div>
+          <div class="fte-bars">
+            <div class="fte-row">
+              <div class="fte-row-label">Tecnología</div>
+              <div class="fte-row-bar fte-row-bar--tec" style="width:${pctS(sa.fteDistribution.tec)}%"><span class="fte-row-num">${sa.fteDistribution.tec}</span></div>
+            </div>
+            <div class="fte-row">
+              <div class="fte-row-label">Negocio</div>
+              <div class="fte-row-bar fte-row-bar--neg" style="width:${pctS(sa.fteDistribution.neg)}%"><span class="fte-row-num">${sa.fteDistribution.neg}</span></div>
+            </div>
+            <div class="fte-row">
+              <div class="fte-row-label">Operaciones</div>
+              <div class="fte-row-bar fte-row-bar--geo" style="width:${pctS(sa.fteDistribution.ops)}%"><span class="fte-row-num">${sa.fteDistribution.ops}</span></div>
+            </div>
+          </div>
+        </div>`;
+
+      // ── PUNTOS CLAVE SITUACIÓN ──
+      const sitIcons = [
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
+        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>'
+      ];
+      const sitPoints = `
+        <div class="sit-points anim-up delay-2">
+          ${sa.keyPoints.map((p, i) => `
+            <div class="sit-point-card">
+              <div class="sit-point-icon">${sitIcons[i]}</div>
+              <div class="sit-point-text">${p.text}</div>
+              ${p.body ? '<div class="sit-point-body">' + p.body + '</div>' : ''}
+            </div>`).join('')}
+        </div>`;
+
+      // ── RETOS ──
+      const retosData = d.retosCFB;
+      const retosSection = `
+        <div class="retos-grid anim-up delay-1">
+          ${retosData.map(r => `
+            <div class="reto-card">
+              <div class="reto-num">${r.num}</div>
+              <div class="reto-title">${r.title}</div>
+              <div class="reto-divider"></div>
+              <div class="reto-body">${r.body}</div>
+            </div>`).join('')}
+        </div>`;
+
+      // ── EQUIPO (3 pirámides: UK, ESP, W&AM) ──
+      const eq = d.equipo;
+      const mkMemberCard = (p) => {
+        const hasBA = p.before && p.after;
+        if (hasBA) {
+          return `
+          <div class="ed-card">
+            <div class="ed-card-header">
+              <div class="ed-avatar" style="background:${santColor}"><span>${p.initials}</span></div>
+              <div class="ed-name">${p.name}</div>
+              ${p.role ? '<span class="ed-role-badge" style="color:rgba(236,0,0,0.55);background:rgba(236,0,0,0.06);border-color:rgba(236,0,0,0.14)">' + p.role + '</span>' : ''}
+            </div>
+            <hr class="ed-divider">
+            <div class="ed-ba-row">
+              <div class="ed-ba-col ed-ba-col--before">
+                <div class="ed-ba-label">Antes</div>
+                <div class="ed-ba-text">${p.before}</div>
+              </div>
+              <div class="ed-ba-sep"></div>
+              <div class="ed-ba-col ed-ba-col--after">
+                <div class="ed-ba-label" style="color:${santColor}">Ahora</div>
+                <div class="ed-ba-text">${p.after}</div>
+              </div>
+            </div>
+          </div>`;
+        }
+        return `
+        <div class="ed-card">
+          <div class="ed-card-header">
+            <div class="ed-avatar" style="background:${santColor}"><span>${p.initials}</span></div>
+            <div class="ed-name">${p.name}</div>
+            ${p.role ? '<span class="ed-role-badge" style="color:rgba(236,0,0,0.55);background:rgba(236,0,0,0.06);border-color:rgba(236,0,0,0.14)">' + p.role + '</span>' : ''}
+          </div>
+        </div>`;
+      };
+
+      const orgTriptych = `
+        <div class="org-triptych anim-up delay-1">
+          ${eq.columnas.map(col => {
+            const ldr = col.leader;
+            const hasBA = ldr.before && ldr.after;
+            return `
+            <div class="org-column">
+              <div class="org-column-label" style="background:${col.color}">${col.region}</div>
+              <div class="org-column-leader" style="background:${col.color}">
+                <div class="ed-avatar" style="background:rgba(255,255,255,0.2)"><span>${ldr.initials}</span></div>
+                <div class="org-leader-info">
+                  <div class="org-leader-role">${ldr.role}</div>
+                  <div class="org-leader-name">${ldr.name}</div>
+                  ${hasBA ? `
+                  <div class="org-leader-ba">
+                    <div class="org-leader-ba-col">
+                      <div class="org-leader-ba-label">Antes</div>
+                      <div class="org-leader-ba-text">${ldr.before}</div>
+                    </div>
+                    <div class="org-leader-ba-sep"></div>
+                    <div class="org-leader-ba-col">
+                      <div class="org-leader-ba-label org-leader-ba-label--after">Ahora</div>
+                      <div class="org-leader-ba-text">${ldr.after}</div>
+                    </div>
+                  </div>` : ''}
+                </div>
+              </div>
+              <div class="org-col-connector"></div>
+              <div class="org-col-members">
+                ${col.members.map(m => mkMemberCard(m)).join('')}
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+        ${eq.apoyos.length ? `
+        <div class="ed-apoyos anim-up delay-2">
+          <div class="ed-apoyos-label">Apoyos Adicionales</div>
+          <div class="org-apoyos-grid" style="grid-template-columns: repeat(${eq.apoyos.length}, 1fr); max-width: min(400px, 50%)">
+            ${eq.apoyos.map(a => `
+              <div class="ed-card" style="border-style:dashed;background:var(--grey-50,#FAFAFA)">
+                <div class="ed-card-header">
+                  <div class="ed-avatar" style="background:var(--grey-500)"><span>${a.initials}</span></div>
+                  <div class="ed-name">${a.name}</div>
+                  ${a.role ? '<span class="ed-role-badge">' + a.role + '</span>' : ''}
+                </div>
+                <hr class="ed-divider">
+                <div class="ed-mission">${a.mission}</div>
+              </div>`).join('')}
+          </div>
+        </div>` : ''}`;
+
+      // ── Pestañas de navegación entre slides ──
+      const scfbTab = (active) => `
+        <div class="cib-tabs">
+          <button class="cib-tab ${active==='ctx'?'cib-tab--active':''}" onclick="goTo(13)">Contexto y Situación Actual</button>
+          <button class="cib-tab ${active==='retos'?'cib-tab--active':''}" onclick="goTo(14)">Retos</button>
+          <button class="cib-tab ${active==='equipo'?'cib-tab--active':''}" onclick="goTo(15)">Equipo</button>
+        </div>`;
+
+      // ── Inyectar en 3 slides separadas ──
+      if (scfbCtx)    scfbCtx.innerHTML    = scfbTab('ctx')    + objCards + fteBar + sitPoints;
+      if (scfbRetos)  scfbRetos.innerHTML  = scfbTab('retos')  + objCards + retosSection;
+      if (scfbEquipo) scfbEquipo.innerHTML = scfbTab('equipo') + orgTriptych;
+    }
+  }
 }
 
 hydrate();
@@ -4988,150 +5481,119 @@ if (DECK.conclusiones) {
 if (DECK.cifras) {
   const cifrasEl = document.getElementById('cifras-content');
   if (cifrasEl) {
-    cifrasEl.innerHTML = renderCifrasTable(DECK.cifras);
-    // Wire up expand/collapse — both rows of each ámbito toggle together
-    cifrasEl.querySelectorAll('.cifras-ambito-row').forEach(row => {
-      row.addEventListener('click', () => {
-        const id = row.dataset.ambitoId;
-        const isOpen = row.classList.contains('open');
-        // Toggle all rows sharing the same ámbito ID
-        cifrasEl.querySelectorAll(`.cifras-ambito-row[data-ambito-id="${id}"]`).forEach(r => {
-          r.classList.toggle('open', !isOpen);
-        });
-        cifrasEl.querySelectorAll(`.cifras-sub-row[data-parent="${id}"]`).forEach(sub => {
-          sub.classList.toggle('visible', !isOpen);
-        });
+    cifrasEl.innerHTML = renderCifrasDashboard(DECK.cifras);
+    // Wire up all expandable headers
+    cifrasEl.querySelectorAll('.cf-expandable').forEach(hdr => {
+      hdr.addEventListener('click', () => {
+        hdr.classList.toggle('open');
       });
     });
   }
 }
 
-function renderCifrasTable(data) {
+function renderCifrasDashboard(data) {
   const cols = data.columns;
-  const growthPct = (arr) => {
-    const start = arr[0], end = arr[arr.length - 1];
-    if (start === 0) return end > 0 ? '+' + (end * 100).toFixed(0) + '%' : '—';
-    return ((end - start) / start * 100 >= 0 ? '+' : '') + ((end - start) / start * 100).toFixed(0) + '%';
+  const fmt = (v) => typeof v === 'number'
+    ? v.toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+    : v;
+  const pct = (arr) => {
+    const s = arr[0], e = arr[arr.length - 1];
+    if (s === 0) return e > 0 ? 'nuevo' : '—';
+    const p = ((e - s) / s * 100);
+    return (p >= 0 ? '+' : '') + p.toFixed(0) + '%';
   };
-  const growthClass = (arr) => {
-    const start = arr[0], end = arr[arr.length - 1];
-    if (start === 0) return 'cifras-growth-hot';
-    const pct = (end - start) / start * 100;
-    return pct > 60 ? 'cifras-growth-hot' : 'cifras-growth-up';
+  const gCls = (arr) => {
+    const s = arr[0], e = arr[arr.length - 1];
+    if (s === 0) return 'cf-growth-hot';
+    return ((e - s) / s * 100) > 60 ? 'cf-growth-hot' : '';
   };
-  const growthBarW = (arr) => {
-    const start = arr[0], end = arr[arr.length - 1];
-    if (start === 0) return 100;
-    const pct = Math.min(Math.abs((end - start) / start * 100), 120);
-    return Math.round(pct / 1.2);
-  };
-  const fmt = (v) => typeof v === 'number' ? v.toLocaleString('es-ES', { minimumFractionDigits: v % 1 ? 1 : 0, maximumFractionDigits: 2 }) : v;
-
   const warnSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+  const chevSvg = '<span class="cf-chev"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>';
+  const fc26Cls = (vals) => vals[1] >= vals[2] ? 'cf-fc26-ok' : 'cf-fc26-warn';
+  const valCls = (vals, i) => {
+    if (i === 3) return 'cf-fy27';
+    if (i === 1) return fc26Cls(vals);
+    return '';
+  };
 
-  let html = '<table class="cifras-table">';
+  // Helper: single data row (solo €MM)
+  const dataRow = (label, vals, growth, margenHtml, riesgosHtml, nameCls) => {
+    let nameCell = label
+      ? (nameCls ? `<span class="${nameCls}">${label}</span>` : `<span>${label}</span>`)
+      : '';
+    return `<div class="cf-data-row">
+      <span>${nameCell}</span>
+      ${vals.map((v, i) => { const c = valCls(vals, i); return `<span${c ? ' class="' + c + '"' : ''}>${fmt(v)}</span>`; }).join('')}
+      <span><span class="cf-growth ${gCls(vals)}">${growth}</span></span>
+      <span>${margenHtml || ''}</span>
+      <span>${riesgosHtml || ''}</span>
+    </div>`;
+  };
 
-  // THEAD
-  html += '<thead class="cifras-thead"><tr>';
-  html += '<th style="min-width:180px"></th>';
-  html += '<th style="min-width:50px"></th>'; // metric label col
-  cols.forEach((c, i) => {
-    const isLast = i === cols.length - 1;
-    html += `<th${isLast ? ' class="cifras-fy27"' : ''}>${c}</th>`;
-  });
-  html += '<th style="min-width:90px">Crec.</th>';
-  html += '<th>Margen</th>';
-  html += '<th style="min-width:140px">Riesgos FY27</th>';
-  html += '</tr></thead>';
+  let html = '<div class="cf-dashboard">';
 
-  html += '<tbody>';
+  // Column headers
+  html += '<div class="cf-col-header">';
+  html += '<span>€MM</span>';
+  cols.forEach((c, i) => html += `<span${i === 3 ? ' style="color:var(--blue);font-weight:700"' : ''}>${c}</span>`);
+  html += '<span>Crec.</span><span>Margen</span><span style="text-align:right">Riesgos FY27</span>';
+  html += '</div>';
 
-  // TOTAL
-  const t = data.total;
-  html += '<tr class="cifras-total-row">';
-  html += '<td rowspan="2" style="vertical-align:middle">TOTAL</td>';
-  html += '<td><span class="cifras-metric-label">Ftes</span></td>';
-  t.ftes.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
-  html += `<td><span class="cifras-growth-badge ${growthClass(t.ftes)}">${growthPct(t.ftes)}<span class="cifras-growth-bar"><span class="cifras-growth-fill" style="width:${growthBarW(t.ftes)}%"></span></span></span></td>`;
-  html += '<td></td><td></td></tr>';
+  // TOTAL card
+  html += '<div class="cf-total">';
+  html += dataRow('Total Negocio Maduro', data.total.rev, pct(data.total.rev), '', '', 'cf-total-name');
+  html += '</div>';
 
-  html += '<tr class="cifras-total-row">';
-  html += '<td><span class="cifras-metric-label">€MM</span></td>';
-  t.rev.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
-  html += `<td><span class="cifras-growth-badge ${growthClass(t.rev)}">${growthPct(t.rev)}<span class="cifras-growth-bar"><span class="cifras-growth-fill" style="width:${growthBarW(t.rev)}%"></span></span></span></td>`;
-  html += '<td></td><td></td></tr>';
-
-  // SPACER
-  html += '<tr class="cifras-spacer"><td colspan="8"></td></tr>';
-
-  // CLIENTS
-  let ambitoIdx = 0;
+  // CLIENT cards
   data.clients.forEach(client => {
-    // Client header — Ftes
-    html += '<tr class="cifras-client-row">';
-    html += `<td rowspan="2" style="vertical-align:middle"><span class="cifras-client-dot" style="background:${client.color}"></span>${client.name}</td>`;
-    html += '<td><span class="cifras-metric-label">Ftes</span></td>';
-    client.ftes.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
-    html += `<td><span class="cifras-growth-badge ${growthClass(client.ftes)}">${growthPct(client.ftes)}<span class="cifras-growth-bar"><span class="cifras-growth-fill" style="width:${growthBarW(client.ftes)}%"></span></span></span></td>`;
-    html += '<td></td><td></td></tr>';
+    html += '<div class="cf-card">';
 
-    // Client header — €MM
-    html += '<tr class="cifras-client-row">';
-    html += '<td><span class="cifras-metric-label">€MM</span></td>';
-    client.rev.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
-    html += `<td><span class="cifras-growth-badge ${growthClass(client.rev)}">${growthPct(client.rev)}<span class="cifras-growth-bar"><span class="cifras-growth-fill" style="width:${growthBarW(client.rev)}%"></span></span></span></td>`;
-    html += '<td></td><td></td></tr>';
+    // Client expandable header — shows €MM values directly
+    html += `<div class="cf-expandable">
+      <span class="cf-name-l1">${chevSvg}<span class="cf-dot" style="background:${client.color}"></span>${client.name}</span>
+      ${client.rev.map((v, i) => { const c = valCls(client.rev, i); const extra = i === 3 ? 'font-weight:700;font-family:Sora,sans-serif;font-size:clamp(11px,0.85vw,14px)' : ''; return `<span class="${c || 'cf-summary'}"${extra ? ' style="' + extra + '"' : ''}>${fmt(v)}</span>`; }).join('')}
+      <span><span class="cf-growth ${gCls(client.rev)}">${pct(client.rev)}</span></span>
+      <span></span>
+      <span></span>
+    </div>`;
 
-    // Ámbitos
+    // Client body — NO repite el agregado, solo muestra los ámbitos
+    html += '<div class="cf-body">';
+
     client.ambitos.forEach(amb => {
-      const aid = 'amb-' + ambitoIdx++;
+      const fullName = client.name + ' · ' + amb.name;
       const margenVal = parseInt(amb.margen);
-      const margenCls = margenVal < 18 ? ' cifras-margen-low' : '';
+      const margenCls = margenVal < 18 ? ' cf-margen-low' : '';
+      const margenHtml = `<span class="cf-margen${margenCls}">${amb.margen}</span>`;
+      const riesgosHtml = `<div class="cf-riesgos">${amb.riesgos.map(r => `<span class="cf-riesgo">${warnSvg} ${r}</span>`).join('')}</div>`;
 
-      // Ámbito row — Ftes
-      html += `<tr class="cifras-ambito-row" data-ambito-id="${aid}">`;
-      html += `<td rowspan="2" style="vertical-align:middle">
-        <svg class="cifras-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-        ${amb.name}</td>`;
-      html += '<td><span class="cifras-metric-label">Ftes</span></td>';
-      amb.ftes.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
-      html += `<td><span class="cifras-growth-badge ${growthClass(amb.ftes)}">${growthPct(amb.ftes)}</span></td>`;
-      html += `<td rowspan="2" style="vertical-align:middle"><span class="cifras-margen${margenCls}">${amb.margen}</span></td>`;
-      html += `<td rowspan="2" style="vertical-align:middle"><div class="cifras-riesgos">${amb.riesgos.map(r => `<span class="cifras-riesgo-tag">${warnSvg} ${r}</span>`).join('')}</div></td>`;
-      html += '</tr>';
+      html += '<div class="cf-card">';
 
-      // Ámbito row — €MM (second row, also triggers expand)
-      html += `<tr class="cifras-ambito-row" data-ambito-id="${aid}">`;
-      html += '<td><span class="cifras-metric-label">€MM</span></td>';
-      amb.rev.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
-      html += `<td><span class="cifras-growth-badge ${growthClass(amb.rev)}">${growthPct(amb.rev)}</span></td>`;
-      html += '</tr>';
+      // Ámbito expandable header — shows €MM
+      html += `<div class="cf-expandable">
+        <span class="cf-name-l2">${chevSvg}${fullName}</span>
+        ${amb.rev.map((v, i) => { const c = valCls(amb.rev, i); const extra = i === 3 ? 'font-weight:700;font-size:clamp(10px,0.8vw,13px)' : ''; return `<span class="${c || 'cf-summary'}"${extra ? ' style="' + extra + '"' : ''}>${fmt(v)}</span>`; }).join('')}
+        <span><span class="cf-growth ${gCls(amb.rev)}">${pct(amb.rev)}</span></span>
+        <span>${margenHtml}</span>
+        <span>${riesgosHtml}</span>
+      </div>`;
 
-      // Sub-ámbito rows (hidden by default)
+      // Ámbito body — solo sub-ámbitos (geographies), sin repetir ámbito
+      html += '<div class="cf-body">';
       amb.sub.forEach(s => {
-        // Sub ftes
-        html += `<tr class="cifras-sub-row" data-parent="${aid}">`;
-        html += `<td>${s.name}</td>`;
-        html += '<td><span class="cifras-metric-label">Ftes</span></td>';
-        s.ftes.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
-        html += `<td><span class="cifras-growth-badge ${growthClass(s.ftes)}" style="font-size:9px">${growthPct(s.ftes)}</span></td>`;
-        html += '<td></td><td></td></tr>';
-
-        // Sub €MM
-        html += `<tr class="cifras-sub-row" data-parent="${aid}">`;
-        html += '<td></td>';
-        html += '<td><span class="cifras-metric-label">€MM</span></td>';
-        s.rev.forEach((v, i) => html += `<td${i === 3 ? ' class="cifras-fy27"' : ''}>${fmt(v)}</td>`);
-        html += `<td><span class="cifras-growth-badge ${growthClass(s.rev)}" style="font-size:9px">${growthPct(s.rev)}</span></td>`;
-        html += '<td></td><td></td></tr>';
+        const subName = s.name;
+        html += dataRow(subName, s.rev, pct(s.rev), '', '', 'cf-name-l3');
       });
+      html += '</div>';
+
+      html += '</div>'; // ámbito card
     });
 
-    // Spacer between clients
-    html += '<tr class="cifras-spacer"><td colspan="8"></td></tr>';
+    html += '</div>'; // client body
+    html += '</div>'; // client card
   });
 
-  html += '</tbody></table>';
+  html += '</div>';
   return html;
 }
 

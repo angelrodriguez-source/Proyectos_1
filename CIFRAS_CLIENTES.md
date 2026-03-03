@@ -52,8 +52,8 @@
 
 |            | FY25   | FC26   | FY26   | FY27   | Margen | Riesgos FY27 |
 |------------|--------|--------|--------|--------|--------|--------------|
-| **Ftes**   | 85     | 120    | 120    | 160    | 20%    | Escenarios de reducción por la IA. |
-| **€MM**    | 6,7    | 9      | 9      | 12     |        | Pérdida de Imagen por posicionamiento global. |
+| **Ftes**   | 85     | 120    | 120    | 160    | 20%    | Recorrido de Alquid en Finanzas (Posicionamiento y exito PoCs) |
+| **€MM**    | 6,7    | 9      | 9      | 12     |        | No conseguir la posicion y escalado en Ingenieria. |
 
 #### BBVA CF&B ex México
 
