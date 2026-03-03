@@ -336,11 +336,13 @@ const DECK = {
         { name: "Manuel Ranea*",  initials: "MR", role: "Dir",   before: "Visión Tecnología global de BBVA.",                           after: "Centrar la asignación de CIB en liderar la práctica de CTO (Arquitectura), escalando nuestra posición." },
         { name: "Andrés Perozo",  initials: "AP", role: "SrMgr", before: "Líder Integraciones en SW Delivery.",                         after: "Incorporar la gestión de equipos de Integraciones Tec. en CTO y escalado." },
         { name: "David Fuente*",  initials: "DF", role: "Dir",   before: "Líder práctica Data.",                                        after: "Continuar Liderazgo de la práctica de Data asumiendo el reto de entrada y escalado en Data Eng. + Liderar Adopción de IA en los equipos." },
-        { name: "Carlos Soto*",   initials: "CS", role: "SrMgr", before: "Liderar Riesgos y Regulatorio en CIB Engineering.",           after: "Liderar la creación de Equipo en Brasil + Liderar llegada y escalado en Ingeniería fuera de CIB." }
+        { name: "Carlos Soto*",   initials: "CS", role: "SrMgr", before: "Liderar Riesgos y Regulatorio en CIB Engineering.",           after: "Liderar la creación de Equipo en Brasil + Liderar llegada y escalado en Ingeniería fuera de CIB." },
+        { name: "Sergio Tremari", initials: "ST", role: "SrMgr", before: "Control Cuenta BBVA CIB Mex (Gestión y Ejecución).",          after: "Foco en el Escalado de BBVA CIB Mex & Other Latam aprovechando la verticalización." }
       ],
       apoyos: [
+        { name: "Juan Blanco",        initials: "JB", mission: "Apoyo para la gestión de BBVA CIB USA." },
         { name: "Antonio Díaz",       initials: "AD", mission: "Capacidades GTB/IBF para escalado en Negocio." },
-        { name: "José Manuel Bruzos", initials: "JB", mission: "Tecnología Global y Posicionamiento IA." }
+        { name: "José Manuel Bruzos", initials: "JMB", mission: "Tecnología Global y Posicionamiento IA." }
       ],
       nota: "*Capacidad compartida CIB/CF&B"
     }
