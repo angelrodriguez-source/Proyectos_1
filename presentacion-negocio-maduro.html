@@ -327,6 +327,64 @@ html, body {
   color: rgba(255,255,255,0.9);
 }
 
+/* Modal de contraseña */
+#pwd-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.2s;
+}
+#pwd-overlay.pwd-visible { opacity: 1; }
+.pwd-modal {
+  background: var(--white); border-radius: 16px; padding: 36px 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  min-width: 340px; text-align: center;
+  transform: scale(0.95); transition: transform 0.2s;
+}
+.pwd-visible .pwd-modal { transform: scale(1); }
+.pwd-title {
+  font-family: 'Sora', sans-serif; font-size: 20px; font-weight: 700;
+  color: var(--black); margin-bottom: 6px;
+}
+.pwd-subtitle {
+  font-family: 'Instrument Sans', sans-serif; font-size: 13px;
+  color: var(--grey-500); margin-bottom: 24px;
+}
+.pwd-input {
+  width: 100%; box-sizing: border-box; padding: 12px 16px;
+  font-family: 'Instrument Sans', sans-serif; font-size: 15px;
+  border: 2px solid var(--grey-200); border-radius: 10px;
+  outline: none; transition: border-color 0.2s;
+}
+.pwd-input:focus { border-color: var(--orange); }
+.pwd-error {
+  font-family: 'Instrument Sans', sans-serif; font-size: 12px;
+  color: #d32f2f; min-height: 20px; margin-top: 8px;
+}
+.pwd-actions {
+  display: flex; gap: 10px; margin-top: 16px; justify-content: center;
+}
+.pwd-btn {
+  font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 600;
+  padding: 10px 24px; border-radius: 8px; border: none; cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.pwd-btn:active { transform: scale(0.97); }
+.pwd-btn--cancel {
+  background: var(--grey-100); color: var(--grey-600);
+}
+.pwd-btn--cancel:hover { background: var(--grey-200); }
+.pwd-btn--ok {
+  background: var(--orange); color: white;
+}
+.pwd-btn--ok:hover { background: #d4562a; }
+@keyframes pwdShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.pwd-shake { animation: pwdShake 0.35s ease-in-out; }
+
 /* Botón ¡Empezamos! */
 .cover-start-btn {
   display: inline-flex;
@@ -3630,8 +3688,14 @@ const slides = document.querySelectorAll('.slide');
 const counter = document.getElementById('slide-counter');
 const progressBar = document.getElementById('progress-bar');
 let current = 0;
+let unlocked = false;
 
 function goTo(n) {
+  // Pedir contraseña al salir de la portada
+  if (current === 0 && n > 0 && !unlocked) {
+    showPasswordModal();
+    return;
+  }
   closeClientPanel();
   slides[current].classList.remove('active');
   current = Math.max(0, Math.min(n, slides.length - 1));
@@ -3642,6 +3706,56 @@ function goTo(n) {
   // Auto-abrir panel si el slide lo declara
   const autoPanel = slides[current].dataset.autoPanel;
   if (autoPanel) setTimeout(() => openClientPanel(autoPanel), 350);
+}
+
+function showPasswordModal() {
+  if (document.getElementById('pwd-overlay')) return;
+  const overlay = document.createElement('div');
+  overlay.id = 'pwd-overlay';
+  overlay.innerHTML = `
+    <div class="pwd-modal">
+      <div class="pwd-title">Acceso restringido</div>
+      <div class="pwd-subtitle">Introduce la contraseña para continuar</div>
+      <input type="password" id="pwd-input" class="pwd-input" placeholder="Contraseña" autocomplete="off">
+      <div id="pwd-error" class="pwd-error"></div>
+      <div class="pwd-actions">
+        <button class="pwd-btn pwd-btn--cancel" onclick="closePasswordModal()">Cancelar</button>
+        <button class="pwd-btn pwd-btn--ok" onclick="checkPassword()">Entrar</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  setTimeout(() => {
+    overlay.classList.add('pwd-visible');
+    document.getElementById('pwd-input').focus();
+  }, 10);
+  document.getElementById('pwd-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkPassword();
+    if (e.key === 'Escape') closePasswordModal();
+  });
+}
+
+function checkPassword() {
+  const input = document.getElementById('pwd-input');
+  if (input.value === 'Nfoque123') {
+    unlocked = true;
+    closePasswordModal();
+    goTo(1);
+  } else {
+    const err = document.getElementById('pwd-error');
+    err.textContent = 'Contraseña incorrecta';
+    input.value = '';
+    input.focus();
+    input.classList.add('pwd-shake');
+    setTimeout(() => input.classList.remove('pwd-shake'), 400);
+  }
+}
+
+function closePasswordModal() {
+  const overlay = document.getElementById('pwd-overlay');
+  if (overlay) {
+    overlay.classList.remove('pwd-visible');
+    setTimeout(() => overlay.remove(), 200);
+  }
 }
 
 /* --- Panel de visión global cliente --- */
