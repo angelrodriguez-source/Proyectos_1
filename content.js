@@ -190,6 +190,46 @@ const DECK = {
       { title: "Geografías como palanca", body: "30% del Revenue en FY27. México como foco principal." },
       { title: "Foco en IA",              body: "IA como premisa de partida en todos los proyectos." }
     ],
+    estadoActual: [
+      {
+        badge: "Reducción Costes",
+        title: "ESCENARIO GLOBAL ANUNCIADO DE REDUCCIÓN DE COSTES 25-30%",
+        body: "Priorización en la apertura y posicionamiento de nuevos ámbitos.",
+        impact: "high"
+      },
+      {
+        badge: "Tecnología & Data",
+        title: "AMPLIO RECORRIDO EN TECNOLOGÍA Y DATA",
+        body: "Algo de más posición en Banking, más recorrido en CIB y foco en CDAIO.",
+        impact: "high"
+      },
+      {
+        badge: "Geografías",
+        title: "POSICIÓN EN GEOGRAFÍAS APALANCADAS EN USA Y UK",
+        body: "Necesario foco en México y Brasil.",
+        impact: "medium"
+      }
+    ],
+    retos: [
+      {
+        badge: "Tecnología / CDAIO",
+        title: "ASEGURAR CRECIMIENTO EN TECNOLOGÍA / CDAIO",
+        body: "Apostando por el conocimiento de la arquitectura y priorizando la ejecución de proyectos E2E.",
+        impact: "high"
+      },
+      {
+        badge: "Retail Locales",
+        title: "LLEGADA Y FOCO EN LOS RETAIL LOCALES",
+        body: "Brasil, US, México y Geografías Consumer. Asegurando que conocemos las particularidades locales.",
+        impact: "high"
+      },
+      {
+        badge: "Nuevas Líneas",
+        title: "POSICIONAMIENTO LÍNEAS DE NEGOCIO POR ABRIR",
+        body: "Retail & Commercial + Wealth. Llevando la Expertise necesaria y asegurando el éxito de la ejecución.",
+        impact: "medium"
+      }
+    ],
     sections: [
       { label: "CIB",          slide: 10 },    // → slide-11 (SAN CIB)
       { label: "CF & Banking", slide: 11 }   // → slide-12 (SAN CF&B)
