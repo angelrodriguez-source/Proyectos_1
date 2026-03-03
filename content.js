@@ -167,8 +167,8 @@ const DECK = {
     ],
     // Índice de secciones — slide: índice 0-based del destino (null = próximamente)
     sections: [
-      { label: "CIB",          slide: 3 },    // → slide-4 (BBVA CIB Contexto)
-      { label: "CF & Banking", slide: 5 }    // → slide-6 (BBVA CF&B Contexto)
+      { label: "CIB",          slide: 4 },    // → slide-5 (BBVA CIB Contexto)
+      { label: "CF & Banking", slide: 6 }    // → slide-7 (BBVA CF&B Contexto)
     ]
   },
 
@@ -232,8 +232,8 @@ const DECK = {
       }
     ],
     sections: [
-      { label: "CIB",          slide: 8 },     // → slide-9 (SAN CIB)
-      { label: "CF & Banking", slide: 10 }   // → slide-11 (SAN CF&B)
+      { label: "CIB",          slide: 9 },     // → slide-10 (SAN CIB)
+      { label: "CF & Banking", slide: 11 }   // → slide-12 (SAN CF&B)
     ]
   },
 
