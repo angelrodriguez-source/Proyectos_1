@@ -614,33 +614,37 @@ const DECK = {
 
     contexto: {
       objetivo: {
-        rev:    "31,5",
-        ftes:   "440",
-        growth: "+40% desde FY25",
+        rev:    "25",
+        ftes:   "350",
+        growth: "×2 desde FY25",
         desglose: [
-          { ftes: "340", label: "España" },
+          { ftes: "250", label: "España" },
           { ftes: "100", label: "Geografías" }
         ]
-      }
+      },
+      extra: [
+        "Convertirnos en primer proveedor E2E (Negocio+Tech+Ops) Global donde ahora somos el 2º",
+        "Generador de talento para apertura de nuevos clientes."
+      ]
     },
 
     situacionActual: {
       fteDistribution: {
-        tec: 260,
-        neg: 40,
-        geo: { total: 60, detail: "Mex, Brl" }
+        tec: 155,
+        neg: 65,
+        geo: { total: 35, detail: "Mex, Brl" }
       },
       keyPoints: [
-        { icon: "top",  text: "PROVEEDOR #1 EN CIB",                   body: "Actualmente más de 300 Ftes ejecutando y #1 sobre resto Tier 1 en las encuestas." },
-        { icon: "area", text: "PRESENCIA EN ÁMBITOS CLAVE",            body: "Posición en GM y Riesgos, contactos y posibilidades en GTB, IBF, Finance y Compliance." },
-        { icon: "geo",  text: "INICIO EN GEOGRAFÍAS CIB",              body: "Uno de los proveedores principales en Mex CIB e inicio de Brasil con buena llegada." }
+        { icon: "top",  text: "PRIMER PROVEEDOR DE NEGOCIO",            body: "Referente también en operaciones y avanzando en algunos ámbitos en tecnología como Risk o GTB." },
+        { icon: "geo",  text: "PRIMEROS PASOS EN GEOGRAFÍAS CLAVE",     body: "Proveedor preferente US, México en negocio y Brasil dando los primeros pasos." },
+        { icon: "ia",   text: "SENTANDO LAS BASES DEL CAMBIO IA",       body: "Buena entrada en ámbitos clave de definición y ejecución." }
       ]
     },
 
     retosCIB: [
-      { num: "01", title: "SER PERCIBIDOS COMO PROVEEDOR GLOBAL",      body: "Liderar las iniciativas por ámbito de Expertise, sin gestión diferenciada por Geografía." },
-      { num: "02", title: "ESCALAR EN NUEVOS ÁMBITOS",                 body: "Nuevos ámbitos aparte de Global Markets y Riesgos, como GTB/IBF o Finanzas." },
-      { num: "03", title: "POSICIONAMIENTO EN TECNOLOGÍA",             body: "Asegurando el foco y entrando en ámbitos como Data Engineering." }
+      { num: "01", title: "ESCALAR EN TECNOLOGÍA",                     body: "Extender a tecnología donde somos referentes en negocio." },
+      { num: "02", title: "PROVEEDOR PREFERENTE GLOBAL",               body: "México con foco IT y Brasil Negocio+IT." },
+      { num: "03", title: "AGENTES DEL CAMBIO EN IA ADOPTION",         body: "Anticiparnos al nuevo paradigma desde el profundo conocimiento del negocio." }
     ],
 
     equipo: {
@@ -648,19 +652,25 @@ const DECK = {
         name: "ROBERTO GARCÍA",
         initials: "RG",
         role: "Partner",
-        before: "Liderar CIB España.",
-        after: "Asegurar que seguimos siendo percibidos especialistas CIB y foco en todas las geografías CIB."
+        before: "Apoyo Global, impulso Brasil y Hubs.",
+        after: "Foco en Tecnología, IA y ámbitos de desarrollo."
       },
       directivos: [
-        { name: "Jose Magarzo",   initials: "JM", role: "SrMgr", before: "Área BO en SW Delivery España.",                        after: "Foco en BackOffice (y Calypso) de manera global asumiendo la vertical de México." },
-        { name: "Manuel Mendoza", initials: "MM", role: "SrMgr", before: "Liderar la parte de Negocio Global Markets en España.", after: "Incorporar el control centralizado (México y España) de Front Office + Murex." },
-        { name: "Manuel Ranea*",  initials: "MR", role: "Dir",   before: "Visión Tecnología global de BBVA.",                     after: "Centrar la asignación de CIB en liderar la práctica de CTO (Arquitectura), escalando nuestra posición." },
-        { name: "Andrés Perozo",  initials: "AP", role: "SrMgr", before: "Líder Integraciones en SW Delivery.",                   after: "Incorporar la gestión de equipos de Integraciones Tec. en CTO y escalado." },
-        { name: "David Fuente*",  initials: "DF", role: "Dir",   before: "Líder práctica Data.",                                  after: "Continuar Liderazgo de la práctica de Data asumiendo el reto de entrada y escalado en Data Eng. + Liderar Adopción de IA en los equipos." },
-        { name: "Carlos Soto*",   initials: "CS", role: "SrMgr", before: "Liderar Riesgos y Regulatorio en CIB Engineering.",     after: "Liderar la creación de Equipo en Brasil + Liderar llegada y escalado en Ingeniería fuera de CIB." }
+        { name: "Víctor Chamorro",    initials: "VC", role: "SrMgr",  before: "US CIB.",                after: "Visión Cross CIB." },
+        { name: "Juan Blanco",        initials: "JB", role: "SrMgr",  before: "US CIB.",                after: "US (Banking & BBVA) + Brasil." },
+        { name: "Josefe",             initials: "JO", role: "SrMgr",  before: "US CIB.",                after: "Líder US CIB + Global Markets." },
+        { name: "Luis Isasi",         initials: "LI", role: "SrMgr",  before: "GTB.",                   after: "GTB nuevos servicios + impulsar GTB en otros clientes." },
+        { name: "Carlos Mora",        initials: "CM", role: "SrMgr",  before: "UK Banking.",            after: "UK Banking + CIB (Santander London Branch)." },
+        { name: "Javier Gardeazábal", initials: "JG", role: "Mgr",    before: "UK SLB.",                after: "Foco en liderazgo GDF." },
+        { name: "Jaime Errandonea",   initials: "JE", role: "Mgr",    before: "Global Markets San.",    after: "Cross Global Markets San + BBVA." },
+        { name: "Jesús Ontiveros",    initials: "JO", role: "SrMgr",  before: "Global FinCrime.",       after: "Global + apoyo estrategia CIB FinCrime." },
+        { name: "Álvaro Dito",        initials: "AD", role: "SrMgr",  before: "Accounting.",            after: "Accounting + cross technology push." },
+        { name: "Miguel Ramírez",     initials: "MR", role: "SrMgr",  before: "CoE Calypso.",           after: "Global + foco Calypso." },
+        { name: "Ignacio Álvaro*",    initials: "IA", role: "Partner", before: "Apoyo Tecnología y DATA.", after: "Foco en CDAIO + DATA." }
       ],
       apoyos: [
-        { name: "Antonio Díaz",       initials: "AD", mission: "Capacidades GTB/IBF para escalado en Negocio." },
+        { name: "Leandro Gómez",      initials: "LG", mission: "México." },
+        { name: "Antonio Díaz",       initials: "AD", mission: "Liderazgo GDF, PagoNxt + impulso Murex." },
         { name: "Jose Manuel Bruzos", initials: "JB", mission: "Tecnología Global y Posicionamiento IA." }
       ],
       nota: "*Capacidad compartida CIB/CF&B"

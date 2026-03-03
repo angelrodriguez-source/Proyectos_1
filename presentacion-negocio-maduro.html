@@ -2983,6 +2983,14 @@ html, body {
   font-size: clamp(13px, 1.2vw, 17px); color: rgba(255,255,255,0.78); line-height: 1.55;
 }
 
+/* ── Reto cards en Santander — fondo granate ──────────────── */
+.slide-sant-cib .reto-card {
+  background: #6b1024;
+}
+.slide-sant-cib .reto-card:hover {
+  box-shadow: 0 12px 36px rgba(107,16,36,0.3);
+}
+
 /* ── Organigrama (pestaña Equipo) ─────────────────────────── */
 .org-chart {
   display: flex; flex-direction: column; flex: 1; gap: 0;
@@ -3098,6 +3106,18 @@ html, body {
 }
 .org-grid--6 {
   grid-template-columns: repeat(6, 1fr);
+}
+.org-grid--auto {
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}
+.org-grid--auto .ed-card {
+  padding: 12px 14px;
+}
+.org-grid--auto .ed-name {
+  font-size: clamp(11px, 0.9vw, 14px);
+}
+.org-grid--auto .ed-ba-text {
+  font-size: clamp(9px, 0.65vw, 11px);
 }
 .org-nota {
   font-family: 'Instrument Sans', sans-serif;
@@ -4918,6 +4938,12 @@ function hydrate() {
         </div>
       </div>`;
 
+    // ── EXTRA (visión estratégica) ──
+    const extraHtml = ctx.extra ? `
+      <div class="sit-points anim-up delay-1" style="margin-bottom:8px">
+        ${ctx.extra.map(t => `<div class="sit-point-card" style="flex:1"><div class="sit-point-text" style="font-size:clamp(10px,0.75vw,13px)">${t}</div></div>`).join('')}
+      </div>` : '';
+
     // ── BARRA FTEs ──
     const fteTotal = sa.fteDistribution.tec + sa.fteDistribution.neg + sa.fteDistribution.geo.total;
     const maxFte = Math.max(sa.fteDistribution.tec, sa.fteDistribution.neg, sa.fteDistribution.geo.total);
@@ -5028,7 +5054,7 @@ function hydrate() {
           </div>
         </div>
         <div class="org-connector" style="--conn-color:rgba(236,0,0,0.2)"></div>
-        <div class="org-grid org-grid--6">
+        <div class="org-grid org-grid--auto">
           ${eq.directivos.map(p => mkSantCibCard(p, true)).join('')}
         </div>
       </div>
@@ -5049,7 +5075,7 @@ function hydrate() {
       </div>`;
 
     // ── Inyectar en 3 slides separadas ──
-    if (scibCtx)    scibCtx.innerHTML    = scibTab('ctx')    + objCards + fteBar + sitPoints;
+    if (scibCtx)    scibCtx.innerHTML    = scibTab('ctx')    + objCards + extraHtml + fteBar + sitPoints;
     if (scibRetos)  scibRetos.innerHTML  = scibTab('retos')  + objCards + retosSection;
     if (scibEquipo) scibEquipo.innerHTML = scibTab('equipo') + orgChart;
   }
