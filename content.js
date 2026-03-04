@@ -200,7 +200,7 @@ const DECK = {
       },
       {
         badge: "Tecnología & Data",
-        title: "TODO POR HACER EN TECNOLOGÍA Y DATA",
+        title: "MUCHO POR HACER EN TECNOLOGÍA",
         body: "Contando con posiciones iniciales en Banking, pero con todo el recorrido por delante (focalizando en CIB y CDAIO).",
         impact: "high"
       },
@@ -531,10 +531,11 @@ const DECK = {
   conclusiones: {
     label: "Conclusiones",
     messages: [
-      { num: "01", title: "BBVA Y SANTANDER SIGUEN SIENDO MOTOR DE CRECIMIENTO", body: "Hay mucho por explorar." },
-      { num: "02", title: "NUEVOS ROLES PARA NUESTRA GENTE", body: "Provocar la transición de capacidades entre áreas llevando experiencia y lecciones aprendidas." },
-      { num: "03", title: "GEOGRAFÍAS TIENE QUE SER UN FOCO DE VERDAD", body: "México como unidad principal sin perder foco en el resto." },
-      { num: "04", title: "LA IA COMO GENERADOR DE OPORTUNIDADES", body: "Nuestra Esencia, el perfil Mixto, es clave en este momento." }
+      { num: "01", title: "BBVA Y SANTANDER SIGUEN SIENDO MOTOR DE CRECIMIENTO", body: "Todavía hay mucho por recorrido." },
+      { num: "02", title: "CENTRAMOS LA ESTRATEGIA", body: "<ul><li><b>BBVA CIB</b>, Gestión Global en Geografías mostrando especialización.</li><li><b>BBVA CF&B</b>, Vamos a por Ingeniería, empezando por donde más podemos demostrar.</li><li><b>SAN CIB</b>, Ganar la posición en Tecnología y capturemos las oportunidades del negocio de Markets.</li><li><b>SAN CF&B</b>, Organizar una visión común para atacar de manera ordenada (Ámbitos de Negocio y Geografías).</li></ul>" },
+      { num: "03", title: "REORGANIZAMOS EQUIPO PARA AVANZAR", body: "Provocar la transición de capacidades entre áreas llevando experiencia y lecciones aprendidas." },
+      { num: "04", title: "GEOGRAFÍAS TIENE QUE SER UN FOCO DE VERDAD", body: "México como unidad principal sin perder foco en el resto y manteniendo la visión Global." },
+      { num: "05", title: "LA IA COMO GENERADOR DE OPORTUNIDADES", body: "Nuestra Esencia, el perfil Mixto, es clave en este momento." }
     ]
   },
 
@@ -642,7 +643,7 @@ const DECK = {
       objetivo: {
         rev:    "25",
         ftes:   "350",
-        growth: "×2 desde FY25",
+        growth: "+40% FY25-FY27",
         desglose: [
           { ftes: "250", label: "España" },
           { ftes: "100", label: "Geografías" }
@@ -652,9 +653,9 @@ const DECK = {
 
     situacionActual: {
       fteDistribution: {
-        tec: 155,
-        neg: 65,
-        geo: { total: 35, detail: "Mex, Brl" }
+        tec: 65,
+        neg: 155,
+        oper: 35
       },
       keyPoints: [
         { icon: "top",  text: "PRIMER PROVEEDOR DE NEGOCIO",            body: "Referente también en operaciones y avanzando en algunos ámbitos en tecnología como Risk o GTB." },

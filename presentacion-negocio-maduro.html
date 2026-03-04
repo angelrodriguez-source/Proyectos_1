@@ -1977,8 +1977,8 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 18px;
-  padding: 12px 64px 28px;
+  gap: 12px;
+  padding: 8px 64px 20px;
   overflow-y: auto;
 }
 .conc-card {
@@ -1986,11 +1986,11 @@ html, body {
   border: 1.5px solid var(--grey-100, #F0F0F0);
   border-left: 5px solid var(--orange);
   border-radius: 14px;
-  padding: 24px 32px;
+  padding: 16px 24px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   transition: box-shadow 0.25s, transform 0.25s;
 }
@@ -2000,12 +2000,12 @@ html, body {
 }
 .conc-num {
   font-family: 'Sora', sans-serif;
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 800;
   color: var(--orange);
   line-height: 1;
   flex-shrink: 0;
-  min-width: 48px;
+  min-width: 40px;
   text-align: center;
 }
 .conc-text {
@@ -2029,6 +2029,13 @@ html, body {
   font-weight: 400;
   color: var(--grey-600, #555);
   line-height: 1.45;
+}
+.conc-body ul {
+  margin: 0; padding: 0 0 0 18px;
+  list-style: disc;
+}
+.conc-body ul li {
+  margin-bottom: 2px;
 }
 
 .cib-content {
@@ -5020,8 +5027,8 @@ function hydrate() {
       </div>` : '';
 
     // ── BARRA FTEs ──
-    const fteTotal = sa.fteDistribution.tec + sa.fteDistribution.neg + sa.fteDistribution.geo.total;
-    const maxFte = Math.max(sa.fteDistribution.tec, sa.fteDistribution.neg, sa.fteDistribution.geo.total);
+    const fteTotal = sa.fteDistribution.tec + sa.fteDistribution.neg + sa.fteDistribution.oper;
+    const maxFte = Math.max(sa.fteDistribution.tec, sa.fteDistribution.neg, sa.fteDistribution.oper);
     const pctSC = v => Math.round((v / maxFte) * 100);
     const fteBar = `
       <div class="fte-bar-wrap anim-up delay-1">
@@ -5036,8 +5043,8 @@ function hydrate() {
             <div class="fte-row-bar fte-row-bar--neg" style="width:${pctSC(sa.fteDistribution.neg)}%"><span class="fte-row-num">${sa.fteDistribution.neg}</span></div>
           </div>
           <div class="fte-row">
-            <div class="fte-row-label">Geo (${sa.fteDistribution.geo.detail})</div>
-            <div class="fte-row-bar fte-row-bar--geo" style="width:${pctSC(sa.fteDistribution.geo.total)}%"><span class="fte-row-num">${sa.fteDistribution.geo.total}</span></div>
+            <div class="fte-row-label">Operaciones</div>
+            <div class="fte-row-bar fte-row-bar--geo" style="width:${pctSC(sa.fteDistribution.oper)}%"><span class="fte-row-num">${sa.fteDistribution.oper}</span></div>
           </div>
         </div>
       </div>`;
