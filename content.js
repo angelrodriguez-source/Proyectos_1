@@ -415,7 +415,7 @@ const DECK = {
       },
       keyPoints: [
         { icon: "engineering", text: "CONCENTRADOS Y CON POSICIÓN CONSOLIDADA EN F&R", body: "Considerados expertos en F&R, ha sido el motor de llegada a otras áreas. Alquid como producto de referencia en el Grupo" },
-        { icon: "business",    text: "POSICIÓN MUY INICIAL EN BANKING", body: "Entrada fuerte en CoEs Data, ESG y Consumer Finance, pero representa un % muy pequeño del potencial del ámbito." },
+        { icon: "business",    text: "PRIMERAS COLABORACIONES EN BANKING", body: "Entrada fuerte en CoEs Data, ESG y Consumer Finance, pero representa un % muy pequeño del potencial del ámbito." },
         { icon: "geo",         text: "PREPARADOS PARA ESCALAR CON LAS PALANCAS PRINCIPALES INGENIERÍA Y GEOGRAFÍAS", body: "Abiertos todos los marcos tarifarios." }
       ]
     },
@@ -423,7 +423,7 @@ const DECK = {
     retosCFB: [
       { num: "01", title: "ESTABLECERSE COMO PROVEEDOR RELEVANTE EN INGENIERÍA",  body: "Apoyándose en las sinergias por nuestra posición en áreas de negocio, y trasladando las capacidades de ingenieria CIB en el ámbito de CS Commercial." },
       { num: "02", title: "ESCALAR EN GEOGRAFÍAS",                                  body: "Escalar en México con las posiciones iniciales y pensar la estrategia de Perú y Colombia." },
-      { num: "03", title: "EMPEZAR A SER RELEVANTES EN BANKING",                    body: "Estudiar ámbitos y posibilidades para derivar la posición de Data o Consumer al resto de áreas." }
+      { num: "03", title: "DIVERSIFICAR Y SER RELEVANTES EN BANKING",                    body: "Explorar y aprovechar experiencia en Data, ESG o Consumer para llevarlos a las áreas de Retail y Empresas" }
     ],
 
     equipo: {
@@ -535,7 +535,7 @@ const DECK = {
       { num: "02", title: "CENTRAMOS LA ESTRATEGIA", body: "<ul><li><b>BBVA CIB</b>, Gestión Global en Geografías mostrando especialización.</li><li><b>BBVA CF&B</b>, Vamos a por Ingeniería, empezando por donde más podemos demostrar.</li><li><b>SAN CIB</b>, Ganar la posición en Tecnología y capturemos las oportunidades del negocio de Markets.</li><li><b>SAN CF&B</b>, Organizar una visión común para atacar de manera ordenada (Ámbitos de Negocio y Geografías).</li></ul>" },
       { num: "03", title: "REORGANIZAMOS EQUIPO PARA AVANZAR", body: "Provocar la transición de capacidades entre áreas llevando experiencia y lecciones aprendidas." },
       { num: "04", title: "GEOGRAFÍAS TIENE QUE SER UN FOCO DE VERDAD", body: "México como unidad principal sin perder foco en el resto y manteniendo la visión Global." },
-      { num: "05", title: "LA IA COMO GENERADOR DE OPORTUNIDADES", body: "Nuestra Esencia, el perfil Mixto, es clave en este momento." }
+      { num: "05", title: "LA IA COMO GENERADOR DE OPORTUNIDADES", body: "Integración de la IA, adaptando a la idiosincrasia de BBVA y posicionandonos con nuestra esencia, el perfil Mixto, es clave en este momento." }
     ]
   },
 
@@ -568,7 +568,7 @@ const DECK = {
           },
           {
             name: "CF & Banking", margen: "20%",
-            riesgos: ["Cambio del modelo de servicio con la integración de la IA (Posicionamiento y exito PoCs)", "Concentrar el crecimiento de POST en CIB, dificultando la entrada y crecimiento"],
+            riesgos: ["Cambio del modelo de servicio con la integración de la IA", "Concentrar el crecimiento de POST en CIB, dificultando la entrada y crecimiento"],
             ftes: [85, 120, 120, 160],
             rev:  [6.7, 9, 9, 12],
             sub: [
