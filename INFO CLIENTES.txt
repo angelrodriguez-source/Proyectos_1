@@ -109,8 +109,8 @@ SAN:
 
 ESTADO ACTUAL:
 
-ESCENEARIO VOLATIL DE PRESUPUESTOS: Previsión de resultados estraordinario en los proximos años, y aun con escenario reduccion de costes en algunos ámbitos, aumento de la inversion alta en general. Priorizacion en la apertura y posicionamiento de nuevos ámbitos.  
-TODO POR HACER EN TECNOLOGIA y DATA: Contando con posiciones iniciales en Banking, pero con todo el reocorrido por delante  (focalizando en CIB y CDAIO). 
+ESCENEARIO VOLATIL DE PRESUPUESTOS: Previsión de resultados estraordinario en los proximos años, y aun con escenario reduccion de costes en algunos ámbitos, aumento de la inversion otros. Priorizacion en la apertura y posicionamiento de nuevos ámbitos.  
+MUCHO POR HACER EN TECNOLOGIA: Contando con posiciones iniciales en Banking, pero con todo el reocorrido por delante (focalizando en CIB y CDAIO). 
 POSICION EN GEOGRAFIAS APALANCADAS EN USA Y UK: Amplio recorrido de crecimiento en México y Brasil.
 
 RETOS:
@@ -127,14 +127,13 @@ Objetivo FY27:
 
 €: +25 MM
 Ftes: +350 Ftes (250 Esp, 100 Geografias), 
-Multiplicar x2 Fy25-Fy27. 
++40% Fy25-Fy27. 
 
 1. SITUACION ACTUAL: 
 
-FTES TEC: 155
-FTES OPER: 
-FTES NEG: 65
-FTES GEO (Mex, Brl): 35
+FTES TEC: 65
+FTES NEG: 155
+FTES OPER: 35
 
 PRIMER PROVEEDOR DE NEGOCIO: Referente también en operaciones y avanzando en algunos ámbitos en tecnología como Risk o GTB. 
 PRIMEROS PASOS EN GEOGRAFÍAS CLAVE: Proveedor preferente US, Mexico en negocio y Brasil dando los primeros pasos. 
@@ -185,7 +184,7 @@ FTES NEG: 110
 FTES OPS:  67
 
 TOP VENDOR EN HQ, DIGITAL Y UK: Alto potencial de desarrollo en el resto de geografías(Mexico, Brasil, Europa)
-CONCENTRACIÓN EN CORPORATE FUNCTIONS: Con recorrido en Riesgos, Finanzas, Capital, Fincrime, Procurement, RRHH
+CONCENTRACIÓN EN CORPORATE FUNCTIONS: Principalmente en Riesgos, Finanzas, Capital, Fincrime, Procurement, RRHH
 TRANSICIÓN PAULATINA A COLABORACIONES EN MODALIDAD DE SERVICIO: Como por ejepmlo: RFP Data, Hub APIS, Crédito Corporación, Servicios gestionados Ops,etc
 
 
@@ -229,7 +228,7 @@ BBVA:
   
   - ESCALAR EN GEOGRAFIAS POR EXPERTISE GLOBAL
   
-  MANUEL MENDOZA; J.A MAGARZO: Derivar control de los ámbitos de Front/Murex Y Back/Calypso de manera global incluyendo Mexico. 
+  MANUEL MENDOZA y JOSE MAGARZO: Derivar control de los ámbitos de Front/Murex Y Back/Calypso de manera global incluyendo Mexico. 
 
 
   SANTANDER: 
@@ -249,44 +248,32 @@ BBVA:
 
 
 
-
-
-
-
-
-
-
 ###############################################################################################################################################################################
 
 CONCLUSIONES: 
 
-BBVA Y SANTANDER SIGUEN SIENDO MOTOR DE CRECIMIENTO: Hay mucho por explorar. 
-
-NUEVOS ROLES PARA NUESTRA GENTE: Provocar la transicion de capacidades entre áreas llevando experiencia y lecciones aprendidas. 
-
-GEOGRAFIAS TIENE QUE SER UN FOCO DE VERDAD: Mexico como unidad principal sin perder foco en el resto. 
-
-LA IA COMO GENERADOR DE OPORTUNIDADES: Nuestra Esencia, el perfil Mixto, es clave en este momento.
+BBVA Y SANTANDER SIGUEN SIENDO MOTOR DE CRECIMIENTO: Todavía hay mucho por recorrido.
 
 
+CENTRAMOS LA ESTRATEGIA: 
+ - BBVA CIB, Gestión Global en Geografías mostrando especialización.
+ - BBVA CF&B, Vamos a por Ingeniería, empezando por donde mas podemos demostrar.
+ - SAN CIB, Ganar la posicion en Tecnologia y Capturemos las oportunidades del negocio de Markets.
+ - SAN CF&B, Organizar una visión común para atacar de manera ordenada (Ambitos de Negocio y Geografías)
 
 
+REORGANIZAMOS EQUIPO PARA AVANZAR: 
+ - Provocar la transicion de capacidades entre áreas llevando experiencia y lecciones aprendidas. 
 
 
+GEOGRAFIAS TIENE QUE SER UN FOCO DE VERDAD: 
+ - Mexico como unidad principal sin perder foco en el resto y manteniendo la vision Global. 
 
 
-CIB: 
+LA IA COMO GENERADOR DE OPORTUNIDADES: 
+- Nuestra Esencia, el perfil Mixto, es clave en este momento.
 
 
-
-
-CAmbios
-
-Reorganizacion de Equipo. 
-
-Cambios principales: 
-A. Diaz + DITO : GAPS de Negocio
-DAniel Lopez 
 
 
 

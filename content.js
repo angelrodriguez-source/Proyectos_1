@@ -475,7 +475,7 @@ const DECK = {
       },
       keyPoints: [
         { icon: "vendor",   text: "TOP VENDOR EN HQ, DIGITAL Y UK",                                        body: "Alto potencial de desarrollo en el resto de geografías (México, Brasil, Europa)." },
-        { icon: "focus",    text: "CONCENTRACIÓN EN CORPORATE FUNCTIONS",                                   body: "Con recorrido en Riesgos, Finanzas, Capital, Fincrime, Procurement, RRHH." },
+        { icon: "focus",    text: "CONCENTRACIÓN EN CORPORATE FUNCTIONS",                                   body: "Principalmente en Riesgos, Finanzas, Capital, Fincrime, Procurement, RRHH." },
         { icon: "service",  text: "TRANSICIÓN PAULATINA A COLABORACIONES EN MODALIDAD DE SERVICIO",         body: "Como por ejemplo: RFP Data, Hub APIs, Crédito Corporación, Servicios gestionados Ops, etc." }
       ]
     },
