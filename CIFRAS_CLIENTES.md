@@ -25,7 +25,7 @@
 |            | FY25   | FC26   | FY26   | FY27   | Margen | Riesgos FY27 |
 |------------|--------|--------|--------|--------|--------|--------------|
 | **Ftes**   | 300    | 384    | 382    | 439    | 20%    | Escenarios de reducción por la IA. |
-| **€MM**    | 22     | 27,6   | 27     | 31,5   |        | Pérdida de Imagen por posicionamiento global. |
+| **€MM**    | 22     | 27,6   | 27     | 31,5   |        | Pérdida de Imagen Especialista por posicionamiento global. |
 
 #### BBVA CIB España
 
@@ -52,8 +52,8 @@
 
 |            | FY25   | FC26   | FY26   | FY27   | Margen | Riesgos FY27 |
 |------------|--------|--------|--------|--------|--------|--------------|
-| **Ftes**   | 85     | 120    | 120    | 160    | 20%    | Recorrido de Alquid en Finanzas (Posicionamiento y exito PoCs) |
-| **€MM**    | 6,7    | 9      | 9      | 12     |        | No conseguir la posicion y escalado en Ingenieria. |
+| **Ftes**   | 85     | 120    | 120    | 160    | 20%    | Cambio del modelo de servicio con la integración de la IA |
+| **€MM**    | 6,7    | 9      | 9      | 12     |        | Concentrar el crecimiento de POST en CIB, dificultando la entrada y crecimiento |
 
 #### BBVA CF&B ex México
 
@@ -75,7 +75,7 @@
 
 |            | FY25   | FC26   | FY26   | FY27   | Margen | Riesgos FY27 |
 |------------|--------|--------|--------|--------|--------|--------------|
-| **Ftes**   | 240    | 280    | 294    | 371    | 17%    | Escenario reducción de Costes 20/30%. |
+| **Ftes**   | 240    | 280    | 294    | 371    | 17%    | Volatilidad de presupuestos,  escenario reducción de Costes 20/30%. |
 | **€MM**    | 19,5   | 20,8   | 21,7   | 25,6   |        | No expansión a nuevos ámbitos (p.ej Tec) que permitan distribuir la volatilidad de los presupuestos. |
 
 #### SAN CIB HQ
@@ -103,8 +103,8 @@
 
 |            | FY25   | FC26   | FY26    | FY27    | Margen | Riesgos FY27 |
 |------------|--------|--------|---------|---------|--------|--------------|
-| **Ftes**   | 277    | 300    | 340     | 383     | 20%    | Riesgo 1 |
-| **€MM**    | 17,7   | 20,5   | 21,39   | 24,34   |        | Riesgo 2 |
+| **Ftes**   | 277    | 300    | 340     | 383     | 20%    | Impactos por eficiencias en ambitos maduros |
+| **€MM**    | 17,7   | 20,5   | 21,39   | 24,34   |        | No conseguir la llegada en LATAM |
 
 #### SAN CF&B HQ
 

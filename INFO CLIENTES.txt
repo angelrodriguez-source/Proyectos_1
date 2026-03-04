@@ -76,13 +76,13 @@ FTES TEC: 9
 FTES NEG: 88
 FTES GEO (Mex): 10
 
-CONCENTRADOS Y CON POSICION CONSOLIDADA EN F&R: Considerados expertos en F&R ha sido el motor de llegada a otras áreas.
-POSICION MUY INICIAL EN BANKING: Llegada incial en ESG, Data y Consumer pero con todo por explorar y escalar.
+CONCENTRADOS Y CON POSICION CONSOLIDADA EN F&R: Considerados expertos en F&R ha sido el motor de llegada a otras áreas. Alquid como producto de referencia en el Grupo.
+POSICION MUY INICIAL EN BANKING: Entrada fuerte en CoEs Data, ESG y Consumer Finance, pero representa un % muy pequeño del potencial del ámbito.
 PREPARADOS PARA ESCALAR CON LAS PALANCAS PRINCIPALES INGENIERIA Y GEOGRAFIAS. Abiertos todos los marcos tarifarios. 
 
 2. RETOS: 
 
-ESTABLECERSE COMO PROVEEDOR RELEVANTE EN INGENIERIA: Apoyandose en las capacidades de Ingenieria CIB, asegurando que se aprovecha el contrato de POST. 
+ESTABLECERSE COMO PROVEEDOR RELEVANTE EN INGENIERIA: Apoyándose en las sinergias por nuestra posición en áreas de negocio, y trasladando las capacidades de ingenieria CIB en el ámbito de CS Commercial. 
 ESCALAR EN GEOGRAFIAS: Escalar en Mexico con las posiciones iniciales y pensar la estrategia de Peru y Colombia
 EMPEZAR A SER RELEVANTES BANKING: Estudiar ambitos y posibilidades para derivar la posicion de Data o Consumer al resto de areas
 
@@ -224,7 +224,7 @@ BBVA:
 
   - FOCO EN COMENZAR Y ESPCALAR EN INGENIERIA FUERA DE CIB: 
 
-  CARLOS SOTO: Llevar la Expertise de Ingenieria CIB, para empezar por ámbitos dodne se cruza con mundo CIB. 
+  CARLOS SOTO: Trasladar el expertise y conocimiento del banco de ingeniería CIB a nuevos ámbitos de ingeniería donde las sinergias sean máximas (Commercial principalmente). 
   
   - ESCALAR EN GEOGRAFIAS POR EXPERTISE GLOBAL
   

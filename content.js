@@ -414,14 +414,14 @@ const DECK = {
         geo: { total: 10, detail: "Mex" }
       },
       keyPoints: [
-        { icon: "engineering", text: "CONCENTRADOS Y CON POSICIÓN CONSOLIDADA EN F&R", body: "Considerados expertos en F&R, ha sido el motor de llegada a otras áreas." },
-        { icon: "business",    text: "POSICIÓN MUY INICIAL EN BANKING", body: "Llegada inicial en ESG, Data y Consumer pero con todo por explorar y escalar." },
+        { icon: "engineering", text: "CONCENTRADOS Y CON POSICIÓN CONSOLIDADA EN F&R", body: "Considerados expertos en F&R, ha sido el motor de llegada a otras áreas. Alquid como producto de referencia en el Grupo" },
+        { icon: "business",    text: "POSICIÓN MUY INICIAL EN BANKING", body: "Entrada fuerte en CoEs Data, ESG y Consumer Finance, pero representa un % muy pequeño del potencial del ámbito." },
         { icon: "geo",         text: "PREPARADOS PARA ESCALAR CON LAS PALANCAS PRINCIPALES INGENIERÍA Y GEOGRAFÍAS", body: "Abiertos todos los marcos tarifarios." }
       ]
     },
 
     retosCFB: [
-      { num: "01", title: "ESTABLECERSE COMO PROVEEDOR RELEVANTE EN INGENIERÍA",  body: "Apoyándose en las capacidades de Ingeniería CIB, asegurando que se aprovecha el contrato de POST." },
+      { num: "01", title: "ESTABLECERSE COMO PROVEEDOR RELEVANTE EN INGENIERÍA",  body: "Apoyándose en las sinergias por nuestra posición en áreas de negocio, y trasladando las capacidades de ingenieria CIB en el ámbito de CS Commercial." },
       { num: "02", title: "ESCALAR EN GEOGRAFÍAS",                                  body: "Escalar en México con las posiciones iniciales y pensar la estrategia de Perú y Colombia." },
       { num: "03", title: "EMPEZAR A SER RELEVANTES EN BANKING",                    body: "Estudiar ámbitos y posibilidades para derivar la posición de Data o Consumer al resto de áreas." }
     ],
@@ -557,7 +557,7 @@ const DECK = {
         ambitos: [
           {
             name: "CIB", margen: "20%",
-            riesgos: ["Escenarios de reducción por la IA", "Pérdida de Imagen por posicionamiento global"],
+            riesgos: ["Escenarios de reducción por la IA", "Pérdida de Imagen Especialista por posicionamiento global"],
             ftes: [300, 384, 382, 439],
             rev:  [22, 27.6, 27, 31.5],
             sub: [
@@ -568,7 +568,7 @@ const DECK = {
           },
           {
             name: "CF & Banking", margen: "20%",
-            riesgos: ["Recorrido de Alquid en Finanzas (Posicionamiento y exito PoCs)", "No conseguir la posicion y escalado en Ingenieria. (Oportunidades y Ftes preparados)"],
+            riesgos: ["Cambio del modelo de servicio con la integración de la IA (Posicionamiento y exito PoCs)", "Concentrar el crecimiento de POST en CIB, dificultando la entrada y crecimiento"],
             ftes: [85, 120, 120, 160],
             rev:  [6.7, 9, 9, 12],
             sub: [
@@ -584,7 +584,7 @@ const DECK = {
         ambitos: [
           {
             name: "CIB", margen: "17%",
-            riesgos: ["Escenario reducción de Costes 20/30%", "No expansión a nuevos ámbitos que permitan distribuir volatilidad"],
+            riesgos: ["Volatilidad de presupuestos, escenario reducción de Costes 20/30%", "No expansión a nuevos ámbitos (p.ej Tec) que permitan distribuir la volatilidad de los presupuestos"],
             ftes: [240, 280, 294, 371],
             rev:  [19.5, 20.8, 21.7, 25.6],
             sub: [
@@ -595,7 +595,7 @@ const DECK = {
           },
           {
             name: "CF & Banking", margen: "20%",
-            riesgos: ["Impacto eficiencias", "Crecimiento en LATAM "],
+            riesgos: ["Impactos por eficiencias en ambitos maduros", "No conseguir la llegada en LATAM"],
             ftes: [277, 300, 340, 383],
             rev:  [17.7, 20.5, 21.39, 24.34],
             sub: [
@@ -620,7 +620,7 @@ const DECK = {
       {
         name: "BBVA", color: "#004481",
         cambios: [
-          { motivo: "Foco en comenzar y escalar en Ingeniería fuera de CIB", persona: "Carlos Soto", descripcion: "Llevar la Expertise de Ingeniería CIB, para empezar por ámbitos donde se cruza con mundo CIB." },
+          { motivo: "Foco en comenzar y escalar en Ingeniería fuera de CIB", persona: "Carlos Soto", descripcion: "Trasladar el expertise y conocimiento del banco de ingeniería CIB a nuevos ámbitos de ingeniería donde las sinergias sean máximas (Commercial principalmente)." },
           { motivo: "Escalar en Geografías por Expertise Global", persona: "Manuel Mendoza y Jose Magarzo", descripcion: "Derivar control de los ámbitos de Front/Murex y Back/Calypso de manera global incluyendo México." }
         ]
       },
