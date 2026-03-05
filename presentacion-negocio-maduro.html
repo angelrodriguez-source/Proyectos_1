@@ -4560,8 +4560,8 @@ function nextSlide() { goTo(current + 1); }
 function prevSlide() { goTo(current - 1); }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')                    { e.preventDefault(); prevSlide(); }
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); nextSlide(); }
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp' || e.key === 'PageUp')                    { e.preventDefault(); prevSlide(); }
 });
 
 // Touch / swipe
