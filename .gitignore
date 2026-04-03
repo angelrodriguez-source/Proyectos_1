@@ -8,5 +8,8 @@
 estrategia-clientes.md
 NFQ_Style_Guide.md
 
+# Build output
+dist/
+
 # Claude local
 .claude/
